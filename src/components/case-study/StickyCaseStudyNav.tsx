@@ -36,14 +36,14 @@ export const StickyCaseStudyNav = ({ title, metadata = [], links }: StickyCaseSt
         <a
           key={link.id}
           href={`#${link.id}`}
-          className="block pl-3 text-sm text-subtext"
+          className="block pl-3 text-sm text-subtext transition-[transform,color] duration-150 ease-out hover:translate-x-0.5 hover:text-ink"
         >
           {link.label}
         </a>
       ))}
       <NavLink
         to="/"
-        className="mt-8 inline-block text-xs uppercase tracking-[0.12em] text-subtext"
+        className="mt-8 inline-block text-xs uppercase tracking-[0.12em] text-subtext transition-colors duration-150 hover:text-ink"
       >
         Back home
       </NavLink>
