@@ -1,21 +1,31 @@
 :root {
-  --color-bg: 245 243 238;
-  --color-ink: 20 20 19;
-  --color-subtext: 92 89 82;
-  --color-line: 184 176 163;
-  --color-panel: 250 248 243;
+  /* Colors */
+  --color-background: 249 248 246;
+  --color-surface: 255 255 255;
+  --color-text: 24 24 23;
+  --color-text-muted: 97 94 88;
+  --color-border: 209 203 193;
   --color-accent: 130 52 45;
-  --color-steel: 83 103 121;
 
-  --font-sans: "Inter", "Avenir Next", "Helvetica Neue", sans-serif;
-  --font-serif: "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
-  --font-mono: "IBM Plex Mono", "SF Mono", "Menlo", monospace;
+  /* Typography */
+  --font-family-sans: "Inter", "Avenir Next", "Helvetica Neue", sans-serif;
+  --font-family-serif: "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+  --font-family-mono: "IBM Plex Mono", "SF Mono", "Menlo", monospace;
 
-  --layout-page-max: 1280px;
-  --layout-content-max: 920px;
-  --layout-prose-max: 680px;
-  --layout-rail-width: 240px;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 3rem;
 
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Spacing scale */
+  --space-0: 0;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -24,8 +34,15 @@
   --space-8: 2rem;
   --space-12: 3rem;
   --space-16: 4rem;
-  --space-24: 6rem;
 
+  /* Radius */
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  /* Max widths */
+  --max-width-page: 80rem;
+  --max-width-content: 60rem;
+  --max-width-prose: 42rem;
+  --max-width-rail: 15rem;
 }

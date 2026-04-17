@@ -5,32 +5,30 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: "rgb(var(--color-bg) / <alpha-value>)",
-        ink: "rgb(var(--color-ink) / <alpha-value>)",
-        subtext: "rgb(var(--color-subtext) / <alpha-value>)",
-        line: "rgb(var(--color-line) / <alpha-value>)",
-        panel: "rgb(var(--color-panel) / <alpha-value>)",
+        bg: "rgb(var(--color-background) / <alpha-value>)",
+        ink: "rgb(var(--color-text) / <alpha-value>)",
+        subtext: "rgb(var(--color-text-muted) / <alpha-value>)",
+        line: "rgb(var(--color-border) / <alpha-value>)",
+        panel: "rgb(var(--color-surface) / <alpha-value>)",
         accent: "rgb(var(--color-accent) / <alpha-value>)",
-        steel: "rgb(var(--color-steel) / <alpha-value>)",
       },
       fontFamily: {
-        sans: ["var(--font-sans)"],
-        serif: ["var(--font-serif)"],
-        mono: ["var(--font-mono)"],
+        sans: ["var(--font-family-sans)"],
+        serif: ["var(--font-family-serif)"],
+        mono: ["var(--font-family-mono)"],
       },
       maxWidth: {
-        prose: "var(--layout-prose-max)",
-        content: "var(--layout-content-max)",
+        prose: "var(--max-width-prose)",
+        content: "var(--max-width-content)",
+        page: "var(--max-width-page)",
       },
       spacing: {
-        rail: "var(--layout-rail-width)",
+        rail: "var(--max-width-rail)",
       },
       borderRadius: {
         sm: "var(--radius-sm)",
         md: "var(--radius-md)",
-      },
-      boxShadow: {
-        artifact: "0 0 0 1px rgb(var(--color-line) / 0.65), 0 10px 30px rgb(0 0 0 / 0.06)",
+        lg: "var(--radius-lg)",
       },
     },
   },
