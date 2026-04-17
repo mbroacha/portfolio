@@ -7,9 +7,9 @@ interface SystemSnapshotProps {
 }
 
 export const SystemSnapshot = ({ title, value, note }: SystemSnapshotProps) => (
-  <div className="rounded-md border border-line p-5">
+  <article className="space-y-2 border border-line p-5">
     <MetaText>{title}</MetaText>
-    <p className="mt-2 text-3xl font-semibold tracking-[-0.02em]">{value}</p>
-    <BodyText className="mt-2 text-sm text-subtext">{note}</BodyText>
-  </div>
+    <p className="text-3xl font-medium tracking-[-0.02em] text-ink">{value}</p>
+    <BodyText className="text-sm text-subtext">{note}</BodyText>
+  </article>
 );

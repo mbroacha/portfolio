@@ -8,7 +8,7 @@ interface MetadataLabelProps extends HTMLAttributes<HTMLSpanElement> {
 export const MetadataLabel = ({ label, className, ...props }: MetadataLabelProps) => (
   <span
     className={cn(
-      "type-meta inline-flex w-fit rounded-sm border border-line bg-panel px-2 py-1 text-subtext",
+      "inline-flex w-fit border border-line px-2 py-1 font-mono text-xs uppercase tracking-[0.12em] text-subtext",
       className,
     )}
     {...props}

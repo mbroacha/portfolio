@@ -3,7 +3,6 @@ import { Navigate, useParams } from "react-router-dom";
 import { ConstraintCallout } from "../components/case-study/ConstraintCallout";
 import { DecisionBlock } from "../components/case-study/DecisionBlock";
 import { FieldNote } from "../components/case-study/FieldNote";
-import { ImageArtifactBlock } from "../components/case-study/ImageArtifactBlock";
 import { ProjectHeader } from "../components/case-study/ProjectHeader";
 import { PullQuote } from "../components/case-study/PullQuote";
 import { StickyCaseStudyNav } from "../components/case-study/StickyCaseStudyNav";
@@ -21,6 +20,14 @@ export const CaseStudyPage = () => {
     return <Navigate to="/" replace />;
   }
 
+  const sectionLinks = [
+    { id: "problem-framing", label: "Problem framing" },
+    { id: "constraints", label: "Constraints" },
+    { id: "decisions", label: "Decision sections" },
+    { id: "system-explanation", label: "System explanation" },
+    { id: "outcome-reflection", label: "Outcome / reflection" },
+  ];
+
   return (
     <PageContainer
       rail={
@@ -32,7 +39,7 @@ export const CaseStudyPage = () => {
             { label: "Domain", value: study.domain },
             { label: "Outcome", value: study.outcome },
           ]}
-          links={study.sections.map((s) => ({ id: s.id, label: s.label }))}
+          links={sectionLinks}
         />
       }
       stickyRailOnDesktop
@@ -50,25 +57,28 @@ export const CaseStudyPage = () => {
         tags={study.tags}
       />
 
-      {study.sections.map((section) => (
-        <Section key={section.id} id={section.id} spacing="lg">
-          <SectionTitle>{section.label}</SectionTitle>
-          <BodyText className="mt-4 max-w-prose">{section.body}</BodyText>
-        </Section>
-      ))}
+      <Section id="problem-framing" spacing="lg" className="space-y-5">
+        <SectionTitle>Problem framing</SectionTitle>
+        {study.sections.map((section) => (
+          <div key={section.id} className="space-y-2">
+            <p className="font-mono text-xs uppercase tracking-[0.12em] text-subtext">{section.label}</p>
+            <BodyText className="max-w-prose">{section.body}</BodyText>
+          </div>
+        ))}
+      </Section>
 
-      <Section spacing="lg">
-        <SectionTitle>System snapshots</SectionTitle>
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          {study.snapshots.map((snapshot) => (
-            <SystemSnapshot key={snapshot.title} title={snapshot.title} value={snapshot.value} note={snapshot.note} />
+      <Section id="constraints" spacing="md" className="space-y-6">
+        <SectionTitle>Constraints</SectionTitle>
+        <div className="grid gap-5 md:grid-cols-2">
+          {study.constraints.map((constraint) => (
+            <ConstraintCallout key={constraint.title} title={constraint.title} detail={constraint.detail} />
           ))}
         </div>
       </Section>
 
-      <Section spacing="lg">
-        <SectionTitle>Key decisions</SectionTitle>
-        <div className="mt-6 grid gap-5">
+      <Section id="decisions" spacing="lg" className="space-y-6">
+        <SectionTitle>Decision sections</SectionTitle>
+        <div className="grid gap-5">
           {study.decisions.map((decision) => (
             <DecisionBlock
               key={decision.title}
@@ -80,33 +90,30 @@ export const CaseStudyPage = () => {
         </div>
       </Section>
 
-      <Section spacing="lg" className="grid gap-6 md:grid-cols-2">
-        {study.constraints.map((constraint) => (
-          <ConstraintCallout key={constraint.title} title={constraint.title} detail={constraint.detail} />
-        ))}
+      <Section id="system-explanation" spacing="lg" className="space-y-6">
+        <SectionTitle>System explanation</SectionTitle>
+        <BodyText className="max-w-prose">
+          The operating model balances fast scanability for routine work with deeper detail for edge-case
+          review. Snapshot metrics below show the system behavior after rollout.
+        </BodyText>
+        <div className="grid gap-4 md:grid-cols-2">
+          {study.snapshots.map((snapshot) => (
+            <SystemSnapshot key={snapshot.title} title={snapshot.title} value={snapshot.value} note={snapshot.note} />
+          ))}
+        </div>
       </Section>
 
-      <Section spacing="lg">
+      <Section id="outcome-reflection" spacing="lg" className="space-y-8">
+        <SectionTitle>Outcome / reflection</SectionTitle>
+        <BodyText className="max-w-prose">{study.outcome}</BodyText>
         <PullQuote quote={study.quote} attribution={study.quoteAttribution} />
-      </Section>
-
-      <Section spacing="lg">
-        <SectionTitle>Field notes</SectionTitle>
-        <div className="mt-6 grid gap-4">
+        <div className="grid gap-4">
           {study.fieldNotes.map((note) => (
             <FieldNote key={note}>{note}</FieldNote>
           ))}
         </div>
       </Section>
 
-      <Section spacing="lg">
-        <ImageArtifactBlock
-          src="https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=1440&q=80"
-          alt="Monochrome control surface with layered data visuals"
-          caption="Operational command surface prototype (archival treatment)."
-          tone="steel"
-        />
-      </Section>
     </PageContainer>
   );
 };
