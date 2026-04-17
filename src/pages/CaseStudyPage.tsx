@@ -23,7 +23,22 @@ export const CaseStudyPage = () => {
 
   return (
     <PageContainer
-      rail={<StickyCaseStudyNav title={study.title} links={study.sections.map((s) => ({ id: s.id, label: s.label }))} />}
+      rail={
+        <StickyCaseStudyNav
+          title={study.title}
+          metadata={[
+            { label: "Role", value: study.role },
+            { label: "Timeline", value: study.timeline },
+            { label: "Domain", value: study.domain },
+            { label: "Outcome", value: study.outcome },
+          ]}
+          links={study.sections.map((s) => ({ id: s.id, label: s.label }))}
+        />
+      }
+      stickyRailOnDesktop
+      collapsibleRailOnMobile
+      mobileRailLabel="Project overview"
+      mainClassName="mx-auto w-full max-w-content"
     >
       <ProjectHeader
         title={study.title}
@@ -36,13 +51,13 @@ export const CaseStudyPage = () => {
       />
 
       {study.sections.map((section) => (
-        <Section key={section.id} id={section.id}>
+        <Section key={section.id} id={section.id} spacing="lg">
           <SectionTitle>{section.label}</SectionTitle>
           <BodyText className="mt-4 max-w-prose">{section.body}</BodyText>
         </Section>
       ))}
 
-      <Section>
+      <Section spacing="lg">
         <SectionTitle>System snapshots</SectionTitle>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {study.snapshots.map((snapshot) => (
@@ -51,7 +66,7 @@ export const CaseStudyPage = () => {
         </div>
       </Section>
 
-      <Section>
+      <Section spacing="lg">
         <SectionTitle>Key decisions</SectionTitle>
         <div className="mt-6 grid gap-5">
           {study.decisions.map((decision) => (
@@ -65,17 +80,17 @@ export const CaseStudyPage = () => {
         </div>
       </Section>
 
-      <Section className="grid gap-6 md:grid-cols-2">
+      <Section spacing="lg" className="grid gap-6 md:grid-cols-2">
         {study.constraints.map((constraint) => (
           <ConstraintCallout key={constraint.title} title={constraint.title} detail={constraint.detail} />
         ))}
       </Section>
 
-      <Section>
+      <Section spacing="lg">
         <PullQuote quote={study.quote} attribution={study.quoteAttribution} />
       </Section>
 
-      <Section>
+      <Section spacing="lg">
         <SectionTitle>Field notes</SectionTitle>
         <div className="mt-6 grid gap-4">
           {study.fieldNotes.map((note) => (
@@ -84,7 +99,7 @@ export const CaseStudyPage = () => {
         </div>
       </Section>
 
-      <Section>
+      <Section spacing="lg">
         <ImageArtifactBlock
           src="https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=1440&q=80"
           alt="Monochrome control surface with layered data visuals"
