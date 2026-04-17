@@ -2,9 +2,16 @@ import type { HTMLAttributes } from "react";
 import { cn } from "../../lib/cn";
 
 interface SectionProps extends HTMLAttributes<HTMLElement> {
-  spaced?: boolean;
+  spacing?: "none" | "sm" | "md" | "lg";
 }
 
-export const Section = ({ className, spaced = true, ...props }: SectionProps) => (
-  <section className={cn(spaced ? "py-10 md:py-14" : "py-4", className)} {...props} />
+const spacingClasses: Record<NonNullable<SectionProps["spacing"]>, string> = {
+  none: "",
+  sm: "py-6",
+  md: "py-8 md:py-10",
+  lg: "py-10 md:py-14",
+};
+
+export const Section = ({ className, spacing = "md", ...props }: SectionProps) => (
+  <section className={cn(spacingClasses[spacing], className)} {...props} />
 );
