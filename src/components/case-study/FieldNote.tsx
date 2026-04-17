@@ -5,8 +5,8 @@ interface FieldNoteProps {
 }
 
 export const FieldNote = ({ children }: FieldNoteProps) => (
-  <article className="rounded-md border border-line bg-panel/70 p-5">
+  <article className="space-y-3 border border-line p-5">
     <MetaText>Field note</MetaText>
-    <BodyText className="mt-3">{children}</BodyText>
+    <BodyText>{children}</BodyText>
   </article>
 );
