@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { ConstraintCallout } from "../components/case-study/ConstraintCallout";
 import { DecisionBlock } from "../components/case-study/DecisionBlock";
 import { FieldNote } from "../components/case-study/FieldNote";
@@ -9,11 +8,11 @@ import { SystemSnapshot } from "../components/case-study/SystemSnapshot";
 import { PageContainer } from "../components/layout/PageContainer";
 import { Section } from "../components/layout/Section";
 import { BodyText, SectionTitle } from "../components/primitives/Typography";
-import { caseStudies } from "../data/caseStudies";
+import { gradescopeMobileCaseStudy } from "../case-studies/gradescope-mobile-case-study";
 
 export const GradescopeMobile = () => {
-  const study = useMemo(() => caseStudies.find((entry) => entry.slug === "gradescope-mobile") ?? caseStudies[0], []);
-  const displayTitle = study.slug === "gradescope-mobile" ? study.title : "GradescopeMobile";
+  const study = gradescopeMobileCaseStudy;
+  const displayTitle = study.title;
 
   const sectionLinks = [
     { id: "problem-framing", label: "Problem framing" },

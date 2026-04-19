@@ -3,10 +3,10 @@ import { PageContainer } from "../components/layout/PageContainer";
 import { Section } from "../components/layout/Section";
 import { MetadataLabel } from "../components/primitives/MetadataLabel";
 import { BodyText, Display, SectionTitle, SerifLead } from "../components/primitives/Typography";
-import { caseStudies } from "../data/caseStudies";
+import { commandCenterRiskModeling } from "../case-studies/command-center-risk-modeling";
 
 export const HomePage = () => {
-  const featured = caseStudies[0];
+  const featured = commandCenterRiskModeling;
 
   return (
     <PageContainer
