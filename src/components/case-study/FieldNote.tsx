@@ -1,12 +1,12 @@
-import { BodyText, MetaText } from "../primitives/Typography";
+import type { ReactNode } from "react";
 
 interface FieldNoteProps {
-  children: string;
+  children: ReactNode;
 }
 
+/** Personal margin note — styles live in `index.css` (`.field-note`) for reliable contrast and typography. */
 export const FieldNote = ({ children }: FieldNoteProps) => (
-  <article className="space-y-3 border border-line p-5">
-    <MetaText>Field note</MetaText>
-    <BodyText>{children}</BodyText>
-  </article>
+  <div className="field-note">
+    <p>{children}</p>
+  </div>
 );

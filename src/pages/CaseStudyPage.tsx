@@ -10,11 +10,11 @@ import { SystemSnapshot } from "../components/case-study/SystemSnapshot";
 import { PageContainer } from "../components/layout/PageContainer";
 import { Section } from "../components/layout/Section";
 import { BodyText, SectionTitle } from "../components/primitives/Typography";
-import { caseStudies } from "../data/caseStudies";
+import { getCaseStudyTemplateContent } from "../case-studies/registry";
 
 export const CaseStudyPage = () => {
   const { slug } = useParams();
-  const study = useMemo(() => caseStudies.find((entry) => entry.slug === slug), [slug]);
+  const study = useMemo(() => getCaseStudyTemplateContent(slug), [slug]);
 
   if (!study) {
     return <Navigate to="/" replace />;
