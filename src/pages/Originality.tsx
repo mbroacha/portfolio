@@ -121,7 +121,7 @@ export const Originality = () => {
           </BodyText>
           <BodyText className="max-w-prose">The real challenge was not detection. It was judgment.</BodyText>
         </div>
-        <div className="space-y-3 border-l border-line pl-5">
+        <div className="space-y-3 rounded-l-md border-l border-line pl-5">
           <p className="font-mono text-xs uppercase tracking-[0.12em] text-subtext">Context</p>
           <BodyText className="max-w-prose">
             In 2018, we developed a product to identify contract cheating, where students outsource assignments to essay
@@ -141,13 +141,13 @@ export const Originality = () => {
           struggling to interpret the system.
         </BodyText>
         <div className="grid gap-4 md:grid-cols-2">
-          <div className="space-y-2 border border-line p-5">
+          <div className="space-y-2 rounded-md border border-line p-5">
             <p className="font-mono text-xs uppercase tracking-[0.12em] text-subtext">The report surfaced</p>
             <BodyText>Authorship inconsistencies</BodyText>
             <BodyText>Editing patterns</BodyText>
             <BodyText>Linguistic anomalies</BodyText>
           </div>
-          <div className="space-y-2 border border-line p-5">
+          <div className="space-y-2 rounded-md border border-line p-5">
             <p className="font-mono text-xs uppercase tracking-[0.12em] text-subtext">But users lacked</p>
             <BodyText>Clarity on which signals mattered most</BodyText>
             <BodyText>Understanding of how signals connected</BodyText>

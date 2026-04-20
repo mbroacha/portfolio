@@ -11,7 +11,7 @@ export const SystemFlowDiagram = ({ steps }: SystemFlowDiagramProps) => {
   const flowLabel = steps.map((s) => s.text).join(", then ");
 
   return (
-    <div className="overflow-x-auto border border-line">
+    <div className="overflow-x-auto rounded-md border border-line">
       <ol
         className="m-0 flex min-w-min list-none flex-row items-stretch divide-x divide-line p-0"
         aria-label={`System flow: ${flowLabel}`}

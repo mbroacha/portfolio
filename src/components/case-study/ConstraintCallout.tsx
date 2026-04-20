@@ -6,7 +6,7 @@ interface ConstraintCalloutProps {
 }
 
 export const ConstraintCallout = ({ title, detail }: ConstraintCalloutProps) => (
-  <aside className="space-y-2 border border-line p-5">
+  <aside className="space-y-2 rounded-md border border-line p-5">
     <MetaText>Constraint</MetaText>
     <BodyText className="font-medium">{title}</BodyText>
     <BodyText className="text-ink/75">{detail}</BodyText>

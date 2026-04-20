@@ -5,7 +5,7 @@ interface PullQuoteProps {
 }
 
 export const PullQuote = ({ quote, attribution, editorial = true }: PullQuoteProps) => (
-  <blockquote className="group space-y-4 border-l border-line pl-6">
+  <blockquote className="group space-y-4 rounded-l-md border-l border-line pl-6">
     <p
       className={`max-w-prose font-serif leading-snug text-ink/90 ${
         editorial ? "text-[clamp(1.9rem,3.2vw,2.35rem)]" : "text-[1.75rem]"
