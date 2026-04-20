@@ -11,7 +11,7 @@ interface DecisionBlockProps {
 }
 
 export const DecisionBlock = ({ title, rationale, impact, imageSrc, imageAlt, className }: DecisionBlockProps) => (
-  <article className={cn("space-y-4 rounded-[16px] p-6", className)}>
+  <article className={cn("space-y-8 rounded-[16px] p-8", className)}>
     <SectionTitle className="text-xl">{title}</SectionTitle>
     {imageSrc ? (
       <div className="overflow-hidden rounded-[12px] bg-bg ring-1 ring-line/60">
@@ -19,7 +19,7 @@ export const DecisionBlock = ({ title, rationale, impact, imageSrc, imageAlt, cl
       </div>
     ) : null}
     <BodyText>{rationale}</BodyText>
-    <p className="border-t border-line pt-4 text-sm text-subtext">
+    <p className="border-t border-line pt-6 text-sm text-subtext">
       <span className="font-medium text-ink">Impact:</span> {impact}
     </p>
   </article>

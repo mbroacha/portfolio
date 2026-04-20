@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { MetadataLabel } from "../primitives/MetadataLabel";
 import { Display, SerifLead } from "../primitives/Typography";
 
@@ -9,6 +10,8 @@ interface ProjectHeaderProps {
   domain: string;
   outcome: string;
   tags: string[];
+  /** Rendered directly under the page title (e.g. hero image). */
+  heroAfterTitle?: ReactNode;
 }
 
 export const ProjectHeader = ({
@@ -19,10 +22,12 @@ export const ProjectHeader = ({
   domain,
   outcome,
   tags,
+  heroAfterTitle,
 }: ProjectHeaderProps) => (
   <header className="space-y-10 border-b border-line pb-10">
     <div className="space-y-4">
       <Display>{title}</Display>
+      {heroAfterTitle ? <div className="py-6 md:py-8">{heroAfterTitle}</div> : null}
       <SerifLead className="max-w-prose text-ink/80">{subtitle}</SerifLead>
     </div>
     <dl className="grid gap-5 md:grid-cols-2">

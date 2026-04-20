@@ -96,6 +96,17 @@ export const Originality = () => {
         domain={study.domain}
         outcome={study.outcome}
         tags={study.tags}
+        heroAfterTitle={
+          <div className="w-full overflow-hidden rounded-[14px] bg-bg ring-1 ring-line/50 md:rounded-[18px]">
+            <img
+              src="/case-studies/originality/authorship-banner.png"
+              alt="Turnitin authorship dashboard: submissions table with floating trend cards, blue chrome, and Summary and Review actions."
+              className="h-auto w-full"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+        }
       />
 
       <Section id="opening-context" spacing="lg" className="space-y-6">
