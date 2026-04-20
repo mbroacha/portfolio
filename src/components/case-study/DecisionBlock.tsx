@@ -1,3 +1,4 @@
+import { cn } from "../../lib/cn";
 import { BodyText, SectionTitle } from "../primitives/Typography";
 
 interface DecisionBlockProps {
@@ -6,10 +7,11 @@ interface DecisionBlockProps {
   impact: string;
   imageSrc?: string;
   imageAlt?: string;
+  className?: string;
 }
 
-export const DecisionBlock = ({ title, rationale, impact, imageSrc, imageAlt }: DecisionBlockProps) => (
-  <article className="space-y-4 border border-line p-6">
+export const DecisionBlock = ({ title, rationale, impact, imageSrc, imageAlt, className }: DecisionBlockProps) => (
+  <article className={cn("space-y-4 rounded-[16px] p-6", className)}>
     <SectionTitle className="text-xl">{title}</SectionTitle>
     {imageSrc ? (
       <div className="overflow-hidden rounded-[12px] bg-bg ring-1 ring-line/60">

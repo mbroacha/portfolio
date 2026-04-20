@@ -78,7 +78,7 @@ export const CaseStudyPage = () => {
 
       <Section id="decisions" spacing="lg" className="space-y-6">
         <SectionTitle>Decision sections</SectionTitle>
-        <div className="grid gap-5">
+        <div className="flex flex-col gap-8">
           {study.decisions.map((decision) => (
             <DecisionBlock
               key={decision.title}
