@@ -108,6 +108,8 @@
     border-left-width: 1px;
     border-left-style: solid;
     border-left-color: rgb(var(--color-text) / 0.22);
+    border-top-left-radius: var(--radius-md);
+    border-bottom-left-radius: var(--radius-md);
     font-family: var(--font-family-serif);
     font-size: 1.0625rem;
     font-weight: var(--font-weight-regular);
