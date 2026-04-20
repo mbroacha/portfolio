@@ -3,7 +3,6 @@ import { DecisionBlock } from "../components/case-study/DecisionBlock";
 import { FieldNote } from "../components/case-study/FieldNote";
 import { ProjectHeader } from "../components/case-study/ProjectHeader";
 import { StickyCaseStudyNav } from "../components/case-study/StickyCaseStudyNav";
-import { SystemFlowDiagram } from "../components/case-study/SystemFlowDiagram";
 import { SystemSnapshot } from "../components/case-study/SystemSnapshot";
 import { originalityProject } from "../case-studies/originality-project";
 import { PageContainer } from "../components/layout/PageContainer";
@@ -60,22 +59,12 @@ export const Originality = () => {
     },
   ];
 
-  const systemFlowSteps = [
-    { id: "input", text: "Input (student writing)" },
-    { id: "ml", text: "ML analysis" },
-    { id: "signals", text: "Surfaced signals" },
-    { id: "summary", text: "Prioritized summary" },
-    { id: "investigation", text: "User investigation" },
-    { id: "decision", text: "Decision" },
-  ];
-
   const sectionLinks = [
     { id: "opening-context", label: "Opening and context" },
     { id: "problem", label: "Problem" },
     { id: "constraints", label: "Constraints" },
     { id: "research", label: "Research" },
     { id: "decisions", label: "Key decisions" },
-    { id: "system-snapshot", label: "System snapshot" },
     { id: "outcome-impact", label: "Outcome and impact" },
     { id: "reflection", label: "Reflection" },
   ];
@@ -256,7 +245,7 @@ export const Originality = () => {
             I explored automation and workflow-heavy approaches and rejected them.
           </figcaption>
         </figure>
-        <div className="grid gap-5">
+        <div className="flex flex-col gap-8">
           {keyDecisions.map((decision) => (
             <DecisionBlock
               key={decision.title}
@@ -265,18 +254,10 @@ export const Originality = () => {
               impact={decision.impact}
               imageSrc={decision.imageSrc}
               imageAlt={decision.imageAlt}
+              className="shadow-[0_12px_40px_-10px_#C3E5FF]"
             />
           ))}
         </div>
-      </Section>
-
-      <Section id="system-snapshot" spacing="lg" className="space-y-6">
-        <SectionTitle>System snapshot</SectionTitle>
-        <BodyText className="max-w-prose">
-          Student writing to decision flow: machine learning surfaced signals, the interface prioritized attention, and
-          users made the final judgment.
-        </BodyText>
-        <SystemFlowDiagram steps={systemFlowSteps} />
       </Section>
 
       <Section id="outcome-impact" spacing="lg" className="space-y-6">
