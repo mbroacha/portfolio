@@ -8,6 +8,6 @@ export const originalityProject: CaseStudyProjectMeta = {
   timeline: "2018",
   domain: "Academic Integrity",
   outcome:
-    "+2000% increase in contract cheating detection",
+    "2000% increase in contract cheating detection",
   tags: ["Machine learning", "Enterprise UX", "Information architecture"],
 };

@@ -14,6 +14,7 @@ declare const _default: {
                 sans: [string];
                 serif: [string];
                 mono: [string];
+                hand: [string, string, string, string, string];
             };
             maxWidth: {
                 prose: string;
