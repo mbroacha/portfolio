@@ -96,7 +96,7 @@ export const Originality = () => {
         domain={study.domain}
         outcome={study.outcome}
         tags={study.tags}
-        heroAfterTitle={
+        hero={
           <div className="w-full overflow-hidden rounded-[14px] bg-bg ring-1 ring-line/50 md:rounded-[18px]">
             <img
               src="/case-studies/originality/authorship-banner.png"
