@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
+import { cn } from "../../lib/cn";
 import { MetadataLabel } from "../primitives/MetadataLabel";
-import { Display, SerifLead } from "../primitives/Typography";
+import { SerifLead } from "../primitives/Typography";
 
 interface ProjectHeaderProps {
   title: string;
@@ -10,8 +11,8 @@ interface ProjectHeaderProps {
   domain: string;
   outcome: string;
   tags: string[];
-  /** Rendered directly under the page title (e.g. hero image). */
-  heroAfterTitle?: ReactNode;
+  /** Large media below metadata/tags, after a divider (e.g. case study hero). */
+  hero?: ReactNode;
 }
 
 export const ProjectHeader = ({
@@ -22,12 +23,13 @@ export const ProjectHeader = ({
   domain,
   outcome,
   tags,
-  heroAfterTitle,
+  hero,
 }: ProjectHeaderProps) => (
-  <header className="space-y-10 border-b border-line pb-10">
-    <div className="space-y-4">
-      <Display>{title}</Display>
-      {heroAfterTitle ? <div className="py-6 md:py-8">{heroAfterTitle}</div> : null}
+  <header className={cn("space-y-10", hero ? "pb-0" : "border-b border-line pb-10")}>
+    <div className="space-y-16 md:space-y-20 lg:space-y-28">
+      <div className="type-project-title-wrap">
+        <h1 className="type-project-title">{title}</h1>
+      </div>
       <SerifLead className="max-w-prose text-ink/80">{subtitle}</SerifLead>
     </div>
     <dl className="grid gap-5 md:grid-cols-2">
@@ -53,5 +55,6 @@ export const ProjectHeader = ({
         <MetadataLabel key={tag} label={tag} />
       ))}
     </div>
+    {hero ? <div className="border-t border-line pt-8 md:pt-10">{hero}</div> : null}
   </header>
 );
