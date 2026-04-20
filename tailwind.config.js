@@ -8,8 +8,9 @@ export default {
                 subtext: "rgb(var(--color-text-muted) / <alpha-value>)",
                 line: "rgb(var(--color-border) / <alpha-value>)",
                 panel: "rgb(var(--color-surface) / <alpha-value>)",
+                primary: "rgb(var(--color-primary) / <alpha-value>)",
+                secondary: "rgb(var(--color-secondary) / <alpha-value>)",
                 accent: "rgb(var(--color-accent) / <alpha-value>)",
-                steel: "rgb(var(--color-accent-secondary) / <alpha-value>)",
             },
             fontFamily: {
                 sans: ["var(--font-family-sans)"],
