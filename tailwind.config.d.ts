@@ -8,8 +8,9 @@ declare const _default: {
                 subtext: string;
                 line: string;
                 panel: string;
+                primary: string;
+                secondary: string;
                 accent: string;
-                steel: string;
             };
             fontFamily: {
                 sans: [string];
