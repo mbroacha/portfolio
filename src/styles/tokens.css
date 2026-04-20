@@ -1,15 +1,16 @@
 :root {
   /* Colors */
-  --color-background: 249 248 246;
+  --color-background: 245 243 239; /* #F5F3EF bone / paper */
   --color-surface: 255 255 255;
-  --color-text: 24 24 23;
-  --color-text-muted: 97 94 88;
-  --color-border: 209 203 193;
-  --color-accent: 130 52 45;
+  --color-text: 28 28 28; /* #1C1C1C soft charcoal */
+  --color-text-muted: 92 98 102; /* steel-tinted gray, pairs with bone + secondary accent */
+  --color-border: 220 215 207; /* soft divider on paper */
+  --color-accent: 140 47 47; /* #8C2F2F oxide red */
+  --color-accent-secondary: 107 124 133; /* #6B7C85 muted steel blue */
 
   /* Typography */
   --font-family-sans: "Inter", "Avenir Next", "Helvetica Neue", sans-serif;
-  --font-family-serif: "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+  --font-family-serif: "Fraunces", "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
   --font-family-mono: "IBM Plex Mono", "SF Mono", "Menlo", monospace;
   --font-family-hand: "Caveat", "Segoe Print", "Bradley Hand", "Apple Chancery", cursive;
 

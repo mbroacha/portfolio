@@ -9,6 +9,7 @@ declare const _default: {
                 line: string;
                 panel: string;
                 accent: string;
+                steel: string;
             };
             fontFamily: {
                 sans: [string];
