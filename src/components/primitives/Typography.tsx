@@ -6,7 +6,7 @@ export const Display = ({ className, ...props }: HTMLAttributes<HTMLHeadingEleme
 );
 
 export const SectionTitle = ({ className, ...props }: HTMLAttributes<HTMLHeadingElement>) => (
-  <h2 className={cn("type-section", className)} {...props} />
+  <h2 className={cn("type-section mb-10", className)} {...props} />
 );
 
 export const BodyText = ({ className, ...props }: HTMLAttributes<HTMLParagraphElement>) => (
