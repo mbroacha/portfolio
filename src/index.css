@@ -15,6 +15,21 @@
     @apply border-line;
   }
 
+  /* Replaced elements: `*` sets border-color; reset border fully so images never pick up a dark edge. */
+  img,
+  video,
+  canvas {
+    border: 0;
+  }
+
+  /*
+   * Transparent PNG/SVG: without an explicit backdrop, Chromium often composites alpha against black
+   * when the image is promoted to its own layer (e.g. with transforms). Keep a flat page-colored fill.
+   */
+  img {
+    background-color: rgb(var(--color-background) / 1);
+  }
+
   html {
     font-family: var(--font-family-sans);
   }
@@ -82,29 +97,32 @@
     @apply font-mono text-xs uppercase tracking-[0.12em] text-subtext;
   }
 
-  /* Margin-note treatment: explicit tokens so copy stays visible regardless of utility order. */
+  /* Editorial margin note — reads close to body copy, serif for contrast with sans UI. */
   .field-note {
     box-sizing: border-box;
-    max-width: 28rem;
-    margin-inline-start: 1rem;
-    padding-block: 2.5rem;
-    padding-inline-start: 1.25rem;
+    width: 100%;
+    max-width: min(50rem, 100%);
+    margin-inline-start: 0.75rem;
+    margin-block: 3rem;
+    padding-inline-start: 1.125rem;
     border-left-width: 1px;
     border-left-style: solid;
-    border-left-color: rgb(var(--color-text) / 0.09);
+    border-left-color: rgb(var(--color-text) / 0.22);
     font-family: var(--font-family-serif);
-    font-size: 0.9375rem;
+    font-size: 1.0625rem;
     font-weight: var(--font-weight-regular);
-    line-height: 1.8;
-    color: rgb(var(--color-text-muted));
+    line-height: 1.78;
+    color: rgb(var(--color-text) / 0.92);
   }
 
   @media (min-width: 768px) {
     .field-note {
+      max-width: min(52rem, 100%);
       margin-inline-start: 2rem;
-      padding-inline-start: 1.5rem;
-      font-size: 1rem;
-      line-height: 1.85;
+      margin-block: 4rem;
+      padding-inline-start: 1.375rem;
+      font-size: 1.125rem;
+      line-height: 1.8;
     }
   }
 

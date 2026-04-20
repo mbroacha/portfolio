@@ -11,6 +11,7 @@
   --font-family-sans: "Inter", "Avenir Next", "Helvetica Neue", sans-serif;
   --font-family-serif: "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
   --font-family-mono: "IBM Plex Mono", "SF Mono", "Menlo", monospace;
+  --font-family-hand: "Caveat", "Segoe Print", "Bradley Hand", "Apple Chancery", cursive;
 
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;

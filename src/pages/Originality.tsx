@@ -3,73 +3,70 @@ import { DecisionBlock } from "../components/case-study/DecisionBlock";
 import { FieldNote } from "../components/case-study/FieldNote";
 import { ProjectHeader } from "../components/case-study/ProjectHeader";
 import { StickyCaseStudyNav } from "../components/case-study/StickyCaseStudyNav";
+import { SystemFlowDiagram } from "../components/case-study/SystemFlowDiagram";
 import { SystemSnapshot } from "../components/case-study/SystemSnapshot";
 import { originalityProject } from "../case-studies/originality-project";
 import { PageContainer } from "../components/layout/PageContainer";
 import { Section } from "../components/layout/Section";
 import { BodyText, SectionTitle } from "../components/primitives/Typography";
 
+type KeyDecision = {
+  title: string;
+  rationale: string;
+  impact: string;
+  imageSrc?: string;
+  imageAlt?: string;
+};
+
 export const Originality = () => {
   const study = originalityProject;
 
-  const keyDecisions = [
+  const keyDecisions: KeyDecision[] = [
     {
       title: "Condense the report into logical groupings and customizable views",
       rationale:
         "Why: Users were overwhelmed by volume, not lacking information.\nTradeoff: Less visibility into raw data.",
       impact: "Outcome: Users could focus on relevant signals instead of scanning everything.",
+      imageSrc: "/case-studies/originality/submissions-report-filters.png",
+      imageAlt:
+        "Submissions report table with filenames, assignments, classes, similarity scores, and sort and filter controls.",
     },
     {
       title: "Introduce a fixed summary highlighting the most critical signals",
       rationale:
         "Why: Users needed a starting point for investigation.\nTradeoff: The system influences user attention.",
       impact: "Outcome: Faster orientation and more consistent investigation paths.",
+      imageSrc: "/case-studies/originality/summary-prioritized-signals.png",
+      imageAlt:
+        "Summary panel titled Top issues that may indicate contract cheating, listing flagged signals such as multiple author names and last modified by names, with Summary and Review tabs.",
     },
     {
       title: "Visualize trends across assignments over time",
       rationale:
         "Why: Signals are meaningful in context, not isolation.\nTradeoff: Added abstraction layer.",
       impact: "Outcome: Users could identify behavioral patterns instead of isolated anomalies.",
+      imageSrc: "/case-studies/originality/assignment-trends-over-time.png",
+      imageAlt:
+        "Dashboard with submissions table and overlaid line charts of similarity score, revisions, and editing time plotted by submission date across months.",
     },
     {
       title: "Add tagging, notes, and case-building tools",
       rationale:
         "Why: Investigations happen over time, not in a single session.\nTradeoff: More product complexity.",
       impact: "Outcome: Users could build and revisit cases instead of relying on memory.",
+      imageSrc: "/case-studies/originality/tagging-notes-case-tools.png",
+      imageAlt:
+        "Overlapping modals on a submission: labels for Suspicious and Dismiss with color picker, and a comments thread with a new comment field for the same document.",
     },
   ];
 
-  const systemFlow = [
-    {
-      title: "Step 1",
-      value: "Student writing",
-      note: "Assignments enter the system across multiple submissions.",
-    },
-    {
-      title: "Step 2",
-      value: "ML pattern detection",
-      note: "Models analyze authorship signals, edits, and linguistic shifts.",
-    },
-    {
-      title: "Step 3",
-      value: "Surfaced signals",
-      note: "The system returns probabilistic evidence, not a verdict.",
-    },
-    {
-      title: "Step 4",
-      value: "Prioritized summary",
-      note: "System influence point: summary framing guides where users look first.",
-    },
-    {
-      title: "Step 5",
-      value: "User investigation",
-      note: "Users examine grouped evidence and build case notes over time.",
-    },
-    {
-      title: "Step 6",
-      value: "Decision",
-      note: "Human judgment point: users decide if investigation is justified.",
-    },
+  const systemFlowSteps = [
+    { id: "input", text: "Input (student writing)" },
+    { id: "ml", text: "ML analysis" },
+    { id: "signals", text: "Surfaced signals" },
+    { id: "summary", text: "Prioritized summary" },
+    { id: "investigation", text: "User investigation" },
+    { id: "decision", text: "Decision" },
   ];
 
   const sectionLinks = [
@@ -163,6 +160,37 @@ export const Originality = () => {
         </BodyText>
       </Section>
 
+      <figure className="space-y-3">
+        <div className="relative overflow-hidden rounded-[20px] bg-bg">
+          <img
+            src="/case-studies/originality/sentences-comparison.png"
+            alt="Sentence-level analysis view showing how writing structure compares across files."
+            className="h-auto w-full"
+            loading="lazy"
+          />
+          <div className="pointer-events-none absolute inset-0 z-10" aria-hidden="true">
+            <p
+              className="!font-hand absolute left-[5%] top-[6%] inline-block max-w-[min(42%,16rem)] rounded-md bg-blue-600/50 px-3 py-1.5 text-[clamp(1.35rem,4vw,2rem)] font-semibold leading-tight text-white shadow-sm ring-1 ring-white/25 backdrop-blur-sm sm:left-[6%] sm:top-[7%] sm:max-w-none sm:rotate-[-5deg]"
+            >
+              no prioritization
+            </p>
+            <p
+              className="!font-hand absolute right-[4%] top-[10%] inline-block max-w-[min(48%,15rem)] rounded-md bg-blue-600/50 px-3 py-1.5 text-right text-[clamp(1.3rem,3.8vw,1.9rem)] font-semibold leading-tight text-white shadow-sm ring-1 ring-white/25 backdrop-blur-sm sm:right-[8%] sm:top-[12%] sm:max-w-none sm:rotate-[4deg]"
+            >
+              no entry point
+            </p>
+            <p
+              className="!font-hand absolute bottom-[14%] left-1/2 inline-block max-w-[min(calc(100%-2rem),18rem)] -translate-x-1/2 rounded-md bg-blue-600/50 px-3 py-1.5 text-center text-[clamp(1.35rem,4vw,2rem)] font-semibold leading-tight text-white shadow-sm ring-1 ring-white/25 backdrop-blur-sm sm:bottom-[16%] sm:left-[12%] sm:translate-x-0 sm:text-left sm:rotate-[-3deg]"
+            >
+              signals disconnected
+            </p>
+          </div>
+        </div>
+        <figcaption className="max-w-prose text-sm leading-relaxed text-subtext">
+          The system surfaced signals—but gave no sense of what mattered.
+        </figcaption>
+      </figure>
+
       <Section id="constraints" spacing="md" className="space-y-6">
         <SectionTitle>Constraints</SectionTitle>
         <div className="grid gap-5 md:grid-cols-2">
@@ -199,8 +227,35 @@ export const Originality = () => {
         <BodyText className="max-w-prose">This shifted the problem: we needed to help users form a judgment.</BodyText>
       </Section>
 
+      <figure className="space-y-3">
+        <div className="overflow-hidden rounded-[20px] bg-bg">
+          <img
+            src="/case-studies/originality/research-sticky-notes.png"
+            alt="Notebook with colorful sticky notes from a workshop, each labeled with document metadata fields such as author, revisions, and font usage."
+            className="h-auto w-full"
+            loading="lazy"
+          />
+        </div>
+        <figcaption className="max-w-prose text-sm leading-relaxed text-subtext">
+          We asked experts to define what actually matters.
+        </figcaption>
+      </figure>
+
       <Section id="decisions" spacing="lg" className="space-y-6">
         <SectionTitle>Key design decisions</SectionTitle>
+        <figure className="space-y-3">
+          <div className="overflow-hidden rounded-[20px] bg-bg">
+            <img
+              src="/case-studies/originality/design-evolution-sketches.png"
+              alt="Five-stage progression: document information and dashboard sketches on dot grid, paper search wireframe, investigation recommended wireframe with decision block, and final high-fidelity Turnitin mockup with section pills."
+              className="h-auto w-full"
+              loading="lazy"
+            />
+          </div>
+          <figcaption className="max-w-prose text-sm leading-relaxed text-subtext">
+            I explored automation and workflow-heavy approaches and rejected them.
+          </figcaption>
+        </figure>
         <div className="grid gap-5">
           {keyDecisions.map((decision) => (
             <DecisionBlock
@@ -208,6 +263,8 @@ export const Originality = () => {
               title={decision.title}
               rationale={decision.rationale}
               impact={decision.impact}
+              imageSrc={decision.imageSrc}
+              imageAlt={decision.imageAlt}
             />
           ))}
         </div>
@@ -219,11 +276,7 @@ export const Originality = () => {
           Student writing to decision flow: machine learning surfaced signals, the interface prioritized attention, and
           users made the final judgment.
         </BodyText>
-        <div className="grid gap-4 md:grid-cols-3">
-          {systemFlow.map((snapshot) => (
-            <SystemSnapshot key={snapshot.title} title={snapshot.title} value={snapshot.value} note={snapshot.note} />
-          ))}
-        </div>
+        <SystemFlowDiagram steps={systemFlowSteps} />
       </Section>
 
       <Section id="outcome-impact" spacing="lg" className="space-y-6">
@@ -242,7 +295,7 @@ export const Originality = () => {
         </div>
       </Section>
 
-      <Section id="reflection" spacing="lg" className="flex flex-col gap-12">
+      <Section id="reflection" spacing="lg" className="flex flex-col gap-8">
         <SectionTitle>Reflection</SectionTitle>
         <FieldNote>
           At the time, this was not framed as AI. But the core problem was already there: how much influence should a

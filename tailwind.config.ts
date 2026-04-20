@@ -16,6 +16,8 @@ export default {
         sans: ["var(--font-family-sans)"],
         serif: ["var(--font-family-serif)"],
         mono: ["var(--font-family-mono)"],
+        /* Literal stack so Caveat resolves even if a var() chain is dropped; matches Google Fonts family name. */
+        hand: ["Caveat", "Segoe Print", "Bradley Hand", "Apple Chancery", "cursive"],
       },
       maxWidth: {
         prose: "var(--max-width-prose)",
