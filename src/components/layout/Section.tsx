@@ -7,9 +7,9 @@ interface SectionProps extends HTMLAttributes<HTMLElement> {
 
 const spacingClasses: Record<NonNullable<SectionProps["spacing"]>, string> = {
   none: "",
-  sm: "py-6",
-  md: "py-8 md:py-10",
-  lg: "py-10 md:py-14",
+  sm: "py-8 md:py-12",
+  md: "py-12 md:py-16",
+  lg: "py-14 md:py-20",
 };
 
 export const Section = ({ className, spacing = "md", ...props }: SectionProps) => (

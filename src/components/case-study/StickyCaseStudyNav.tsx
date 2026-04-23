@@ -24,7 +24,7 @@ export const StickyCaseStudyNav = ({ title, metadata = [], links }: StickyCaseSt
       <dl className="space-y-3">
         {metadata.map((item) => (
           <div key={item.label}>
-            <dt className="font-mono text-xs uppercase tracking-[0.12em] text-subtext">{item.label}</dt>
+            <dt className="type-caption">{item.label}</dt>
             <dd className="mt-1 text-sm text-ink">{item.value}</dd>
           </div>
         ))}
@@ -33,7 +33,7 @@ export const StickyCaseStudyNav = ({ title, metadata = [], links }: StickyCaseSt
 
     <nav className="flex flex-col gap-10">
       <div className="space-y-2">
-        <p className="font-mono text-xs uppercase tracking-[0.12em] text-subtext">Sections</p>
+        <p className="type-caption">Sections</p>
         {links.map((link) => (
           <a
             key={link.id}

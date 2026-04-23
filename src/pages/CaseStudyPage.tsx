@@ -61,7 +61,7 @@ export const CaseStudyPage = () => {
         <SectionTitle>Problem framing</SectionTitle>
         {study.sections.map((section) => (
           <div key={section.id} className="space-y-2">
-            <p className="font-mono text-xs uppercase tracking-[0.12em] text-subtext">{section.label}</p>
+            <p className="type-caption">{section.label}</p>
             <BodyText className="max-w-prose">{section.body}</BodyText>
           </div>
         ))}

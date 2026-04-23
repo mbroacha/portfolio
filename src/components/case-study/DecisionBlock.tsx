@@ -19,8 +19,8 @@ export const DecisionBlock = ({ title, rationale, impact, imageSrc, imageAlt, cl
       </div>
     ) : null}
     <BodyText>{rationale}</BodyText>
-    <p className="border-t border-line pt-6 text-sm text-subtext">
+    <BodyText className="border-t border-line pt-6 text-subtext">
       <span className="font-medium text-ink">Impact:</span> {impact}
-    </p>
+    </BodyText>
   </article>
 );

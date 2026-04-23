@@ -122,7 +122,7 @@ export const Originality = () => {
           <BodyText className="max-w-prose">The real challenge was not detection. It was judgment.</BodyText>
         </div>
         <div className="space-y-3 rounded-l-md border-l border-line pl-5">
-          <p className="font-mono text-xs uppercase tracking-[0.12em] text-subtext">Context</p>
+          <p className="type-caption">Context</p>
           <BodyText className="max-w-prose">
             In 2018, we developed a product to identify contract cheating, where students outsource assignments to essay
             mills or other individuals. The system analyzed writing patterns and surfaced factors that might indicate
@@ -142,13 +142,13 @@ export const Originality = () => {
         </BodyText>
         <div className="grid gap-4 md:grid-cols-2">
           <div className="space-y-2 rounded-md border border-line p-5">
-            <p className="font-mono text-xs uppercase tracking-[0.12em] text-subtext">The report surfaced</p>
+            <p className="type-caption">The report surfaced</p>
             <BodyText>Authorship inconsistencies</BodyText>
             <BodyText>Editing patterns</BodyText>
             <BodyText>Linguistic anomalies</BodyText>
           </div>
           <div className="space-y-2 rounded-md border border-line p-5">
-            <p className="font-mono text-xs uppercase tracking-[0.12em] text-subtext">But users lacked</p>
+            <p className="type-caption">But users lacked</p>
             <BodyText>Clarity on which signals mattered most</BodyText>
             <BodyText>Understanding of how signals connected</BodyText>
             <BodyText>Confidence on when to investigate</BodyText>
@@ -158,38 +158,37 @@ export const Originality = () => {
           This created a deeper risk: the system could imply wrongdoing, but users had to take responsibility for acting
           on it.
         </BodyText>
-      </Section>
-
-      <figure className="space-y-3">
-        <div className="relative overflow-hidden rounded-[20px] bg-bg">
-          <img
-            src="/case-studies/originality/sentences-comparison.png"
-            alt="Sentence-level analysis view showing how writing structure compares across files."
-            className="h-auto w-full"
-            loading="lazy"
-          />
-          <div className="pointer-events-none absolute inset-0 z-10" aria-hidden="true">
-            <p
-              className="!font-hand absolute left-[5%] top-[6%] inline-block max-w-[min(42%,16rem)] rounded-md bg-blue-600/50 px-3 py-1.5 text-[clamp(1.35rem,4vw,2rem)] font-semibold leading-tight text-white shadow-sm ring-1 ring-white/25 backdrop-blur-sm sm:left-[6%] sm:top-[7%] sm:max-w-none sm:rotate-[-5deg]"
-            >
-              no prioritization
-            </p>
-            <p
-              className="!font-hand absolute right-[4%] top-[10%] inline-block max-w-[min(48%,15rem)] rounded-md bg-blue-600/50 px-3 py-1.5 text-right text-[clamp(1.3rem,3.8vw,1.9rem)] font-semibold leading-tight text-white shadow-sm ring-1 ring-white/25 backdrop-blur-sm sm:right-[8%] sm:top-[12%] sm:max-w-none sm:rotate-[4deg]"
-            >
-              no entry point
-            </p>
-            <p
-              className="!font-hand absolute bottom-[14%] left-1/2 inline-block max-w-[min(calc(100%-2rem),18rem)] -translate-x-1/2 rounded-md bg-blue-600/50 px-3 py-1.5 text-center text-[clamp(1.35rem,4vw,2rem)] font-semibold leading-tight text-white shadow-sm ring-1 ring-white/25 backdrop-blur-sm sm:bottom-[16%] sm:left-[12%] sm:translate-x-0 sm:text-left sm:rotate-[-3deg]"
-            >
-              signals disconnected
-            </p>
+        <figure className="space-y-3">
+          <div className="relative overflow-hidden rounded-[20px] bg-bg">
+            <img
+              src="/case-studies/originality/sentences-comparison.png"
+              alt="Sentence-level analysis view showing how writing structure compares across files."
+              className="h-auto w-full"
+              loading="lazy"
+            />
+            <div className="pointer-events-none absolute inset-0 z-10" aria-hidden="true">
+              <p
+                className="font-hand absolute left-[5%] top-[6%] inline-block max-w-[min(42%,16rem)] rounded-md bg-blue-600/50 px-3 py-1.5 text-[clamp(1.35rem,4vw,2rem)] font-semibold leading-tight text-white shadow-sm ring-1 ring-white/25 backdrop-blur-sm sm:left-[6%] sm:top-[7%] sm:max-w-none sm:rotate-[-5deg]"
+              >
+                no prioritization
+              </p>
+              <p
+                className="font-hand absolute right-[4%] top-[10%] inline-block max-w-[min(48%,15rem)] rounded-md bg-blue-600/50 px-3 py-1.5 text-right text-[clamp(1.3rem,3.8vw,1.9rem)] font-semibold leading-tight text-white shadow-sm ring-1 ring-white/25 backdrop-blur-sm sm:right-[8%] sm:top-[12%] sm:max-w-none sm:rotate-[4deg]"
+              >
+                no entry point
+              </p>
+              <p
+                className="font-hand absolute bottom-[14%] left-1/2 inline-block max-w-[min(calc(100%-2rem),18rem)] -translate-x-1/2 rounded-md bg-blue-600/50 px-3 py-1.5 text-center text-[clamp(1.35rem,4vw,2rem)] font-semibold leading-tight text-white shadow-sm ring-1 ring-white/25 backdrop-blur-sm sm:bottom-[16%] sm:left-[12%] sm:translate-x-0 sm:text-left sm:rotate-[-3deg]"
+              >
+                signals disconnected
+              </p>
+            </div>
           </div>
-        </div>
-        <figcaption className="max-w-prose text-sm leading-relaxed text-subtext">
-          The system surfaced signals—but gave no sense of what mattered.
-        </figcaption>
-      </figure>
+          <figcaption className="max-w-prose text-sm leading-relaxed text-subtext">
+            The system surfaced flags, but gave no sense of what mattered. It was also very...orange.
+          </figcaption>
+        </figure>
+      </Section>
 
       <Section id="constraints" spacing="md" className="space-y-6">
         <SectionTitle>Constraints</SectionTitle>
@@ -225,21 +224,20 @@ export const Originality = () => {
           <BodyText>- New users need guidance, not just data.</BodyText>
         </div>
         <BodyText className="max-w-prose">This shifted the problem: we needed to help users form a judgment.</BodyText>
+        <figure className="space-y-3">
+          <div className="overflow-hidden rounded-[20px] bg-bg">
+            <img
+              src="/case-studies/originality/research-sticky-notes.png"
+              alt="Notebook with colorful sticky notes from a workshop, each labeled with document metadata fields such as author, revisions, and font usage."
+              className="h-auto w-full"
+              loading="lazy"
+            />
+          </div>
+          <figcaption className="max-w-prose text-sm leading-relaxed text-subtext">
+            We asked experts to define what actually matters.
+          </figcaption>
+        </figure>
       </Section>
-
-      <figure className="space-y-3">
-        <div className="overflow-hidden rounded-[20px] bg-bg">
-          <img
-            src="/case-studies/originality/research-sticky-notes.png"
-            alt="Notebook with colorful sticky notes from a workshop, each labeled with document metadata fields such as author, revisions, and font usage."
-            className="h-auto w-full"
-            loading="lazy"
-          />
-        </div>
-        <figcaption className="max-w-prose text-sm leading-relaxed text-subtext">
-          We asked experts to define what actually matters.
-        </figcaption>
-      </figure>
 
       <Section id="decisions" spacing="lg" className="space-y-6">
         <SectionTitle>Key design decisions</SectionTitle>

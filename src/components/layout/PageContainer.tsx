@@ -22,7 +22,7 @@ export const PageContainer = ({
   collapsibleRailOnMobile = false,
   mobileRailLabel = "Page details",
 }: PageContainerProps) => (
-  <div className="mx-auto min-h-screen w-full max-w-page px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
+  <div className="mx-auto min-h-screen w-full max-w-page px-6 py-10 sm:px-8 sm:py-12 lg:px-12 lg:py-16">
     {rail && collapsibleRailOnMobile ? (
       <details className="mb-8 rounded-md border border-line bg-panel p-4 lg:hidden">
         <summary className="cursor-pointer text-sm font-medium text-ink">{mobileRailLabel}</summary>
