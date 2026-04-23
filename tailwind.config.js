@@ -8,15 +8,13 @@ export default {
                 subtext: "rgb(var(--color-text-muted) / <alpha-value>)",
                 line: "rgb(var(--color-border) / <alpha-value>)",
                 panel: "rgb(var(--color-surface) / <alpha-value>)",
+                module: "rgb(var(--color-module) / <alpha-value>)",
                 primary: "rgb(var(--color-primary) / <alpha-value>)",
                 secondary: "rgb(var(--color-secondary) / <alpha-value>)",
                 accent: "rgb(var(--color-accent) / <alpha-value>)",
             },
             fontFamily: {
                 sans: ["var(--font-family-sans)"],
-                serif: ["var(--font-family-serif)"],
-                mono: ["var(--font-family-mono)"],
-                /* Literal stack so Caveat resolves even if a var() chain is dropped; matches Google Fonts family name. */
                 hand: ["Caveat", "Segoe Print", "Bradley Hand", "Apple Chancery", "cursive"],
             },
             maxWidth: {

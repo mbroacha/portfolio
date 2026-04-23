@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
 import { PageContainer } from "../components/layout/PageContainer";
 import { Section } from "../components/layout/Section";
-import { MetadataLabel } from "../components/primitives/MetadataLabel";
-import { BodyText, Display, SectionTitle, SerifLead } from "../components/primitives/Typography";
+import { ContentModule } from "../components/layout/ContentModule";
+import { CaseStudyModule } from "../components/home/CaseStudyModule";
+import { BodyText, BodyLead, Caption, Display } from "../components/primitives/Typography";
 import { commandCenterRiskModeling } from "../case-studies/command-center-risk-modeling";
+import { originalityProject } from "../case-studies/originality-project";
 
 export const HomePage = () => {
   const featured = commandCenterRiskModeling;
@@ -11,58 +12,61 @@ export const HomePage = () => {
   return (
     <PageContainer
       rail={
-        <div className="space-y-5">
-          <p className="type-meta">Morgan Broacha</p>
-          <p className="type-meta">Product Design · Enterprise Systems</p>
+        <div className="space-y-6">
+          <p className="text-sm font-semibold tracking-[-0.01em] text-ink">Morgan Broacha</p>
+          <Caption>Product Design · Enterprise Systems</Caption>
         </div>
       }
     >
-      <Section className="border-b border-line pb-14">
+      <Section spacing="lg" className="space-y-10">
         <Display>
           Designing precise systems with structured logic and creative interference.
         </Display>
-        <SerifLead className="mt-8 max-w-prose text-ink/80">
+        <BodyLead className="max-w-prose">
           I design complex software where decisions carry operational and financial weight. The work
           balances rigor, traceability, and room for human judgement.
-        </SerifLead>
+        </BodyLead>
       </Section>
 
-      <Section>
-        <SectionTitle>Featured case study</SectionTitle>
-        <article className="mt-8 grid gap-6 rounded-md border border-line bg-panel p-8 md:grid-cols-[2fr_1fr]">
-          <div>
-            <h3 className="text-3xl tracking-[-0.02em]">{featured.title}</h3>
-            <BodyText className="mt-4 max-w-prose">{featured.subtitle}</BodyText>
-            <Link
-              to={`/case-study/${featured.slug}`}
-              className="mt-8 inline-flex border-b border-line pb-1 text-sm uppercase tracking-[0.12em] text-subtext transition hover:border-accent hover:text-ink"
-            >
-              Read case study
-            </Link>
-          </div>
-          <div className="space-y-3">
-            {featured.tags.map((tag) => (
-              <MetadataLabel key={tag} label={tag} />
-            ))}
-          </div>
-        </article>
+      <Section spacing="lg">
+        <CaseStudyModule
+          sectionTitle="Featured case study"
+          title={featured.title}
+          subtitle={featured.subtitle}
+          tags={featured.tags}
+          to={`/case-study/${featured.slug}`}
+        />
       </Section>
 
-      <Section className="grid gap-8 md:grid-cols-2">
-        <div className="space-y-3">
-          <p className="type-meta">Focus</p>
-          <BodyText>
-            Design systems for decision-heavy products, complex permission models, and operational
-            command surfaces.
-          </BodyText>
-        </div>
-        <div className="space-y-3">
-          <p className="type-meta">Methods</p>
-          <BodyText>
-            Frame constraints early, design for edge-state clarity, and prototype interaction models
-            that support expert intuition.
-          </BodyText>
-        </div>
+      <Section spacing="lg">
+        <CaseStudyModule
+          sectionTitle="Additional case study"
+          title={originalityProject.title}
+          subtitle={originalityProject.subtitle}
+          tags={originalityProject.tags}
+          to="/case-study/originality"
+        />
+      </Section>
+
+      <Section spacing="lg">
+        <ContentModule>
+          <div className="grid gap-12 md:grid-cols-2 md:gap-16">
+            <div className="space-y-5">
+              <Caption>Focus</Caption>
+              <BodyText>
+                Design systems for decision-heavy products, complex permission models, and operational
+                command surfaces.
+              </BodyText>
+            </div>
+            <div className="space-y-5">
+              <Caption>Methods</Caption>
+              <BodyText>
+                Frame constraints early, design for edge-state clarity, and prototype interaction models
+                that support expert intuition.
+              </BodyText>
+            </div>
+          </div>
+        </ContentModule>
       </Section>
     </PageContainer>
   );

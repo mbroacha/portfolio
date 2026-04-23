@@ -2,6 +2,7 @@
   /* Colors */
   --color-background: 245 243 239; /* #F5F3EF bone / paper */
   --color-surface: 255 255 255;
+  --color-module: 245 245 245; /* light gray trays / modular blocks */
   --color-text: 28 28 28; /* #1C1C1C soft charcoal */
   --color-text-muted: 92 98 102; /* muted gray on paper */
   --color-border: 220 215 207; /* soft divider on paper */
@@ -9,11 +10,8 @@
   --color-secondary: 244 48 152; /* #f43098 */
   --color-accent: 0 211 187; /* #00d3bb */
 
-  /* Typography */
-  --font-family-sans: "Inter", "Avenir Next", "Helvetica Neue", sans-serif;
-  --font-family-serif: "Fraunces", "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
-  --font-family-mono: "IBM Plex Mono", "SF Mono", "Menlo", monospace;
-  --font-family-hand: "Caveat", "Segoe Print", "Bradley Hand", "Apple Chancery", cursive;
+  /* Typography — single family; use "HK Grotesk" first when licensed files are available */
+  --font-family-sans: "HK Grotesk", "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
 
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
@@ -46,6 +44,6 @@
   /* Max widths */
   --max-width-page: 80rem;
   --max-width-content: 60rem;
-  --max-width-prose: 42rem;
+  --max-width-prose: 40rem;
   --max-width-rail: 15rem;
 }
