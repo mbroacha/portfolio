@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { ConstraintCallout } from "../components/case-study/ConstraintCallout";
 import { DecisionBlock } from "../components/case-study/DecisionBlock";
 import { SubmissionsReportTable } from "../components/case-study/SubmissionsReportTable";
+import { SummaryPrioritizedModal } from "../components/case-study/SummaryPrioritizedModal";
 import { FieldNote } from "../components/case-study/FieldNote";
 import { ProjectHeader } from "../components/case-study/ProjectHeader";
 import { StickyCaseStudyNav } from "../components/case-study/StickyCaseStudyNav";
@@ -34,13 +35,11 @@ export const Originality = () => {
       visual: <SubmissionsReportTable />,
     },
     {
-      title: "Introduce a fixed summary highlighting the most critical signals",
+      title: "Introduce a fixed summary",
       rationale:
         "Why: Users needed a starting point for investigation.\nTradeoff: The system influences user attention.",
       impact: "Outcome: Faster orientation and more consistent investigation paths.",
-      imageSrc: "/case-studies/originality/summary-prioritized-signals.png",
-      imageAlt:
-        "Summary panel titled Top issues that may indicate contract cheating, listing flagged signals such as multiple author names and last modified by names, with Summary and Review tabs.",
+      visual: <SummaryPrioritizedModal />,
     },
     {
       title: "Visualize trends across assignments over time",
