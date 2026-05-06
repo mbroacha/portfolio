@@ -143,6 +143,7 @@ export function SubmissionsReportTable() {
 
   const [sortKey, setSortKey] = useState<SortKey>("submissionDate");
   const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
+  const [selectedRowKey, setSelectedRowKey] = useState<string | null>(null);
 
   const sortedRows = useMemo(() => {
     const rows = [...SAMPLE_ROWS];
@@ -202,6 +203,10 @@ export function SubmissionsReportTable() {
     }
   };
 
+  const toggleRowSelection = (rowKey: string) => {
+    setSelectedRowKey((prev) => (prev === rowKey ? null : rowKey));
+  };
+
   const headers: { key: SortKey; label: string; align: "left" | "right" }[] = [
     { key: "filename", label: "Filename", align: "left" },
     { key: "assignment", label: "Assignment", align: "left" },
@@ -226,7 +231,7 @@ export function SubmissionsReportTable() {
 
   return (
     <div
-      className="rounded-[20px] bg-white px-5 pb-4 pt-4 shadow-[0_10px_28px_-8px_rgba(60,64,67,0.22)] ring-1 ring-black/[0.06]"
+      className="rounded-[20px] bg-white px-5 pb-4 pt-4 shadow-[0_6px_18px_-10px_rgba(60,64,67,0.18)] ring-1 ring-black/[0.06] transition-shadow duration-200 hover:shadow-[0_10px_28px_-8px_rgba(60,64,67,0.22)]"
       style={{ fontFamily: '"Roboto", system-ui, sans-serif' }}
     >
       <div className="mb-3 text-[15px] font-medium tracking-tight text-[#202124]">Submissions Report</div>
@@ -282,11 +287,18 @@ export function SubmissionsReportTable() {
             </tr>
           </thead>
           <tbody>
-            {sortedRows.map((row) => (
-              <tr
-                key={`${row.filename}-${row.submissionDate.toISOString()}`}
-                className="border-b border-[#ededed] transition-colors duration-100 hover:bg-[#f1f3f4]"
-              >
+            {sortedRows.map((row) => {
+              const rowKey = `${row.filename}-${row.submissionDate.toISOString()}`;
+              const selected = selectedRowKey === rowKey;
+              return (
+                <tr
+                  key={rowKey}
+                  className={cn(
+                    "border-b border-[#ededed] transition-colors duration-100 hover:bg-[#f1f3f4]",
+                    selected && "bg-[#e8f0fe]",
+                  )}
+                  onClick={() => toggleRowSelection(rowKey)}
+                >
                 <td className="truncate py-3.5 pl-1 pr-2 align-middle" title={row.filename}>
                   {row.filename}
                 </td>
@@ -302,8 +314,9 @@ export function SubmissionsReportTable() {
                 <td className="truncate py-3.5 pr-1 text-left align-middle tabular-nums text-[#3c4043]">
                   {formatSubmissionDate(row.submissionDate, compactDate)}
                 </td>
-              </tr>
-            ))}
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
