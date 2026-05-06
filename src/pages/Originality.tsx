@@ -9,6 +9,8 @@ import { PageContainer } from "../components/layout/PageContainer";
 import { Section } from "../components/layout/Section";
 import { BodyText, SectionTitle } from "../components/primitives/Typography";
 
+const originalityOnlyMetadataTags = ["Team lead", "User research", "Design system"] as const;
+
 type KeyDecision = {
   title: string;
   rationale: string;
@@ -95,7 +97,7 @@ export const Originality = () => {
         timeline={study.timeline}
         domain={study.domain}
         outcome={study.outcome}
-        tags={study.tags}
+        tags={[...study.tags, ...originalityOnlyMetadataTags]}
         hero={
           <div className="w-full overflow-hidden rounded-[14px] bg-bg ring-1 ring-line/50 md:rounded-[18px]">
             <img
