@@ -1,5 +1,7 @@
+import type { ReactNode } from "react";
 import { ConstraintCallout } from "../components/case-study/ConstraintCallout";
 import { DecisionBlock } from "../components/case-study/DecisionBlock";
+import { SubmissionsReportTable } from "../components/case-study/SubmissionsReportTable";
 import { FieldNote } from "../components/case-study/FieldNote";
 import { ProjectHeader } from "../components/case-study/ProjectHeader";
 import { StickyCaseStudyNav } from "../components/case-study/StickyCaseStudyNav";
@@ -17,6 +19,7 @@ type KeyDecision = {
   impact: string;
   imageSrc?: string;
   imageAlt?: string;
+  visual?: ReactNode;
 };
 
 export const Originality = () => {
@@ -24,13 +27,11 @@ export const Originality = () => {
 
   const keyDecisions: KeyDecision[] = [
     {
-      title: "Condense the report into logical groupings and customizable views",
+      title: "Condense into a readable format",
       rationale:
-        "Why: Users were overwhelmed by volume, not lacking information.\nTradeoff: Less visibility into raw data.",
+        "Users were overwhelmed by volume, not lacking information.\nTradeoff: Less visibility into raw data.",
       impact: "Outcome: Users could focus on relevant signals instead of scanning everything.",
-      imageSrc: "/case-studies/originality/submissions-report-filters.png",
-      imageAlt:
-        "Submissions report table with filenames, assignments, classes, similarity scores, and sort and filter controls.",
+      visual: <SubmissionsReportTable />,
     },
     {
       title: "Introduce a fixed summary highlighting the most critical signals",
@@ -161,30 +162,13 @@ export const Originality = () => {
           on it.
         </BodyText>
         <figure className="space-y-3">
-          <div className="relative overflow-hidden rounded-[20px] bg-bg">
+          <div className="overflow-hidden rounded-[20px] bg-bg">
             <img
               src="/case-studies/originality/sentences-comparison.png"
               alt="Sentence-level analysis view showing how writing structure compares across files."
               className="h-auto w-full"
               loading="lazy"
             />
-            <div className="pointer-events-none absolute inset-0 z-10" aria-hidden="true">
-              <p
-                className="font-hand absolute left-[5%] top-[6%] inline-block max-w-[min(42%,16rem)] rounded-md bg-blue-600/50 px-3 py-1.5 text-[clamp(1.35rem,4vw,2rem)] font-semibold leading-tight text-white shadow-sm ring-1 ring-white/25 backdrop-blur-sm sm:left-[6%] sm:top-[7%] sm:max-w-none sm:rotate-[-5deg]"
-              >
-                no prioritization
-              </p>
-              <p
-                className="font-hand absolute right-[4%] top-[10%] inline-block max-w-[min(48%,15rem)] rounded-md bg-blue-600/50 px-3 py-1.5 text-right text-[clamp(1.3rem,3.8vw,1.9rem)] font-semibold leading-tight text-white shadow-sm ring-1 ring-white/25 backdrop-blur-sm sm:right-[8%] sm:top-[12%] sm:max-w-none sm:rotate-[4deg]"
-              >
-                no entry point
-              </p>
-              <p
-                className="font-hand absolute bottom-[14%] left-1/2 inline-block max-w-[min(calc(100%-2rem),18rem)] -translate-x-1/2 rounded-md bg-blue-600/50 px-3 py-1.5 text-center text-[clamp(1.35rem,4vw,2rem)] font-semibold leading-tight text-white shadow-sm ring-1 ring-white/25 backdrop-blur-sm sm:bottom-[16%] sm:left-[12%] sm:translate-x-0 sm:text-left sm:rotate-[-3deg]"
-              >
-                signals disconnected
-              </p>
-            </div>
           </div>
           <figcaption className="max-w-prose text-sm leading-relaxed text-subtext">
             The system surfaced flags, but gave no sense of what mattered. It was also very...orange.
@@ -263,6 +247,7 @@ export const Originality = () => {
               title={decision.title}
               rationale={decision.rationale}
               impact={decision.impact}
+              visual={decision.visual}
               imageSrc={decision.imageSrc}
               imageAlt={decision.imageAlt}
               className="shadow-[0_12px_40px_-10px_#C3E5FF]"
