@@ -44,6 +44,6 @@
   /* Max widths */
   --max-width-page: 80rem;
   --max-width-content: 60rem;
-  --max-width-prose: 40rem;
+  --max-width-prose: 60rem;
   --max-width-rail: 15rem;
 }

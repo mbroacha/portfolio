@@ -112,26 +112,21 @@ export const Originality = () => {
       />
 
       <Section id="opening-context" spacing="lg" className="space-y-6">
-        <SectionTitle>Opening and context</SectionTitle>
+        <SectionTitle>Context</SectionTitle>
         <div className="space-y-4">
           <p className="max-w-prose text-2xl font-medium leading-tight tracking-[-0.01em] text-ink">
             The system did not tell you if a student cheated. It gave you signals and expected you to decide.
           </p>
           <BodyText className="max-w-prose">
-            This product used machine learning to identify patterns in student writing that might indicate contract
-            cheating. The output was not a verdict. It was a long report of weak signals, correlations, and anomalies.
+            In 2018, we developed a product that used machine learning to identify patterns in student writing that might indicate contract
+            cheating. The system analyzed writing patterns and surfaced factors that might indicate
+            authorship inconsistencies. But the markers and anomalies were very esoteric and confusing to users.
           </BodyText>
           <BodyText className="max-w-prose">The real challenge was not detection. It was judgment.</BodyText>
         </div>
         <div className="space-y-3 rounded-l-md border-l border-line pl-5">
-          <p className="type-caption">Context</p>
           <BodyText className="max-w-prose">
-            In 2018, we developed a product to identify contract cheating, where students outsource assignments to essay
-            mills or other individuals. The system analyzed writing patterns and surfaced factors that might indicate
-            authorship inconsistencies.
-          </BodyText>
-          <BodyText className="max-w-prose">
-            In theory, it worked. In practice, most users did not know what to do with the report.
+            Contract cheating is when students outsource assignments to essay mills or other individuals.
           </BodyText>
         </div>
       </Section>
