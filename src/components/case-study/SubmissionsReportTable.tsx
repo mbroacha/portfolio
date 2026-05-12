@@ -35,38 +35,38 @@ const SAMPLE_ROWS: SubmissionRow[] = [
   },
   {
     filename: "Non-Euclidean Geometry in Karamazov.pdf",
-    assignment: "Modern Comparison Essay",
-    classLabel: "PHIL2040 Topics in Russian Literature",
-    similarity: 51,
-    submissionDate: new Date("2020-10-08T09:12:00"),
-  },
-  {
-    filename: "draft_v3_lab_report.docx",
-    assignment: "Chemistry Lab Portfolio",
-    classLabel: "CHEM1101 General Chemistry I",
-    similarity: 29,
-    submissionDate: new Date("2020-10-05T18:22:00"),
-  },
-  {
-    filename: "reflection_short.docx",
-    assignment: "Weekly Reflection",
-    classLabel: "SOC1010 Introduction to Sociology",
-    similarity: 6,
-    submissionDate: new Date("2020-10-02T08:05:00"),
-  },
-  {
-    filename: "outline_notes.pdf",
-    assignment: "Research Methods Outline",
-    classLabel: "PSYC2300 Research Methods",
-    similarity: 4,
-    submissionDate: new Date("2020-09-28T14:40:00"),
-  },
-  {
-    filename: "cover_sheet_only.docx",
-    assignment: "Term Paper Cover Sheet",
-    classLabel: "ENG1405 Western Foundations",
+    assignment: "Student Choice Literature Review6",
+    classLabel: "HPS1400 Philosophy of Pre-Mod Science",
     similarity: 0,
-    submissionDate: new Date("2020-09-25T16:10:00"),
+    submissionDate: new Date("2020-10-07T04:05:00"),
+  },
+  {
+    filename: "Little Women and Mean Girls.docx",
+    assignment: "Modern Comparison Essay",
+    classLabel: "ENG1405 Western Foundations",
+    similarity: 29,
+    submissionDate: new Date("2020-09-30T18:47:00"),
+  },
+  {
+    filename: "ENG210_final_essay.docx",
+    assignment: "Final Essay",
+    classLabel: "ENG210 Comparative Literature",
+    similarity: 4,
+    submissionDate: new Date("2020-09-16T12:01:00"),
+  },
+  {
+    filename: "Intro to Proust.docx",
+    assignment: "Proust Essay",
+    classLabel: "ENG1405 Western Foundations",
+    similarity: 51,
+    submissionDate: new Date("2020-09-04T17:19:00"),
+  },
+  {
+    filename: "On Writing Review.pdf",
+    assignment: "Nonfiction Review",
+    classLabel: "ENG300 The Art of Writing",
+    similarity: 6,
+    submissionDate: new Date("2020-08-28T22:11:00"),
   },
 ];
 
@@ -116,15 +116,19 @@ function SortChevron({ direction }: { direction: "asc" | "desc" }) {
 }
 
 function SimilarityCell({ value }: { value: number }) {
-  const warm = value >= 25;
+  const fillClass =
+    value === 0
+      ? "bg-transparent"
+      : value >= 45
+        ? "bg-[#f57c00]"
+        : value >= 25
+          ? "bg-[#f9ab00]"
+          : "bg-[#34a853]";
   return (
     <div className="flex min-w-0 items-center gap-2">
       <div className="h-2 min-w-[4.5rem] max-w-[7rem] flex-1 rounded-full bg-[#e8eaed]">
         <div
-          className={cn(
-            "h-full rounded-full transition-[width] duration-150",
-            value === 0 ? "bg-transparent" : warm ? "bg-[#f9ab00]" : "bg-[#34a853]",
-          )}
+          className={cn("h-full rounded-full transition-[width] duration-150", fillClass)}
           style={{ width: `${value}%` }}
         />
       </div>
