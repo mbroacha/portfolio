@@ -9,11 +9,25 @@ import "@fontsource/caveat/600.css";
 import App from "./App";
 import "./index.css";
 
-const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, "");
+/** Prefer Vite base; fall back to first path segment for GitHub Pages project sites. */
+function getRouterBasename(): string {
+  const fromEnv = import.meta.env.BASE_URL.replace(/\/$/, "");
+  if (fromEnv && fromEnv !== "/") return fromEnv;
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+  const segment = window.location.pathname.split("/").filter(Boolean)[0];
+  return segment ? `/${segment}` : "";
+}
+
+const rootEl = document.getElementById("root");
+if (!rootEl) {
+  throw new Error("Root element #root not found");
+}
+
+rootEl.dataset.appReady = "true";
+
+ReactDOM.createRoot(rootEl).render(
   <React.StrictMode>
-    <BrowserRouter basename={routerBasename}>
+    <BrowserRouter basename={getRouterBasename()}>
       <App />
     </BrowserRouter>
   </React.StrictMode>,
