@@ -3,10 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>Portfolio</title>
+    <script>
+      window.addEventListener(
+        "error",
+        function (event) {
+          var target = event.target;
+          if (!target || target.tagName !== "SCRIPT" || target.type !== "module") return;
+          var root = document.getElementById("root");
+          if (!root || root.dataset.appReady) return;
+          root.innerHTML =
+            "<p style=\"margin:2rem;font-family:system-ui,sans-serif;line-height:1.5\">" +
+            "Could not load the site. Try a <strong>hard refresh</strong> " +
+            "(Cmd+Shift+R on Mac, Ctrl+Shift+R on Windows).</p>";
+        },
+        true,
+      );
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <noscript>
+      <p style="margin: 2rem; font-family: system-ui, sans-serif">
+        This portfolio requires JavaScript. Please enable it to continue.
+      </p>
+    </noscript>
+    <div id="root">
+      <p style="margin: 2rem; font-family: system-ui, sans-serif; color: #1c1c1c">Loading…</p>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
