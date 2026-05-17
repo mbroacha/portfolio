@@ -1,6 +1,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-export default defineConfig({
+// Project site: https://mbroacha.github.io/portfolio/
+export default defineConfig(({ mode }) => ({
+  base: mode === "production" ? "/portfolio/" : "/",
   plugins: [react()],
-});
+}));
