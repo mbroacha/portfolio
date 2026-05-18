@@ -137,7 +137,17 @@ function SimilarityCell({ value }: { value: number }) {
   );
 }
 
-export function SubmissionsReportTable() {
+function rowKeyFor(row: SubmissionRow) {
+  return `${row.filename}-${row.submissionDate.toISOString()}`;
+}
+
+type SubmissionsReportTableProps = {
+  /** Pre-select a row by filename (e.g. for case-study overlays). */
+  initialSelectedFilename?: string;
+  className?: string;
+};
+
+export function SubmissionsReportTable({ initialSelectedFilename, className }: SubmissionsReportTableProps = {}) {
   const tableShellRef = useRef<HTMLDivElement>(null);
   const tableRef = useRef<HTMLTableElement>(null);
   const widthsPctRef = useRef<number[]>([...INITIAL_WIDTHS_PCT]);
@@ -147,7 +157,11 @@ export function SubmissionsReportTable() {
 
   const [sortKey, setSortKey] = useState<SortKey>("submissionDate");
   const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
-  const [selectedRowKey, setSelectedRowKey] = useState<string | null>(null);
+  const [selectedRowKey, setSelectedRowKey] = useState<string | null>(() => {
+    if (!initialSelectedFilename) return null;
+    const row = SAMPLE_ROWS.find((r) => r.filename === initialSelectedFilename);
+    return row ? rowKeyFor(row) : null;
+  });
 
   const sortedRows = useMemo(() => {
     const rows = [...SAMPLE_ROWS];
@@ -235,7 +249,10 @@ export function SubmissionsReportTable() {
 
   return (
     <div
-      className="rounded-[20px] bg-white px-5 pb-4 pt-4 shadow-[0_6px_18px_-10px_rgba(60,64,67,0.18)] ring-1 ring-black/[0.06] transition-shadow duration-200 hover:shadow-[0_10px_28px_-8px_rgba(60,64,67,0.22)]"
+      className={cn(
+        "rounded-[20px] bg-white px-5 pb-4 pt-4 shadow-[0_6px_18px_-10px_rgba(60,64,67,0.18)] ring-1 ring-black/[0.06] transition-shadow duration-200 hover:shadow-[0_10px_28px_-8px_rgba(60,64,67,0.22)]",
+        className,
+      )}
       style={{ fontFamily: '"Roboto", system-ui, sans-serif' }}
     >
       <div className="mb-3 text-[15px] font-medium text-[#202124]">Submissions Report</div>
@@ -292,7 +309,7 @@ export function SubmissionsReportTable() {
           </thead>
           <tbody>
             {sortedRows.map((row) => {
-              const rowKey = `${row.filename}-${row.submissionDate.toISOString()}`;
+              const rowKey = rowKeyFor(row);
               const selected = selectedRowKey === rowKey;
               return (
                 <tr

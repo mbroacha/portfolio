@@ -26,7 +26,7 @@ export const CaseStudyModule = ({
   footer,
   className,
 }: CaseStudyModuleProps) => (
-  <div className={cn("space-y-6", className)}>
+  <div className={cn("flex flex-col gap-6", className)}>
     <SectionTitle>{sectionTitle}</SectionTitle>
     <ContentModule className="grid gap-10 md:grid-cols-[2fr_1fr] md:gap-12">
       <div>

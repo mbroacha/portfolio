@@ -10,7 +10,7 @@ export const CardTitle = ({ className, ...props }: HTMLAttributes<HTMLHeadingEle
 );
 
 export const SectionTitle = ({ className, ...props }: HTMLAttributes<HTMLHeadingElement>) => (
-  <h2 className={cn("type-section mb-4", className)} {...props} />
+  <h2 className={cn("type-section", className)} {...props} />
 );
 
 export const BodyText = ({ className, ...props }: HTMLAttributes<HTMLParagraphElement>) => (

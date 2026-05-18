@@ -18,7 +18,7 @@ export const HomePage = () => {
         </div>
       }
     >
-      <Section spacing="lg" className="space-y-10">
+      <Section spacing="lg" className="!gap-10">
         <Display>
           Designing precise systems with structured logic and creative interference.
         </Display>
