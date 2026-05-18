@@ -1,7 +1,7 @@
 import "@fontsource/lexend-deca/latin-400.css";
 import "@fontsource/lexend-deca/latin-600.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFlag, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faEllipsisVertical, faFlag, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { cn } from "../../lib/cn";
 
@@ -20,6 +20,23 @@ const issueTiles = [
   },
 ] as const;
 
+const reviewComments = [
+  {
+    id: "belie",
+    author: "Morgan Broacha",
+    time: "Today 1:40 PM",
+    body: 'Has never used the word "belie" correctly.',
+  },
+  {
+    id: "passive",
+    author: "Morgan Broacha",
+    time: "Sep 28, 2020 3:15 PM",
+    body: "A lot of passive voice.",
+  },
+] as const;
+
+const reviewDocumentTitle = "Old_Man_and_the_Sea.docx";
+
 export function SummaryPrioritizedModal() {
   const [activeTab, setActiveTab] = useState<TabKey>("summary");
   const [activeIssue, setActiveIssue] = useState<string | null>(null);
@@ -33,10 +50,20 @@ export function SummaryPrioritizedModal() {
         <div className="absolute inset-x-0 bottom-0 flex items-end justify-center">
           <div className="mb-0 flex items-start gap-1">
             <div className="w-[440px] rounded-t-[6px] bg-white px-4 pb-4 pt-5 shadow-[0_10px_24px_-16px_rgba(0,0,0,0.45)]">
-              <h3 className="text-center text-[28px] font-normal leading-none tracking-[-0.01em] text-black">Summary</h3>
-              <p className="mt-1.5 text-center text-[12px] leading-tight text-black">
-                Top issues that may indicate contract cheating.
-              </p>
+              {activeTab === "summary" ? (
+                <>
+                  <h3 className="text-center text-[28px] font-normal leading-none text-black">
+                    Summary
+                  </h3>
+                  <p className="mt-1.5 text-center text-[12px] leading-tight text-black">
+                    Top issues that may indicate contract cheating.
+                  </p>
+                </>
+              ) : (
+                <h3 className="truncate text-center text-[22px] font-normal leading-tight text-black">
+                  {reviewDocumentTitle}
+                </h3>
+              )}
 
               <div className="mt-4 space-y-2.5">
                 {activeTab === "summary" ? (
@@ -56,7 +83,7 @@ export function SummaryPrioritizedModal() {
                       >
                         <div className="flex items-start">
                           <div className="min-w-0">
-                            <div className="flex items-center gap-2 text-[20px] font-normal leading-[1] tracking-[-0.01em] text-black">
+                            <div className="flex items-center gap-2 text-[20px] font-normal leading-[1] text-black">
                               <FontAwesomeIcon icon={faFlag} className="h-[14px] w-[14px] text-[#ff5d4d]" />
                               <span>{tile.title}</span>
                             </div>
@@ -67,13 +94,40 @@ export function SummaryPrioritizedModal() {
                     );
                   })
                 ) : (
-                  <div className="rounded-[4px] border border-[#efefef] bg-white px-3 py-3 shadow-[0_1px_8px_-6px_rgba(0,0,0,0.28)]">
-                    <div className="flex items-center gap-2.5">
-                      <FontAwesomeIcon icon={faMagnifyingGlass} className="h-[20px] w-[20px] text-[#ff5d4d]" />
-                      <p className="text-[12px] leading-snug text-[#595959]">
-                        Review mode helps inspect supporting signals before finalizing a decision.
-                      </p>
+                  <div className="space-y-2.5">
+                    <p className="text-[11px] font-semibold uppercase text-[#8a8a8a]">Comments</p>
+                    <div className="space-y-2">
+                      {reviewComments.map((comment) => (
+                        <div
+                          key={comment.id}
+                          className="rounded-[4px] border border-[#efefef] bg-white px-3 py-2.5 shadow-[0_1px_8px_-6px_rgba(0,0,0,0.28)]"
+                        >
+                          <div className="flex items-start justify-between gap-2">
+                            <div className="min-w-0">
+                              <p className="text-[13px] font-semibold leading-tight text-black">{comment.author}</p>
+                              <p className="mt-0.5 text-[11px] leading-tight text-[#8a8a8a]">{comment.time}</p>
+                            </div>
+                            <button
+                              type="button"
+                              aria-label="Comment options"
+                              className="shrink-0 rounded p-1 text-[#8a8a8a] transition-colors hover:bg-[#f1f3f4] hover:text-[#595959]"
+                            >
+                              <FontAwesomeIcon icon={faEllipsisVertical} className="h-3.5 w-3.5" />
+                            </button>
+                          </div>
+                          <p className="mt-2 text-[12px] leading-snug text-[#242424]">{comment.body}</p>
+                        </div>
+                      ))}
                     </div>
+                    <label className="block">
+                      <span className="sr-only">New comment</span>
+                      <input
+                        type="text"
+                        readOnly
+                        placeholder="New Comment..."
+                        className="w-full rounded-[4px] border border-[#efefef] bg-white px-3 py-2.5 text-[12px] text-[#242424] shadow-[0_1px_8px_-6px_rgba(0,0,0,0.28)] placeholder:text-[#8a8a8a] focus:outline-none focus:ring-1 focus:ring-[#d0d7de]"
+                      />
+                    </label>
                   </div>
                 )}
               </div>
@@ -103,7 +157,7 @@ export function SummaryPrioritizedModal() {
                     icon={tab.icon === "flag" ? faFlag : faMagnifyingGlass}
                     className="h-6 w-6"
                   />
-                  <span className="w-full px-1 text-center text-[16px] font-semibold leading-tight tracking-[-0.01em]">
+                  <span className="w-full px-1 text-center text-[16px] font-semibold leading-tight">
                     {tab.label}
                   </span>
                 </button>
