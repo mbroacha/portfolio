@@ -16,6 +16,7 @@ declare const _default: {
             fontFamily: {
                 sans: [string];
                 display: [string];
+                lexend: [string, string, string];
                 hand: [string, string, string, string, string];
             };
             maxWidth: {

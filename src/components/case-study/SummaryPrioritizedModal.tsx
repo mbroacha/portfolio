@@ -43,8 +43,7 @@ export function SummaryPrioritizedModal() {
 
   return (
     <div
-      className="overflow-hidden rounded-[20px] bg-white ring-1 ring-black/[0.06] shadow-[0_6px_18px_-10px_rgba(60,64,67,0.18)] transition-shadow duration-200 hover:shadow-[0_10px_28px_-8px_rgba(60,64,67,0.22)]"
-      style={{ fontFamily: '"Lexend Deca", system-ui, sans-serif' }}
+      className="summary-prioritized-modal overflow-hidden rounded-[20px] bg-white ring-1 ring-black/[0.06] shadow-[0_6px_18px_-10px_rgba(60,64,67,0.18)] transition-shadow duration-200 hover:shadow-[0_10px_28px_-8px_rgba(60,64,67,0.22)]"
     >
       <div className="relative min-h-[360px] bg-[#f7f7f7]">
         <div className="absolute inset-x-0 bottom-0 flex items-end justify-center">
@@ -95,7 +94,9 @@ export function SummaryPrioritizedModal() {
                   })
                 ) : (
                   <div className="space-y-2.5">
-                    <p className="text-[11px] font-semibold uppercase text-[#8a8a8a]">Comments</p>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-[#8a8a8a]">
+                      Comments
+                    </p>
                     <div className="space-y-2">
                       {reviewComments.map((comment) => (
                         <div

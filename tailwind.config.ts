@@ -18,6 +18,7 @@ export default {
       fontFamily: {
         sans: ["var(--font-family-sans)"],
         display: ["var(--font-family-display)"],
+        lexend: ['"Lexend Deca"', "system-ui", "sans-serif"],
         hand: ["Caveat", "Segoe Print", "Bradley Hand", "Apple Chancery", "cursive"],
       },
       maxWidth: {
