@@ -273,14 +273,13 @@ export const Originality = () => {
       <Section id="reflection" spacing="lg">
         <SectionTitle>Reflection</SectionTitle>
         <FieldNote>
-          At the time, this was not framed as AI. But the core problem was already there: how much influence should a
-          system have over human judgment?
-        </FieldNote>
-        <FieldNote>
-          Too little, and users are lost in data. Too much, and the system makes decisions users do not fully understand.
-        </FieldNote>
-        <FieldNote>
-          The goal was not to automate judgment. It was to support it, without replacing it.
+        At the time, I framed this project as making data heavy report more readable. That's not wrong, but it's not what actually changed for me. Instructors weren't asking for better signals — they were asking for permission to use their own judgment. The score had become the authority in the room. 
+        <br />
+        <br />
+        That reframed the product for me. The job wasn't to make the detection smarter, it was to demote it. The score should be where a conversation starts between an instructor and a student, not where one ends. Punitive to collaborative, not because we softened the language, but because we changed who held the verdict.
+        <br />
+        <br />
+        I don't think we fully landed it. The screens still center on numeric scores and maybes; the underlying assumption of these tools runs deeper than one redesign. But I left this project with a different question than I came in with: who is machine learning supposed to serve?
         </FieldNote>
       </Section>
     </PageContainer>

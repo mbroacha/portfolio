@@ -185,6 +185,11 @@
     margin: 0;
   }
 
+  /* Section stacks already set title-to-content gap; avoid double spacing */
+  section.flex .field-note {
+    margin-block: 0;
+  }
+
   /* Turnitin modal mock — Lexend Deca; base h3 display font does not inherit from parent */
   .summary-prioritized-modal,
   .summary-prioritized-modal h3,
