@@ -3,7 +3,9 @@ import { SiteFooter } from "./SiteFooter";
 
 export const SiteLayout = () => (
   <div className="flex min-h-screen flex-col">
-    <Outlet />
+    <div className="flex flex-1 flex-col">
+      <Outlet />
+    </div>
     <SiteFooter />
   </div>
 );

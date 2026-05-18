@@ -46,7 +46,7 @@ export const StickyCaseStudyNav = ({ title, metadata = [], links }: StickyCaseSt
       </div>
       <NavLink
         to="/"
-        className="block h-8 w-8 shrink-0 p-0 leading-none no-underline [&_path]:fill-[#422AD5] [&_circle]:fill-[#422AD5] [&_path]:transition-[fill] [&_circle]:transition-[fill] [&_path]:duration-200 [&_circle]:duration-200 [&_path]:ease-out [&_circle]:ease-out hover:[&_path]:fill-[#3b25c1] hover:[&_circle]:fill-[#3b25c1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3b25c1]"
+        className="block h-8 w-8 shrink-0 p-0 leading-none text-accent no-underline transition-opacity duration-200 ease-out hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         aria-label="Back home"
       >
         <span
