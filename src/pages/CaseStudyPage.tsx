@@ -57,7 +57,7 @@ export const CaseStudyPage = () => {
         tags={study.tags}
       />
 
-      <Section id="problem-framing" spacing="lg" className="space-y-5">
+      <Section id="problem-framing" spacing="lg">
         <SectionTitle>Problem framing</SectionTitle>
         {study.sections.map((section) => (
           <div key={section.id} className="space-y-2">
@@ -67,7 +67,7 @@ export const CaseStudyPage = () => {
         ))}
       </Section>
 
-      <Section id="constraints" spacing="md" className="space-y-6">
+      <Section id="constraints" spacing="md">
         <SectionTitle>Constraints</SectionTitle>
         <div className="grid gap-5 md:grid-cols-2">
           {study.constraints.map((constraint) => (
@@ -76,7 +76,7 @@ export const CaseStudyPage = () => {
         </div>
       </Section>
 
-      <Section id="decisions" spacing="lg" className="space-y-6">
+      <Section id="decisions" spacing="lg">
         <SectionTitle>Decision sections</SectionTitle>
         <div className="flex flex-col gap-8">
           {study.decisions.map((decision) => (
@@ -90,7 +90,7 @@ export const CaseStudyPage = () => {
         </div>
       </Section>
 
-      <Section id="system-explanation" spacing="lg" className="space-y-6">
+      <Section id="system-explanation" spacing="lg">
         <SectionTitle>System explanation</SectionTitle>
         <BodyText className="max-w-prose">
           The operating model balances fast scanability for routine work with deeper detail for edge-case
@@ -103,7 +103,7 @@ export const CaseStudyPage = () => {
         </div>
       </Section>
 
-      <Section id="outcome-reflection" spacing="lg" className="space-y-8">
+      <Section id="outcome-reflection" spacing="lg">
         <SectionTitle>Outcome / reflection</SectionTitle>
         <BodyText className="max-w-prose">{study.outcome}</BodyText>
         <PullQuote quote={study.quote} attribution={study.quoteAttribution} />

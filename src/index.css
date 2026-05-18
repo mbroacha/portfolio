@@ -107,10 +107,17 @@
     font-size: clamp(3rem, 22cqi, 24rem);
   }
 
-  /* Section header */
-  .type-section {
-    @apply font-display font-semibold leading-[1.25] text-ink;
+  /* Section header — shared fluid scale with .type-section-lead */
+  .type-section-size {
     font-size: clamp(1.25rem, 2vw, 1.65rem);
+  }
+
+  .type-section {
+    @apply type-section-size font-display font-semibold leading-[1.25] text-accent;
+  }
+
+  .type-section-lead {
+    @apply type-section-size font-display font-medium leading-[1.25] text-ink;
   }
 
   /* Body */
@@ -194,6 +201,12 @@
 
   /* Essay Integrity mock — Lexend Deca title; base h3 display font does not inherit from parent */
   .essay-integrity-dashboard h3 {
+    font-family: "Lexend Deca", system-ui, sans-serif;
+    font-weight: 400;
+  }
+
+  /* Tagging / notes modals — Lexend Deca filename header */
+  .tagging-notes-case-tools .tagging-notes-modal-header h3 {
     font-family: "Lexend Deca", system-ui, sans-serif;
     font-weight: 400;
   }

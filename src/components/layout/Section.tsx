@@ -13,5 +13,5 @@ const spacingClasses: Record<NonNullable<SectionProps["spacing"]>, string> = {
 };
 
 export const Section = ({ className, spacing = "md", ...props }: SectionProps) => (
-  <section className={cn(spacingClasses[spacing], className)} {...props} />
+  <section className={cn(spacingClasses[spacing], "flex flex-col gap-6", className)} {...props} />
 );

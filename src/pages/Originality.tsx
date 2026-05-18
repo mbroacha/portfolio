@@ -8,6 +8,7 @@ import { ProjectHeader } from "../components/case-study/ProjectHeader";
 import { StickyCaseStudyNav } from "../components/case-study/StickyCaseStudyNav";
 import { BeforeAfterComparison } from "../components/case-study/BeforeAfterComparison";
 import { EssayIntegrityDashboard } from "../components/case-study/EssayIntegrityDashboard";
+import { TaggingNotesCaseTools } from "../components/case-study/TaggingNotesCaseTools";
 import { SystemSnapshot } from "../components/case-study/SystemSnapshot";
 import { originalityProject } from "../case-studies/originality-project";
 import { PageContainer } from "../components/layout/PageContainer";
@@ -55,9 +56,7 @@ export const Originality = () => {
       rationale:
         "Why: Investigations happen over time, not in a single session.\nTradeoff: More product complexity.",
       impact: "Outcome: Users could build and revisit cases instead of relying on memory.",
-      imageSrc: "/case-studies/originality/tagging-notes-case-tools.png",
-      imageAlt:
-        "Overlapping modals on a submission: labels for Suspicious and Dismiss with color picker, and a comments thread with a new comment field for the same document.",
+      visual: <TaggingNotesCaseTools />,
     },
   ];
 
@@ -111,10 +110,10 @@ export const Originality = () => {
         }
       />
 
-      <Section id="opening-context" spacing="lg" className="space-y-6">
+      <Section id="opening-context" spacing="lg">
         <SectionTitle>Context</SectionTitle>
         <div className="space-y-4">
-          <p className="max-w-prose font-display text-2xl font-medium leading-tight text-ink">
+          <p className="type-section-lead max-w-prose">
             The system did not tell you if a student cheated. It gave you signals and expected you to decide.
           </p>
           <BodyText className="max-w-prose">
@@ -131,8 +130,8 @@ export const Originality = () => {
         </div>
       </Section>
 
-      <Section id="problem" spacing="lg" className="flex flex-col gap-10 md:gap-12">
-        <div className="flex flex-col gap-6 md:gap-8">
+      <Section id="problem" spacing="lg" className="!gap-10 md:!gap-12">
+        <div className="flex flex-col gap-6">
           <SectionTitle>Problem</SectionTitle>
           <BodyText className="max-w-prose">
             When I started this project, the brief was to 'improve the results page.' After interviewing educators,
@@ -159,7 +158,7 @@ export const Originality = () => {
         </figure>
       </Section>
 
-      <Section id="constraints" spacing="md" className="space-y-6">
+      <Section id="constraints" spacing="md">
         <SectionTitle>Constraints</SectionTitle>
         <div className="grid gap-5 md:grid-cols-2">
           <ConstraintCallout
@@ -181,7 +180,7 @@ export const Originality = () => {
         </div>
       </Section>
 
-      <Section id="research" spacing="lg" className="space-y-6">
+      <Section id="research" spacing="lg">
         <SectionTitle>Research</SectionTitle>
         <BodyText className="max-w-prose">
           Through expert interviews and a card sorting exercise with experienced investigators, we learned:
@@ -208,7 +207,7 @@ export const Originality = () => {
         </figure>
       </Section>
 
-      <Section id="decisions" spacing="lg" className="space-y-6">
+      <Section id="decisions" spacing="lg">
         <SectionTitle>Key design decisions</SectionTitle>
         <figure className="space-y-3">
           <div className="overflow-hidden rounded-[20px] bg-bg">
@@ -239,12 +238,14 @@ export const Originality = () => {
         </div>
       </Section>
 
-      <Section id="outcome-impact" spacing="lg" className="flex flex-col gap-10 md:gap-12">
-        <SectionTitle>Outcome and impact</SectionTitle>
-        <BodyText className="max-w-prose">
-          The redesigned system reduced time to interpret reports, improved consistency in investigations, and made the
-          product usable for non-experts.
-        </BodyText>
+      <Section id="outcome-impact" spacing="lg" className="!gap-10 md:!gap-12">
+        <div className="flex flex-col gap-6">
+          <SectionTitle>Outcome and impact</SectionTitle>
+          <BodyText className="max-w-prose">
+            The redesigned system reduced time to interpret reports, improved consistency in investigations, and made the
+            product usable for non-experts.
+          </BodyText>
+        </div>
         <BeforeAfterComparison
           before={{
             label: "Before",
@@ -269,7 +270,7 @@ export const Originality = () => {
         </div>
       </Section>
 
-      <Section id="reflection" spacing="lg" className="flex flex-col gap-8">
+      <Section id="reflection" spacing="lg">
         <SectionTitle>Reflection</SectionTitle>
         <FieldNote>
           At the time, this was not framed as AI. But the core problem was already there: how much influence should a

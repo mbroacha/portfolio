@@ -14,7 +14,7 @@ interface DecisionBlockProps {
 }
 
 export const DecisionBlock = ({ title, rationale, impact, imageSrc, imageAlt, visual, className }: DecisionBlockProps) => (
-  <article className={cn("space-y-8 rounded-[16px] p-8", className)}>
+  <article className={cn("flex flex-col gap-6 rounded-[16px] p-8", className)}>
     <SectionTitle className="text-xl">{title}</SectionTitle>
     {visual ? (
       visual
