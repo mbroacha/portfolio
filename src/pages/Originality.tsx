@@ -6,6 +6,8 @@ import { SummaryPrioritizedModal } from "../components/case-study/SummaryPriorit
 import { FieldNote } from "../components/case-study/FieldNote";
 import { ProjectHeader } from "../components/case-study/ProjectHeader";
 import { StickyCaseStudyNav } from "../components/case-study/StickyCaseStudyNav";
+import { BeforeAfterComparison } from "../components/case-study/BeforeAfterComparison";
+import { EssayIntegrityDashboard } from "../components/case-study/EssayIntegrityDashboard";
 import { SystemSnapshot } from "../components/case-study/SystemSnapshot";
 import { originalityProject } from "../case-studies/originality-project";
 import { PageContainer } from "../components/layout/PageContainer";
@@ -46,9 +48,7 @@ export const Originality = () => {
       rationale:
         "Why: Signals are meaningful in context, not isolation.\nTradeoff: Added abstraction layer.",
       impact: "Outcome: Users could identify behavioral patterns instead of isolated anomalies.",
-      imageSrc: "/case-studies/originality/assignment-trends-over-time.png",
-      imageAlt:
-        "Dashboard with submissions table and overlaid line charts of similarity score, revisions, and editing time plotted by submission date across months.",
+      visual: <EssayIntegrityDashboard />,
     },
     {
       title: "Add tagging, notes, and case-building tools",
@@ -131,31 +131,20 @@ export const Originality = () => {
         </div>
       </Section>
 
-      <Section id="problem" spacing="lg" className="space-y-5">
-        <SectionTitle>Problem</SectionTitle>
-        <BodyText className="max-w-prose">
-          Beta testing revealed a consistent issue: users were not struggling to use the interface, they were
-          struggling to interpret the system.
-        </BodyText>
-        <div className="grid gap-4 md:grid-cols-2">
-          <div className="space-y-2 rounded-md border border-line p-5">
-            <p className="type-caption">The report surfaced</p>
-            <BodyText>Authorship inconsistencies</BodyText>
-            <BodyText>Editing patterns</BodyText>
-            <BodyText>Linguistic anomalies</BodyText>
-          </div>
-          <div className="space-y-2 rounded-md border border-line p-5">
-            <p className="type-caption">But users lacked</p>
-            <BodyText>Clarity on which signals mattered most</BodyText>
-            <BodyText>Understanding of how signals connected</BodyText>
-            <BodyText>Confidence on when to investigate</BodyText>
-          </div>
+      <Section id="problem" spacing="lg" className="flex flex-col gap-10 md:gap-12">
+        <div className="flex flex-col gap-6 md:gap-8">
+          <SectionTitle>Problem</SectionTitle>
+          <BodyText className="max-w-prose">
+            When I started this project, the brief was to 'improve the results page.' After interviewing educators,
+            however, I reframed it: the problem wasn't the page — it was that we were giving equal weight to every possible signal.
+            Users had to sift through noise that was generating anxiety, not confidence.
+          </BodyText>
+          <BodyText className="max-w-prose">
+            This created a deeper risk: the system could imply wrongdoing, but users had to take responsibility for acting
+            on it.
+          </BodyText>
         </div>
-        <BodyText className="max-w-prose">
-          This created a deeper risk: the system could imply wrongdoing, but users had to take responsibility for acting
-          on it.
-        </BodyText>
-        <figure className="space-y-3">
+        <figure className="flex flex-col gap-4">
           <div className="overflow-hidden rounded-[20px] bg-bg">
             <img
               src="/case-studies/originality/sentences-comparison.png"
@@ -165,7 +154,7 @@ export const Originality = () => {
             />
           </div>
           <figcaption className="max-w-prose text-sm leading-relaxed text-subtext">
-            The system surfaced flags, but gave no sense of what mattered. It was also very...orange.
+            It was also very...orange.
           </figcaption>
         </figure>
       </Section>
@@ -250,13 +239,27 @@ export const Originality = () => {
         </div>
       </Section>
 
-      <Section id="outcome-impact" spacing="lg" className="space-y-6">
+      <Section id="outcome-impact" spacing="lg" className="flex flex-col gap-10 md:gap-12">
         <SectionTitle>Outcome and impact</SectionTitle>
         <BodyText className="max-w-prose">
           The redesigned system reduced time to interpret reports, improved consistency in investigations, and made the
           product usable for non-experts.
         </BodyText>
-        <div className="grid gap-4 md:grid-cols-2">
+        <BeforeAfterComparison
+          before={{
+            label: "Before",
+            src: "/case-studies/originality/outcome-before-sentences.png",
+            alt: "Turnitin Sentences view: stacked bar charts of sentence types across six student papers with identical percentages in an orange-themed interface.",
+            caption: "Sentence-level charts buried the signal in noise and identical-looking data.",
+          }}
+          after={{
+            label: "After",
+            src: "/case-studies/originality/outcome-after-authorship.png",
+            alt: "Originality authorship dashboard: submissions table with similarity, revisions, and editing time trends, plus Summary and Review actions.",
+            caption: "A scannable report that prioritizes what matters and supports investigation over time.",
+          }}
+        />
+        <div className="grid gap-6 md:grid-cols-2">
           <SystemSnapshot
             title="Impact"
             value="+2000%"
