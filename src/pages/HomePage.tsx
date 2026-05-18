@@ -13,7 +13,7 @@ export const HomePage = () => {
     <PageContainer
       rail={
         <div className="space-y-6">
-          <p className="text-sm font-semibold tracking-[-0.01em] text-ink">Morgan Broacha</p>
+          <p className="text-sm font-semibold text-ink">Morgan Broacha</p>
           <Caption>Product Design · Enterprise Systems</Caption>
         </div>
       }

@@ -238,7 +238,7 @@ export function SubmissionsReportTable() {
       className="rounded-[20px] bg-white px-5 pb-4 pt-4 shadow-[0_6px_18px_-10px_rgba(60,64,67,0.18)] ring-1 ring-black/[0.06] transition-shadow duration-200 hover:shadow-[0_10px_28px_-8px_rgba(60,64,67,0.22)]"
       style={{ fontFamily: '"Roboto", system-ui, sans-serif' }}
     >
-      <div className="mb-3 text-[15px] font-medium tracking-tight text-[#202124]">Submissions Report</div>
+      <div className="mb-3 text-[15px] font-medium text-[#202124]">Submissions Report</div>
       <div ref={tableShellRef} className="-mx-1 overflow-x-auto px-1">
         <table ref={tableRef} className="w-full table-fixed border-collapse text-left text-[13px] text-[#3c4043]">
           <colgroup>

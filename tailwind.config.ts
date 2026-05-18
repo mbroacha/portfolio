@@ -17,6 +17,7 @@ export default {
       },
       fontFamily: {
         sans: ["var(--font-family-sans)"],
+        display: ["var(--font-family-display)"],
         hand: ["Caveat", "Segoe Print", "Bradley Hand", "Apple Chancery", "cursive"],
       },
       maxWidth: {

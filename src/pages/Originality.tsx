@@ -114,7 +114,7 @@ export const Originality = () => {
       <Section id="opening-context" spacing="lg" className="space-y-6">
         <SectionTitle>Context</SectionTitle>
         <div className="space-y-4">
-          <p className="max-w-prose text-2xl font-medium leading-tight tracking-[-0.01em] text-ink">
+          <p className="max-w-prose font-display text-2xl font-medium leading-tight text-ink">
             The system did not tell you if a student cheated. It gave you signals and expected you to decide.
           </p>
           <BodyText className="max-w-prose">

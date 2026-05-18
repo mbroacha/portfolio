@@ -6,12 +6,13 @@
   --color-text: 28 28 28; /* #1C1C1C soft charcoal */
   --color-text-muted: 92 98 102; /* muted gray on paper */
   --color-border: 220 215 207; /* soft divider on paper */
-  --color-primary: 66 42 213; /* #422ad5 */
+  --color-primary: 181 87 58; /* #B5573A */
   --color-secondary: 244 48 152; /* #f43098 */
-  --color-accent: 0 211 187; /* #00d3bb */
+  --color-accent: 181 87 58; /* #B5573A */
 
-  /* Typography — single family; use "HK Grotesk" first when licensed files are available */
-  --font-family-sans: "HK Grotesk", "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  /* Typography */
+  --font-family-sans: "Geist Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-family-display: "Newsreader", ui-serif, Georgia, serif;
 
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
