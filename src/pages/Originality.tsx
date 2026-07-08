@@ -92,13 +92,14 @@ export const Originality = () => {
       <ProjectHeader
         title={study.title}
         subtitle={study.subtitle}
+        eyebrow="Academic Integrity · Shipped 2018"
         role={study.role}
         timeline={study.timeline}
         domain={study.domain}
         outcome={study.outcome}
         tags={[...study.tags, ...originalityOnlyMetadataTags]}
         hero={
-          <div className="w-full overflow-hidden rounded-[14px] bg-bg ring-1 ring-line/50 md:rounded-[18px]">
+          <div className="w-full overflow-hidden rounded-lg border border-hedge">
             <img
               src="/case-studies/originality/authorship-banner.png"
               alt="Turnitin authorship dashboard: submissions table with floating trend cards, blue chrome, and Summary and Review actions."
@@ -232,7 +233,7 @@ export const Originality = () => {
               visual={decision.visual}
               imageSrc={decision.imageSrc}
               imageAlt={decision.imageAlt}
-              className="shadow-[0_12px_40px_-10px_#C3E5FF]"
+              className="gh-card"
             />
           ))}
         </div>

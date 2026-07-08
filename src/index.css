@@ -15,33 +15,28 @@
     @apply border-line;
   }
 
-  /* Replaced elements: `*` sets border-color; reset border fully so images never pick up a dark edge. */
   img,
   video,
   canvas {
     border: 0;
   }
 
-  /*
-   * Transparent PNG/SVG: without an explicit backdrop, Chromium often composites alpha against black
-   * when the image is promoted to its own layer (e.g. with transforms). Keep a flat page-colored fill.
-   */
   img {
-    background-color: rgb(var(--color-background) / 1);
-    /* Avoid inheriting document sans on replaced content; matches system UI stack in devtools. */
+    background-color: var(--moss);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
   html {
     font-family: var(--font-family-sans);
+    font-optical-sizing: auto;
   }
 
   body {
-    @apply bg-bg text-ink font-sans antialiased;
+    @apply bg-moss font-sans text-sage antialiased;
     margin: 0;
     min-height: 100vh;
     font-size: var(--font-size-base);
-    line-height: 1.6;
+    line-height: 1.65;
     font-weight: var(--font-weight-regular);
   }
 
@@ -52,19 +47,27 @@
   h5,
   h6 {
     margin: 0;
-    color: rgb(var(--color-text));
+    color: var(--bone);
     font-family: var(--font-family-display);
     font-weight: var(--font-weight-medium);
-    line-height: 1.2;
+    font-optical-sizing: auto;
     text-wrap: balance;
   }
 
   h1 {
-    font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-3xl));
+    font-size: var(--font-size-hero);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
   }
 
   h2 {
-    font-size: clamp(var(--font-size-xl), 3vw, var(--font-size-2xl));
+    font-size: clamp(var(--font-size-2xl), 3.5vw, var(--font-size-3xl));
+    line-height: 1.1;
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    line-height: 1.2;
   }
 
   p {
@@ -73,81 +76,222 @@
 
   small {
     font-size: var(--font-size-sm);
-    color: rgb(var(--color-text-muted));
+    color: var(--lichen);
   }
 
   a {
-    color: inherit;
-    text-decoration-color: rgb(var(--color-border));
-    text-underline-offset: 0.2em;
+    color: var(--glow);
+    text-decoration: none;
+    transition: color 150ms ease-out;
+  }
+
+  a:hover {
+    color: var(--bone);
   }
 }
 
 @layer components {
-  /* Title — hero (home, landing) */
+  .jackalope {
+    background: var(--glow);
+    -webkit-mask: url("/assets/jackalope.png") center / contain no-repeat;
+    mask: url("/assets/jackalope.png") center / contain no-repeat;
+  }
+
+  .jackalope--bone {
+    background: var(--bone);
+  }
+
+  .jackalope--moss {
+    background: var(--moss);
+  }
+
+  /* Display — hero */
   .type-title--hero {
-    @apply font-display font-semibold leading-[1.08] text-ink;
-    font-size: clamp(2rem, 4vw, 3.25rem);
+    @apply font-display font-medium leading-[1.08] text-bone;
+    font-size: var(--font-size-hero);
+    letter-spacing: -0.015em;
+    font-optical-sizing: auto;
   }
 
-  /* Title — cards / secondary headlines */
+  .type-accent-turn {
+    @apply italic text-glow;
+  }
+
+  /* Display — section */
+  .type-title--section {
+    @apply font-display font-medium leading-[1.1] text-bone;
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-optical-sizing: auto;
+  }
+
+  /* Display — card */
   .type-title--card {
-    @apply font-display font-semibold leading-[1.15] text-ink;
-    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    @apply font-display font-medium leading-[1.2] text-bone;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-optical-sizing: auto;
   }
 
-  /* Title — large case study name; scales with main column */
+  /* Display — case study project name */
   .type-title-project-wrap {
     container-type: inline-size;
     width: 100%;
   }
 
   .type-title--project {
-    @apply w-full max-w-none text-balance font-display font-semibold leading-[0.98] text-ink;
-    font-size: clamp(3rem, 22cqi, 24rem);
+    @apply w-full max-w-none text-balance font-display font-medium leading-none text-bone;
+    font-size: clamp(3rem, 12vw, 5.25rem);
+    letter-spacing: 0.04em;
+    font-optical-sizing: auto;
   }
 
-  /* Section header — shared fluid scale with .type-section-lead */
   .type-section-size {
-    font-size: clamp(1.25rem, 2vw, 1.65rem);
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
   }
 
   .type-section {
-    @apply type-section-size font-display font-semibold leading-[1.25] text-accent;
+    @apply type-section-size font-display font-medium leading-[1.1] text-bone;
+    font-optical-sizing: auto;
   }
 
   .type-section-lead {
-    @apply type-section-size font-display font-medium leading-[1.25] text-ink;
+    @apply type-section-size font-display font-medium leading-[1.1] text-bone;
+    font-optical-sizing: auto;
   }
 
   /* Body */
   .type-body {
-    @apply text-base leading-[1.75] text-ink/90;
+    @apply text-[0.9375rem] leading-[1.65] text-sage md:text-base;
   }
 
   .type-body--lead {
-    @apply text-lg leading-relaxed text-ink/85 md:text-xl md:leading-relaxed;
+    @apply text-lg leading-[1.6] text-sage md:text-[1.1875rem];
   }
 
-  /* Caption — labels, figcaptions, metadata */
-  .type-caption {
-    @apply text-xs font-medium uppercase text-subtext;
-  }
-
-  /* Tag chips — single line, scale down slightly in narrow containers */
-  .type-tag {
-    @apply inline-flex w-max max-w-full shrink-0 items-center rounded-sm border border-line bg-panel font-medium uppercase text-subtext;
-    font-family: var(--font-family-sans);
+  /* Mono labels — eyebrows, buttons, tags */
+  .type-mono {
+    @apply font-mono font-medium uppercase text-caption;
+    font-size: 0.6875rem;
     line-height: 1;
-    white-space: nowrap;
-    height: 24px;
-    padding: 0.125rem 0.375rem;
-    font-size: clamp(0.5rem, 0.4375rem + 0.55cqi, 0.6875rem);
+    letter-spacing: 0.14em;
   }
 
-  /* Modular content block (reference: rounded gray tray) */
-  .content-module {
-    @apply rounded-3xl border border-line/70 bg-module;
+  .type-mono--ember {
+    @apply text-ember;
+    letter-spacing: 0.16em;
+  }
+
+  .type-mono--glow {
+    @apply text-glow;
+  }
+
+  .type-caption {
+    @apply type-mono;
+  }
+
+  /* Big stat */
+  .type-stat {
+    @apply font-display font-medium leading-none text-glow;
+    font-size: clamp(2.75rem, 5vw, 3.5rem);
+    font-optical-sizing: auto;
+  }
+
+  .type-stat--ember {
+    @apply text-ember;
+  }
+
+  /* Tags */
+  .type-tag {
+    @apply inline-flex w-max max-w-full shrink-0 items-center rounded-[3px] border bg-transparent font-mono font-semibold uppercase;
+    font-size: 0.625rem;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    padding: 6px 10px;
+    white-space: nowrap;
+    transition: border-color 150ms ease-out, color 150ms ease-out;
+  }
+
+  .type-tag--glow {
+    border-color: rgb(200 230 74 / 0.4);
+    color: var(--glow);
+  }
+
+  .type-tag--ember {
+    border-color: rgb(232 161 60 / 0.4);
+    color: var(--ember);
+  }
+
+  .type-tag--neutral {
+    @apply border-hedge text-sage;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center font-mono text-xs font-semibold uppercase no-underline;
+    letter-spacing: 0.1em;
+    border-radius: var(--radius-sm);
+    padding: 14px 22px;
+    transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+  }
+
+  .btn--primary {
+    @apply bg-glow text-moss;
+  }
+
+  .btn--primary:hover {
+    background: var(--glow-hover);
+    color: var(--moss);
+  }
+
+  .btn--secondary {
+    border: 1px solid rgb(200 230 74 / 0.4);
+    @apply bg-transparent text-glow;
+    padding: 13px 22px;
+  }
+
+  .btn--secondary:hover {
+    background: rgb(200 230 74 / 0.1);
+    color: var(--glow);
+  }
+
+  .btn--text {
+    @apply bg-transparent p-0 text-glow;
+  }
+
+  .btn--text:hover {
+    color: var(--bone);
+  }
+
+  /* Cards */
+  .content-module,
+  .gh-card {
+    @apply rounded-md border border-hedge bg-fern;
+    transition: border-color 150ms ease-out;
+  }
+
+  .gh-card--interactive:hover {
+    @apply border-lichen;
+  }
+
+  .gh-card--interactive:hover .gh-card__title {
+    text-decoration: underline;
+    text-decoration-color: var(--glow);
+    text-underline-offset: 0.15em;
+  }
+
+  /* Image placeholder */
+  .image-placeholder {
+    @apply grid place-items-center bg-placeholder;
+  }
+
+  .image-placeholder__label {
+    @apply rounded-[3px] bg-moss px-3 py-2 font-mono text-[0.6875rem] font-medium uppercase text-caption;
+    letter-spacing: 0.1em;
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    @apply border-l-2 border-glow pl-5 font-display text-[1.0625rem] italic leading-[1.55] text-glow;
+    font-optical-sizing: auto;
   }
 
   /* Editorial margin note */
@@ -158,16 +302,16 @@
     margin-inline-start: 0.75rem;
     margin-block: 3rem;
     padding-inline-start: 1.125rem;
-    border-left-width: 1px;
-    border-left-style: solid;
-    border-left-color: rgb(var(--color-text) / 0.22);
+    border-left: 2px solid var(--glow);
     border-top-left-radius: var(--radius-md);
     border-bottom-left-radius: var(--radius-md);
-    font-family: var(--font-family-sans);
+    font-family: var(--font-family-display);
     font-size: 1.0625rem;
+    font-style: italic;
     font-weight: var(--font-weight-regular);
     line-height: 1.78;
-    color: rgb(var(--color-text) / 0.92);
+    color: var(--glow);
+    font-optical-sizing: auto;
   }
 
   @media (min-width: 768px) {
@@ -185,12 +329,34 @@
     margin: 0;
   }
 
-  /* Section stacks already set title-to-content gap; avoid double spacing */
   section.flex .field-note {
     margin-block: 0;
   }
 
-  /* Turnitin modal mock — Lexend Deca; base h3 display font does not inherit from parent */
+  /* Proof strip */
+  .proof-strip {
+    @apply grid border-b border-hedge md:grid-cols-4;
+  }
+
+  .proof-strip__cell {
+    @apply border-hedge px-8 py-[22px] font-mono text-[0.6875rem] font-medium uppercase leading-snug text-caption;
+    letter-spacing: 0.1em;
+  }
+
+  .proof-strip__cell:not(:last-child) {
+    @apply md:border-r;
+  }
+
+  /* Page shell */
+  .page-shell {
+    @apply mx-auto w-full max-w-page border-x border-hedge bg-moss;
+  }
+
+  .page-gutter {
+    @apply px-6 sm:px-10 lg:px-gutter;
+  }
+
+  /* Turnitin modal mocks — keep product fidelity */
   .summary-prioritized-modal,
   .summary-prioritized-modal h3,
   .summary-prioritized-modal p,
@@ -204,13 +370,11 @@
     font-weight: 400;
   }
 
-  /* Essay Integrity mock — Lexend Deca title; base h3 display font does not inherit from parent */
   .essay-integrity-dashboard h3 {
     font-family: "Lexend Deca", system-ui, sans-serif;
     font-weight: 400;
   }
 
-  /* Tagging / notes modals — Lexend Deca filename header */
   .tagging-notes-case-tools .tagging-notes-modal-header h3 {
     font-family: "Lexend Deca", system-ui, sans-serif;
     font-weight: 400;

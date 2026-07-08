@@ -3,15 +3,29 @@ import { cn } from "../../lib/cn";
 
 interface SectionProps extends HTMLAttributes<HTMLElement> {
   spacing?: "none" | "sm" | "md" | "lg";
+  variant?: "moss" | "fern";
 }
 
 const spacingClasses: Record<NonNullable<SectionProps["spacing"]>, string> = {
   none: "",
   sm: "py-8 md:py-12",
   md: "py-12 md:py-16",
-  lg: "py-14 md:py-20",
+  lg: "py-16 md:py-20",
 };
 
-export const Section = ({ className, spacing = "md", ...props }: SectionProps) => (
-  <section className={cn(spacingClasses[spacing], "flex flex-col gap-6", className)} {...props} />
+export const Section = ({
+  className,
+  spacing = "md",
+  variant = "moss",
+  ...props
+}: SectionProps) => (
+  <section
+    className={cn(
+      spacingClasses[spacing],
+      "flex flex-col gap-6",
+      variant === "fern" && "bg-fern",
+      className,
+    )}
+    {...props}
+  />
 );
