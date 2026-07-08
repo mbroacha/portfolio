@@ -1,20 +1,11 @@
 interface PullQuoteProps {
   quote: string;
   attribution: string;
-  editorial?: boolean;
 }
 
-export const PullQuote = ({ quote, attribution, editorial = true }: PullQuoteProps) => (
-  <blockquote className="group space-y-4 rounded-l-md border-l border-line pl-6">
-    <p
-      className={`max-w-prose font-display font-semibold leading-snug text-ink/90 ${
-        editorial ? "text-[clamp(1.9rem,3.2vw,2.35rem)]" : "text-[1.75rem]"
-      }`}
-    >
-      “{quote}”
-    </p>
-    <cite className="type-caption block not-italic transition-colors group-hover:text-ink/80">
-      {attribution}
-    </cite>
+export const PullQuote = ({ quote, attribution }: PullQuoteProps) => (
+  <blockquote className="space-y-4">
+    <p className="pull-quote max-w-prose">"{quote}"</p>
+    {attribution ? <cite className="type-mono block not-italic text-caption">{attribution}</cite> : null}
   </blockquote>
 );

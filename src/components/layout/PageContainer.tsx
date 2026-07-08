@@ -10,6 +10,7 @@ interface PageContainerProps {
   stickyRailOnDesktop?: boolean;
   collapsibleRailOnMobile?: boolean;
   mobileRailLabel?: string;
+  fullBleed?: boolean;
 }
 
 export const PageContainer = ({
@@ -21,11 +22,16 @@ export const PageContainer = ({
   stickyRailOnDesktop = false,
   collapsibleRailOnMobile = false,
   mobileRailLabel = "Page details",
+  fullBleed = false,
 }: PageContainerProps) => (
-  <div className="mx-auto w-full max-w-page px-6 pt-10 sm:px-8 sm:pt-12 lg:px-12 lg:pt-16">
+  <div
+    className={cn(
+      fullBleed ? "w-full" : "page-gutter mx-auto w-full max-w-content py-10 sm:py-12 lg:py-16",
+    )}
+  >
     {rail && collapsibleRailOnMobile ? (
-      <details className="mb-8 rounded-md border border-line bg-panel p-4 lg:hidden">
-        <summary className="cursor-pointer text-sm font-medium text-ink">{mobileRailLabel}</summary>
+      <details className="mb-8 rounded-md border border-hedge bg-fern p-4 lg:hidden">
+        <summary className="cursor-pointer text-sm font-medium text-bone">{mobileRailLabel}</summary>
         <div className="mt-4">{rail}</div>
       </details>
     ) : null}

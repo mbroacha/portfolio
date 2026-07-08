@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
 import type { ReactNode } from "react";
 import { ContentModule } from "../layout/ContentModule";
 import { MetadataLabel } from "../primitives/MetadataLabel";
 import { BodyText, CardTitle, SectionTitle } from "../primitives/Typography";
+import { Button } from "../brand/Button";
 import { cn } from "../../lib/cn";
 
 interface CaseStudyModuleProps {
@@ -32,12 +32,9 @@ export const CaseStudyModule = ({
       <div>
         <CardTitle>{title}</CardTitle>
         <BodyText className="mt-5 max-w-prose">{subtitle}</BodyText>
-        <Link
-          to={to}
-          className="type-caption mt-10 inline-flex border-b border-line pb-1 transition hover:border-accent hover:text-ink"
-        >
+        <Button to={to} variant="text" className="mt-10" showArrow>
           {linkLabel}
-        </Link>
+        </Button>
         {footer}
       </div>
       <div className="flex w-full min-w-0 flex-col gap-2 [container-type:inline-size] md:items-start">

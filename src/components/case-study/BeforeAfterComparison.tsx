@@ -92,7 +92,7 @@ export const BeforeAfterComparison = ({
     <figure className="flex flex-col gap-4">
       <div
         ref={containerRef}
-        className="relative cursor-ew-resize overflow-hidden rounded-[20px] bg-bg ring-1 ring-line/50 touch-none select-none"
+        className="relative cursor-ew-resize overflow-hidden rounded-lg border border-hedge bg-moss touch-none select-none"
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
@@ -122,10 +122,10 @@ export const BeforeAfterComparison = ({
           />
         </div>
 
-        <span className="pointer-events-none absolute left-3 top-3 rounded-sm bg-ink/75 px-2 py-1 text-xs font-medium uppercase tracking-wide text-bg">
+        <span className="pointer-events-none absolute left-3 top-3 rounded-sm bg-moss/90 px-2 py-1 font-mono text-[0.625rem] font-semibold uppercase tracking-mono text-glow">
           {before.label}
         </span>
-        <span className="pointer-events-none absolute right-3 top-3 rounded-sm bg-ink/75 px-2 py-1 text-xs font-medium uppercase tracking-wide text-bg">
+        <span className="pointer-events-none absolute right-3 top-3 rounded-sm bg-moss/90 px-2 py-1 font-mono text-[0.625rem] font-semibold uppercase tracking-mono text-glow">
           {after.label}
         </span>
 

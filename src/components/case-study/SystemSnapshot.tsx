@@ -1,15 +1,14 @@
-import { BodyText, MetaText } from "../primitives/Typography";
+import { Stat } from "../brand/Stat";
 
 interface SystemSnapshotProps {
   title: string;
   value: string;
   note: string;
+  variant?: "glow" | "ember";
 }
 
-export const SystemSnapshot = ({ title, value, note }: SystemSnapshotProps) => (
-  <article className="space-y-2 rounded-md border border-line p-5">
-    <MetaText>{title}</MetaText>
-    <BodyText className="text-ink">{value}</BodyText>
-    <BodyText className="text-sm text-subtext">{note}</BodyText>
+export const SystemSnapshot = ({ title, value, note, variant = "glow" }: SystemSnapshotProps) => (
+  <article className="gh-card p-6">
+    <Stat value={value} caption={note} variant={variant} label={title} />
   </article>
 );

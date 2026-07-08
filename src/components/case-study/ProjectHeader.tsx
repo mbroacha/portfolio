@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "../../lib/cn";
 import { MetadataLabel } from "../primitives/MetadataLabel";
-import { BodyLead } from "../primitives/Typography";
+import { BodyLead, Eyebrow } from "../primitives/Typography";
 
 interface ProjectHeaderProps {
   title: string;
@@ -11,7 +11,7 @@ interface ProjectHeaderProps {
   domain: string;
   outcome: string;
   tags: string[];
-  /** Large media below metadata/tags, after a divider (e.g. case study hero). */
+  eyebrow?: string;
   hero?: ReactNode;
 }
 
@@ -23,43 +23,47 @@ export const ProjectHeader = ({
   domain,
   outcome,
   tags,
+  eyebrow,
   hero,
 }: ProjectHeaderProps) => (
-  <header
-    className={cn(
-      "space-y-10",
-      hero ? "pb-0 mb-14 md:mb-20" : "border-b border-line pb-10",
-    )}
-  >
-    <div className="space-y-16 md:space-y-20 lg:space-y-28">
+  <header className={cn("space-y-10", hero ? "pb-0 mb-14 md:mb-20" : "border-b border-hedge pb-10")}>
+    <div className="space-y-6 text-center md:space-y-8">
+      {eyebrow ? <Eyebrow className="tracking-mono-wide">{eyebrow}</Eyebrow> : null}
       <div className="type-title-project-wrap">
         <h1 className="type-title--project">{title}</h1>
       </div>
-      <BodyLead className="max-w-prose text-ink/80">{subtitle}</BodyLead>
+      <BodyLead className="mx-auto max-w-[54ch]">{subtitle}</BodyLead>
     </div>
-    <dl className="grid gap-5 md:grid-cols-2">
-      <div className="space-y-2">
-        <dt className="type-caption">Role</dt>
-        <dd className="text-base text-ink">{role}</dd>
+
+    <div className="grid gap-10 border-y border-hedge py-10 md:grid-cols-2 md:gap-16">
+      <div className="space-y-3">
+        <span className="type-mono">My role</span>
+        <p className="type-body">{role}</p>
       </div>
-      <div className="space-y-2">
-        <dt className="type-caption">Timeline</dt>
-        <dd className="text-base text-ink">{timeline}</dd>
+      <div className="space-y-6">
+        <div className="space-y-2">
+          <span className="type-mono">Impact</span>
+          <p className="type-stat">{outcome}</p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="space-y-2">
+            <span className="type-mono">Timeline</span>
+            <p className="type-body text-bone">{timeline}</p>
+          </div>
+          <div className="space-y-2">
+            <span className="type-mono">Domain</span>
+            <p className="type-body text-bone">{domain}</p>
+          </div>
+        </div>
       </div>
-      <div className="space-y-2">
-        <dt className="type-caption">Domain</dt>
-        <dd className="text-base text-ink">{domain}</dd>
-      </div>
-      <div className="space-y-2">
-        <dt className="type-caption">Outcome</dt>
-        <dd className="text-base text-ink">{outcome}</dd>
-      </div>
-    </dl>
-    <div className="flex w-full min-w-0 flex-wrap gap-1.5 [container-type:inline-size]">
+    </div>
+
+    <div className="flex w-full min-w-0 flex-wrap gap-2 [container-type:inline-size]">
       {tags.map((tag) => (
-        <MetadataLabel key={tag} label={tag} />
+        <MetadataLabel key={tag} label={tag} variant="neutral" />
       ))}
     </div>
-    {hero ? <div className="border-t border-line pt-8 md:pt-10">{hero}</div> : null}
+
+    {hero ? <div className="border-t border-hedge pt-8 md:pt-10">{hero}</div> : null}
   </header>
 );
