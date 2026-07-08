@@ -146,15 +146,15 @@ export const BeforeAfterComparison = ({
           aria-valuetext={`${Math.round(position)}% ${before.label}, ${Math.round(100 - position)}% ${after.label}`}
           className={cn(
             "absolute top-1/2 z-20 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full",
-            "border border-line/80 bg-bg shadow-[0_4px_16px_-4px_rgba(0,0,0,0.35)]",
-            "cursor-ew-resize transition-shadow hover:shadow-[0_6px_20px_-4px_rgba(0,0,0,0.4)]",
-            "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+            "border border-hedge bg-moss shadow-[0_4px_16px_-4px_rgba(0,0,0,0.5)]",
+            "cursor-ew-resize transition-shadow hover:shadow-[0_6px_20px_-4px_rgba(0,0,0,0.55)]",
+            "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-glow",
           )}
           style={{ left: `${position}%` }}
           onPointerDown={onPointerDown}
           onKeyDown={onKeyDown}
         >
-          <span className="flex items-center gap-0.5 text-ink/70" aria-hidden>
+          <span className="flex items-center gap-0.5 text-glow/70" aria-hidden>
             <span className="h-3 w-0.5 rounded-full bg-current" />
             <span className="h-3 w-0.5 rounded-full bg-current" />
           </span>
@@ -168,13 +168,13 @@ export const BeforeAfterComparison = ({
       {hasCaptions ? (
         <div className="grid gap-4 md:grid-cols-2 md:gap-6">
           {before.caption ? (
-            <figcaption className="max-w-prose text-sm leading-relaxed text-subtext">
-              <span className="font-medium text-ink">{before.label}:</span> {before.caption}
+            <figcaption className="type-body max-w-prose text-sm text-caption">
+              <span className="font-medium text-bone">{before.label}:</span> {before.caption}
             </figcaption>
           ) : null}
           {after.caption ? (
-            <figcaption className="max-w-prose text-sm leading-relaxed text-subtext">
-              <span className="font-medium text-ink">{after.label}:</span> {after.caption}
+            <figcaption className="type-body max-w-prose text-sm text-caption">
+              <span className="font-medium text-bone">{after.label}:</span> {after.caption}
             </figcaption>
           ) : null}
         </div>
