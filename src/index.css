@@ -82,7 +82,7 @@
   a {
     color: var(--glow);
     text-decoration: none;
-    transition: color 150ms ease-out;
+    transition: color var(--transition-fast);
   }
 
   a:hover {
@@ -105,7 +105,7 @@
     background: var(--moss);
   }
 
-  /* Display — hero */
+  /* Display — hero · Newsreader 500, 76px / 1.08, -0.015em */
   .type-title--hero {
     @apply font-display font-medium leading-[1.08] text-bone;
     font-size: var(--font-size-hero);
@@ -117,17 +117,17 @@
     @apply italic text-glow;
   }
 
-  /* Display — section */
+  /* Display — section · Newsreader 500, 44px / 1.1 */
   .type-title--section {
     @apply font-display font-medium leading-[1.1] text-bone;
     font-size: clamp(2rem, 3.5vw, 2.75rem);
     font-optical-sizing: auto;
   }
 
-  /* Display — card */
+  /* Display — card · Newsreader 500, 22–24px / 1.2 */
   .type-title--card {
     @apply font-display font-medium leading-[1.2] text-bone;
-    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-size: clamp(1.375rem, 2vw, 1.5rem);
     font-optical-sizing: auto;
   }
 
@@ -158,21 +158,24 @@
     font-optical-sizing: auto;
   }
 
-  /* Body */
+  /* Body — Archivo 400, 15–16px / 1.65, sage */
   .type-body {
     @apply text-[0.9375rem] leading-[1.65] text-sage md:text-base;
   }
 
+  /* Hero/footer lead — Newsreader 400, ~20px / 1.6 (landing kit) */
   .type-body--lead {
-    @apply text-lg leading-[1.6] text-sage md:text-[1.1875rem];
+    @apply font-display font-normal leading-[1.6] text-sage;
+    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+    font-optical-sizing: auto;
   }
 
-  /* Mono labels — eyebrows, buttons, tags */
+  /* Mono labels — ALWAYS uppercase, tracking 0.12–0.18em */
   .type-mono {
     @apply font-mono font-medium uppercase text-caption;
-    font-size: 0.6875rem;
+    font-size: var(--font-size-sm);
     line-height: 1;
-    letter-spacing: 0.14em;
+    letter-spacing: var(--tracking-label);
   }
 
   .type-mono--ember {
@@ -188,10 +191,10 @@
     @apply type-mono;
   }
 
-  /* Big stat */
+  /* Big stat — Newsreader 500, 52–56px / 1, glow */
   .type-stat {
     @apply font-display font-medium leading-none text-glow;
-    font-size: clamp(2.75rem, 5vw, 3.5rem);
+    font-size: var(--font-size-stat);
     font-optical-sizing: auto;
   }
 
@@ -199,15 +202,15 @@
     @apply text-ember;
   }
 
-  /* Tags */
+  /* Tags — Plex Mono 600 10px, transparent bg, border @ 40% text color */
   .type-tag {
     @apply inline-flex w-max max-w-full shrink-0 items-center rounded-[3px] border bg-transparent font-mono font-semibold uppercase;
-    font-size: 0.625rem;
+    font-size: var(--font-size-xs);
     line-height: 1;
     letter-spacing: 0.12em;
     padding: 6px 10px;
     white-space: nowrap;
-    transition: border-color 150ms ease-out, color 150ms ease-out;
+    transition: border-color var(--transition-fast), color var(--transition-fast);
   }
 
   .type-tag--glow {
@@ -224,13 +227,16 @@
     @apply border-hedge text-sage;
   }
 
-  /* Buttons */
+  /* Buttons — mono 600 12px, one primary per view */
   .btn {
-    @apply inline-flex items-center justify-center font-mono text-xs font-semibold uppercase no-underline;
-    letter-spacing: 0.1em;
+    @apply inline-flex items-center justify-center gap-2 font-mono font-semibold uppercase no-underline;
+    font-size: var(--font-size-label);
+    line-height: 1;
+    letter-spacing: var(--tracking-button);
     border-radius: var(--radius-sm);
     padding: 14px 22px;
-    transition: background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast),
+      color var(--transition-fast);
   }
 
   .btn--primary {
@@ -261,11 +267,11 @@
     color: var(--bone);
   }
 
-  /* Cards */
+  /* Cards — fern, hedge, 6px; no shadows */
   .content-module,
   .gh-card {
     @apply rounded-md border border-hedge bg-fern;
-    transition: border-color 150ms ease-out;
+    transition: border-color var(--transition-fast);
   }
 
   .gh-card--interactive:hover {
@@ -275,12 +281,16 @@
   .gh-card--interactive:hover .gh-card__title {
     text-decoration: underline;
     text-decoration-color: var(--glow);
-    text-underline-offset: 0.15em;
+    text-underline-offset: 4px;
   }
 
-  /* Image placeholder */
+  /* Image placeholder — striped until real photography */
   .image-placeholder {
     @apply grid place-items-center bg-placeholder;
+  }
+
+  .image-placeholder--dark {
+    background-image: repeating-linear-gradient(-45deg, #14291c 0 14px, #182f20 14px 28px);
   }
 
   .image-placeholder__label {

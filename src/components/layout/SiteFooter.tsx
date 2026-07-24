@@ -22,7 +22,7 @@ export const SiteFooter = () => (
     </div>
 
     <div className="flex flex-col items-start justify-between gap-6 lg:items-end">
-      <Jackalope size={120} />
+      <Jackalope size={120} label="Morgan Broacha jackalope mark" />
       <div className="flex flex-col items-start gap-2.5 lg:items-end">
         <Button href="mailto:hello@morganbroacha.com" variant="primary" className="!px-6 !py-[15px]">
           hello@morganbroacha.com

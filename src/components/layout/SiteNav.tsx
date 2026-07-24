@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Jackalope } from "../brand/Jackalope";
+import { Lockup } from "../brand/Lockup";
 import { Button } from "../brand/Button";
 import { cn } from "../../lib/cn";
 
@@ -18,9 +18,8 @@ export const SiteNav = ({ className }: SiteNavProps) => {
         className,
       )}
     >
-      <Link to="/" className="flex items-center gap-3.5 no-underline hover:text-bone">
-        <Jackalope size={34} />
-        <span className="font-display text-xl font-medium italic text-bone">Morgan Broacha</span>
+      <Link to="/" className="no-underline hover:opacity-90">
+        <Lockup />
       </Link>
 
       <nav className="flex items-center gap-6 sm:gap-9">
@@ -38,7 +37,7 @@ export const SiteNav = ({ className }: SiteNavProps) => {
             </a>
           </>
         )}
-        <Button href="mailto:hello@morganbroacha.com" variant="primary" className="!px-[18px] !py-2.5 !text-[0.75rem]">
+        <Button href="mailto:hello@morganbroacha.com" variant="primary" className="!px-[18px] !py-2.5">
           Contact
         </Button>
       </nav>
