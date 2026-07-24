@@ -92,7 +92,7 @@ export const BeforeAfterComparison = ({
     <figure className="flex flex-col gap-4">
       <div
         ref={containerRef}
-        className="relative cursor-ew-resize overflow-hidden rounded-[20px] bg-bg ring-1 ring-line/50 touch-none select-none"
+        className="relative cursor-ew-resize overflow-hidden rounded-lg border border-hedge bg-moss touch-none select-none"
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
@@ -122,10 +122,10 @@ export const BeforeAfterComparison = ({
           />
         </div>
 
-        <span className="pointer-events-none absolute left-3 top-3 rounded-sm bg-ink/75 px-2 py-1 text-xs font-medium uppercase tracking-wide text-bg">
+        <span className="pointer-events-none absolute left-3 top-3 rounded-sm bg-moss/90 px-2 py-1 font-mono text-[0.625rem] font-semibold uppercase tracking-mono text-glow">
           {before.label}
         </span>
-        <span className="pointer-events-none absolute right-3 top-3 rounded-sm bg-ink/75 px-2 py-1 text-xs font-medium uppercase tracking-wide text-bg">
+        <span className="pointer-events-none absolute right-3 top-3 rounded-sm bg-moss/90 px-2 py-1 font-mono text-[0.625rem] font-semibold uppercase tracking-mono text-glow">
           {after.label}
         </span>
 
@@ -146,15 +146,15 @@ export const BeforeAfterComparison = ({
           aria-valuetext={`${Math.round(position)}% ${before.label}, ${Math.round(100 - position)}% ${after.label}`}
           className={cn(
             "absolute top-1/2 z-20 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full",
-            "border border-line/80 bg-bg shadow-[0_4px_16px_-4px_rgba(0,0,0,0.35)]",
-            "cursor-ew-resize transition-shadow hover:shadow-[0_6px_20px_-4px_rgba(0,0,0,0.4)]",
-            "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+            "border border-hedge bg-moss shadow-[0_4px_16px_-4px_rgba(0,0,0,0.5)]",
+            "cursor-ew-resize transition-shadow hover:shadow-[0_6px_20px_-4px_rgba(0,0,0,0.55)]",
+            "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-glow",
           )}
           style={{ left: `${position}%` }}
           onPointerDown={onPointerDown}
           onKeyDown={onKeyDown}
         >
-          <span className="flex items-center gap-0.5 text-ink/70" aria-hidden>
+          <span className="flex items-center gap-0.5 text-glow/70" aria-hidden>
             <span className="h-3 w-0.5 rounded-full bg-current" />
             <span className="h-3 w-0.5 rounded-full bg-current" />
           </span>
@@ -168,13 +168,13 @@ export const BeforeAfterComparison = ({
       {hasCaptions ? (
         <div className="grid gap-4 md:grid-cols-2 md:gap-6">
           {before.caption ? (
-            <figcaption className="max-w-prose text-sm leading-relaxed text-subtext">
-              <span className="font-medium text-ink">{before.label}:</span> {before.caption}
+            <figcaption className="type-body max-w-prose text-sm text-caption">
+              <span className="font-medium text-bone">{before.label}:</span> {before.caption}
             </figcaption>
           ) : null}
           {after.caption ? (
-            <figcaption className="max-w-prose text-sm leading-relaxed text-subtext">
-              <span className="font-medium text-ink">{after.label}:</span> {after.caption}
+            <figcaption className="type-body max-w-prose text-sm text-caption">
+              <span className="font-medium text-bone">{after.label}:</span> {after.caption}
             </figcaption>
           ) : null}
         </div>

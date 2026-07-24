@@ -1,4 +1,4 @@
-import { BodyText, MetaText } from "../primitives/Typography";
+import { BodyText } from "../primitives/Typography";
 
 interface ConstraintCalloutProps {
   title: string;
@@ -6,9 +6,9 @@ interface ConstraintCalloutProps {
 }
 
 export const ConstraintCallout = ({ title, detail }: ConstraintCalloutProps) => (
-  <aside className="space-y-2 rounded-md border border-line p-5">
-    <MetaText>Constraint</MetaText>
-    <BodyText className="font-medium">{title}</BodyText>
-    <BodyText className="text-ink/75">{detail}</BodyText>
+  <aside className="gh-card flex flex-col gap-3 p-8">
+    <span className="type-mono type-mono--glow">Constraint</span>
+    <BodyText className="font-medium text-bone">{title}</BodyText>
+    <BodyText>{detail}</BodyText>
   </aside>
 );
