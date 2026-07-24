@@ -1,16 +1,16 @@
-import { StatusTag } from "../brand/StatusTag";
+import { Tag } from "../brand/Tag";
 import { cn } from "../../lib/cn";
 
-type TagVariant = "glow" | "ember" | "neutral";
+type TagTone = "glow" | "ember" | "neutral";
 
 interface MetadataLabelProps {
   label: string;
-  variant?: TagVariant;
+  variant?: TagTone;
   className?: string;
 }
 
 export const MetadataLabel = ({ label, variant = "neutral", className }: MetadataLabelProps) => (
-  <StatusTag variant={variant} className={cn(className)}>
+  <Tag tone={variant} className={cn(className)}>
     {label}
-  </StatusTag>
+  </Tag>
 );

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-08T07:00:00.000Z",
-  "title": "Design System: Morgan Broacha Portfolio",
+  "generatedAt": "2026-07-24T20:00:00.000Z",
+  "title": "Design System: Greenhouse",
   "extensions": {
     "colorMeta": {
       "moss": {
@@ -287,15 +287,15 @@
   ],
   "narrative": {
     "northStar": "The Greenhouse",
-    "overview": "This portfolio is a dark, saturated greenhouse — moss and fern surfaces where hard-tech design work grows under constraint. The page is drenched in deep green; bone and sage carry reading comfort; glow (chartreuse) marks action and emphasis; ember (amber) signals category and metadata heat. Newsreader brings editorial weight to headlines; Archivo keeps body copy neutral and field-tested; IBM Plex Mono handles all uppercase system labels.\n\nThe system serves a product designer embedded in hard places — ER trauma centers, Yellowstone backcountry, rocket launchpads. Visual language is confident and field-forward: filled glow buttons, mono eyebrows, proof-strip credentials, and the jackalope mascot as brand sigil.",
+    "overview": "Greenhouse is the brand system for Morgan Broacha's product design portfolio — a B2B SaaS product designer working in highly technical fields (aerospace, healthcare, field research). Dark-first, solarpunk-leaning: deep verdant darks, an editorial serif voice, instrument-panel mono details, one bioluminescent chartreuse accent.\n\nNewsreader speaks; Archivo explains; IBM Plex Mono measures. Moss carries ~70% of every screen; glow is rationed to one accent per view; ember belongs to data and eyebrows — never buttons. Canonical tokens and components live in design_handoff_greenhouse_brand_kit/.",
     "keyCharacteristics": [
-      "Drenched dark-green surface strategy — moss field, fern cards, hedge borders",
+      "Proportion: Moss ~70 · Fern ~20 · Bone ~6 · Glow ~2.5 · Ember ~1.5",
       "Three-font stack: Newsreader display + Archivo body + IBM Plex Mono labels",
-      "Glow (chartreuse) for primary actions and links; ember for eyebrows and warm metadata",
-      "Filled mono buttons (primary / secondary / text) replace underlined link CTAs",
-      "Flat-by-default elevation — depth via tonal layering and 1px hedge borders",
-      "Jackalope mask-icon as recurring brand mark; hero/footer gradients for atmospheric depth",
-      "Proof strip as credential bar between hero and work grid"
+      "Signature italic-chartreuse accent turn — max once per page",
+      "Flat elevation — fern surfaces + 1px hedge borders, no drop shadows",
+      "Jackalope CSS-mask stamp + Lockup for nav/covers",
+      "Restrained motion: 150ms ease-out on color/border only",
+      "Proof strip as field-credential bar between hero and work"
     ],
     "rules": [
       {

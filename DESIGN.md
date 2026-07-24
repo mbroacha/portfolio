@@ -1,6 +1,6 @@
 ---
-name: Morgan Broacha Portfolio
-description: Product design portfolio for hard-tech and field-critical enterprise software
+name: Greenhouse
+description: Dark-first solarpunk brand system for Morgan Broacha's product design portfolio — verdant darks, editorial serif, instrument mono, one bioluminescent accent
 colors:
   moss: "#14291C"
   fern: "#1B3A26"
@@ -26,7 +26,7 @@ typography:
     letterSpacing: "normal"
   title:
     fontFamily: "Newsreader, ui-serif, Georgia, serif"
-    fontSize: "clamp(1.25rem, 2vw, 1.5rem)"
+    fontSize: "clamp(1.375rem, 2vw, 1.5rem)"
     fontWeight: 500
     lineHeight: 1.2
     letterSpacing: "normal"
@@ -38,7 +38,7 @@ typography:
     letterSpacing: "normal"
   label:
     fontFamily: "IBM Plex Mono, ui-monospace, monospace"
-    fontSize: "0.6875rem"
+    fontSize: "0.75rem"
     fontWeight: 500
     lineHeight: 1
     letterSpacing: "0.14em"
@@ -51,7 +51,7 @@ spacing:
   md: "16px"
   lg: "24px"
   gutter: "64px"
-  section: "72px"
+  section: "80px"
 components:
   button-primary:
     backgroundColor: "{colors.glow}"
@@ -74,213 +74,162 @@ components:
     textColor: "{colors.glow}"
     rounded: "3px"
     padding: "6px 10px"
-    height: "auto"
   gh-card:
     backgroundColor: "{colors.fern}"
     rounded: "{rounded.md}"
-    padding: "28px 26px"
+    padding: "26px 26px 28px"
 ---
 
-# Design System: Morgan Broacha Portfolio
+# Design System: Greenhouse
+
+Canonical source: `design_handoff_greenhouse_brand_kit/` (tokens, components, guidelines, UI kits).
 
 ## 1. Overview
 
 **Creative North Star: "The Greenhouse"**
 
-This portfolio is a dark, saturated greenhouse — moss and fern surfaces where hard-tech design work grows under constraint. The page is drenched in deep green; bone and sage carry reading comfort; glow (chartreuse) marks action and emphasis; ember (amber) signals category and metadata heat. Newsreader brings editorial weight to headlines; Archivo keeps body copy neutral and field-tested; IBM Plex Mono handles all uppercase system labels.
+Greenhouse is the brand system for Morgan Broacha's product design portfolio — a B2B SaaS product designer working in highly technical fields (aerospace, healthcare, field research). Dark-first, solarpunk-leaning: deep verdant darks, an editorial serif voice, instrument-panel mono details, one bioluminescent chartreuse accent.
 
-The system serves a product designer embedded in hard places — ER trauma centers, Yellowstone backcountry, rocket launchpads. Visual language is confident and field-forward: filled glow buttons, mono eyebrows, proof-strip credentials, and the jackalope mascot as brand sigil. The page shell (`page-shell`) frames content with hedge borders like a specimen cabinet. Case-study product mocks retain their own light UI vocabulary inside fern cards; the portfolio chrome stays dark.
+Newsreader speaks (headlines, wordmark, accent turn). Archivo explains (body, UI copy). IBM Plex Mono measures (eyebrows, buttons, tags, coordinates). The page is drenched in moss; glow is rationed; ember never becomes a button.
 
 **Key Characteristics:**
 
-- Drenched dark-green surface strategy — moss field, fern cards, hedge borders
-- Three-font stack: Newsreader display + Archivo body + IBM Plex Mono labels
-- Glow (chartreuse) for primary actions and links; ember for eyebrows and warm metadata
-- Filled mono buttons (primary / secondary / text) replace underlined link CTAs
-- Flat-by-default elevation — depth via tonal layering and 1px hedge borders
-- Jackalope mask-icon as recurring brand mark; hero/footer gradients for atmospheric depth
-- Proof strip as credential bar between hero and work grid
+- Proportion: Moss ~70 · Fern ~20 · Bone ~6 · Glow ~2.5 · Ember ~1.5
+- Three-font stack with optical sizing on Newsreader
+- Signature italic-chartreuse "accent turn" — max once per page
+- Flat elevation — surface color + 1px hedge borders, no drop shadows
+- Jackalope as one-color CSS-mask stamp; Lockup for nav/covers
+- Restrained motion: ~150ms ease-out on color/border only
+
+**Content voice:** First person, confident, dry wit. Short declaratives. Field-credential garnish in mono labels (coordinates, mile markers) — one or two per view. Sentence case for serif/body; ALL-CAPS only in mono. No emoji, no exclamation marks.
 
 ## 2. Colors
 
-Deep greenhouse greens carry the surface; glow and ember punctuate action and category.
+If a screen feels loud, remove chartreuse first.
 
 ### Primary
 
-- **Biolume Glow** (#C8E64A): Primary buttons, default links, field-note accents, pull-quote borders, stat values, tag borders (glow variant). Hover shifts to glow-hover (#D6F163).
-- **Glow Hover** (#D6F163): Primary button hover state only.
+- **Glow** (#C8E64A): Actions, links, logo, accent turn, pull-quote borders, primary stats. One accent per view.
+- **Glow Hover** (#D6F163): Primary button hover only.
 
 ### Secondary
 
-- **Field Ember** (#E8A13C): Case study eyebrows (`.type-mono--ember`), ember stat variant, ember tag borders. Warm counterpoint to chartreuse — used for category labeling, not primary actions.
+- **Ember** (#E8A13C): Data, eyebrows, alerts. Never buttons or primary CTAs.
 
 ### Neutral
 
-- **Deep Moss** (#14291C): Page background (`bg-moss`), image backdrops, placeholder label chips, primary button text color.
-- **Fern Tray** (#1B3A26): Card and module surfaces (`.gh-card`, `.content-module`). One step lighter than moss for grouped content.
-- **Hedge Line** (#24402E): Borders (`border-hedge`). Dividers, card outlines, proof-strip rules, page-shell frame.
-- **Bone** (#F0EDDF): Display headings, nav wordmark, hover link color, primary readable headline ink.
-- **Sage** (#B9C7AE): Body text (`text-sage`). Long-form copy, card descriptions, metadata values.
-- **Lichen** (#7A9678): Caption text (`text-caption`). Mono labels, proof-strip cells, footer metadata, de-emphasized nav links.
+- **Moss** (#14291C): Page background (~70%)
+- **Fern** (#1B3A26): Cards, raised surfaces, alternate sections (~20%)
+- **Hedge** (#24402E): Borders, dividers
+- **Bone** (#F0EDDF): Headlines, primary text (~6%)
+- **Sage** (#B9C7AE): Body text
+- **Lichen** (#7A9678): Captions, muted labels
+
+### Gradients
+
+Heroes and section breaks only: `linear-gradient(160deg, #14291C 55%, #1B3A26 100%)`. Never on cards or buttons.
 
 ### Named Rules
 
-**The Drenched Field Rule.** The surface IS the color. Moss and fern carry 80%+ of any viewport. Neutrals are tinted greens, not gray — sage and lichen inherit the greenhouse hue.
+**The Drenched Field Rule.** Moss and fern carry ~90% of any viewport. Neutrals are tinted greens, not gray.
 
-**The Two-Accent Rule.** Glow handles action and emphasis; ember handles category and warmth. Never swap their roles — ember is not a CTA color; glow is not an eyebrow color.
+**The Two-Accent Rule.** Glow = action/emphasis. Ember = category/data warmth. Never swap roles.
 
 ## 3. Typography
 
-**Display Font:** Newsreader (with ui-serif, Georgia fallback) — medium weight, optical sizing enabled
-**Body Font:** Archivo (with ui-sans-serif, system-ui fallback)
-**Label Font:** IBM Plex Mono (with ui-monospace fallback) — uppercase, tracked
+**Display:** Newsreader 500, optical sizing on. Italic reserved for (a) the wordmark and (b) the accent turn.
+**Body:** Archivo 400 (500–600 for UI emphasis), sage, never below 13px.
+**Detail:** IBM Plex Mono — ALWAYS uppercase, letter-spacing 0.12–0.18em.
 
-**Character:** Newsreader italic accents (`type-accent-turn`) add editorial personality without magazine cliché. Archivo stays utilitarian for long reads. Mono labels give the system a field-instrument, telemetry-board feel.
+### Hierarchy (desktop 1440)
 
-### Hierarchy
-
-- **Display / Hero** (500, clamp(2.75rem, 5.5vw, 4.75rem), 1.08, -0.015em): Home hero (`.type-title--hero`). Max ~19ch width. Italic glow spans for emphasis.
-- **Section** (500, clamp(2rem, 3.5vw, 2.75rem), 1.1): Section headers (`.type-title--section`) — "Selected work", footer headline.
-- **Card Title** (500, clamp(1.25rem, 2vw, 1.5rem), 1.2): Case study card headlines (`.type-title--card`).
-- **Project Title** (500, clamp(3rem, 12vw, 5.25rem), 1.0, 0.04em): Case study hero names (`.type-title--project`). Wide-tracked, centered.
-- **Body** (400, 0.9375rem→1rem, 1.65): Prose (`.type-body`) in sage. Max ~52–60ch for leads.
-- **Body Lead** (400, 1.125–1.1875rem, 1.6): Intro paragraphs (`.type-body--lead`).
-- **Mono Label** (500, 0.6875rem, uppercase, 0.14em tracking): Captions, nav links, metadata (`.type-mono`). Ember variant at 0.16em tracking.
-- **Stat** (500, clamp(2.75rem, 5vw, 3.5rem), 1.0): Impact numbers (`.type-stat`) in glow or ember.
-
-### Named Rules
-
-**The Mono Boundary Rule.** IBM Plex Mono is for system labels only — eyebrows, buttons, tags, proof strip, nav, metadata keys. Never body paragraphs.
-
-**The Italic Turn Rule.** Display emphasis uses Newsreader italic in glow (`type-accent-turn`). One accent phrase per hero maximum.
-
-## 4. Elevation
-
-Flat-by-default. Depth is conveyed through the drenched tonal stack — moss → fern → hedge borders — and atmospheric gradients on hero and footer sections. No box-shadow on portfolio-shell cards, modules, or navigation.
-
-### Shadow Vocabulary
-
-- **Handle lift** (`box-shadow: 0 4px 16px -4px rgba(0,0,0,0.35)`): Before/after comparison drag handle only.
-- **Mock ambient** (Material-style shadows): Embedded product UI mocks inside case studies. Not part of the greenhouse shell.
-
-### Gradient Vocabulary
-
-- **Hero gradient** (`linear-gradient(160deg, #14291c 55%, #1b3a26 100%)`): Home hero background — subtle atmospheric lift without shadow.
-- **Footer gradient** (`linear-gradient(200deg, #14291c 60%, #1b3a26 100%)`): About/footer section atmosphere.
-- **Placeholder stripe** (`repeating-linear-gradient(-45deg, #1b3a26 0 14px, #1f4029 14px 28px)`): Image placeholder backgrounds.
+| Role | Spec |
+| --- | --- |
+| Hero | Newsreader 500, 76px / 1.08, −0.015em |
+| Section | Newsreader 500, 44px / 1.1 |
+| Card title | Newsreader 500, 22–24px / 1.2 |
+| Body | Archivo 400, 15–16px / 1.65 |
+| Hero/footer lead | Newsreader 400, ~20px / 1.6 |
+| Label/eyebrow | Plex Mono 500–600, 11–12px / 1, +0.12–0.18em, uppercase |
+| Tag | Plex Mono 600, 10px / 1, +0.12em |
+| Big stat | Newsreader 500, 52–56px / 1, Glow |
 
 ### Named Rules
 
-**The Flat Greenhouse Rule.** Portfolio chrome uses borders and tonal layers only. No `box-shadow` on gh-cards, content modules, buttons, or nav.
+**The Mono Boundary Rule.** Mono for system labels only — never body paragraphs.
 
-**The Gradient Atmosphere Rule.** Gradients are permitted on full-bleed section backgrounds (hero, footer) for depth — never on individual cards or buttons.
+**The Italic Turn Rule.** One italic glow phrase inside a headline per page maximum.
+
+## 4. Elevation & Spacing
+
+Flat-by-default. No drop shadows on portfolio chrome. Elevation = fern surface + hedge border.
+
+- Page gutter: 64px (desktop). Section padding: 72–96px vertical.
+- Radius: 4px buttons/badges · 6px cards · 8px large media.
+- Borders: 1px solid hedge.
+- Transition: 150ms ease-out on color/border only. No parallax or scroll-jacking.
 
 ## 5. Components
 
-### Buttons
+Shipped under `src/components/brand/`. Specs and intent also live in `design_handoff_greenhouse_brand_kit/components/**/*.prompt.md`.
 
-- **Shape:** 4px radius (`--radius-sm`), mono uppercase, 0.1em letter-spacing
-- **Primary:** Glow fill, moss text, 14×22px padding. Hover: glow-hover fill.
-- **Secondary:** Transparent fill, glow text, 1px glow/40% border. Hover: glow/10% background tint.
-- **Text:** No fill, no border, glow text. Hover: bone text. Optional `→` arrow suffix.
-- **Focus:** Inherited link focus; no custom ring defined yet.
+### Lockup
 
-### Tags / Status Tags
+Horizontal (nav/footer): 34px mark + italic Newsreader wordmark. Stacked (covers): 40px mark + wordmark + optional mono subline.
 
-- **Shape:** 3px radius, transparent background, 6×10px padding
-- **Glow variant:** Glow text, glow/40% border
-- **Ember variant:** Ember text, ember/40% border
-- **Neutral variant:** Sage text, hedge border
-- **Typography:** Mono semibold, 0.625rem, 0.12em tracking
+### Jackalope
 
-### Cards (gh-card)
+CSS mask stamp. Approved: Glow/Bone on Moss; Moss on Glow/Bone. Clear space ½ mark width. Min 24px. Never rotate, outline, gradient-fill, or place more than one per view over busy photos without a scrim.
 
-- **Corner Style:** 6px radius (`rounded-md`)
-- **Background:** Fern (#1B3A26)
-- **Border:** 1px hedge; hover shifts to lichen on interactive cards
-- **Shadow Strategy:** None
-- **Interactive:** Title underlines in glow on hover; entire card is a link in case study grid
-- **Internal Padding:** 28px vertical, 26px horizontal for text blocks; 260px image area above
+### Button
 
-### Content Modules
+Mono uppercase. Primary (Glow fill, Moss text — one per view). Secondary (outlined Glow). Text (Glow + trailing →, hover Bone).
 
-- **Same as gh-card** — `.content-module` shares `.gh-card` styles
-- **Padding:** 32px mobile, 40px tablet, 48px desktop
+### Tag
 
-### Case Study Cards
+Status/taxonomy. Transparent bg, 1px border at 40% of text color. Tones: glow · ember · neutral.
 
-- **Structure:** Image or placeholder → ember eyebrow → card title → sage description
-- **Eyebrow:** Mono ember — "Enterprise · Case 01" pattern. One per card, not per section.
-- **Grid:** `repeat(auto-fit)` via `md:grid-cols-2 lg:grid-cols-3`
+### Eyebrow
 
-### Proof Strip
+Ember mono label above titles (default). Lichen/sage tones for quiet nav/proof labels.
 
-- **Layout:** 4-column grid with hedge borders, full-width between hero and work
-- **Typography:** Mono caption, 22px vertical padding, 32px horizontal
-- **Content:** Field-credential one-liners
+### Stat
 
-### Navigation (Site Nav)
+Newsreader glow value + Archivo caption (max 38ch). Ember variant for in-dashboard data only.
 
-- **Logo:** Jackalope (34px glow) + italic Newsreader wordmark in bone
-- **Links:** Mono sage, hover bone. Case study pages show "← All work" in glow.
-- **CTA:** Primary contact button (compact: 18×10px padding)
+### CaseCard (`CaseStudyCard`)
 
-### Jackalope (brand mark)
+Fern, hedge, 6px radius. Media → ember eyebrow → title → description. Hover: border lichen, title underlines glow.
 
-- **Implementation:** CSS mask over PNG silhouette, filled with glow/bone/moss
-- **Sizes:** 28px (rail nav), 34px (site nav), 120px (footer)
-- **Never:** Used as decorative filler — always as navigational or identity mark
+### PlaceholderMedia (`ImagePlaceholder`)
 
-### Field Notes
+Striped repeating gradient + centered mono chip until real photography lands.
 
-- **Style:** 2px glow left border, Newsreader italic, glow text color
-- **Use:** Editorial asides within case study prose
+### Proof strip
 
-### Pull Quotes
+4-col bordered grid of mono field credentials between hero and work.
 
-- **Style:** 2px glow left border, Newsreader italic 1.0625rem, glow text
-- **Attribution:** Mono caption below
+### Pull quote / field note
 
-### Constraint Callouts
-
-- **Style:** gh-card with glow mono label, bone title, sage detail
-- **Padding:** 32px
-
-### Image Placeholders
-
-- **Background:** Diagonal stripe gradient (placeholder token)
-- **Label:** Mono caption chip on moss background, centered in 260px area
-
-### Stats
-
-- **Value:** Display-sized glow or ember number
-- **Caption:** Body text below, max 38ch
+2px left border in Glow, italic Newsreader in Glow.
 
 ## 6. Do's and Don'ts
 
-### Do:
+### Do
 
-- **Do** keep the page drenched in moss/fern — the greenhouse surface is the brand.
-- **Do** use glow for primary buttons, links, and action emphasis.
-- **Do** use ember exclusively for eyebrows and warm category labels.
-- **Do** set all mono labels in IBM Plex Mono uppercase with ≥0.1em tracking.
-- **Do** frame the site in `page-shell` with hedge side borders.
-- **Do** use the jackalope as a navigational sigil, not decoration.
-- **Do** apply hero/footer gradients for section atmosphere.
-- **Do** use gh-card for all grouped content — case studies, constraints, snapshots.
-- **Do** keep body text in sage on dark surfaces; bone for headings only.
-- **Do** enable `font-optical-sizing: auto` on Newsreader display type.
+- Keep screens moss-drenched; ration glow to ~2.5%.
+- Use the accent turn once per page.
+- Put all mono in uppercase with ≥0.12em tracking.
+- Prefer Lockup in nav; Jackalope alone for footer/identity moments.
+- Alternate Moss/Fern section backgrounds on long case studies.
+- Swap `[ bracket ]` copy and striped media for real Beacon/case content when ready.
 
-### Don't:
+### Don't
 
-- **Don't** revert to light bone-paper backgrounds — the old light system is retired.
-- **Don't** use gradient text (`background-clip: text`) for emphasis — use glow color or italic Newsreader.
-- **Don't** add glassmorphism, backdrop blur, or decorative glass cards.
-- **Don't** deploy box-shadow on portfolio-shell components.
-- **Don't** use Geist Sans — Archivo is the body font.
-- **Don't** put IBM Plex Mono on body paragraphs or long-form prose.
-- **Don't** use ember for button fills or primary CTAs.
-- **Don't** nest gh-cards inside gh-cards.
-- **Don't** let mock UI typography (Lexend Deca, Material light patterns) leak into portfolio chrome.
-- **Don't** add numbered section markers (01 / 02 / 03) as default scaffolding.
-- **Don't** use colored border-left stripes greater than 2px on cards or callouts — field notes and pull quotes are the only left-border pattern, and they use glow at 2px.
+- Use ember for buttons or primary CTAs.
+- Add drop shadows, glassmorphism, or gradient text.
+- Put mono on body paragraphs.
+- Rotate/outline/recolor the jackalope outside the palette.
+- Use Geist, Inter, or other default UI stacks for portfolio chrome.
+- Let mock-product typography (Lexend Deca, Roboto) leak into Greenhouse chrome.
+- Deploy more than one primary button per view.

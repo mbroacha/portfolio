@@ -1,0 +1,9 @@
+:root {
+  --gutter: 64px;        /* page gutter, desktop 1440 */
+  --section-y: 80px;     /* vertical section padding (72–96) */
+  --radius-sm: 4px;      /* buttons, badges */
+  --radius-md: 6px;      /* cards */
+  --radius-lg: 8px;      /* large media */
+  --border-1: 1px solid var(--hedge);
+  --transition-fast: 150ms ease-out;
+}

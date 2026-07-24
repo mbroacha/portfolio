@@ -8,6 +8,7 @@ interface ButtonBaseProps {
   variant?: ButtonVariant;
   className?: string;
   children: ReactNode;
+  /** Text variant shows → by default (handoff). Set false to suppress. */
   showArrow?: boolean;
 }
 
@@ -37,18 +38,20 @@ const variantClass: Record<ButtonVariant, string> = {
   text: "btn btn--text",
 };
 
+/** Mono uppercase button. One primary per view. */
 export const Button = ({
   variant = "primary",
   className,
   children,
-  showArrow = false,
+  showArrow,
   ...props
 }: ButtonProps) => {
   const classes = cn(variantClass[variant], className);
+  const withArrow = showArrow ?? variant === "text";
   const content = (
     <>
       {children}
-      {showArrow ? " →" : null}
+      {withArrow ? <span aria-hidden="true">→</span> : null}
     </>
   );
 
