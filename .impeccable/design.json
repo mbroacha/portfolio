@@ -1,0 +1,358 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-24T20:00:00.000Z",
+  "title": "Design System: Greenhouse",
+  "extensions": {
+    "colorMeta": {
+      "moss": {
+        "role": "neutral",
+        "displayName": "Deep Moss",
+        "canonical": "oklch(18% 0.04 155)",
+        "tonalRamp": [
+          "oklch(8% 0.02 155)",
+          "oklch(12% 0.03 155)",
+          "oklch(16% 0.035 155)",
+          "oklch(18% 0.04 155)",
+          "oklch(24% 0.04 155)",
+          "oklch(32% 0.04 155)",
+          "oklch(42% 0.035 155)",
+          "oklch(55% 0.03 155)"
+        ]
+      },
+      "fern": {
+        "role": "neutral",
+        "displayName": "Fern Tray",
+        "canonical": "oklch(24% 0.05 155)",
+        "tonalRamp": [
+          "oklch(10% 0.03 155)",
+          "oklch(14% 0.035 155)",
+          "oklch(18% 0.04 155)",
+          "oklch(22% 0.045 155)",
+          "oklch(24% 0.05 155)",
+          "oklch(30% 0.05 155)",
+          "oklch(38% 0.045 155)",
+          "oklch(48% 0.04 155)"
+        ]
+      },
+      "hedge": {
+        "role": "neutral",
+        "displayName": "Hedge Line",
+        "canonical": "oklch(28% 0.045 155)",
+        "tonalRamp": [
+          "oklch(14% 0.03 155)",
+          "oklch(18% 0.035 155)",
+          "oklch(22% 0.04 155)",
+          "oklch(26% 0.042 155)",
+          "oklch(28% 0.045 155)",
+          "oklch(34% 0.04 155)",
+          "oklch(42% 0.035 155)",
+          "oklch(52% 0.03 155)"
+        ]
+      },
+      "bone": {
+        "role": "neutral",
+        "displayName": "Bone",
+        "canonical": "oklch(93% 0.02 95)",
+        "tonalRamp": [
+          "oklch(20% 0.02 95)",
+          "oklch(35% 0.02 95)",
+          "oklch(50% 0.02 95)",
+          "oklch(65% 0.02 95)",
+          "oklch(78% 0.02 95)",
+          "oklch(86% 0.02 95)",
+          "oklch(90% 0.02 95)",
+          "oklch(93% 0.02 95)"
+        ]
+      },
+      "sage": {
+        "role": "neutral",
+        "displayName": "Sage",
+        "canonical": "oklch(78% 0.03 135)",
+        "tonalRamp": [
+          "oklch(25% 0.03 135)",
+          "oklch(35% 0.03 135)",
+          "oklch(45% 0.03 135)",
+          "oklch(55% 0.03 135)",
+          "oklch(65% 0.03 135)",
+          "oklch(72% 0.03 135)",
+          "oklch(78% 0.03 135)",
+          "oklch(88% 0.025 135)"
+        ]
+      },
+      "lichen": {
+        "role": "neutral",
+        "displayName": "Lichen",
+        "canonical": "oklch(62% 0.04 140)",
+        "tonalRamp": [
+          "oklch(22% 0.03 140)",
+          "oklch(32% 0.035 140)",
+          "oklch(42% 0.04 140)",
+          "oklch(52% 0.04 140)",
+          "oklch(58% 0.04 140)",
+          "oklch(62% 0.04 140)",
+          "oklch(72% 0.035 140)",
+          "oklch(84% 0.03 140)"
+        ]
+      },
+      "glow": {
+        "role": "primary",
+        "displayName": "Biolume Glow",
+        "canonical": "oklch(88% 0.19 120)",
+        "tonalRamp": [
+          "oklch(30% 0.10 120)",
+          "oklch(42% 0.13 120)",
+          "oklch(55% 0.16 120)",
+          "oklch(68% 0.18 120)",
+          "oklch(78% 0.19 120)",
+          "oklch(84% 0.19 120)",
+          "oklch(88% 0.19 120)",
+          "oklch(94% 0.15 120)"
+        ]
+      },
+      "glow-hover": {
+        "role": "primary",
+        "displayName": "Glow Hover",
+        "canonical": "oklch(91% 0.18 120)",
+        "tonalRamp": [
+          "oklch(32% 0.10 120)",
+          "oklch(44% 0.13 120)",
+          "oklch(58% 0.16 120)",
+          "oklch(70% 0.18 120)",
+          "oklch(80% 0.18 120)",
+          "oklch(86% 0.18 120)",
+          "oklch(91% 0.18 120)",
+          "oklch(96% 0.14 120)"
+        ]
+      },
+      "ember": {
+        "role": "secondary",
+        "displayName": "Field Ember",
+        "canonical": "oklch(72% 0.14 70)",
+        "tonalRamp": [
+          "oklch(28% 0.08 70)",
+          "oklch(38% 0.10 70)",
+          "oklch(48% 0.12 70)",
+          "oklch(58% 0.13 70)",
+          "oklch(66% 0.14 70)",
+          "oklch(72% 0.14 70)",
+          "oklch(82% 0.12 70)",
+          "oklch(92% 0.08 70)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Hero Display",
+        "purpose": "Home hero and largest headlines — one per page, max ~19ch."
+      },
+      "headline": {
+        "displayName": "Section Headline",
+        "purpose": "Section titles like Selected work and footer headline."
+      },
+      "title": {
+        "displayName": "Card Title",
+        "purpose": "Case study card headlines and tertiary display."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Long-form prose in sage on dark surfaces."
+      },
+      "label": {
+        "displayName": "Mono Label",
+        "purpose": "IBM Plex Mono uppercase labels — nav, eyebrows, metadata, buttons."
+      }
+    },
+    "shadows": [
+      {
+        "name": "handle-lift",
+        "value": "0 4px 16px -4px rgba(0,0,0,0.35)",
+        "purpose": "Before/after comparison drag handle at rest."
+      },
+      {
+        "name": "handle-hover",
+        "value": "0 6px 20px -4px rgba(0,0,0,0.4)",
+        "purpose": "Before/after comparison handle on hover."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.25, 0.1, 0.25, 1)",
+        "purpose": "Default transition for color and border state changes."
+      },
+      {
+        "name": "duration-brand",
+        "value": "150ms",
+        "purpose": "Standard brand transition — buttons, tags, nav links, card borders."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ],
+    "gradients": [
+      {
+        "name": "hero-gradient",
+        "value": "linear-gradient(160deg, #14291c 55%, #1b3a26 100%)",
+        "purpose": "Home hero section atmospheric background."
+      },
+      {
+        "name": "footer-gradient",
+        "value": "linear-gradient(200deg, #14291c 60%, #1b3a26 100%)",
+        "purpose": "About/footer section atmospheric background."
+      },
+      {
+        "name": "placeholder-stripe",
+        "value": "repeating-linear-gradient(-45deg, #1b3a26 0 14px, #1f4029 14px 28px)",
+        "purpose": "Image placeholder diagonal stripe pattern."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Glow-filled CTA — primary action across the portfolio.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">See the work</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; font-family: \"IBM Plex Mono\", ui-monospace, monospace; font-size: 0.75rem; font-weight: 600; line-height: 1; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: #14291C; background-color: #C8E64A; border: none; border-radius: 4px; padding: 14px 22px; transition: background-color 150ms ease-out; } .ds-btn-primary:hover { background-color: #D6F163; color: #14291C; } .ds-btn-primary:focus-visible { outline: 2px solid #C8E64A; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Ghost button with glow border — secondary navigation actions.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">About →</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; font-family: \"IBM Plex Mono\", ui-monospace, monospace; font-size: 0.75rem; font-weight: 600; line-height: 1; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: #C8E64A; background-color: transparent; border: 1px solid rgba(200, 230, 74, 0.4); border-radius: 4px; padding: 13px 22px; transition: background-color 150ms ease-out, color 150ms ease-out; } .ds-btn-secondary:hover { background-color: rgba(200, 230, 74, 0.1); color: #C8E64A; } .ds-btn-secondary:focus-visible { outline: 2px solid #C8E64A; outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Button",
+      "kind": "button",
+      "description": "Borderless glow text link with optional arrow.",
+      "html": "<a class=\"ds-btn-text\" href=\"#\">All case studies →</a>",
+      "css": ".ds-btn-text { display: inline-flex; align-items: center; font-family: \"IBM Plex Mono\", ui-monospace, monospace; font-size: 0.75rem; font-weight: 600; line-height: 1; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: #C8E64A; background: transparent; border: none; padding: 0; transition: color 150ms ease-out; } .ds-btn-text:hover { color: #F0EDDF; } .ds-btn-text:focus-visible { outline: 2px solid #C8E64A; outline-offset: 2px; }"
+    },
+    {
+      "name": "Status Tag (Glow)",
+      "kind": "chip",
+      "refersTo": "tag-glow",
+      "description": "Glow-bordered metadata chip for emphasis tags.",
+      "html": "<span class=\"ds-tag-glow\">Enterprise Systems</span>",
+      "css": ".ds-tag-glow { display: inline-flex; align-items: center; padding: 6px 10px; font-family: \"IBM Plex Mono\", ui-monospace, monospace; font-size: 0.625rem; font-weight: 600; line-height: 1; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; color: #C8E64A; background: transparent; border: 1px solid rgba(200, 230, 74, 0.4); border-radius: 3px; transition: border-color 150ms ease-out, color 150ms ease-out; }"
+    },
+    {
+      "name": "Status Tag (Ember)",
+      "kind": "chip",
+      "description": "Ember-bordered chip for warm category labels.",
+      "html": "<span class=\"ds-tag-ember\">Enterprise · Case 01</span>",
+      "css": ".ds-tag-ember { display: inline-flex; align-items: center; padding: 6px 10px; font-family: \"IBM Plex Mono\", ui-monospace, monospace; font-size: 0.625rem; font-weight: 600; line-height: 1; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; color: #E8A13C; background: transparent; border: 1px solid rgba(232, 161, 60, 0.4); border-radius: 3px; }"
+    },
+    {
+      "name": "Case Study Card",
+      "kind": "card",
+      "refersTo": "gh-card",
+      "description": "Interactive fern card with ember eyebrow and case study content.",
+      "html": "<a class=\"ds-gh-card\" href=\"#\"><span class=\"ds-gh-card__eyebrow\">Enterprise · Case 01</span><h3 class=\"ds-gh-card__title\">Command Center Risk Modeling</h3><p class=\"ds-gh-card__desc\">Workflow architecture for analysts balancing speed and traceability.</p></a>",
+      "css": ".ds-gh-card { display: flex; flex-direction: column; text-decoration: none; background-color: #1B3A26; border: 1px solid #24402E; border-radius: 6px; padding: 28px 26px; transition: border-color 150ms ease-out; } .ds-gh-card:hover { border-color: #7A9678; } .ds-gh-card:hover .ds-gh-card__title { text-decoration: underline; text-decoration-color: #C8E64A; text-underline-offset: 0.15em; } .ds-gh-card__eyebrow { display: block; margin-bottom: 10px; font-family: \"IBM Plex Mono\", ui-monospace, monospace; font-size: 0.6875rem; font-weight: 500; line-height: 1; letter-spacing: 0.16em; text-transform: uppercase; color: #E8A13C; } .ds-gh-card__title { margin: 0 0 10px; font-family: \"Newsreader\", ui-serif, Georgia, serif; font-size: 1.375rem; font-weight: 500; line-height: 1.2; color: #F0EDDF; } .ds-gh-card__desc { margin: 0; font-family: \"Archivo\", ui-sans-serif, system-ui, sans-serif; font-size: 0.84375rem; line-height: 1.55; color: #B9C7AE; }"
+    },
+    {
+      "name": "Proof Strip Cell",
+      "kind": "custom",
+      "description": "Credential one-liner in the hero-to-work proof bar.",
+      "html": "<div class=\"ds-proof-cell\">Research in level-1 ER trauma centers</div>",
+      "css": ".ds-proof-cell { padding: 22px 32px; font-family: \"IBM Plex Mono\", ui-monospace, monospace; font-size: 0.6875rem; font-weight: 500; line-height: 1.375; letter-spacing: 0.1em; text-transform: uppercase; color: #7A9678; border-bottom: 1px solid #24402E; }"
+    },
+    {
+      "name": "Field Note",
+      "kind": "custom",
+      "description": "Editorial margin annotation with glow left border.",
+      "html": "<div class=\"ds-field-note\"><p>The constraint wasn't visual polish — it was making risk legible under time pressure.</p></div>",
+      "css": ".ds-field-note { box-sizing: border-box; width: 100%; max-width: 50rem; margin: 3rem 0 3rem 0.75rem; padding-left: 1.125rem; border-left: 2px solid #C8E64A; border-top-left-radius: 6px; border-bottom-left-radius: 6px; font-family: \"Newsreader\", ui-serif, Georgia, serif; font-size: 1.0625rem; font-style: italic; font-weight: 400; line-height: 1.78; color: #C8E64A; font-optical-sizing: auto; } .ds-field-note p { margin: 0; }"
+    },
+    {
+      "name": "Pull Quote",
+      "kind": "custom",
+      "description": "Glow-bordered editorial pull quote.",
+      "html": "<blockquote class=\"ds-pull-quote\"><p>\"Decisions carry operational and financial weight.\"</p><cite>Project stakeholder</cite></blockquote>",
+      "css": ".ds-pull-quote { margin: 0; } .ds-pull-quote p { margin: 0 0 16px; max-width: 60rem; padding-left: 20px; border-left: 2px solid #C8E64A; font-family: \"Newsreader\", ui-serif, Georgia, serif; font-size: 1.0625rem; font-style: italic; font-weight: 400; line-height: 1.55; color: #C8E64A; font-optical-sizing: auto; } .ds-pull-quote cite { display: block; font-family: \"IBM Plex Mono\", ui-monospace, monospace; font-size: 0.6875rem; font-weight: 500; line-height: 1; letter-spacing: 0.14em; text-transform: uppercase; font-style: normal; color: #7A9678; }"
+    },
+    {
+      "name": "Site Nav",
+      "kind": "nav",
+      "description": "Top navigation with jackalope logo and contact CTA.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav__logo\" href=\"#\"><span class=\"ds-nav__mark\"></span><span class=\"ds-nav__wordmark\">Morgan Broacha</span></a><nav class=\"ds-nav__links\"><a class=\"ds-nav__link\" href=\"#work\">Work</a><a class=\"ds-btn-primary ds-nav__cta\" href=\"mailto:hello@morganbroacha.com\">Contact</a></nav></header>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 64px; border-bottom: 1px solid #24402E; background: #14291C; } .ds-nav__logo { display: flex; align-items: center; gap: 14px; text-decoration: none; } .ds-nav__mark { display: inline-block; width: 34px; height: 34px; background: #C8E64A; border-radius: 2px; } .ds-nav__wordmark { font-family: \"Newsreader\", ui-serif, Georgia, serif; font-size: 1.25rem; font-weight: 500; font-style: italic; color: #F0EDDF; } .ds-nav__links { display: flex; align-items: center; gap: 36px; } .ds-nav__link { font-family: \"IBM Plex Mono\", ui-monospace, monospace; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; color: #B9C7AE; transition: color 150ms ease-out; } .ds-nav__link:hover { color: #F0EDDF; } .ds-nav__cta { padding: 10px 18px !important; font-size: 0.75rem !important; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Greenhouse",
+    "overview": "Greenhouse is the brand system for Morgan Broacha's product design portfolio — a B2B SaaS product designer working in highly technical fields (aerospace, healthcare, field research). Dark-first, solarpunk-leaning: deep verdant darks, an editorial serif voice, instrument-panel mono details, one bioluminescent chartreuse accent.\n\nNewsreader speaks; Archivo explains; IBM Plex Mono measures. Moss carries ~70% of every screen; glow is rationed to one accent per view; ember belongs to data and eyebrows — never buttons. Canonical tokens and components live in design_handoff_greenhouse_brand_kit/.",
+    "keyCharacteristics": [
+      "Proportion: Moss ~70 · Fern ~20 · Bone ~6 · Glow ~2.5 · Ember ~1.5",
+      "Three-font stack: Newsreader display + Archivo body + IBM Plex Mono labels",
+      "Signature italic-chartreuse accent turn — max once per page",
+      "Flat elevation — fern surfaces + 1px hedge borders, no drop shadows",
+      "Jackalope CSS-mask stamp + Lockup for nav/covers",
+      "Restrained motion: 150ms ease-out on color/border only",
+      "Proof strip as field-credential bar between hero and work"
+    ],
+    "rules": [
+      {
+        "name": "The Drenched Field Rule",
+        "body": "The surface IS the color. Moss and fern carry 80%+ of any viewport. Neutrals are tinted greens, not gray — sage and lichen inherit the greenhouse hue.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Accent Rule",
+        "body": "Glow handles action and emphasis; ember handles category and warmth. Never swap their roles — ember is not a CTA color; glow is not an eyebrow color.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mono Boundary Rule",
+        "body": "IBM Plex Mono is for system labels only — eyebrows, buttons, tags, proof strip, nav, metadata keys. Never body paragraphs.",
+        "section": "typography"
+      },
+      {
+        "name": "The Italic Turn Rule",
+        "body": "Display emphasis uses Newsreader italic in glow (type-accent-turn). One accent phrase per hero maximum.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Greenhouse Rule",
+        "body": "Portfolio chrome uses borders and tonal layers only. No box-shadow on gh-cards, content modules, buttons, or nav.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Gradient Atmosphere Rule",
+        "body": "Gradients are permitted on full-bleed section backgrounds (hero, footer) for depth — never on individual cards or buttons.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep the page drenched in moss/fern — the greenhouse surface is the brand.",
+      "Do use glow for primary buttons, links, and action emphasis.",
+      "Do use ember exclusively for eyebrows and warm category labels.",
+      "Do set all mono labels in IBM Plex Mono uppercase with ≥0.1em tracking.",
+      "Do frame the site in page-shell with hedge side borders.",
+      "Do use the jackalope as a navigational sigil, not decoration.",
+      "Do apply hero/footer gradients for section atmosphere.",
+      "Do use gh-card for all grouped content — case studies, constraints, snapshots.",
+      "Do keep body text in sage on dark surfaces; bone for headings only.",
+      "Do enable font-optical-sizing: auto on Newsreader display type."
+    ],
+    "donts": [
+      "Don't revert to light bone-paper backgrounds — the old light system is retired.",
+      "Don't use gradient text (background-clip: text) for emphasis — use glow color or italic Newsreader.",
+      "Don't add glassmorphism, backdrop blur, or decorative glass cards.",
+      "Don't deploy box-shadow on portfolio-shell components.",
+      "Don't use Geist Sans — Archivo is the body font.",
+      "Don't put IBM Plex Mono on body paragraphs or long-form prose.",
+      "Don't use ember for button fills or primary CTAs.",
+      "Don't nest gh-cards inside gh-cards.",
+      "Don't let mock UI typography (Lexend Deca, Material light patterns) leak into portfolio chrome.",
+      "Don't add numbered section markers (01 / 02 / 03) as default scaffolding.",
+      "Don't use colored border-left stripes greater than 2px on cards or callouts — field notes and pull quotes are the only left-border pattern, and they use glow at 2px."
+    ]
+  }
+}

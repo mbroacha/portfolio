@@ -1,0 +1,26 @@
+<!-- @dsCard group="Portfolio" viewport="1440x900" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Morgan Broacha — Portfolio (Greenhouse)</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+</head>
+<body style="margin:0">
+<div id="root"></div>
+<script type="text/babel" src="Landing.jsx"></script>
+<script type="text/babel" src="CaseStudy.jsx"></script>
+<script type="text/babel">
+function App() {
+  const [view, setView] = React.useState('landing');
+  if (view === 'case') return <CaseStudy onBack={() => setView('landing')} />;
+  return <Landing onOpenCase={() => setView('case')} />;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

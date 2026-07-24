@@ -1,32 +1,71 @@
+/**
+ * Greenhouse design tokens — sourced from design_handoff_greenhouse_brand_kit.
+ * Palette, type ramp, spacing, and shape are normative. Tailwind RGB aliases
+ * remain for alpha-channel utilities (bg-ink/50, etc.).
+ */
 :root {
-  /* Colors */
-  --color-background: 245 243 239; /* #F5F3EF bone / paper */
-  --color-surface: 255 255 255;
-  --color-module: 245 245 245; /* light gray trays / modular blocks */
-  --color-text: 28 28 28; /* #1C1C1C soft charcoal */
-  --color-text-muted: 92 98 102; /* muted gray on paper */
-  --color-border: 220 215 207; /* soft divider on paper */
-  --color-primary: 181 87 58; /* #B5573A */
-  --color-secondary: 244 48 152; /* #f43098 */
-  --color-accent: 181 87 58; /* #B5573A */
+  /* Base palette (~70% moss · 20% fern · 6% bone · 2.5% glow · 1.5% ember) */
+  --moss: #14291c; /* page background */
+  --fern: #1b3a26; /* cards, raised surfaces, alternate sections */
+  --hedge: #24402e; /* borders, dividers */
+  --bone: #f0eddf; /* headlines, primary text */
+  --sage: #b9c7ae; /* body text */
+  --lichen: #7a9678; /* captions, muted labels */
+  --glow: #c8e64a; /* actions, links, logo — one accent per view */
+  --glow-hover: #d6f163;
+  --ember: #e8a13c; /* data, eyebrows, alerts — never buttons */
 
-  /* Typography */
-  --font-family-sans: "Geist Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-family-display: "Newsreader", ui-serif, Georgia, serif;
+  /* Semantic aliases (handoff) */
+  --surface-page: var(--moss);
+  --surface-card: var(--fern);
+  --border-default: var(--hedge);
+  --text-heading: var(--bone);
+  --text-body: var(--sage);
+  --text-muted: var(--lichen);
+  --accent-action: var(--glow);
+  --accent-data: var(--ember);
 
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.5rem;
-  --font-size-2xl: 2rem;
-  --font-size-3xl: 3rem;
+  /* Tailwind RGB channels (alpha-capable utilities) */
+  --color-background: 20 41 28;
+  --color-surface: 27 58 38;
+  --color-module: 27 58 38;
+  --color-text: 240 237 223;
+  --color-text-muted: 185 199 174;
+  --color-text-caption: 122 150 120;
+  --color-border: 36 64 46;
+  --color-primary: 200 230 74;
+  --color-accent: 200 230 74;
+  --color-ember: 232 161 60;
+
+  /* Typography families — handoff names + existing aliases */
+  --font-display: "Newsreader", ui-serif, Georgia, serif;
+  --font-body: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-family-display: var(--font-display);
+  --font-family-sans: var(--font-body);
+  --font-family-mono: var(--font-mono);
+
+  /* Type ramp (desktop 1440 reference; fluid clamps for responsive) */
+  --font-size-xs: 0.625rem; /* 10px — tags */
+  --font-size-sm: 0.6875rem; /* 11px — compact mono */
+  --font-size-label: 0.75rem; /* 12px — eyebrows, buttons */
+  --font-size-base: 0.9375rem; /* 15px — body */
+  --font-size-lg: 1rem; /* 16px — body lg */
+  --font-size-xl: 1.5rem; /* 24px — card title */
+  --font-size-2xl: 2.75rem; /* 44px — section */
+  --font-size-3xl: 2.75rem;
+  --font-size-stat: clamp(3.25rem, 5vw, 3.5rem); /* 52–56px */
+  --font-size-hero: clamp(2.75rem, 5.5vw, 4.75rem); /* → 76px */
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
 
-  /* Spacing scale */
+  --tracking-label: 0.14em;
+  --tracking-label-wide: 0.18em;
+  --tracking-button: 0.1em;
+
+  /* Spacing */
   --space-0: 0;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -37,14 +76,27 @@
   --space-12: 3rem;
   --space-16: 4rem;
 
-  /* Radius */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-
-  /* Max widths */
-  --max-width-page: 80rem;
-  --max-width-content: 60rem;
+  /* Layout — handoff gutter 64px, section-y 72–96 */
+  --gutter: 4rem;
+  --section-y: 5rem;
+  --page-gutter: var(--gutter);
+  --section-padding-y: clamp(4.5rem, 6vw, 6rem);
+  --max-width-page: 90rem;
+  --max-width-content: 68.75rem;
   --max-width-prose: 60rem;
   --max-width-rail: 15rem;
+
+  /* Radius */
+  --radius-sm: 4px; /* buttons, badges */
+  --radius-md: 6px; /* cards */
+  --radius-lg: 8px; /* large media */
+
+  --border-1: 1px solid var(--hedge);
+  --transition-fast: 150ms ease-out;
+
+  /* Gradients — heroes / section breaks only */
+  --gradient-hero: linear-gradient(160deg, #14291c 55%, #1b3a26 100%);
+  --gradient-footer: linear-gradient(200deg, #14291c 60%, #1b3a26 100%);
+  --placeholder-stripes: repeating-linear-gradient(-45deg, #1b3a26 0 14px, #1f4029 14px 28px);
+  --gradient-placeholder: var(--placeholder-stripes);
 }
