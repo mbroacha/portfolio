@@ -14,9 +14,6 @@ import { SummaryPrioritizedModal } from "../components/case-study/SummaryPriorit
 import { SystemSnapshot } from "../components/case-study/SystemSnapshot";
 import { TaggingNotesCaseTools } from "../components/case-study/TaggingNotesCaseTools";
 import { BodyText } from "../components/primitives/Typography";
-import { originalityProject } from "../case-studies/originality-project";
-
-const originalityOnlyMetadataTags = ["Team lead", "User research", "Design system"] as const;
 
 type KeyDecision = {
   title: string;
@@ -26,8 +23,6 @@ type KeyDecision = {
 };
 
 export const Originality = () => {
-  const study = originalityProject;
-
   const keyDecisions: KeyDecision[] = [
     {
       title: "Condense into a readable format",
@@ -63,9 +58,9 @@ export const Originality = () => {
     <article>
       <CaseStudyIntro
         eyebrow="Case 02 · Academic Integrity · Shipped 2018"
-        title={study.title}
-        subtitle={study.subtitle}
-        role={`${study.role}. Led research, reframed the problem from report readability to judgment support, and shipped the core detection workflow across cross-functional delivery.`}
+        title="Originality"
+        subtitle="Originality reveals signs that a student's paper was written by someone else, but educators couldn't act on what they saw. I redesigned the core detection workflow so that a signal became a decision."
+        role="Senior Product Designer"
         impactStats={[
           {
             value: "+2000%",
@@ -76,9 +71,9 @@ export const Originality = () => {
             caption: "Institutions using the product globally.",
           },
         ]}
-        timeline={study.timeline}
-        domain={study.domain}
-        tags={[...study.tags, ...originalityOnlyMetadataTags]}
+        timeline="2018"
+        domain="Academic Integrity"
+        tags={["Machine learning", "Enterprise UX", "Information architecture"]}
         hero={
           <div className="overflow-hidden rounded-lg border border-hedge">
             <img
@@ -255,7 +250,7 @@ export const Originality = () => {
       </CaseStudySection>
 
       <CaseStudyFooter
-        projectName={study.title}
+        projectName="Originality"
         team={[{ name: "Morgan Broacha", role: "Senior Product Designer" }]}
         nextCaseStudy={{ label: "Next case study", to: "/case-study/command-center-risk-modeling" }}
       />

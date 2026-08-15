@@ -14,13 +14,9 @@ import "@fontsource/newsreader/500-italic.css";
 import App from "./App";
 import "./index.css";
 
-/** Prefer Vite base; fall back to first path segment for GitHub Pages project sites. */
+/** Vite `base` in production is `/portfolio/` for GitHub Pages; `/` in local dev. */
 function getRouterBasename(): string {
-  const fromEnv = import.meta.env.BASE_URL.replace(/\/$/, "");
-  if (fromEnv && fromEnv !== "/") return fromEnv;
-
-  const segment = window.location.pathname.split("/").filter(Boolean)[0];
-  return segment ? `/${segment}` : "";
+  return import.meta.env.BASE_URL.replace(/\/$/, "") || "";
 }
 
 const rootEl = document.getElementById("root");

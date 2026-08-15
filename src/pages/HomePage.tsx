@@ -4,7 +4,6 @@ import { Eyebrow } from "../components/brand/Eyebrow";
 import { SiteFooter } from "../components/layout/SiteFooter";
 import { BodyLead, Display } from "../components/primitives/Typography";
 import { commandCenterRiskModeling } from "../case-studies/command-center-risk-modeling";
-import { originalityProject } from "../case-studies/originality-project";
 
 const proofStrip = [
   "Research in level-1 ER trauma centers",
@@ -22,8 +21,9 @@ const caseStudies = [
   },
   {
     eyebrow: "Academic Integrity · Case 02",
-    title: originalityProject.title,
-    description: originalityProject.subtitle,
+    title: "Originality",
+    description:
+      "Originality flags potential AI use in student writing — but educators couldn't act on what they saw. Scores appeared without context, history, or explanation. I redesigned the core detection workflow so that a signal became a decision.",
     to: "/case-study/originality",
     imageSrc: "/case-studies/originality/authorship-banner.png",
     imageAlt: "Turnitin authorship dashboard with submissions table and trend cards.",
