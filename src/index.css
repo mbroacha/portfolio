@@ -1,3 +1,6 @@
+/* EB Garamond is not vendored via @fontsource yet. Swap to a local import with
+   `npm i @fontsource-variable/eb-garamond` if you want self-hosted fonts. */
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap");
 @import "./styles/tokens.css";
 
 @tailwind base;
@@ -36,7 +39,7 @@
     margin: 0;
     min-height: 100vh;
     font-size: var(--font-size-base);
-    line-height: 1.65;
+    line-height: var(--line-height-body);
     font-weight: var(--font-weight-regular);
   }
 
@@ -290,7 +293,7 @@
   }
 
   .image-placeholder--dark {
-    background-image: repeating-linear-gradient(-45deg, #14291c 0 14px, #182f20 14px 28px);
+    background-image: repeating-linear-gradient(-45deg, var(--ink-700) 0 14px, var(--ink-600) 14px 28px);
   }
 
   .image-placeholder__label {

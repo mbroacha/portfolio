@@ -33,10 +33,8 @@ Success looks like:
 **Emotional goals:**
 - **Confidence** — this person has been in the room where decisions matter.
 - **Credibility** — fieldwork credentials (ER trauma centers, Yellowstone, launchpads, underfunded schools) are proof, not decoration.
-- **Distinctiveness** — the Greenhouse identity is immediately recognizable; not interchangeable with any other portfolio.
 
 **References (named):**
-- The Greenhouse brand kit itself — drenched moss surfaces, glow accent discipline, jackalope sigil, mono instrument labels.
 - Editorial specimen pages that treat type as structure, not decoration.
 - Field-research and operations culture — embedded with users, not observing from a studio.
 

@@ -257,7 +257,7 @@ export const Originality = () => {
       <CaseStudyFooter
         projectName={study.title}
         team={[{ name: "Morgan Broacha", role: "Senior Product Designer" }]}
-        nextCaseStudy={{ label: "Next case study", to: "/case-study/command-center-risk-modeling" }}
+        nextCaseStudy={{ label: "Back to work", to: "/" }}
       />
     </article>
   );
