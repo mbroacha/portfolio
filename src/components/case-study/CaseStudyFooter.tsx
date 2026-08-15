@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Jackalope } from "../brand/Jackalope";
 import { BodyText } from "../primitives/Typography";
 
 interface TeamMember {
@@ -14,12 +13,9 @@ interface CaseStudyFooterProps {
 }
 
 export const CaseStudyFooter = ({ projectName, team, nextCaseStudy }: CaseStudyFooterProps) => (
-  <footer className="grid gap-12 border-t border-hedge bg-footer-gradient px-6 py-16 sm:px-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16 lg:px-gutter lg:py-16">
-    <div className="grid min-h-[220px] place-items-center rounded-lg bg-glow">
-      <div className="flex items-center gap-4">
-        <Jackalope size={44} variant="moss" />
-        <span className="font-display text-4xl font-medium tracking-wide text-moss">{projectName}</span>
-      </div>
+  <footer className="grid gap-12 border-t border-hedge bg-moss px-6 py-16 sm:px-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16 lg:px-gutter lg:py-16">
+    <div className="grid min-h-[220px] place-items-center border border-hedge bg-fern">
+      <span className="font-display text-4xl italic text-bone">{projectName}</span>
     </div>
 
     <div className="flex flex-col gap-4">
@@ -27,7 +23,7 @@ export const CaseStudyFooter = ({ projectName, team, nextCaseStudy }: CaseStudyF
       <div className="flex flex-col gap-2">
         {team.map((member) => (
           <BodyText key={member.name} className="text-sm">
-            {member.name} — {member.role}
+            {member.name}, {member.role}
           </BodyText>
         ))}
       </div>

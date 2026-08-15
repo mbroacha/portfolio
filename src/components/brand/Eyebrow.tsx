@@ -8,7 +8,7 @@ interface EyebrowProps extends HTMLAttributes<HTMLParagraphElement> {
 }
 
 const toneClass: Record<EyebrowTone, string> = {
-  ember: "text-ember",
+  ember: "text-lichen",
   lichen: "text-lichen",
   sage: "text-sage",
   glow: "text-glow",
