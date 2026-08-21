@@ -1,6 +1,6 @@
 /* EB Garamond is not vendored via @fontsource yet. Swap to a local import with
    `npm i @fontsource-variable/eb-garamond` if you want self-hosted fonts. */
-@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Sans:wght@400;500&display=swap");
 @import "./styles/tokens.css";
 
 @tailwind base;
@@ -94,6 +94,21 @@
 }
 
 @layer components {
+  /* Mono carries structure: the rail, labels, captions, metadata, the footer.
+     Prose is Plex Sans. See tokens.css. */
+  .cv-mono {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-mono);
+  }
+
+  /* Cap the reading measure on standalone prose in the content column.
+     Two-column blocks are already narrow enough to self-limit. */
+  .cv-prose > p {
+    max-width: var(--measure-prose);
+  }
+
+
   /* Display — hero · Newsreader 500, 76px / 1.08, -0.015em */
   .type-title--hero {
     @apply font-display font-medium leading-[1.08] text-bone;
