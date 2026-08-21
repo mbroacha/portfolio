@@ -170,5 +170,22 @@ export const HomePage = () => (
       }
       description="The first collision avoidance platform in the aerospace industry. Sole designer, collaborating on product strategy."
     />
+
+    <Rule className="mb-6" />
+
+    <MediaSlot ratio="3/4" width="55%" caption="Gradescope Mobile &middot; artifact pending" />
+    <WorkEntry
+      index={4}
+      title="Gradescope Mobile"
+      to="/case-study/gradescope-mobile"
+      meta={
+        <>
+          <span className="italic">Gradescope</span>, one of two designers
+          <br />
+          Education &middot; Launched 2021
+        </>
+      }
+      description="Scan and submit handwritten homework from your phone. It did not work, and the reasons are more interesting than the product. My only mobile work, and the only project where I designed alongside another designer as a peer."
+    />
   </CvPage>
 );

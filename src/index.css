@@ -94,20 +94,6 @@
 }
 
 @layer components {
-  .jackalope {
-    background: var(--glow);
-    -webkit-mask: url("/assets/jackalope.png") center / contain no-repeat;
-    mask: url("/assets/jackalope.png") center / contain no-repeat;
-  }
-
-  .jackalope--bone {
-    background: var(--bone);
-  }
-
-  .jackalope--moss {
-    background: var(--moss);
-  }
-
   /* Display — hero · Newsreader 500, 76px / 1.08, -0.015em */
   .type-title--hero {
     @apply font-display font-medium leading-[1.08] text-bone;
