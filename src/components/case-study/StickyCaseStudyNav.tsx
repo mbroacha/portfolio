@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Jackalope } from "../brand/Jackalope";
 import { Caption } from "../primitives/Typography";
 
 interface RailMetadataItem {
@@ -49,8 +48,7 @@ export const StickyCaseStudyNav = ({ title, metadata = [], links }: StickyCaseSt
         className="inline-flex items-center gap-2 no-underline transition-opacity duration-brand ease-out hover:opacity-75"
         aria-label="Back home"
       >
-        <Jackalope size={28} />
-        <span className="type-mono text-glow">Home</span>
+        <span className="type-mono text-glow">&larr; Back to work</span>
       </Link>
     </nav>
   </div>
