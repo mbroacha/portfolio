@@ -6,6 +6,7 @@ import { Originality } from "./pages/Originality";
 import { Sysgit } from "./pages/Sysgit";
 import { HowIWork } from "./pages/HowIWork";
 import { Beacon } from "./pages/Beacon";
+import { GradescopeMobile } from "./pages/GradescopeMobile";
 
 const App = () => (
   <Routes>
@@ -14,6 +15,7 @@ const App = () => (
       <Route path="/case-study/originality" element={<Originality />} />
       <Route path="/case-study/sysgit" element={<Sysgit />} />
       <Route path="/case-study/beacon" element={<Beacon />} />
+      <Route path="/case-study/gradescope-mobile" element={<GradescopeMobile />} />
       <Route path="/how-i-work" element={<HowIWork />} />
       <Route path="/case-study/:slug" element={<CaseStudyPage />} />
       <Route path="/case-study" element={<Navigate to="/case-study/originality" replace />} />

@@ -7,13 +7,9 @@ import "@fontsource/ibm-plex-mono/600.css";
 import App from "./App";
 import "./index.css";
 
-/** Prefer Vite base; fall back to first path segment for GitHub Pages project sites. */
+/** Router base comes from Vite's base. Served at the domain root, so this is "". */
 function getRouterBasename(): string {
-  const fromEnv = import.meta.env.BASE_URL.replace(/\/$/, "");
-  if (fromEnv && fromEnv !== "/") return fromEnv;
-
-  const segment = window.location.pathname.split("/").filter(Boolean)[0];
-  return segment ? `/${segment}` : "";
+  return import.meta.env.BASE_URL.replace(/\/$/, "");
 }
 
 const rootEl = document.getElementById("root");
