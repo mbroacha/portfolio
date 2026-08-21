@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { CvPage } from "../components/cv/CvPage";
 import { MetaList, Rule, SectionHeading, MediaSlot, WorkEntry } from "../components/cv/CvPrimitives";
 
@@ -50,6 +51,9 @@ const Sidebar = () => (
         front-end PRs.
       </div>
       <div className="flex flex-col gap-0.5">
+        <Link to="/how-i-work" className="underline">
+          How I work
+        </Link>
         <a href="mailto:hello@morganbroacha.com" className="underline">
           Email
         </a>
@@ -135,11 +139,11 @@ export const HomePage = () => (
 
     <Rule className="mb-6" />
 
-    {/* TODO: unlink until written. See SYSGIT_INTAKE.md. */}
     <MediaSlot ratio="16/9" caption="Sysgit &middot; artifact pending" />
     <WorkEntry
       index={2}
       title="Sysgit"
+      to="/case-study/sysgit"
       meta={
         <>
           <span className="italic">Sysgit</span>, Design Lead and sole designer
@@ -147,16 +151,16 @@ export const HomePage = () => (
           Systems engineering &middot; 2023 &ndash; 2026
         </>
       }
-      description="Systems engineering software: diagramming, version control, and pipelines for engineers who are not developers. I own product design, the design system, research, competitive analysis, strategy, and brand. Case study in progress."
+      description="Git for hardware. Modeling, requirements, and version control in one workflow, for engineers who are not developers. I own product design, the design system, research, competitive analysis, strategy, and brand."
     />
 
     <Rule className="mb-6" />
 
-    {/* TODO: authored in src/case-studies/beacon-case-study.ts (stub). */}
     <MediaSlot ratio="3/4" width="55%" caption="Beacon &middot; artifact pending" />
     <WorkEntry
       index={3}
       title="Beacon"
+      to="/case-study/beacon"
       meta={
         <>
           <span className="italic">Slingshot Aerospace</span>, Senior Product Designer
@@ -164,7 +168,7 @@ export const HomePage = () => (
           Aerospace &middot; 2022 &ndash; 2023
         </>
       }
-      description="The first collision avoidance platform in the aerospace industry. Sole designer, collaborating on product strategy. Case study in progress."
+      description="The first collision avoidance platform in the aerospace industry. Sole designer, collaborating on product strategy."
     />
   </CvPage>
 );
