@@ -60,10 +60,13 @@
   --color-ember: 138 138 138;
 
   /* ── Typography ───────────────────────────────────────────── */
-  /* The template sets mono as the body face and reserves the serif for
-     italic display accents only. That inversion is the whole character. */
+  /* Three roles, one family where possible.
+     Plex Sans reads prose. Plex Mono carries structure: metadata, labels,
+     captions, the rail. EB Garamond italic is the only display voice.
+     Sans and mono share a skeleton, so the page reads as one voice at two
+     widths rather than two typefaces negotiating. */
   --font-display: "EB Garamond", ui-serif, Georgia, serif;
-  --font-body: "IBM Plex Mono", ui-monospace, monospace;
+  --font-body: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
   --font-family-display: var(--font-display);
   --font-family-sans: var(--font-body);
@@ -71,10 +74,10 @@
 
   /* Type ramp. Template baseline is 12px/1.5. */
   --font-size-xs: 0.6875rem; /* 11px — micro labels */
-  --font-size-sm: 0.75rem; /* 12px — compact */
+  --font-size-sm: 0.75rem; /* 12px — mono metadata, captions, the rail */
   --font-size-label: 0.75rem; /* 12px — eyebrows, buttons */
-  --font-size-base: 0.75rem; /* 12px — body */
-  --font-size-lg: 0.8125rem; /* 13px — body lg */
+  --font-size-base: 0.9375rem; /* 15px — prose */
+  --font-size-lg: 1rem; /* 16px — lead prose */
   --font-size-xl: 1.25rem; /* 20px — project title (serif italic) */
   --font-size-2xl: 1rem; /* 16px — section heading (serif italic) */
   --font-size-3xl: 1.25rem;
@@ -89,7 +92,9 @@
   --tracking-label-wide: 0.12em;
   --tracking-button: 0.04em;
 
-  --line-height-body: 1.5;
+  --line-height-body: 1.6;
+  --line-height-mono: 1.5;
+  --measure-prose: 68ch;
 
   /* ── Spacing ──────────────────────────────────────────────── */
   --space-0: 0;

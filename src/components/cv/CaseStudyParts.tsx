@@ -27,7 +27,7 @@ export const InsightBlock = ({ quote, source }: { quote: string; source?: string
     <blockquote className="m-0 max-w-[34ch] font-display text-[22px] italic leading-[1.35] text-bone">
       {quote}
     </blockquote>
-    {source ? <div className="mt-3 text-lichen">{source}</div> : null}
+    {source ? <div className="cv-mono mt-3 text-lichen">{source}</div> : null}
   </div>
 );
 
@@ -45,7 +45,7 @@ export const DecisionRow = ({ decision, first }: { decision: Decision; first?: b
   <div className={cn("grid grid-cols-1 gap-6 py-5 sm:grid-cols-2", first ? "pt-0" : "border-t border-hedge")}>
     <div className="text-bone">
       <em className="font-display not-italic">{decision.title}</em>
-      {decision.rejected ? <span className="mt-2.5 block text-lichen">Rejected: {decision.rejected}</span> : null}
+      {decision.rejected ? <span className="cv-mono mt-2.5 block text-lichen">Rejected: {decision.rejected}</span> : null}
     </div>
     <div>
       {(
@@ -56,7 +56,7 @@ export const DecisionRow = ({ decision, first }: { decision: Decision; first?: b
         ] as const
       ).map(([label, value]) => (
         <div key={label} className="mb-3 flex flex-col gap-1">
-          <span className="text-[11px] uppercase tracking-[0.08em] text-lichen">{label}</span>
+          <span className="cv-mono text-[11px] uppercase tracking-[0.08em] text-lichen">{label}</span>
           <span>{value}</span>
         </div>
       ))}
@@ -124,7 +124,7 @@ export const Step = ({
       <div className="text-bone">
         {n}. {title}
       </div>
-      {tool ? <div className="mt-2 text-lichen">{tool}</div> : null}
+      {tool ? <div className="cv-mono mt-2 text-lichen">{tool}</div> : null}
     </div>
     <div className="flex flex-col gap-3">{children}</div>
   </div>
@@ -140,7 +140,7 @@ export const Ledger = ({ rows }: { rows: { left: string; right: string; note?: s
       >
         <div className="text-bone">{r.left}</div>
         <div>{r.right}</div>
-        {r.note ? <div className="text-lichen sm:text-right">{r.note}</div> : null}
+        {r.note ? <div className="cv-mono text-lichen sm:text-right">{r.note}</div> : null}
       </div>
     ))}
   </div>
