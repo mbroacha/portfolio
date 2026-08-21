@@ -1,71 +1,97 @@
 /**
- * Greenhouse design tokens — sourced from design_handoff_greenhouse_brand_kit.
- * Palette, type ramp, spacing, and shape are normative. Tailwind RGB aliases
- * remain for alpha-channel utilities (bg-ink/50, etc.).
+ * Dark CV design tokens.
+ *
+ * Palette and type sourced from the Dark CV template (Portfolio CV + Case Study).
+ * See PORTFOLIO_PLAN.md §3 for why the Greenhouse brand was retired.
+ *
+ * MIGRATION NOTE: the legacy Greenhouse variable names (--moss, --fern, --hedge,
+ * --bone, --sage, --lichen, --glow, --ember) are retained as aliases and repointed
+ * at the new palette. This re-skins every existing component from this one file
+ * with zero risk of dangling references. Prefer the semantic names below in new
+ * code; the legacy aliases can be renamed in a later mechanical pass.
  */
 :root {
-  /* Base palette (~70% moss · 20% fern · 6% bone · 2.5% glow · 1.5% ember) */
-  --moss: #14291c; /* page background */
-  --fern: #1b3a26; /* cards, raised surfaces, alternate sections */
-  --hedge: #24402e; /* borders, dividers */
-  --bone: #f0eddf; /* headlines, primary text */
-  --sage: #b9c7ae; /* body text */
-  --lichen: #7a9678; /* captions, muted labels */
-  --glow: #c8e64a; /* actions, links, logo — one accent per view */
-  --glow-hover: #d6f163;
-  --ember: #e8a13c; /* data, eyebrows, alerts — never buttons */
+  /* ── Base palette ─────────────────────────────────────────── */
+  --ink-900: #161616; /* page background, footer */
+  --ink-800: #1e1e1e; /* panel / main column */
+  --ink-700: #3a3a3a; /* media slot surround */
+  --ink-600: #454545; /* media slot interior */
+  --rule: #333333; /* borders, dividers, hairlines */
+  --edge: #6b6b6b; /* slot frame edge (non-text only) */
 
-  /* Semantic aliases (handoff) */
-  --surface-page: var(--moss);
-  --surface-card: var(--fern);
-  --border-default: var(--hedge);
-  --text-heading: var(--bone);
-  --text-body: var(--sage);
-  --text-muted: var(--lichen);
-  --accent-action: var(--glow);
-  --accent-data: var(--ember);
+  --text-primary: #d9d9d9; /* headings, labels, links */
+  --text-secondary: #b8b8b8; /* body copy */
+  --text-tertiary: #8a8a8a; /* captions, muted metadata */
+  --text-hover: #ffffff; /* link hover */
+
+  /* ── Semantic aliases ─────────────────────────────────────── */
+  --surface-page: var(--ink-900);
+  --surface-card: var(--ink-800);
+  --surface-media: var(--ink-700);
+  --border-default: var(--rule);
+  --text-heading: var(--text-primary);
+  --text-body: var(--text-secondary);
+  --text-muted: var(--text-tertiary);
+  --accent-action: var(--text-primary);
+
+  /* ── Legacy Greenhouse aliases, repointed ─────────────────── */
+  --moss: var(--ink-900);
+  --fern: var(--ink-800);
+  --hedge: var(--rule);
+  --bone: var(--text-primary);
+  --sage: var(--text-secondary);
+  --lichen: var(--text-tertiary);
+  --glow: var(--text-primary);
+  --glow-hover: var(--text-hover);
+  /* Ember is retired. Repointed to muted so any stray usage degrades quietly
+     instead of rendering orange in a monochrome system. */
+  --ember: var(--text-tertiary);
 
   /* Tailwind RGB channels (alpha-capable utilities) */
-  --color-background: 20 41 28;
-  --color-surface: 27 58 38;
-  --color-module: 27 58 38;
-  --color-text: 240 237 223;
-  --color-text-muted: 185 199 174;
-  --color-text-caption: 122 150 120;
-  --color-border: 36 64 46;
-  --color-primary: 200 230 74;
-  --color-accent: 200 230 74;
-  --color-ember: 232 161 60;
+  --color-background: 22 22 22;
+  --color-surface: 30 30 30;
+  --color-module: 30 30 30;
+  --color-text: 217 217 217;
+  --color-text-muted: 184 184 184;
+  --color-text-caption: 138 138 138;
+  --color-border: 51 51 51;
+  --color-primary: 217 217 217;
+  --color-accent: 217 217 217;
+  --color-ember: 138 138 138;
 
-  /* Typography families — handoff names + existing aliases */
-  --font-display: "Newsreader", ui-serif, Georgia, serif;
-  --font-body: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  /* ── Typography ───────────────────────────────────────────── */
+  /* The template sets mono as the body face and reserves the serif for
+     italic display accents only. That inversion is the whole character. */
+  --font-display: "EB Garamond", ui-serif, Georgia, serif;
+  --font-body: "IBM Plex Mono", ui-monospace, monospace;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
   --font-family-display: var(--font-display);
   --font-family-sans: var(--font-body);
   --font-family-mono: var(--font-mono);
 
-  /* Type ramp (desktop 1440 reference; fluid clamps for responsive) */
-  --font-size-xs: 0.625rem; /* 10px — tags */
-  --font-size-sm: 0.6875rem; /* 11px — compact mono */
+  /* Type ramp. Template baseline is 12px/1.5. */
+  --font-size-xs: 0.6875rem; /* 11px — micro labels */
+  --font-size-sm: 0.75rem; /* 12px — compact */
   --font-size-label: 0.75rem; /* 12px — eyebrows, buttons */
-  --font-size-base: 0.9375rem; /* 15px — body */
-  --font-size-lg: 1rem; /* 16px — body lg */
-  --font-size-xl: 1.5rem; /* 24px — card title */
-  --font-size-2xl: 2.75rem; /* 44px — section */
-  --font-size-3xl: 2.75rem;
-  --font-size-stat: clamp(3.25rem, 5vw, 3.5rem); /* 52–56px */
-  --font-size-hero: clamp(2.75rem, 5.5vw, 4.75rem); /* → 76px */
+  --font-size-base: 0.75rem; /* 12px — body */
+  --font-size-lg: 0.8125rem; /* 13px — body lg */
+  --font-size-xl: 1.25rem; /* 20px — project title (serif italic) */
+  --font-size-2xl: 1rem; /* 16px — section heading (serif italic) */
+  --font-size-3xl: 1.25rem;
+  --font-size-stat: 1.75rem; /* 28px — outcome figures (serif italic) */
+  --font-size-hero: clamp(1.25rem, 2.4vw, 1.5rem);
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;
-  --font-weight-semibold: 600;
+  --font-weight-semibold: 500;
 
-  --tracking-label: 0.14em;
-  --tracking-label-wide: 0.18em;
-  --tracking-button: 0.1em;
+  --tracking-label: 0.08em;
+  --tracking-label-wide: 0.12em;
+  --tracking-button: 0.04em;
 
-  /* Spacing */
+  --line-height-body: 1.5;
+
+  /* ── Spacing ──────────────────────────────────────────────── */
   --space-0: 0;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -76,27 +102,52 @@
   --space-12: 3rem;
   --space-16: 4rem;
 
-  /* Layout — handoff gutter 64px, section-y 72–96 */
-  --gutter: 4rem;
-  --section-y: 5rem;
+  /* ── Layout ───────────────────────────────────────────────── */
+  /* Template: 1440 max, 33/67 split, 32px padding. */
+  --gutter: 2rem;
+  --section-y: 1.5rem;
   --page-gutter: var(--gutter);
-  --section-padding-y: clamp(4.5rem, 6vw, 6rem);
+  --section-padding-y: 1.5rem;
   --max-width-page: 90rem;
-  --max-width-content: 68.75rem;
-  --max-width-prose: 60rem;
-  --max-width-rail: 15rem;
+  --max-width-content: 90rem;
+  --max-width-prose: 68ch;
+  --max-width-rail: 33%;
+  --sidebar-width: 33%;
 
-  /* Radius */
-  --radius-sm: 4px; /* buttons, badges */
-  --radius-md: 6px; /* cards */
-  --radius-lg: 8px; /* large media */
+  /* ── Shape ────────────────────────────────────────────────── */
+  /* The template is entirely square. Radii collapse to zero. */
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
 
-  --border-1: 1px solid var(--hedge);
+  --border-1: 1px solid var(--rule);
   --transition-fast: 150ms ease-out;
 
-  /* Gradients — heroes / section breaks only */
-  --gradient-hero: linear-gradient(160deg, #14291c 55%, #1b3a26 100%);
-  --gradient-footer: linear-gradient(200deg, #14291c 60%, #1b3a26 100%);
-  --placeholder-stripes: repeating-linear-gradient(-45deg, #1b3a26 0 14px, #1f4029 14px 28px);
-  --gradient-placeholder: var(--placeholder-stripes);
+  /* ── Media placeholders ───────────────────────────────────── */
+  /* No gradients in this system. Retained as flat fills so any component
+     still referencing them renders correctly. */
+  --gradient-hero: none;
+  --gradient-footer: none;
+  --placeholder-stripes: none;
+  --gradient-placeholder: none;
+}
+
+/**
+ * Contrast corrections.
+ *
+ * Verified against WCAG 2.1 AA (PRODUCT.md accessibility target). The template's
+ * own values fail in two places, both fixed here:
+ *
+ *   #6b6b6b footer text on #161616  → 3.40:1  FAIL at 12px
+ *   #8a8a8a slot caption on #3a3a3a → 3.29:1  FAIL at 12px
+ *
+ * --edge (#6b6b6b) is therefore reserved for 1px frame strokes only and must
+ * never carry text. Captions sitting on media surfaces use --text-on-media.
+ *
+ * Passing values for reference, on #1e1e1e panel:
+ *   #d9d9d9 11.81:1 · #b8b8b8 8.40:1 · #8a8a8a 4.83:1
+ */
+:root {
+  --text-on-media: var(--text-secondary); /* 5.73:1 on #3a3a3a — passes */
+  --text-footer: var(--text-tertiary); /* 5.24:1 on #161616 — passes */
 }
