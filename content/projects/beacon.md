@@ -19,10 +19,10 @@ artifacts_available: []
 ## Team context
 
 Sole designer **on Beacon**, but part of a company-wide design team at Slingshot.
-That meant a shared company design system he contributed to rather than owned,
+That meant a shared company design system she contributed to rather than owned,
 and group critique.
 
-Important contrast with Sysgit, where he is the entire design function and there
+Important contrast with Sysgit, where she is the entire design function and there
 is no crit at all.
 
 ## Context
@@ -100,7 +100,7 @@ sensor networks see your assets whether you like it or not, and sharing benefits
 everyone because nobody wants to hit anyone. The genuinely sensitive fields are
 **capability** — your risk thresholds, and whether your asset can maneuver at all.
 
-So he built optional signals rather than a mandate: whether to share thresholds,
+So she built optional signals rather than a mandate: whether to share thresholds,
 whether to disclose that an asset can move.
 
 **The mechanic that made it work:** operators became more willing to share once
@@ -169,7 +169,7 @@ Raw access is the mitigation.
 **What happened.** Other product teams at the company pushed hard to make Beacon
 look especially cutting edge. Morgan went along with it.
 
-**His verdict.** He wishes he had pushed back and prioritized information
+**Her verdict.** She wishes she had pushed back and prioritized information
 architecture instead.
 
 Connect this to PRODUCT.md, which lists "portfolio theater" and visual
@@ -193,7 +193,7 @@ At the time Morgan left, Beacon was used by **operators of 60% of total assets i
 space**, including **SpaceX, NASA, Inmarsat, and Endurosat**.
 
 This is the strongest outcome number anywhere in the portfolio, and Morgan
-volunteered it while saying he had no metrics.
+volunteered it while saying she had no metrics.
 
 **Precision needed before publishing.** State it exactly and be ready for the
 obvious follow-up. Starlink alone accounts for a very large share of active
@@ -237,7 +237,7 @@ performance.
 
 At Sysgit there is an incumbent, so Morgan studied Cameo's stereotype feature and
 designed toward what users were already trained on. At Beacon there was no prior
-art at all, so he anchored to the only thing available: CDMs and ephemerides,
+art at all, so she anchored to the only thing available: CDMs and ephemerides,
 which are extremely data dense, plus low-tech reports from satellites and ground
 stations.
 

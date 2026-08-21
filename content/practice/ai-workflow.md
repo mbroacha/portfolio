@@ -23,11 +23,11 @@ Acceptance criteria first:
 - Collected samples of diagram color palettes and products with switchable themes
 - **Looked at Cameo's existing stereotype feature** for setting color schemes, to
   see what users may already be trained on
-- Asked Claude whether other products have the feature he was picturing
+- Asked Claude whether other products have the feature she was picturing
 
 ### 3. Claude Design, with the design system already loaded
 
-The design system is built in. The notable part is why he prompts at all:
+The design system is built in. The notable part is why she prompts at all:
 
 > "The prompt is actually a good way for me to think through some of the nuances
 > of the workflow."
@@ -40,13 +40,13 @@ Nuances that surfaced while writing the prompt:
   objects. What if the base were a premade theme?
 
 Method: feed in the samples, set expectations on general structure, ask for **at
-least 3 iterations and tell it to go wild on one.** Then review for what he likes,
-**what he forgot to prompt**, and unresolved edge cases. Fidelity is explicitly
+least 3 iterations and tell it to go wild on one.** Then review for what she likes,
+**what she forgot to prompt**, and unresolved edge cases. Fidelity is explicitly
 not the concern at this stage.
 
 ### 4. Working prototype, for a specific reason
 
-Built because he wanted to see the interaction between the color palette override
+Built because she wanted to see the interaction between the color palette override
 and the color picker. Not because prototypes are generally good.
 
 In the prototype: saw the sheer number of objects to cover and **grouped them for
@@ -56,14 +56,14 @@ digestibility**.
 
 Feeding the prototype more sample themes, sourced by:
 
-- Walking the floor at a defense conference he happened to be attending, noting
+- Walking the floor at a defense conference she happened to be attending, noting
   what every company used for branding
-- Asking his own devs for their favorite IDE themes
+- Asking her own devs for their favorite IDE themes
 
 Then adjusting the samples so they read as distinct from each other, and checking
 whether the built-in colors actually work together.
 
-### 6. Claude Code, where he gets pedantic
+### 6. Claude Code, where she gets pedantic
 
 Handoff: tell Claude Design to wrap it up for Claude Code.
 
@@ -75,7 +75,7 @@ Checks in code:
 - Would the user have to scroll too far?
 - Is it clear where this setting lives?
 
-**The catch:** working in the real thing, he realized that if users can override
+**The catch:** working in the real thing, she realized that if users can override
 the accessibility colors, there needs to be a warning. A static mock of a color
 picker would not have surfaced that.
 
@@ -86,7 +86,7 @@ full context.** Not over a screenshot.
 
 ### 8. PR and review
 
-- **Morgan writes the UI changes himself**, from a design perspective
+- **Morgan writes the UI changes herself**, from a design perspective
 - **Claude Code lists the technical changes**
 - Requests review from devs
 - Uses Claude Code for pipeline problems
@@ -101,7 +101,7 @@ grouping 40+ objects, whether built-in colors cohere, the accessibility warning,
 scroll depth, discoverability of the setting, and what to hand off when.
 
 **Prompting is used as a thinking tool.** Writing the prompt is where the workflow
-nuances surface. Reviewing iterations is how he finds what he forgot to specify.
+nuances surface. Reviewing iterations is how she finds what she forgot to specify.
 That is a different claim from "it generates my designs."
 
 **The taste inputs are analog.** Conference floor branding and devs' IDE themes.
@@ -119,7 +119,7 @@ not just the speed."
 
 **Anything requiring real systems engineering subject matter expertise.**
 Technical workflows get mapped by hand. The reason is epistemic rather than
-ideological: systems engineering is niche enough that he cannot assume the
+ideological: systems engineering is niche enough that she cannot assume the
 training data is there. Use the model where coverage is dense; do not where it is
 sparse.
 
@@ -131,13 +131,13 @@ around, see what feels clunky, see the interactions I didn't expect."
 ## What broke: leaving Figma
 
 Tried Figma Make and the Figma MCP when they launched. The results were never
-what he wanted, and the realization was sharper than the tooling verdict:
+what she wanted, and the realization was sharper than the tooling verdict:
 
 > "I realized I was just trying to find reasons to justify continuing to use
 > Figma."
 
 **Why this matters beyond tooling.** Designers are professionally defined by
-Figma. Recognizing that he was rationalizing to preserve an identity-linked tool,
+Figma. Recognizing that she was rationalizing to preserve an identity-linked tool,
 then leaving anyway, is the same psychology Sysgit's users face with Cameo:
 attachment to a bad tool because competence in it is part of who you are.
 
@@ -153,7 +153,7 @@ backend, gauged by ticket scope and by which objects Claude Code is touching.
 prototype handoff and comment feedback, then a formal PR review like everyone
 else. Having merge access did not become a reason to bypass review.
 
-**Reception:** engineers were supportive, including early on when he was making
+**Reception:** engineers were supportive, including early on when she was making
 "a lot of junior dev mistakes."
 
 ## Effect on the design system
@@ -168,5 +168,5 @@ Writing the code changed the system itself.
 ## Team adoption
 
 The team is, in Morgan's words, "maybe a little too gung-ho about AI for writing
-code, reviewing code, unit tests." No claim that he evangelized a practice. The
+code, reviewing code, unit tests." No claim that she evangelized a practice. The
 honest version is that everyone is figuring it out together.

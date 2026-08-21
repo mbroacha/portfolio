@@ -9,7 +9,7 @@ one.
 
 Sysgit gives users graphical, tabular, and code views over the same model. That
 is the pattern. One corpus, several views, chosen by what the reader is trying to
-do. Applying Morgan's own product thesis to his own portfolio is coherent rather
+do. Applying Morgan's own product thesis to her own portfolio is coherent rather
 than gimmicky, and it reinforces the recursive framing in projects/sysgit.md.
 
 The corpus is already structured for this: projects, decisions, rejected
@@ -31,6 +31,9 @@ alternatives, constraints, domain, role, company stage, problem type.
 ## Non-negotiable rules
 
 - No avatar, no persona, no greeting. It never speaks as Morgan.
+- **Morgan's pronouns are she/her.** Any answer that refers to her in the
+  third person uses them. This is a fact about the subject, not a style choice,
+  and it belongs in the system prompt as well as here.
 - No typing-indicator or thinking theater.
 - Answers are short and always land the reader somewhere real.
 - Declines cleanly: "Morgan hasn't written about that." No apology.
