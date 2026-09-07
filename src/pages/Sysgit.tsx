@@ -11,6 +11,7 @@ import {
   TwoCol,
   type Decision,
 } from "../components/cv/CaseStudyParts";
+import { CustomerStackDiagram } from "../components/case-study/CustomerStackDiagram";
 
 const decisions: Decision[] = [
   {
@@ -159,7 +160,7 @@ export const Sysgit = () => (
       quote="One less tool beats one task done perfectly."
       source="From 30+ interviews with systems engineers, reached by embedding myself in our RevOps process rather than waiting for research to be scheduled."
     />
-    <MediaSlot ratio="16/9" caption="Where the tool sits in a customer&rsquo;s stack" />
+    <CustomerStackDiagram />
 
     <TwoCol claim={<em className="font-display not-italic">I went in holding a rule every designer is taught, and had to abandon it.</em>}>
       <div>

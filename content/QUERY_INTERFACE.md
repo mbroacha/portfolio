@@ -118,3 +118,113 @@ This sounds like sales copy." Correct on both.
 **The rule.** The content column starts where the argument starts. Hero image,
 then PROBLEM. Anything an Overview would have carried belongs in the sidebar
 (what it is, what I owned) or in OUTCOME (what changed, who bought it).
+
+
+---
+
+# SETTLED: placement and mechanics
+
+Decided with Morgan, September 2026. This section overrides the "candidate views,
+ranked" list above, which was exploratory.
+
+## The two constraints Morgan set
+
+1. The first interaction can be a prompt, **as long as it is not annoying.**
+2. It must not prevent someone from direct-linking the homepage **as they saw it.**
+
+Both are solved by the same mechanism: **the lens lives in the URL.**
+
+- `/` is the prompt.
+- `/?lens=hiring` is the answered page.
+
+Anyone arriving at a lensed URL never sees the prompt. They see what the sender
+saw. Sharing works, back works, and the prompt cannot fire twice on one link.
+This is the fix for the referral case in "Static vs dynamic" above, which is the
+scenario that breaks every self-rearranging site.
+
+## Why the prompt is not annoying
+
+**It is the top of the page, not a layer over it.** No modal, no dismissal, no
+typewriter, no greeting.
+
+The full work list sits directly below it. Ignoring the prompt costs one scroll.
+Answering costs one click on a visible chip. Nothing is gated and nothing is
+hidden, so there is no state to remember and no cookie to set. The default state
+of `/` is the prompt, which is not a nag, it is just what the page is.
+
+The reference is a search field at the top of a list. Nobody resents one, because
+it does not block anything.
+
+## The three lenses
+
+Each must render a visibly different page. If two produce the same thing, delete
+one.
+
+| Lens | Work order | Surfaces | Bio leads with |
+|---|---|---|---|
+| `hiring` | Sysgit, Beacon, Originality, Gradescope | Decisions expanded by default. Ownership, scope, team size. | Sole designer. Six hard domains, none known going in. |
+| `engineering` | Sysgit, How I Work, Originality, Beacon | Front-end PRs, the AI practice, Git Lite, the design system. How I Work is promoted to a peer of the case studies. | Prototypes in code, ships her own PRs. |
+| `browsing` | Artifact-led, image first | Decisions collapsed. Less text, more frames. | The shortest version. |
+
+**No smoke and mirrors.** Reordering the list, changing which decisions start
+expanded, and swapping the leading bio sentence are real operations over the
+corpus JSON. Small, but true. This is a portfolio for a design role, so being
+caught doing theater costs more than not doing it.
+
+## Interrogation: mobile first, then the rail
+
+Morgan's call: a field on the case study side rail. The rail collapses below
+`md`, so **mobile was designed first and constrains the desktop version.**
+
+### Mobile
+
+The collapsed rail stacks above the content. Interrogation cannot go there:
+asking a question before reading the case study is backwards.
+
+Placement is a section near the end of the page, after REFLECTION and before
+PrevNext. Questions visible as a list. Answers expand inline. The source link
+scrolls up and marks the passage.
+
+### Desktop
+
+Same component, same data, placed in the sticky rail.
+
+The rail is `max-h-screen` with its own overflow scroll, which sets a hard
+content constraint: **answers must fit in roughly 60 to 90 words.** That is a
+layout decision dictating a writing rule, and the answer bank has to respect it.
+
+### The field itself
+
+A real text input, not a select dressed as one. Client-side retrieval over a
+JSON answer bank: the typed question is scored against the bank and the nearest
+pre-written answer returns. **No backend, no model, no API key.** This runs on
+GitHub Pages, which is what keeps the hosting decision in section 3 of
+PORTFOLIO_PLAN.md correct.
+
+Fixed questions sit below the field as suggestions, so the reader can see what it
+is good at without having to guess.
+
+When nothing scores well enough it declines: "Morgan hasn't written about that."
+No apology, no improvisation. **A retrieval system that declines is more honest
+than a model that guesses, and the decline is the feature, not the limitation.**
+
+### Why this is not a chatbot
+
+Every answer carries its source, and the source link scrolls the main column to
+that passage and marks it. The field does not generate an opinion at the reader.
+It routes them into the static argument they were already reading.
+
+That is requirements traceability applied to a portfolio, which is the same idea
+Morgan shipped at Sysgit. The recursive framing holds.
+
+## What this now depends on
+
+**The answer bank.** The interrogation is only as good as the pre-written
+answers, and it does not exist yet as a structured file.
+
+Most of the raw material is already in the corpus: the corpus-only sections in
+projects/sysgit.md, the reflection material, the weakness answers, the career arc
+table, the deal-attribution notes. It needs extracting into a
+question-to-answer-to-source JSON, trimmed to the 60-90 word rail constraint.
+
+That is the blocker for interrogation. Lens has no blocker.
