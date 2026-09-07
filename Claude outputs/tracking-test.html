@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rail tracking test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --page:#161616; --panel:#1E1E1E; --rule:#333333;
+    --bone:#d9d9d9; --body:#b8b8b8; --lichen:#8a8a8a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--body);
+       font-family:"IBM Plex Sans",system-ui,sans-serif;
+       -webkit-font-smoothing:antialiased}
+
+  header{padding:40px 32px 24px;border-bottom:1px solid var(--rule);max-width:1100px}
+  h1{font-family:"EB Garamond",Georgia,serif;font-style:italic;font-weight:500;
+     font-size:22px;color:var(--bone);margin:0 0 12px}
+  header p{font-size:14px;line-height:1.6;margin:0 0 10px;max-width:62ch}
+  header b{color:var(--bone);font-weight:500}
+
+  .controls{padding:20px 32px;border-bottom:1px solid var(--rule);
+            display:flex;gap:28px;align-items:center;flex-wrap:wrap;
+            font-size:12px;letter-spacing:.02em;position:sticky;top:0;
+            background:var(--page);z-index:5}
+  .controls label{color:var(--lichen);display:flex;gap:8px;align-items:center;cursor:pointer}
+  .controls input{accent-color:#d9d9d9}
+
+  .strip{display:flex;overflow-x:auto;gap:0;align-items:stretch}
+  .col{flex:0 0 320px;border-right:1px solid var(--rule);padding:0 0 40px}
+  .col:last-child{border-right:0}
+  .col.is-current{background:#1a1a1a}
+
+  .tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+       color:var(--lichen);padding:14px 24px;border-bottom:1px solid var(--rule);
+       display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .tag .now{color:var(--bone);font-size:9px;letter-spacing:.1em}
+
+  /* This block mirrors .cv-meta in src/index.css */
+  .rail{padding:24px;display:flex;flex-direction:column;gap:24px;
+        font-size:12px;line-height:1.5;font-variant-numeric:tabular-nums}
+  .rail.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+  .brand{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+         font-size:20px;letter-spacing:.5px;color:var(--bone)}
+  .proj{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+        font-size:20px;color:var(--bone)}
+  .hr{height:1px;background:var(--rule)}
+  .lead .b{color:var(--bone)}
+  a{color:inherit;text-decoration:underline;text-underline-offset:4px}
+  dl{display:grid;grid-template-columns:80px 1fr;gap:20px;margin:0}
+  dt{color:var(--bone)}
+  dd{margin:0}
+  .foot{margin-top:8px;padding-top:16px;border-top:1px solid var(--rule);color:#7d7d7d}
+
+  .squint .rail{filter:blur(2.2px)}
+  .squint .brand,.squint .proj{filter:none}
+
+  footer{padding:32px;border-top:1px solid var(--rule);font-size:13px;
+         line-height:1.7;max-width:70ch;color:var(--body)}
+  footer h2{font-family:"EB Garamond",Georgia,serif;font-style:italic;
+            font-weight:500;font-size:16px;color:var(--bone);margin:0 0 10px}
+  footer ul{margin:0 0 18px;padding-left:18px}
+  footer li{margin-bottom:7px}
+  code{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--bone)}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>How to tell if --tracking-meta is wrong</h1>
+  <p>Six copies of the real Sysgit rail. Five are IBM Plex Sans at 12px with
+  different letter-spacing. The last is IBM Plex Mono at its old setting, so you
+  can see what you are trading away.</p>
+  <p><b>0.02em is what is in the repo now.</b> Scroll sideways. The reading test
+  is below.</p>
+</header>
+
+<div class="controls">
+  <label><input type="checkbox" id="squint"> Squint mode (blur the rails)</label>
+  <label><input type="checkbox" id="hidelabels" checked> Show the values</label>
+  <span style="color:#6f6f6f">Judge at your normal screen distance, not zoomed in.</span>
+</div>
+
+<div class="strip" id="strip"></div>
+
+<footer>
+  <h2>What each failure looks like</h2>
+  <p><b style="color:#d9d9d9">Too tight</b> (0 to 0.01em). The rail reads as a
+  single gray block instead of separate lines. Your eye lands on the column, not
+  on a line. In squint mode it goes solid. Word shapes in
+  <em>Design Lead, sole designer</em> stop separating and you start decoding
+  rather than reading.</p>
+
+  <p><b style="color:#d9d9d9">Too loose</b> (0.04em and up). It stops looking
+  like a document and starts looking like UI chrome, the all-caps eyebrow every
+  startup marketing page uses. At 12px the letters begin to disconnect and you
+  read letters instead of words. Short lines in a 33% column also wrap earlier,
+  which opens ragged holes down the right edge of the rail.</p>
+
+  <h2>Three specific checks</h2>
+  <ul>
+    <li><b>Squint at it.</b> Turn on squint mode. You want an even gray column
+    with visible line separation. A solid slab means too tight. A stripey
+    scatter with gaps means too loose.</li>
+    <li><b>Read the longest value.</b> <em>Product, design system, research,
+    strategy, brand, front-end PRs</em> wraps to three lines. If your eye
+    stumbles at the wrap, or if the second line looks like a different size than
+    the first, the tracking is fighting the measure.</li>
+    <li><b>Check it against the labels.</b> The uppercase labels already carry
+    0.08em separately. Uppercase always needs more than lowercase, because
+    capitals have no ascenders or descenders to separate them. If the lowercase
+    values look as spaced out as the labels, you have gone too far.</li>
+  </ul>
+
+  <h2>My read</h2>
+  <p>0.02em is deliberately conservative. If it is wrong it will be wrong in the
+  tight direction, not the loose one, so the only real question is whether to go
+  up to 0.03em. Beyond that you are building a label system, which is the
+  aesthetic the Dark CV is specifically avoiding.</p>
+  <p>The thing actually doing the work here is not the tracking. It is
+  <code>font-variant-numeric: tabular-nums</code>, which keeps
+  <em>2023 - 2026</em> and the team counts aligned down the rail. That was the
+  only thing the monospaced face was genuinely earning, and Plex Sans has it
+  built in. Compare the last two columns and you will see the dates behave the
+  same.</p>
+  <p>The knob is <code>--tracking-meta</code> in
+  <code>src/styles/tokens.css</code>.</p>
+</footer>
+
+<script>
+const settings = [
+  {label:"0",      css:"0",      note:"too tight"},
+  {label:"0.01em", css:"0.01em", note:""},
+  {label:"0.02em", css:"0.02em", note:"", current:true},
+  {label:"0.03em", css:"0.03em", note:""},
+  {label:"0.05em", css:"0.05em", note:"too loose"},
+  {label:"Plex Mono 0",  css:"0", note:"the old one", mono:true}
+];
+
+function rail(){
+  return `
+    <div class="brand">Morgan Broacha</div>
+    <a href="#">&larr; Back to work</a>
+    <div class="hr"></div>
+    <div class="proj">Sysgit</div>
+    <div class="lead"><span class="b">Git for hardware.</span> Modeling,
+      requirements and version control in one workflow, for engineers who are
+      not developers.</div>
+    <div class="hr"></div>
+    <dl>
+      <dt>Role</dt><dd style="color:#d9d9d9">Design Lead, sole designer</dd>
+      <dt>Timeline</dt><dd>2023 - 2026</dd>
+      <dt>Team</dt><dd style="color:#d9d9d9">1 designer (me)<br>6 engineers</dd>
+      <dt>Scope</dt><dd>Product, design system, research, strategy, brand, front-end PRs</dd>
+      <dt>Platform</dt><dd>Web, on-prem</dd>
+    </dl>
+    <div class="foot">&copy; Morgan Broacha 2026</div>`;
+}
+
+document.getElementById("strip").innerHTML = settings.map(s => `
+  <div class="col${s.current ? " is-current" : ""}">
+    <div class="tag">
+      <span>${s.label}</span>
+      <span class="now">${s.current ? "IN THE REPO" : s.note.toUpperCase()}</span>
+    </div>
+    <div class="rail${s.mono ? " mono" : ""}" style="letter-spacing:${s.css}">
+      ${rail()}
+    </div>
+  </div>`).join("");
+
+document.getElementById("squint").addEventListener("change", e => {
+  document.getElementById("strip").classList.toggle("squint", e.target.checked);
+});
+document.getElementById("hidelabels").addEventListener("change", e => {
+  document.querySelectorAll("#strip dd").forEach(d => d.style.visibility = e.target.checked ? "visible" : "hidden");
+});
+</script>
+</body>
+</html>

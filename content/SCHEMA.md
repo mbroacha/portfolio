@@ -45,4 +45,6 @@ onto this file, not a separate document.
 ## Grounding rule
 
 Every claim in this file must be something Morgan can defend in a room.
+Morgan's pronouns are she/her; corpus files write about her in third person
+and the pages write in first person.
 No placeholder metrics. Empty is better than invented. See PORTFOLIO_PLAN.md §2.

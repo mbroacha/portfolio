@@ -40,7 +40,7 @@ for payment). The markers and anomalies were esoteric and confusing to users.
   designers** working on separate products
 
 **Fix the page.** The footer currently credits Morgan alone. With 8-9 engineers
-and a PM, that under-credits the team and overstates his scope.
+and a PM, that under-credits the team and overstates her scope.
 
 ## Problem
 
@@ -48,7 +48,7 @@ and a PM, that under-credits the team and overstates his scope.
 > expected you to decide."
 
 The brief Morgan was given was to improve the results page. After interviewing
-educators he reframed it: the problem was not the page, it was that every
+educators she reframed it: the problem was not the page, it was that every
 possible signal carried equal weight. Users sifted noise that produced anxiety
 rather than confidence.
 
@@ -153,7 +153,7 @@ Learned both internally and anecdotally from professor research partners.
 
 ### The tension Morgan had to design inside
 
-He pivoted to highlighting the most damning signals, which were largely the
+She pivoted to highlighting the most damning signals, which were largely the
 mundane metadata ones, **while still having to demonstrate that the algorithm was
 valuable.**
 
@@ -185,14 +185,14 @@ differentiator sales was selling.
   across social media and Reddit from students unfairly accused. Morgan had to
   work inside that ecosystem and navigate damage already done.
 
-This makes "demote the score" far more meaningful. He was designing against his
+This makes "demote the score" far more meaningful. She was designing against her
 own company's history of producing over-trusted scores.
 
 ## What went wrong
 
 **"Investigation Recommended" was too damning.** Morgan first made the product
 prescriptive, using that phrasing. User research found educators still read it as
-an accusation. He backed the severity down and moved to more nuanced signals that
+an accusation. She backed the severity down and moved to more nuanced signals that
 bring a piece of work to a teacher's attention rather than pronouncing on it.
 
 A real reversal, corrected by research. Put it on the page.
@@ -209,7 +209,7 @@ A real reversal, corrected by research. Put it on the page.
   https://www.smh.com.au/education/cheating-found-at-unsw-up-by-2000-percent-as-new-detection-methods-used-20190814-p52gz4.html
   Attribute it as UNSW's reported increase following new detection methods, cited
   to SMH. Do not imply it measures Morgan's redesign specifically.
-- **16,000 institutions:** keep, labelled as product scale.
+- **16,000 institutions:** keep, labeled as product scale.
 - **2019-2022 at Turnitin:** Gradescope, which Turnitin had acquired. That
   accounts for the rest of the tenure.
 

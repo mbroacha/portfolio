@@ -243,7 +243,7 @@ guidance and has bluntly said it is up to the community to figure out. The
 company is risk-averse about being a thought leader on how the language should
 be used.
 
-**The result:** Morgan often ships language and concepts he considers overly
+**The result:** Morgan often ships language and concepts she considers overly
 technical, purely because that is the literal wording of the spec.
 
 ### Other fixed constraints
@@ -271,7 +271,7 @@ or the non-software stakeholder validating a model. The surfaces serving the
 secondary cohort get the least scrutiny, and those are the surfaces where
 Morgan's own instincts are least calibrated.
 
-**The response.** Morgan built his own design critique Claude skill to stand in
+**The response.** Morgan built her own design critique Claude skill to stand in
 for the missing function.
 
 ## Research
@@ -285,7 +285,7 @@ Sometimes attended specifically to find the rare actual user rather than a sales
 contact, and get face time.
 
 **Embedding in RevOps.** More effective by a wide margin. Once there is a lead,
-Morgan makes sure he is in the initial discussions, entering as the non-sales
+Morgan makes sure she is in the initial discussions, entering as the non-sales
 "help me help you" person.
 
 **Volume:** 30+ systems engineers.
@@ -298,7 +298,7 @@ into a famously closed industry, so Morgan built one out of the sales pipeline.
 **"One less tool" beats "one task done perfectly."**
 
 Morgan went in holding a canonical UX rule: solve just one problem really well.
-He pushed hard on it early, then had to abandon it and treat the problem as an
+She pushed hard on it early, then had to abandon it and treat the problem as an
 ecosystem.
 
 The reason is procurement, not craft. Customers run several tools with several
@@ -340,7 +340,7 @@ it cannot be designed away with a cleaner interface.
 **The through-line.** Every one of these is the same problem in a different
 costume: a translation problem. Every artifact in Sysgit has to be
 simultaneously legible as a picture, as a document, and as code, to two cohorts
-with incompatible mental models. Morgan named this himself while describing the
+with incompatible mental models. Morgan named this herself while describing the
 tables: "another form translation problem like the diagram."
 
 ---
@@ -481,7 +481,7 @@ surface area shipped this fast, that is a substantive claim.
 Morgan reported this apologetically: "Honestly we have no metrics. We just have
 acquisition."
 
-That framing undersells it, and his own analysis is the reason why. He
+That framing undersells it, and her own analysis is the reason why. She
 established that this market is governed by procurement and adverse incentives
 rather than usability, and that the winning goal is "one less tool" rather than
 one task done perfectly. In a procurement-driven market, the meaningful outcome
@@ -541,7 +541,7 @@ of it.
 
 ## Positioning
 
-### Why hire Morgan as a first designer, in his words
+### Why hire Morgan as a first designer, in her words
 
 > "I will understand the problem you're trying to solve as much or better than
 > you do. I will always find something that needs to be done, and it can always
@@ -550,12 +550,12 @@ of it.
 The first two clauses are strong. The third is vague and should be cut or made
 concrete.
 
-### What he wants next, and it corrects an earlier assumption
+### What she wants next, and it corrects an earlier assumption
 
 **Not the SysML v2 authority angle.** Morgan wants to be hired to solve a hard
 problem, and explicitly not necessarily in systems engineering.
 
-His actual claim: he has worked in space traffic, enterprise healthcare,
+Her actual claim: she has worked in space traffic, enterprise healthcare,
 educational integrity, disaster response, and government, **with no prior
 experience in any of them.**
 
@@ -564,8 +564,8 @@ It is: enters high-consequence domains cold and reaches competence fast, proven
 across six of them. Broader, more hireable, and it is what the resume actually
 shows.
 
-**Action:** revise PORTFOLIO_PLAN.md section 4b, which assumed he would want
-authority over SysML v2 conventions. He would not.
+**Action:** revise PORTFOLIO_PLAN.md section 4b, which assumed she would want
+authority over SysML v2 conventions. She would not.
 
 ### Proudest
 
@@ -578,12 +578,12 @@ little guidance, while staying flexible.
 > head at any given time, and I often ignore my own advice to others, which is
 > 'never be afraid to state the obvious. It's not obvious to everyone.'"
 
-A strong weakness answer: specific, carries a real cost, and names a principle he
-holds but fails to apply to himself.
+A strong weakness answer: specific, carries a real cost, and names a principle she
+holds but fails to apply to herself.
 
 Worth using in the case study or the interview bank: this corpus is the
-correction. The Sysgit intake is Morgan doing the documentation he says he
-avoids, and the portfolio is the artifact that gets it out of his head.
+correction. The Sysgit intake is Morgan doing the documentation she says she
+avoids, and the portfolio is the artifact that gets it out of her head.
 
 ## Notes
 
@@ -594,9 +594,13 @@ Corpus-only material. Not for the case study page.
 - **Cannot discuss:** the MCP server. Anything about it, in any context.
 - **Publicly nameable customers.** These logos appear on sysgit.io, so they are
   already public: United States Air Force, Tradewinds, GTRI, Leidos, Constellr.
-- **Do NOT publish without checking:** Siemens, Land Rover Jaguar, BAE Systems.
-  Morgan named these as customers, but they are absent from the public site.
-  Treat as confidential until confirmed.
+- **Confidential customers. Names deliberately not recorded in this corpus.**
+  Morgan named three further customers in interview: two European industrial and
+  automotive manufacturers and one defense prime. None appear on sysgit.io, and
+  as of August 2026 Morgan has confirmed they still cannot be named. The names
+  are withheld from this file on purpose so that no query answer can surface
+  them. Do not reintroduce them. If a reader asks who else uses Sysgit, the
+  answer is the public list plus "additional customers I cannot name yet." 
 - Everything else about the product is showable.
 
 ### The recursive framing (use this as the spine)
@@ -673,7 +677,7 @@ explicitly handed interpretation to the community. Nobody has defined the
 interaction and vocabulary conventions for a brand new standard. That is
 arguably the largest unclaimed design opportunity in the category, and Morgan
 identified it and was blocked. Worth saying plainly, and worth knowing it is
-probably something he would want authority over in a next role.
+probably something she would want authority over in a next role.
 
 ### The pattern: missing org function, build a system
 
@@ -702,7 +706,7 @@ is the rebuttal, and it is checkable.
 
 **The disposition is the constant. AI is the leverage.** Morgan was building
 systems to replace missing organizational functions for years before the tooling
-existed, entirely by hand. When better tools arrived he applied the same instinct
+existed, entirely by hand. When better tools arrived she applied the same instinct
 at greater scale, which is why the automated PM and the crit skill exist.
 
 That is a categorically stronger claim than "I prototype faster," and almost no
@@ -712,21 +716,21 @@ the line.
 ### The solo-designer risk, and the answer
 
 **Key correction (from the Beacon interview).** Morgan has not been solo
-throughout. At Slingshot he was the only designer *on Beacon*, but part of a
+throughout. At Slingshot she was the only designer *on Beacon*, but part of a
 company-wide design team: shared company design system, group critique.
 
-This changes the story materially. He is not a designer who has never had
-critique or never worked inside a system owned by someone else. He had both at
+This changes the story materially. She is not a designer who has never had
+critique or never worked inside a system owned by someone else. She had both at
 Slingshot, lost them at Sysgit, and built a substitute. That is a designer who
 missed critique, not one who avoids it.
 
 Also relevant for Senior/Staff roles at companies with an existing design org:
-he has contributed to a company design system he did not own.
+she has contributed to a company design system she did not own.
 
 
 
 A hiring manager will ask: three years with no crit, can you take feedback? The
-honest answer is already in the record. Morgan did not adapt to the absence, he
+honest answer is already in the record. Morgan did not adapt to the absence, she
 built substitutes for it, twice. That is evidence of wanting critique rather than
 avoiding it. Worth having ready, because the question is coming.
 
