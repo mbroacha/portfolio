@@ -60,14 +60,19 @@
   --color-ember: 138 138 138;
 
   /* ── Typography ───────────────────────────────────────────── */
-  /* Three roles, one family where possible.
-     Plex Sans reads prose. Plex Mono carries structure: metadata, labels,
-     captions, the rail. EB Garamond italic is the only display voice.
-     Sans and mono share a skeleton, so the page reads as one voice at two
-     widths rather than two typefaces negotiating. */
+  /* Two families, three roles.
+     IBM Plex Sans does all the reading work: prose at 15px, and structure at
+     12px with tracking and tabular figures (metadata, labels, captions, the
+     rail). EB Garamond italic is the only display voice.
+     One sans means the page reads as a single voice at two sizes rather than
+     as two typefaces negotiating. */
   --font-display: "EB Garamond", ui-serif, Georgia, serif;
   --font-body: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  /* There is no mono face in this system. IBM Plex Sans carries both prose and
+     structure. --font-mono is kept as an alias so Tailwind's font-mono utility
+     and the legacy Greenhouse components keep resolving. Do not point it at a
+     monospace family again without deciding that on purpose. */
+  --font-mono: var(--font-body);
   --font-family-display: var(--font-display);
   --font-family-sans: var(--font-body);
   --font-family-mono: var(--font-mono);
@@ -93,7 +98,13 @@
   --tracking-button: 0.04em;
 
   --line-height-body: 1.6;
-  --line-height-mono: 1.5;
+  --line-height-meta: 1.5;
+  --line-height-mono: var(--line-height-meta); /* alias, see --font-mono */
+
+  /* Plex Sans at 12px sets tighter than Plex Mono did. A little tracking
+     restores the rail's document feel without making it look like UI chrome.
+     0.02em is deliberately small: any wider and it reads as a label system. */
+  --tracking-meta: 0.02em;
   --measure-prose: 68ch;
 
   /* ── Spacing ──────────────────────────────────────────────── */

@@ -209,7 +209,7 @@ A real reversal, corrected by research. Put it on the page.
   https://www.smh.com.au/education/cheating-found-at-unsw-up-by-2000-percent-as-new-detection-methods-used-20190814-p52gz4.html
   Attribute it as UNSW's reported increase following new detection methods, cited
   to SMH. Do not imply it measures Morgan's redesign specifically.
-- **16,000 institutions:** keep, labelled as product scale.
+- **16,000 institutions:** keep, labeled as product scale.
 - **2019-2022 at Turnitin:** Gradescope, which Turnitin had acquired. That
   accounts for the rest of the tenure.
 

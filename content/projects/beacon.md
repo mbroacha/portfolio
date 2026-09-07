@@ -60,7 +60,7 @@ The pre-Beacon workflow was, in Morgan's words, insanely variable.
 
 - No two operators have the same depth of information about their own assets
 - **Many did not know where their satellites were half the time**
-- Most information lives in a **public, honor-system catalogue**
+- Most information lives in a **public, honor-system catalog**
 - Resolution was frantically calling the other operator and trying to work out
   which of them was more capable of moving out of the way
 
@@ -183,27 +183,52 @@ truth for satellite capabilities**, more trusted than the publicly accessible
 database.
 
 That follows directly from the reciprocal disclosure mechanic. Optional, visible
-sharing produced better data than the honor-system catalogue it sat alongside. A
+sharing produced better data than the honor-system catalog it sat alongside. A
 coordination tool out-competed the public registry as a data source without
 setting out to.
 
 ### Adoption
 
-At the time Morgan left, Beacon was used by **operators of 60% of total assets in
-space**, including **SpaceX, NASA, Inmarsat, and Endurosat**.
+**Resolved, with sources. Morgan's recollection was close but the denominator was
+wrong, so the published figures replace it.**
 
-This is the strongest outcome number anywhere in the portfolio, and Morgan
-volunteered it while saying she had no metrics.
+Two published numbers, two different denominators. Both are on the page, labeled.
 
-**Precision needed before publishing.** State it exactly and be ready for the
-obvious follow-up. Starlink alone accounts for a very large share of active
-satellites, so an aerospace-literate reader will ask whether "60%" is mostly
-SpaceX. The honest framing is *operators representing 60% of assets on orbit,
-including SpaceX, NASA, Inmarsat, and Endurosat* — and the achievement stands
-either way: a Series A company landing SpaceX and NASA as users.
+| Figure | Denominator | Source | Date |
+|---|---|---|---|
+| 60% | companies operating in LEO, at beta | Payload, "Slingshot Aerospace raises $25M Series A" | 10 March 2022 |
+| Over 90% | active LEO spacecraft in orbit | Slingshot, "2023 Year in Orbit" | page dated 19 Aug 2024, covering 2023 |
 
-Confirm: as of what date, and 60% of what denominator (tracked objects, active
-satellites, operators).
+Verbatim, Payload: "The company rolled out Beacon in beta in August, which
+contains data from 60% of companies operating in LEO, and is working towards a
+full-scale product launch."
+
+Verbatim, Slingshot: "Over 90% of all active LEO spacecraft in orbit today are
+leveraging Slingshot Beacon to minimize collision risk, coordinate maneuvers, and
+simplify their operations." Adjacent stats on the same page: "6K+ satellites
+sharing their data", "160M+ conjunction data messages (CDMs) ingested to-date",
+"7% of CDMs have been flagged as high-risk", "Thousands of hours saved for
+operators in 2023".
+
+**What Morgan originally said, and why it is not what ships.** She recalled
+*operators representing 60% of assets on orbit* at the time she left. The only
+published 60% is a share of **companies**, not assets, and it describes the
+August 2021 beta, which predates her tenure (2022 - 2023). Claiming it as an
+end-of-tenure assets figure would be wrong on both the denominator and the date.
+
+**Standing caveats.**
+
+- The 90% is Slingshot's own marketing figure, not independent, and the page
+  carrying it is dated after Morgan left. The page attributes it rather than
+  claiming it.
+- "Leveraging Beacon" is the company's phrasing and is looser than paying seats.
+  It most likely means spacecraft covered by data in the platform.
+- Starlink is a very large share of active LEO spacecraft, so an
+  aerospace-literate reader will ask whether the number is mostly SpaceX. That
+  question is fair and the answer is partly yes. The achievement stands either
+  way: a Series A company with SpaceX and NASA on the platform.
+
+Named operators, from Morgan: SpaceX, NASA, Inmarsat, Endurosat.
 
 ### Other metrics
 

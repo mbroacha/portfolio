@@ -171,7 +171,7 @@ export const Beacon = () => (
         {
           title: "Adoption",
           detail:
-            "By the time I left, Beacon was used by operators representing roughly 60% of assets on orbit, including SpaceX, NASA, Inmarsat and Endurosat. SpaceX is a large share of that figure on its own, and the number is a share of assets rather than of operators.",
+            "Payload reported in March 2022 that the Beacon beta held data from 60% of companies operating in LEO. Slingshot's 2023 Year in Orbit report put it at over 90% of active LEO spacecraft, 6,000 satellites sharing data, and 160 million conjunction messages ingested to date. Those are two different denominators, companies and then spacecraft, and the second is the company's own figure published after I left. Operators on the platform included SpaceX, NASA, Inmarsat and Endurosat.",
         },
         {
           title: "The unintended one",

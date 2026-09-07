@@ -75,7 +75,7 @@ export const MediaSlot = ({
             <line x1="2" y1="2" x2="98" y2="98" stroke="var(--edge)" strokeWidth="0.3" />
           </svg>
           {caption ? (
-            <div className="cv-mono absolute bottom-2 left-3" style={{ color: "var(--text-on-media)" }}>
+            <div className="cv-meta absolute bottom-2 left-3" style={{ color: "var(--text-on-media)" }}>
               {caption}
             </div>
           ) : null}
@@ -100,7 +100,7 @@ export const WorkEntry = ({
   to?: string;
 }) => (
   <div className="grid grid-cols-1 gap-6 pb-6 sm:grid-cols-2">
-    <div className="cv-mono text-bone">
+    <div className="cv-meta text-bone">
       {index}.{" "}
       {to ? (
         <Link to={to} className="underline underline-offset-4">
@@ -111,7 +111,7 @@ export const WorkEntry = ({
       )}
     </div>
     <div className="flex flex-col gap-3">
-      <div className="cv-mono">{meta}</div>
+      <div className="cv-meta">{meta}</div>
       <div className="max-w-[var(--measure-prose)]">{description}</div>
     </div>
   </div>

@@ -37,6 +37,12 @@ alternatives, constraints, domain, role, company stage, problem type.
 - No typing-indicator or thinking theater.
 - Answers are short and always land the reader somewhere real.
 - Declines cleanly: "Morgan hasn't written about that." No apology.
+- **Confidential material is absent from the corpus, not flagged inside it.**
+  The rule for anything Morgan cannot disclose is to leave it out of the
+  source files entirely rather than write it down beside a warning. A model
+  reading the corpus cannot leak what is not there. Two live cases: the Sysgit
+  MCP server, and three customers who are not on sysgit.io. Neither is named
+  anywhere in `content/`. Do not add them back.
 - Visually part of the site, not a widget bolted onto it.
 - **Traceability:** every answer names its source. This is requirements
   traceability applied to a portfolio, which is the same principle behind the

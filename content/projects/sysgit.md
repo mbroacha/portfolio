@@ -594,9 +594,13 @@ Corpus-only material. Not for the case study page.
 - **Cannot discuss:** the MCP server. Anything about it, in any context.
 - **Publicly nameable customers.** These logos appear on sysgit.io, so they are
   already public: United States Air Force, Tradewinds, GTRI, Leidos, Constellr.
-- **Do NOT publish without checking:** Siemens, Land Rover Jaguar, BAE Systems.
-  Morgan named these as customers, but they are absent from the public site.
-  Treat as confidential until confirmed.
+- **Confidential customers. Names deliberately not recorded in this corpus.**
+  Morgan named three further customers in interview: two European industrial and
+  automotive manufacturers and one defense prime. None appear on sysgit.io, and
+  as of August 2026 Morgan has confirmed they still cannot be named. The names
+  are withheld from this file on purpose so that no query answer can surface
+  them. Do not reintroduce them. If a reader asks who else uses Sysgit, the
+  answer is the public list plus "additional customers I cannot name yet." 
 - Everything else about the product is showable.
 
 ### The recursive framing (use this as the spine)
