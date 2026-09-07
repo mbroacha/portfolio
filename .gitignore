@@ -1,2 +1,9 @@
 node_modules/
 dist/
+
+# The corpus is private working material. It stays local.
+# Interview answers, layoff details, confidential customers, unpublished
+# metrics. Nothing in here is site source: Vite only serves public/ and src/.
+# When the query interface ships, commit the compiled sanitized JSON it
+# produces, never these files.
+content/
