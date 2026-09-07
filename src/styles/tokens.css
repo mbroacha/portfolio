@@ -60,21 +60,29 @@
   --color-ember: 138 138 138;
 
   /* ── Typography ───────────────────────────────────────────── */
-  /* The template sets mono as the body face and reserves the serif for
-     italic display accents only. That inversion is the whole character. */
+  /* Two families, three roles.
+     IBM Plex Sans does all the reading work: prose at 15px, and structure at
+     12px with tracking and tabular figures (metadata, labels, captions, the
+     rail). EB Garamond italic is the only display voice.
+     One sans means the page reads as a single voice at two sizes rather than
+     as two typefaces negotiating. */
   --font-display: "EB Garamond", ui-serif, Georgia, serif;
-  --font-body: "IBM Plex Mono", ui-monospace, monospace;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-body: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  /* There is no mono face in this system. IBM Plex Sans carries both prose and
+     structure. --font-mono is kept as an alias so Tailwind's font-mono utility
+     and the legacy Greenhouse components keep resolving. Do not point it at a
+     monospace family again without deciding that on purpose. */
+  --font-mono: var(--font-body);
   --font-family-display: var(--font-display);
   --font-family-sans: var(--font-body);
   --font-family-mono: var(--font-mono);
 
   /* Type ramp. Template baseline is 12px/1.5. */
   --font-size-xs: 0.6875rem; /* 11px — micro labels */
-  --font-size-sm: 0.75rem; /* 12px — compact */
+  --font-size-sm: 0.75rem; /* 12px — mono metadata, captions, the rail */
   --font-size-label: 0.75rem; /* 12px — eyebrows, buttons */
-  --font-size-base: 0.75rem; /* 12px — body */
-  --font-size-lg: 0.8125rem; /* 13px — body lg */
+  --font-size-base: 0.9375rem; /* 15px — prose */
+  --font-size-lg: 1rem; /* 16px — lead prose */
   --font-size-xl: 1.25rem; /* 20px — project title (serif italic) */
   --font-size-2xl: 1rem; /* 16px — section heading (serif italic) */
   --font-size-3xl: 1.25rem;
@@ -89,7 +97,15 @@
   --tracking-label-wide: 0.12em;
   --tracking-button: 0.04em;
 
-  --line-height-body: 1.5;
+  --line-height-body: 1.6;
+  --line-height-meta: 1.5;
+  --line-height-mono: var(--line-height-meta); /* alias, see --font-mono */
+
+  /* Plex Sans at 12px sets tighter than Plex Mono did. A little tracking
+     restores the rail's document feel without making it look like UI chrome.
+     0.02em is deliberately small: any wider and it reads as a label system. */
+  --tracking-meta: 0.02em;
+  --measure-prose: 68ch;
 
   /* ── Spacing ──────────────────────────────────────────────── */
   --space-0: 0;
