@@ -12,6 +12,7 @@ import {
   type Decision,
 } from "../components/cv/CaseStudyParts";
 import { CustomerStackDiagram } from "../components/case-study/CustomerStackDiagram";
+import { RequirementsTableRecreation } from "../components/case-study/RequirementsTableRecreation";
 
 const decisions: Decision[] = [
   {
@@ -36,7 +37,7 @@ const decisions: Decision[] = [
     why: "Requirements arrive as documents whose meaning comes from numbering and indentation. They are frequently government-issued and sometimes legally binding. We have to turn lines of text into shapes with metadata containers, and always into code. A table meets in the middle.",
     tradeoff: "I wanted the writing experience to be completely fluid. It is not quite the same as writing in a document.",
     result: "Cells become fungible objects. \"speed = 75 km/h\" can be tokenized and updated through other tools, requirements link to verification tests, and decomposition from broad to specific is visible. Sources regularly exceed 1000 requirements, so filtering, bulk actions and performance were mandatory.",
-    visual: <MediaSlot ratio="16/10" caption="Requirements table &middot; 1000+ rows, interactive recreation" />,
+    visual: <RequirementsTableRecreation />,
   },
   {
     title: "Reversed: the commenting system",
@@ -83,7 +84,11 @@ export const Sysgit = () => (
       </>
     }
   >
-    <MediaSlot ratio="16/9" caption="Diagram editor and IDE, side by side" />
+    <MediaSlot
+      ratio="16/9"
+      src="/case-studies/sysgit/diagram-editor-ide.png"
+      alt="The Sysgit editor in split view. SysML source on the left, the auto-laid-out model graph on the right."
+    />
 
     <SectionHeading>PROBLEM</SectionHeading>
     <Rule className="mb-6" />

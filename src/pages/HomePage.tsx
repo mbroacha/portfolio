@@ -138,7 +138,11 @@ export const HomePage = () => (
 
     <Rule className="mb-6" />
 
-    <MediaSlot ratio="16/9" caption="Sysgit &middot; artifact pending" />
+    <MediaSlot
+      ratio="16/9"
+      src="/case-studies/sysgit/diagram-editor-ide.png"
+      alt="The Sysgit editor in split view. SysML source on the left, the model graph on the right."
+    />
     <WorkEntry
       index={2}
       title="Sysgit"
