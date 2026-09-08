@@ -217,6 +217,19 @@ It routes them into the static argument they were already reading.
 That is requirements traceability applied to a portfolio, which is the same idea
 Morgan shipped at Sysgit. The recursive framing holds.
 
+## Voice: resolved
+
+The rule above says "It never speaks as Morgan." That needs sharpening now that
+the bank exists, because the pages are first person and third-person answers
+beside them would read as a dossier about her.
+
+**Answers are first person, because Morgan wrote them.** Retrieval of her own
+prose is not impersonation. What the rule actually forbids is the interface
+*generating* as her: no synthesized voice, no improvisation, no greeting, no
+avatar, no "Hi, I'm Morgan."
+
+The line is authorship, not grammatical person.
+
 ## What this now depends on
 
 **The answer bank.** The interrogation is only as good as the pre-written

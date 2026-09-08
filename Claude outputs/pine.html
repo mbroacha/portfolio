@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pine green</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;1,400&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;background:#161616;color:#b8b8b8;
+       font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:12px;letter-spacing:.02em}
+  h1{font-family:"EB Garamond",Georgia,serif;font-style:italic;font-weight:500;
+     font-size:22px;color:#d9d9d9;margin:0 0 6px;letter-spacing:0}
+  header{padding:36px 28px 22px;border-bottom:1px solid #333}
+  header p{font-size:13px;line-height:1.6;max-width:60ch;margin:0;letter-spacing:0}
+  .grid{display:flex;flex-wrap:wrap}
+  .sw{flex:1 1 200px;min-width:200px;border-right:1px solid #333;border-bottom:1px solid #333}
+  .chip{height:150px;position:relative}
+  .chip span{position:absolute;left:12px;bottom:10px;color:#d9d9d9;font-size:11px;letter-spacing:.08em}
+  .m{padding:14px 12px;line-height:1.6}
+  .m b{color:#d9d9d9;font-weight:500;display:block;margin-bottom:4px}
+  .m i{color:#8a8a8a;font-style:normal}
+  .strip{display:flex;border-bottom:1px solid #333}
+  .strip div{flex:1;height:56px;display:flex;align-items:center;justify-content:center;
+             color:#d9d9d9;font-size:10px;letter-spacing:.1em}
+  footer{padding:26px 28px;font-size:13px;line-height:1.7;max-width:64ch;letter-spacing:0}
+  footer b{color:#d9d9d9;font-weight:500}
+  code{color:#d9d9d9}
+  .rejects{display:flex;gap:0;border-top:1px solid #333}
+  .rejects div{flex:1;height:64px;position:relative}
+  .rejects span{position:absolute;left:10px;bottom:8px;font-size:10px;letter-spacing:.06em;color:#161616;font-weight:500}
+</style></head><body>
+
+<header>
+  <h1>Pine green</h1>
+  <p>On your actual page color, because a swatch on white lies about a dark palette.</p>
+</header>
+
+<div class="grid">
+  <div class="sw"><div class="chip" style="background:#244233"><span>#244233</span></div>
+    <div class="m"><b>The pick</b>hsl(150, 30%, 20%)<br><i>1.64:1 on #161616</i></div></div>
+  <div class="sw"><div class="chip" style="background:#214034"><span>#214034</span></div>
+    <div class="m"><b>Cooler, waxier</b>hsl(156, 32%, 19%)<br><i>closer to real needles</i></div></div>
+  <div class="sw"><div class="chip" style="background:#274934"><span>#274934</span></div>
+    <div class="m"><b>Warmer, sunlit</b>hsl(142, 30%, 22%)<br><i>drifts toward hunter</i></div></div>
+  <div class="sw"><div class="chip" style="background:#1A3228"><span>#1A3228</span></div>
+    <div class="m"><b>Deep shadow</b>hsl(155, 32%, 15%)<br><i>1.32:1, nearly the ground</i></div></div>
+  <div class="sw"><div class="chip" style="background:#83B99E"><span>#83B99E</span></div>
+    <div class="m"><b>Lifted, for text</b>hsl(150, 28%, 62%)<br><i>8.1:1 on #161616, passes AA</i></div></div>
+</div>
+
+<div class="strip">
+  <div style="background:#1A3228">SHADOW</div>
+  <div style="background:#214034">COOL</div>
+  <div style="background:#244233">PICK</div>
+  <div style="background:#274934">WARM</div>
+  <div style="background:#83B99E;color:#161616">LIFTED</div>
+</div>
+
+<div class="rejects">
+  <div style="background:#01796F"><span>#01796F &nbsp;crayola &ldquo;pine green&rdquo; &middot; teal</span></div>
+  <div style="background:#355E3B"><span>#355E3B &nbsp;hunter &middot; too yellow</span></div>
+  <div style="background:#2F4F4F"><span>#2F4F4F &nbsp;darkslategray &middot; no green left</span></div>
+</div>
+
+<footer>
+  <p><b>#244233.</b> Hue 150, so it sits just off pure green toward blue. That
+  shift is the whole thing: pine needles carry a waxy cuticle that scatters cool
+  light, which is why they read colder than almost any other foliage. Saturation
+  stays at 30 because real needles are never vivid, and lightness at 20 because
+  pine is a shade you see in mass, not in a single leaf.</p>
+  <p>The three below are what people reach for and why they are wrong. Crayola's
+  official Pine Green is teal. Hunter green pulls yellow and reads like a golf
+  course. Darkslategray has given up on being green at all.</p>
+  <p>None of the dark ones can carry text on <code>#161616</code>. If pine needs
+  to be legible rather than structural, <code>#83B99E</code> is the same hue
+  lifted to 62% and clears AA at 8.1:1.</p>
+</footer>
+</body></html>
