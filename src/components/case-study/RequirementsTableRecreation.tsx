@@ -1,3 +1,5 @@
+import "@fontsource/inter/latin-400.css";
+import "@fontsource/inter/latin-500.css";
 import { useMemo, useRef, useState } from "react";
 
 /**
@@ -158,6 +160,9 @@ const MIN_W = 928;
 const COL_GAP = 10;
 
 /* The leading token shrinks and ellipsises; only the "+N" counter is rigid. */
+/** Sysgit ships Inter. Recreations speak in the product's voice, not the site's. */
+const PRODUCT_FONT = '"Inter", system-ui, sans-serif';
+
 const TOKEN_CLASS = "min-w-0 truncate border px-1";
 const TOKEN_COUNT_CLASS = "shrink-0 border px-1";
 const TOKEN_STYLE = {
@@ -216,7 +221,7 @@ export const RequirementsTableRecreation = () => {
     <figure className="-mx-8 mb-6" style={{ backgroundColor: "var(--surface-media)", padding: "1rem" }}>
       <div
         className="overflow-hidden border"
-        style={{ backgroundColor: "#fff", borderColor: "#e3e1ea", fontFamily: 'system-ui, -apple-system, "Segoe UI", sans-serif', color: "#26232f" }}
+        style={{ backgroundColor: "#fff", borderColor: "#e3e1ea", fontFamily: PRODUCT_FONT, color: "#26232f" }}
       >
         {/* Toolbar. Status is document-level here, as it is in the product. */}
         <div className="flex flex-wrap items-center gap-3 border-b px-3 py-2" style={{ borderColor: "#e3e1ea" }}>
