@@ -13,6 +13,8 @@ import {
 } from "../components/cv/CaseStudyParts";
 import { CustomerStackDiagram } from "../components/case-study/CustomerStackDiagram";
 import { RequirementsTableRecreation } from "../components/case-study/RequirementsTableRecreation";
+import { SysgitHero } from "../components/case-study/SysgitHero";
+import { TranslationTriptych } from "../components/case-study/TranslationTriptych";
 
 const decisions: Decision[] = [
   {
@@ -21,7 +23,17 @@ const decisions: Decision[] = [
     why: "In hardware modeling a square is not a square. It carries model metadata, and position and lines have specific meaning. The diagram also has to translate directly into the mental model of coded files, and back, for people who think visually and people who think in code.",
     tradeoff: "Less fluid than a general-purpose canvas. I designed toward the bare minimum required for an object to exist, and no further.",
     result: "The side-by-side diagram editor and IDE is the feature we get the most positive feedback on, and the most requested upgrades.",
-    visual: <MediaSlot ratio="16/10" caption="Diagram editor and IDE, side by side &middot; interactive recreation" />,
+    // The triptych is the argument; the capture is the evidence it shipped.
+    visual: (
+      <>
+        <TranslationTriptych />
+        <MediaSlot
+          ratio="16/9"
+          src="/case-studies/sysgit/diagram-editor-ide.png"
+          alt="The Sysgit editor in split view. SysML source on the left, the auto-laid-out model graph on the right."
+        />
+      </>
+    ),
   },
   {
     title: "Git Lite",
@@ -84,11 +96,7 @@ export const Sysgit = () => (
       </>
     }
   >
-    <MediaSlot
-      ratio="16/9"
-      src="/case-studies/sysgit/diagram-editor-ide.png"
-      alt="The Sysgit editor in split view. SysML source on the left, the auto-laid-out model graph on the right."
-    />
+    <SysgitHero />
 
     <SectionHeading>PROBLEM</SectionHeading>
     <Rule className="mb-6" />

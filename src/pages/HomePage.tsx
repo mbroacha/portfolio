@@ -140,8 +140,8 @@ export const HomePage = () => (
 
     <MediaSlot
       ratio="16/9"
-      src="/case-studies/sysgit/diagram-editor-ide.png"
-      alt="The Sysgit editor in split view. SysML source on the left, the model graph on the right."
+      src="/case-studies/sysgit/hero-still.png"
+      alt="One object from a Sysgit model, drawn: a part def carrying a typed value, a maximum output and a link to the test that verifies it, joined to the rest of the graph by derive, contains and satisfies relationships."
     />
     <WorkEntry
       index={2}

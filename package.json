@@ -11,6 +11,7 @@
     "answers": "node scripts/build-answers.mjs"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.3.0",
     "@fontsource/lexend-deca": "^5.3.0",
     "@fontsource/roboto": "^5.3.0",
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
