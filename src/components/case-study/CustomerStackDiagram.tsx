@@ -72,7 +72,7 @@ const Seam = () => (
   </div>
 );
 
-const Column = ({ title, children, note }: { title: string; children: React.ReactNode; note: string }) => (
+const Column = ({ title, children, note }: { title: string; children: React.ReactNode; note?: string }) => (
   <div className="flex flex-1 flex-col">
     <Eyebrow>{title}</Eyebrow>
     <div className="flex flex-1 flex-col gap-4 border border-hedge p-4" style={{ backgroundColor: "var(--ink-900)" }}>
@@ -80,7 +80,7 @@ const Column = ({ title, children, note }: { title: string; children: React.Reac
       <div className="border-t border-hedge" />
       <div className="flex flex-1 flex-col">{children}</div>
     </div>
-    <p className="cv-meta mt-3 text-lichen">{note}</p>
+    {note ? <p className="cv-meta mt-3 text-lichen">{note}</p> : null}
   </div>
 );
 
@@ -89,7 +89,6 @@ export const CustomerStackDiagram = () => (
     <div className="flex flex-col gap-8 sm:flex-row sm:gap-6">
       <Column
         title="A hardware program's stack"
-        note="Every seam is an integration to maintain and a set of seats to justify at renewal."
       >
         {BAND_BEFORE.map((row, i) => (
           <div key={row.layer} className="contents">
@@ -101,7 +100,6 @@ export const CustomerStackDiagram = () => (
 
       <Column
         title="The same stack with Sysgit"
-        note="The neighbors are untouched. The band in the middle stops being four purchases."
       >
         <BandBox
           layer="Sysgit"
@@ -117,10 +115,5 @@ export const CustomerStackDiagram = () => (
         </div>
       </Column>
     </div>
-
-    <figcaption className="cv-meta max-w-prose" style={{ color: "var(--text-on-media)" }}>
-      Where the tool sits in a customer&rsquo;s stack. Diagram, not a screenshot. A representative toolchain rather
-      than any one customer&rsquo;s.
-    </figcaption>
   </figure>
 );

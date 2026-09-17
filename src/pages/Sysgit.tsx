@@ -12,6 +12,9 @@ import {
   type Decision,
 } from "../components/cv/CaseStudyParts";
 import { CustomerStackDiagram } from "../components/case-study/CustomerStackDiagram";
+import { RequirementsTableRecreation } from "../components/case-study/RequirementsTableRecreation";
+import { SysgitHero } from "../components/case-study/SysgitHero";
+import { TranslationTriptych } from "../components/case-study/TranslationTriptych";
 
 const decisions: Decision[] = [
   {
@@ -20,7 +23,7 @@ const decisions: Decision[] = [
     why: "In hardware modeling a square is not a square. It carries model metadata, and position and lines have specific meaning. The diagram also has to translate directly into the mental model of coded files, and back, for people who think visually and people who think in code.",
     tradeoff: "Less fluid than a general-purpose canvas. I designed toward the bare minimum required for an object to exist, and no further.",
     result: "The side-by-side diagram editor and IDE is the feature we get the most positive feedback on, and the most requested upgrades.",
-    visual: <MediaSlot ratio="16/10" caption="Diagram editor and IDE, side by side &middot; interactive recreation" />,
+    visual: <TranslationTriptych />,
   },
   {
     title: "Git Lite",
@@ -36,7 +39,7 @@ const decisions: Decision[] = [
     why: "Requirements arrive as documents whose meaning comes from numbering and indentation. They are frequently government-issued and sometimes legally binding. We have to turn lines of text into shapes with metadata containers, and always into code. A table meets in the middle.",
     tradeoff: "I wanted the writing experience to be completely fluid. It is not quite the same as writing in a document.",
     result: "Cells become fungible objects. \"speed = 75 km/h\" can be tokenized and updated through other tools, requirements link to verification tests, and decomposition from broad to specific is visible. Sources regularly exceed 1000 requirements, so filtering, bulk actions and performance were mandatory.",
-    visual: <MediaSlot ratio="16/10" caption="Requirements table &middot; 1000+ rows, interactive recreation" />,
+    visual: <RequirementsTableRecreation />,
   },
   {
     title: "Reversed: the commenting system",
@@ -83,7 +86,7 @@ export const Sysgit = () => (
       </>
     }
   >
-    <MediaSlot ratio="16/9" caption="Diagram editor and IDE, side by side" />
+    <SysgitHero />
 
     <SectionHeading>PROBLEM</SectionHeading>
     <Rule className="mb-6" />
@@ -199,11 +202,6 @@ export const Sysgit = () => (
       ]}
     />
     <MediaSlot ratio="16/9" caption="Shipped surface area, 2023 &ndash; 2026" />
-
-    <p className="mb-6">
-      The diagram and IDE pairing draws the most positive feedback and the most requested upgrades. That is
-      anecdotal, and I would not present it as anything else.
-    </p>
 
     <SectionHeading>REFLECTION</SectionHeading>
     <Rule className="mb-6" />

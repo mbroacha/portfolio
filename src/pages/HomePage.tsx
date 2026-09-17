@@ -138,7 +138,11 @@ export const HomePage = () => (
 
     <Rule className="mb-6" />
 
-    <MediaSlot ratio="16/9" caption="Sysgit &middot; artifact pending" />
+    <MediaSlot
+      ratio="16/9"
+      src="/case-studies/sysgit/hero-still.png"
+      alt="One object from a Sysgit model, drawn: a part def carrying a typed value, a maximum output and a link to the test that verifies it, joined to the rest of the graph by derive, contains and satisfies relationships."
+    />
     <WorkEntry
       index={2}
       title="Sysgit"
