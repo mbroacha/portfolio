@@ -95,15 +95,37 @@
 
 @layer components {
   /* One sans for everything. Plex Sans at 15px is prose; Plex Sans at 12px with
-     tracking is structure: the rail, labels, captions, metadata, the footer.
-     Tabular figures keep dates and counts aligned down the rail, which is the
-     one thing the monospaced face was actually earning. See tokens.css. */
+     tracking is structure. Tabular figures keep dates and counts aligned down
+     the rail, which is the one thing the monospaced face was actually earning.
+     See tokens.css.
+
+     THE RULE: prose in the main column does not drop below body size. A
+     rejected alternative, a research note, a step's tool line: those are
+     sentences, they sit in the reading sequence, and they get 15px. Use color,
+     not size, to push them back.
+
+     Captions are the exception, and deliberately so. A caption belongs to its
+     figure rather than to the reading sequence, so it stays at 12px and reads
+     as part of the artifact's frame. That applies to a figcaption under a
+     diagram and to a label inside a MediaSlot alike. */
   .cv-meta {
     font-family: var(--font-body);
     font-size: var(--font-size-sm);
     line-height: var(--line-height-meta);
     letter-spacing: var(--tracking-meta);
     font-variant-numeric: tabular-nums;
+  }
+
+  /* The sub-heading level, one step above body.
+     SectionHeading is an uppercase band between rules, so it reads as a label
+     rather than as a size. That left decision titles, claims and outcome items
+     sitting at body size with nothing but color separating them from the
+     paragraph underneath. 17px is enough to register as a heading without
+     turning the page into a magazine. Family is not set here, so each caller
+     keeps the face it already had. */
+  .cv-subhead {
+    font-size: var(--font-size-subhead);
+    line-height: 1.35;
   }
 
   /* Cap the reading measure on standalone prose in the content column.

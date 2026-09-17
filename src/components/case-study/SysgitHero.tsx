@@ -186,10 +186,5 @@ export const SysgitHero = () => (
         </g>
       </g>
       </svg>
-    <figcaption className="cv-meta mt-4 max-w-prose px-8" style={{ color: "var(--text-muted)" }}>
-      One object from the model, drawn. Diagram, not a screenshot. In hardware modeling a square is not a square: it
-      carries a typed value with a unit and a link to the test that verifies it, and when the value moves, the
-      requirement it satisfied says so.
-    </figcaption>
   </figure>
 );

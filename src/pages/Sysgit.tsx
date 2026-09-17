@@ -23,17 +23,7 @@ const decisions: Decision[] = [
     why: "In hardware modeling a square is not a square. It carries model metadata, and position and lines have specific meaning. The diagram also has to translate directly into the mental model of coded files, and back, for people who think visually and people who think in code.",
     tradeoff: "Less fluid than a general-purpose canvas. I designed toward the bare minimum required for an object to exist, and no further.",
     result: "The side-by-side diagram editor and IDE is the feature we get the most positive feedback on, and the most requested upgrades.",
-    // The triptych is the argument; the capture is the evidence it shipped.
-    visual: (
-      <>
-        <TranslationTriptych />
-        <MediaSlot
-          ratio="16/9"
-          src="/case-studies/sysgit/diagram-editor-ide.png"
-          alt="The Sysgit editor in split view. SysML source on the left, the auto-laid-out model graph on the right."
-        />
-      </>
-    ),
+    visual: <TranslationTriptych />,
   },
   {
     title: "Git Lite",
@@ -212,11 +202,6 @@ export const Sysgit = () => (
       ]}
     />
     <MediaSlot ratio="16/9" caption="Shipped surface area, 2023 &ndash; 2026" />
-
-    <p className="mb-6">
-      The diagram and IDE pairing draws the most positive feedback and the most requested upgrades. That is
-      anecdotal, and I would not present it as anything else.
-    </p>
 
     <SectionHeading>REFLECTION</SectionHeading>
     <Rule className="mb-6" />
