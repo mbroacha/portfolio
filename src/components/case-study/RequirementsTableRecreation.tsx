@@ -383,12 +383,6 @@ export const RequirementsTableRecreation = () => {
           Showing {nf.format(rows.length)} of {nf.format(ROWS.length)} requirements
         </div>
       </div>
-
-      <figcaption className="cv-meta mt-4 max-w-prose px-8" style={{ color: "var(--text-on-media)" }}>
-        Requirements table, interactive recreation. Real column structure and interaction model. Every requirement in
-        it is synthetic, and the row count is a property of this recreation rather than any customer&rsquo;s project.
-        Scroll, search and select.
-      </figcaption>
     </figure>
   );
 };

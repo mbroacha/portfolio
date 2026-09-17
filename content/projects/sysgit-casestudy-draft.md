@@ -169,10 +169,6 @@ adverse incentives rather than usability. The meaningful question is whether
 organizations already locked into a legacy tool bought anyway. The US Air Force,
 Leidos, GTRI, Tradewinds and Constellr did, from a company of seven.
 
-The diagram and IDE pairing draws the most positive feedback and the most
-requested upgrades. That is anecdotal, and I would not present it as anything
-else.
-
 ## Reflection
 
 **I would have got into RevOps much sooner.** It is far more powerful to say that
