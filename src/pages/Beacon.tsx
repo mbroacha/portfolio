@@ -49,6 +49,7 @@ const decisions: Decision[] = [
 
 export const Beacon = () => (
   <CvPage
+    scope="beacon"
     sidebar={
       <>
         <div className="flex items-center gap-2.5">

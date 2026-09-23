@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-08",
+  "generated": "2026-09-23",
   "source": "content/answer-bank.json",
   "decline": "Morgan hasn't written about that.",
   "answers": [
@@ -120,7 +120,8 @@
       "tone": "straight",
       "source": {
         "label": "Sysgit, Outcome",
-        "path": "/case-study/sysgit"
+        "path": "/case-study/sysgit",
+        "anchor": "outcome"
       }
     },
     {
@@ -238,7 +239,7 @@
       "scope": "global",
       "tone": "straight",
       "source": {
-        "label": "Sysgit, Ownership",
+        "label": "Sysgit",
         "path": "/case-study/sysgit"
       }
     },
@@ -255,7 +256,8 @@
       "tone": "straight",
       "source": {
         "label": "Sysgit, Decisions",
-        "path": "/case-study/sysgit"
+        "path": "/case-study/sysgit",
+        "anchor": "decisions"
       }
     },
     {
@@ -272,7 +274,8 @@
       "tone": "straight",
       "source": {
         "label": "Sysgit, Decisions",
-        "path": "/case-study/sysgit"
+        "path": "/case-study/sysgit",
+        "anchor": "decisions"
       }
     },
     {
@@ -289,7 +292,8 @@
       "tone": "straight",
       "source": {
         "label": "Sysgit, Constraints",
-        "path": "/case-study/sysgit"
+        "path": "/case-study/sysgit",
+        "anchor": "constraints"
       }
     },
     {
@@ -305,7 +309,7 @@
       "scope": "sysgit",
       "tone": "straight",
       "source": {
-        "label": "Sysgit, Ownership",
+        "label": "Sysgit",
         "path": "/case-study/sysgit"
       }
     },
@@ -321,7 +325,7 @@
       "scope": "sysgit",
       "tone": "straight",
       "source": {
-        "label": "Sysgit, Ownership",
+        "label": "Sysgit",
         "path": "/case-study/sysgit"
       }
     },
@@ -339,7 +343,8 @@
       "tone": "straight",
       "source": {
         "label": "Sysgit, Insight",
-        "path": "/case-study/sysgit"
+        "path": "/case-study/sysgit",
+        "anchor": "insight"
       }
     },
     {
@@ -372,7 +377,8 @@
       "tone": "straight",
       "source": {
         "label": "Beacon, Reflection",
-        "path": "/case-study/beacon"
+        "path": "/case-study/beacon",
+        "anchor": "reflection"
       }
     },
     {
@@ -389,7 +395,8 @@
       "tone": "straight",
       "source": {
         "label": "Beacon, Decisions",
-        "path": "/case-study/beacon"
+        "path": "/case-study/beacon",
+        "anchor": "decisions"
       }
     },
     {
@@ -405,7 +412,8 @@
       "tone": "straight",
       "source": {
         "label": "Beacon, Reflection",
-        "path": "/case-study/beacon"
+        "path": "/case-study/beacon",
+        "anchor": "reflection"
       }
     },
     {
@@ -580,7 +588,7 @@
         "favorite colour",
         "best color"
       ],
-      "a": "#244233. Hue 150, saturation 30, lightness 20. The hue is the whole argument: 150 sits just off pure green toward blue, which is why it reads as pine rather than lawn. Real needles carry a waxy cuticle that scatters cool light, so they run colder than almost any other foliage. Saturation stays low because needles are never vivid, and lightness stays down because pine is a color you see in mass, not in a single leaf. Nearest ink is Pantone 5605 C.",
+      "a": "#244233. Hue 150, saturation 30, lightness 20. Nearest ink is Pantone 5605 C.",
       "scope": "global",
       "tone": "cheeky",
       "swatch": {

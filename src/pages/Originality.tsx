@@ -60,6 +60,7 @@ const decisions: Decision[] = [
 
 export const Originality = () => (
   <CvPage
+    scope="originality"
     sidebar={
       <>
         <div className="flex items-center gap-2.5">
