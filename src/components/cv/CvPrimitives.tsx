@@ -2,9 +2,24 @@ import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "../../lib/cn";
 
+/** "DECISIONS" -> "decisions". Gives every section a stable anchor to link at. */
+const sectionId = (children: ReactNode): string | undefined =>
+  typeof children === "string"
+    ? children.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
+    : undefined;
+
 /** Serif-italic section label. The only display type in the system. */
-export const SectionHeading = ({ children, className }: { children: ReactNode; className?: string }) => (
+export const SectionHeading = ({
+  children,
+  className,
+  id,
+}: {
+  children: ReactNode;
+  className?: string;
+  id?: string;
+}) => (
   <h2
+    id={id ?? sectionId(children)}
     className={cn("mb-6 font-display text-[length:var(--font-size-2xl)] font-normal not-italic text-bone", className)}
     style={{ fontStyle: "italic" }}
   >

@@ -53,6 +53,7 @@ const decisions: Decision[] = [
 
 export const Sysgit = () => (
   <CvPage
+    scope="sysgit"
     sidebar={
       <>
         <div className="flex items-center gap-2.5">

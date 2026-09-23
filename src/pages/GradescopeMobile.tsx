@@ -6,6 +6,7 @@ import { PrevNext, TwoCol } from "../components/cv/CaseStudyParts";
 
 export const GradescopeMobile = () => (
   <CvPage
+    scope="gradescope"
     sidebar={
       <>
         <div className="flex items-center gap-2.5">

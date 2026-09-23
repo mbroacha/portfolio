@@ -128,6 +128,25 @@
     line-height: 1.35;
   }
 
+  /* Where a source link lands. Traceability has to be visible or it is just a
+     link: the section the answer came from marks itself for a moment so the
+     reader can see they were handed a specific passage, not a page. */
+  .cv-hl {
+    animation: cv-hl 1.6s ease-out;
+  }
+
+  @keyframes cv-hl {
+    0%,
+    55% {
+      background-color: var(--surface-media);
+      box-shadow: -10px 0 0 var(--surface-media), 10px 0 0 var(--surface-media);
+    }
+    100% {
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+
   /* Cap the reading measure on standalone prose in the content column.
      Two-column blocks are already narrow enough to self-limit. */
   .cv-prose > p {
