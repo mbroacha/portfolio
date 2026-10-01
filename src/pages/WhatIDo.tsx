@@ -4,7 +4,7 @@ import { Jackalope } from "../components/cv/Jackalope";
 import { MediaSlot, MetaList, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import { ConstraintGrid, InsightBlock, Ledger, PrevNext, Step, TwoCol } from "../components/cv/CaseStudyParts";
 
-export const HowIWork = () => (
+export const WhatIDo = () => (
   <CvPage
     sidebar={
       <>
@@ -19,21 +19,21 @@ export const HowIWork = () => (
 
         <Rule />
 
-        <div className="font-display text-xl italic text-bone">How I work</div>
+        <div className="font-display text-xl italic text-bone">What I do</div>
         <div>
-          One feature, start to finish, with the tools named at every step. Written because &ldquo;AI native&rdquo;
-          is a claim, and a walkthrough is evidence.
+          &ldquo;AI native&rdquo; from start to finish.
         </div>
 
         <Rule />
 
         <MetaList
           items={[
-            { label: "Design", value: "Claude Design, with our design system loaded" },
-            { label: "Build", value: "Claude Code. VS Code" },
+            { label: "Research", value: "Interview transcription, and insight development"},
+            { label: "Product", value : "A custom skill that combs user feedback, Slack suggestions, and bug reports to curate product roadmap."},
+            { label: "Design", value: "Claude Design and Figma" },
+            { label: "Build", value: "Claude Code" },
             { label: "Critique", value: "A design critique skill I wrote, run over the repo" },
             { label: "Ship", value: <span className="text-bone">Full features. My own front-end PRs</span> },
-            { label: "By hand", value: "Technical SE workflows. UI review. Always" },
           ]}
         />
       </>
@@ -42,13 +42,12 @@ export const HowIWork = () => (
     <SectionHeading>THE CLAIM</SectionHeading>
     <Rule className="mb-6" />
     <p className="mb-6">
-      I prototype in code and ship my own front-end PRs. That collapses the handoff loop most product orgs complain
+      I prototype in code and ship my own front-end pull requests. This collapses the handoff loop most product orgs complain
       about, and it means my design decisions get tested in the real product instead of in a mock.
     </p>
     <p className="mb-6">
-      The suspicion that comes with saying this out loud is that the judgment is outsourced and I am a wrapper
-      around a model. So here is one real feature, in order, with the tool named at each step. Count the decisions.
-      The model made none of them.
+      A very valid reaction may be to assume that all judgment is outsourced and I am a wrapper
+      around a model. So here is one real feature, in order, with the tool named at each step. Notice how none of the real product decisions are made by AI.
     </p>
 
     <SectionHeading>ONE FEATURE, END TO END</SectionHeading>

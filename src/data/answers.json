@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23",
+  "generated": "2026-09-24",
   "source": "content/answer-bank.json",
   "decline": "Morgan hasn't written about that.",
   "answers": [
@@ -10,14 +10,22 @@
         "why you",
         "what makes you different",
         "pitch me",
-        "why should we hire you"
+        "why should we hire you",
+        "tell me about yourself",
+        "introduce yourself",
+        "what makes you a good fit",
+        "why should we bring you on",
+        "what do you bring",
+        "your elevator pitch",
+        "sell yourself",
+        "what is your value"
       ],
-      "a": "I get fluent in hard domains fast. Space traffic, health records, academic integrity, disaster response, government, systems engineering. Six of them, none of which I knew going in. I will understand the problem you are trying to solve as well as you do. And I prototype in code and ship my own front-end PRs, so what I hand you is the thing, not a picture of the thing.",
+      "a": "I learn hard domains fast. Space traffic, medical, academic integrity, disaster response, government, systems engineering...nothing I knew going in. I will understand the problem you are trying to solve as well as you do. Not for nothing I prototype and ship my own code, so will be as familiar with technical constraints as any front-end engineer.",
       "scope": "global",
       "tone": "straight",
       "source": {
-        "label": "How I Work",
-        "path": "/how-i-work"
+        "label": "What I Do",
+        "path": "/what-i-do"
       }
     },
     {
@@ -27,14 +35,19 @@
         "can you take feedback",
         "no design critique",
         "worked alone too long",
-        "do you get feedback"
+        "do you get feedback",
+        "how do you handle critique",
+        "are you open to feedback",
+        "how do you take criticism",
+        "do you like feedback",
+        "design review culture"
       ],
       "a": "I had formal critique at Turnitin for four years and group critique at Slingshot. I lost it at Sysgit and built my own design critique skill to stand in for it, rather than getting comfortable without it. I would rather be a designer who missed critique than one who learned to do without.",
       "scope": "global",
       "tone": "straight",
       "source": {
-        "label": "How I Work",
-        "path": "/how-i-work"
+        "label": "What I Do",
+        "path": "/what-i-do"
       }
     },
     {
@@ -44,14 +57,23 @@
         "worked on a design team",
         "design org experience",
         "can you work with other designers",
-        "only been solo"
+        "only been solo",
+        "what size teams have you been on",
+        "have you worked with other designers",
+        "team size",
+        "design team experience",
+        "have you been on a big team",
+        "collaborating with designers",
+        "did you work alone",
+        "were you the only designer",
+        "solo or team"
       ],
       "a": "Four years at Turnitin: twenty designers, formal process, and a design system I contributed to but did not own. I was also lead to three junior designers there. At Slingshot I was the only designer on Beacon but part of a company design team with shared critique. Sysgit is the only place I have been the entire design function.",
       "scope": "global",
       "tone": "straight",
       "source": {
-        "label": "How I Work",
-        "path": "/how-i-work"
+        "label": "What I Do",
+        "path": "/what-i-do"
       }
     },
     {
@@ -61,14 +83,20 @@
         "can you mentor",
         "people leadership",
         "managed designers",
-        "team lead"
+        "team lead",
+        "have you ever managed anyone",
+        "do you have leadership experience",
+        "have you led a team",
+        "people management",
+        "did you manage designers",
+        "are you a lead"
       ],
       "a": "Yes. Lead to three junior designers at Turnitin. Not since then, because neither Slingshot nor Sysgit had other designers on the product to lead.",
       "scope": "global",
       "tone": "straight",
       "source": {
-        "label": "How I Work",
-        "path": "/how-i-work"
+        "label": "What I Do",
+        "path": "/what-i-do"
       }
     },
     {
@@ -78,14 +106,19 @@
         "what are you looking for",
         "next role",
         "what do you want",
-        "ideal job"
+        "ideal job",
+        "what are you looking for in your next role",
+        "what kind of company do you want",
+        "what is your ideal role",
+        "where do you want to work",
+        "what do you want next"
       ],
       "a": "A hard problem, and explicitly not necessarily systems engineering. Twice now I have found a standard-setting vacuum and not been able to fill it: interaction conventions for SysML v2 at Sysgit, and collision-avoidance procedure at Slingshot. So it is more specific than wanting a hard problem. I want somewhere I can set the standard, not only build inside one.",
       "scope": "global",
       "tone": "straight",
       "source": {
-        "label": "How I Work",
-        "path": "/how-i-work"
+        "label": "What I Do",
+        "path": "/what-i-do"
       }
     },
     {
@@ -95,14 +128,17 @@
         "weakness",
         "least proud",
         "what do you struggle with",
-        "biggest flaw"
+        "biggest flaw",
+        "what are your weaknesses",
+        "where do you need to grow",
+        "what are you working on improving"
       ],
       "a": "I am pretty trash at documentation and formal process. Way too much lives in my head at any given time, and I regularly ignore my own advice to others, which is never be afraid to state the obvious, because it is not obvious to everyone. This site is partly the correction. Writing it forced most of that out of my head and into a file.",
       "scope": "global",
       "tone": "straight",
       "source": {
-        "label": "How I Work",
-        "path": "/how-i-work"
+        "label": "What I Do",
+        "path": "/what-i-do"
       }
     },
     {
@@ -113,7 +149,15 @@
         "what were the results",
         "impact metrics",
         "why no data",
-        "prove it worked"
+        "prove it worked",
+        "what was the impact of your work",
+        "can you show me numbers",
+        "how do you measure success",
+        "what results did you get",
+        "any data",
+        "kpis",
+        "why is there no analytics",
+        "do you track usage"
       ],
       "a": "Sysgit has no product analytics. Partly structural, since on-prem and air-gapped deployments often cannot phone home, and partly that we have not gotten to it. Beacon has two published adoption figures, both cited on its page with their denominators. Everywhere else I would rather show you the decision and the tradeoff than a number I cannot defend in a room.",
       "scope": "global",
@@ -131,14 +175,21 @@
         "job hopping",
         "why so many domains",
         "no domain expertise",
-        "generalist"
+        "generalist",
+        "what industries have you worked in",
+        "what domains have you worked in",
+        "do you have domain expertise",
+        "are you a generalist",
+        "you move around a lot",
+        "short tenures",
+        "varied background"
       ],
       "a": "I did not pick them for variety. Each one was a hard problem I did not already understand, and getting to competence fast is the actual skill. Space traffic, enterprise healthcare, academic integrity, disaster response, government, systems engineering. If you need someone who already knows your domain, I am the wrong hire. If you need someone who will know it in a month, that is the whole track record.",
       "scope": "global",
       "tone": "straight",
       "source": {
-        "label": "How I Work",
-        "path": "/how-i-work"
+        "label": "What I Do",
+        "path": "/what-i-do"
       }
     },
     {
@@ -148,14 +199,25 @@
         "do you code",
         "front end PRs",
         "can you code",
-        "how much code do you ship"
+        "how much code do you ship",
+        "do you write front end",
+        "how technical are you",
+        "can you write code",
+        "do you ship code",
+        "are you technical",
+        "do you do implementation",
+        "html css javascript",
+        "react",
+        "do you prototype",
+        "do you build prototypes",
+        "prototyping"
       ],
       "a": "Full features, not just copy and CSS. I avoid anything that would substantially touch the backend. The process is deliberately not shortened: a design review with a prototype handoff, then a formal PR review like anyone else. Having merge access never became a reason to skip review. My engineers were supportive early on, when I was making a lot of junior dev mistakes.",
       "scope": "global",
       "tone": "straight",
       "source": {
-        "label": "How I Work",
-        "path": "/how-i-work"
+        "label": "What I Do",
+        "path": "/what-i-do"
       }
     },
     {
@@ -165,14 +227,17 @@
         "where do you draw the line",
         "what do you do manually",
         "ai limits",
-        "when do you not use ai"
+        "when do you not use ai",
+        "what do you do by hand",
+        "what stays manual",
+        "what will you not automate"
       ],
       "a": "Anything needing real systems engineering expertise. That is epistemic, not ideological: the field is niche enough that I cannot assume the training data is there. Use the model where coverage is dense, not where it is sparse. And UI review is always manual. I need to click around and find what feels clunky. Generation is delegable. Evaluation is not.",
       "scope": "global",
       "tone": "straight",
       "source": {
-        "label": "How I Work",
-        "path": "/how-i-work"
+        "label": "What I Do",
+        "path": "/what-i-do"
       }
     },
     {
@@ -182,14 +247,22 @@
         "are you just a chatgpt wrapper",
         "ai native",
         "is your judgment outsourced",
-        "buzzword"
+        "buzzword",
+        "how do you use ai in your work",
+        "how does ai fit into your process",
+        "what is your ai workflow",
+        "are you actually ai native",
+        "how much ai do you use",
+        "what is your process",
+        "walk me through your process",
+        "how do you work"
       ],
       "a": "Check the chronology. Every time an organization was missing a function, I built a system to stand in for it. Research protocols, a roadmap, naming conventions, a design review process. Four of those predate AI entirely and were built by hand. The disposition is the constant. AI is the leverage. That is a different claim from prototyping faster, and it is checkable.",
       "scope": "global",
       "tone": "straight",
       "source": {
-        "label": "How I Work",
-        "path": "/how-i-work"
+        "label": "What I Do",
+        "path": "/what-i-do"
       }
     },
     {
@@ -199,14 +272,20 @@
         "figma",
         "what tools do you use",
         "figma make",
-        "design tools"
+        "design tools",
+        "what design tools do you use",
+        "are you a figma person",
+        "what is in your toolkit",
+        "do you work in figma",
+        "what software do you use",
+        "sketch"
       ],
       "a": "Barely. I tried Figma Make and the Figma MCP when they launched and the results were never what I wanted. The useful realization was sharper than the tooling verdict: I was looking for reasons to justify continuing to use Figma. Designers are professionally defined by that tool. It is the same attachment Sysgit's users have to the software I am replacing.",
       "scope": "global",
       "tone": "straight",
       "source": {
-        "label": "How I Work",
-        "path": "/how-i-work"
+        "label": "What I Do",
+        "path": "/what-i-do"
       }
     },
     {
@@ -216,7 +295,10 @@
         "laid off",
         "why only a year at slingshot",
         "short tenure",
-        "what happened at slingshot"
+        "what happened at slingshot",
+        "why did you only stay a year",
+        "why so short at slingshot",
+        "why one year"
       ],
       "a": "Layoff for headcount reasons, Series A, 2023. About a year. Beacon's adoption at the time makes it fairly clear it was not a performance question.",
       "scope": "global",
@@ -233,7 +315,12 @@
         "product management",
         "are you a pm",
         "product strategy",
-        "scope and roadmap"
+        "scope and roadmap",
+        "do you do product strategy",
+        "have you been a pm",
+        "do you own roadmap",
+        "are you product minded",
+        "who sets scope"
       ],
       "a": "Both, twice, and not by choice the first time. At Slingshot there was no manager and no PM who lasted, so strategy happened jointly with the engineering manager. At Sysgit I report to the VP of Engineering and serve as part-time PM. Twice is a pattern: I fill the product strategy vacuum in engineering-led companies, because otherwise nobody does.",
       "scope": "global",
@@ -249,7 +336,13 @@
       "aliases": [
         "hardest problem",
         "hardest part",
-        "most difficult"
+        "most difficult",
+        "what was hard about sysgit",
+        "tell me about the diagramming",
+        "the diagram editor",
+        "hardest interaction",
+        "what was the toughest part",
+        "canvas"
       ],
       "a": "The diagramming. In hardware modeling a square is not a square. It carries model metadata, and position and lines have specific meaning. The diagram also has to translate directly into the mental model of coded files, and back, for people who think visually and people who think in code. I designed toward the bare minimum required for an object to exist, and no further.",
       "scope": "sysgit",
@@ -267,7 +360,15 @@
         "what failed",
         "biggest mistake",
         "what would you redo",
-        "reversal"
+        "reversal",
+        "what would you do differently",
+        "did anything fail",
+        "what did you scrap",
+        "the commenting system",
+        "what did not ship",
+        "describe a time you failed",
+        "tell me about a failure",
+        "what went badly"
       ],
       "a": "The commenting system. I assumed collaboration needed a discussion layer and designed the whole workflow before questioning the premise. It was too convoluted to implement and users were ambivalent. The async version control model was already doing the collaboration work. I had designed a synchronous-feeling layer on top of an async system.",
       "scope": "sysgit",
@@ -285,7 +386,12 @@
         "blocked",
         "lost an argument",
         "what could you not change",
-        "disagreement"
+        "disagreement",
+        "were you ever blocked",
+        "where did you lose",
+        "what were you not allowed to do",
+        "vocabulary",
+        "sysml"
       ],
       "a": "The modeling vocabulary. My whole thesis is that this is a translation problem: picture, document, and code, legible to two cohorts. The words are the one layer I have not been allowed to translate, because the founder wants strict spec fidelity and the company will not take a position on the language. So the product translates every representation except the language itself.",
       "scope": "sysgit",
@@ -303,7 +409,12 @@
         "what did you cut",
         "saying no",
         "scope cuts",
-        "features you killed"
+        "features you killed",
+        "what features did you kill",
+        "what did you push back on",
+        "what did you refuse",
+        "chatbots",
+        "scope you cut"
       ],
       "a": "Chatbots, repeatedly. Nobody could demonstrate an actual need for one. Also one-off features requested for a demo or by a single prospective customer. The automated PM absorbs a lot of that pressure now, because a weighted ticket from real signal is harder to argue with than a designer saying no in a meeting.",
       "scope": "sysgit",
@@ -319,7 +430,11 @@
       "aliases": [
         "conflict",
         "disagreement with engineers",
-        "how do you handle pushback"
+        "how do you handle pushback",
+        "how do you handle disagreement",
+        "who challenges you",
+        "tell me about a conflict",
+        "when engineers disagree"
       ],
       "a": "Engineers argue a design is more technically demanding than it looks. Founders argue it does not match their industry experience. Most recently an engineer built a proof of concept for a worker management activity. I tried repeatedly to reframe it as analogous to AI agent creation and could not get it across. We fixed it by sitting down and mapping the actual workflow, which should have happened before anyone touched code.",
       "scope": "sysgit",
@@ -336,7 +451,14 @@
         "how do you do research",
         "user research access",
         "how many interviews",
-        "talking to users"
+        "talking to users",
+        "how did you talk to users",
+        "how much research did you do",
+        "how do you recruit participants",
+        "revops",
+        "do you do user testing",
+        "usability testing",
+        "do you run studies"
       ],
       "a": "I stopped waiting for research to be scheduled and embedded myself in our RevOps process instead, so I am in the initial calls as the non-sales person in the room. Thirty-plus interviews that way. I also lurk in systems engineering Discord and Reddit, and I walk the floor at defense conferences I happen to be attending.",
       "scope": "sysgit",
@@ -353,7 +475,11 @@
       "aliases": [
         "are these real screenshots",
         "why no real screens",
-        "is this the real product"
+        "is this the real product",
+        "are those real screenshots",
+        "are these real screens",
+        "why is this a recreation",
+        "did you rebuild these"
       ],
       "a": "I left Slingshot in 2023 and have no access to the product. Everything on this page is reconstructed from a couple of surviving Figma files and memory, and it is captioned that way. I would rather label a reconstruction than pass one off as a screenshot.",
       "scope": "beacon",
@@ -370,7 +496,10 @@
         "what failed",
         "biggest mistake",
         "what would you redo",
-        "reversal"
+        "reversal",
+        "what would you change",
+        "what did you regret",
+        "information architecture"
       ],
       "a": "I let the interface get ahead of the information architecture. There was a push from other product teams to make Beacon look especially cutting edge and I went along with it. In a product whose whole job is making dense, uneven data legible under time pressure, the structure was the thing worth polishing. I wish I had pushed back.",
       "scope": "beacon",
@@ -388,7 +517,11 @@
         "no precedent",
         "first of its kind",
         "how did you start",
-        "no competitors"
+        "no competitors",
+        "how did you research it",
+        "where did you start",
+        "cdm",
+        "subject matter experts"
       ],
       "a": "You anchor to the data, because it is the only thing that exists. Conjunction messages and ephemerides are extremely dense, so I printed them and had subject matter experts circle exactly what they looked at during real decision points. That is the opposite of Sysgit, where there is an incumbent and I designed toward what users were already trained on.",
       "scope": "beacon",
@@ -405,7 +538,11 @@
       "aliases": [
         "what would you do next",
         "unfinished",
-        "what still bothers you"
+        "what still bothers you",
+        "what was left undone",
+        "what is unfinished",
+        "standard operating procedure",
+        "sop"
       ],
       "a": "Operators asked constantly: what should we do, what should our standard operating procedure be. For most of them this was a genuinely new discipline with no established practice to follow. Slingshot was in a unique position to set that standard and did not. I still think about it.",
       "scope": "beacon",
@@ -422,7 +559,11 @@
       "aliases": [
         "turnitin ai detection",
         "did you build ai detection",
-        "chatgpt detector"
+        "chatgpt detector",
+        "did you build the ai detector",
+        "is this ai detection",
+        "chatgpt detection",
+        "contract cheating"
       ],
       "a": "No. This was contract cheating: human ghostwriters, shipped in 2019. In 2018 AI was nowhere near mature enough to be the problem. Machine learning was the backbone of contract cheating detection, so the ML framing is accurate. Turnitin does now sell an AI writing detection product. I did not work on it.",
       "scope": "originality",
@@ -439,7 +580,10 @@
         "what failed",
         "biggest mistake",
         "reversal",
-        "what would you redo"
+        "what would you redo",
+        "what went wrong there",
+        "investigation recommended",
+        "what did you reverse"
       ],
       "a": "I made the product prescriptive first, using the phrase Investigation Recommended. Research found educators still read it as an accusation, which was the exact thing I was trying to design away from. I backed the severity down and moved to more nuanced signals that bring a piece of work to a teacher's attention rather than pronouncing on it.",
       "scope": "originality",
@@ -455,7 +599,11 @@
       "aliases": [
         "constraints",
         "legal constraints",
-        "what could you not do"
+        "what could you not do",
+        "what was the legal constraint",
+        "what made this hard",
+        "what could you not say",
+        "reputation"
       ],
       "a": "Two things. Legally the product could not say a student had cheated, so it had to surface suspicious factors across a body of work instead. And Turnitin's flagship Similarity product already had a reputation for being wrong and over-trusted, with students publicly describing unfair accusations. I was designing against my own company's history of producing scores people believed too much.",
       "scope": "originality",
@@ -472,7 +620,10 @@
         "why is this here",
         "this failed",
         "bad reviews",
-        "why show a failure"
+        "why show a failure",
+        "why show a failed project",
+        "why include this",
+        "it got bad reviews"
       ],
       "a": "Because it covers two things nothing else does: mobile, and working alongside another designer. And it taught me the thing I use most. You inherit blame for user error that your own friction caused. A student rushing a tedious mapping step at midnight produces a bad submission, and the teacher blames the product. The friction and the blame are the same problem.",
       "scope": "gradescope",
@@ -488,7 +639,12 @@
       "aliases": [
         "takeaway",
         "lesson",
-        "what would you do differently"
+        "what would you do differently",
+        "what did that teach you",
+        "what did you learn",
+        "the lesson",
+        "drop off",
+        "voluntary users"
       ],
       "a": "The threshold for drop off is a totally different animal when nobody has to use your product. No one was required to use this app, so it had to demonstrate value over a process involving multiple apps. Every other product I have worked on had captive enterprise users. That distinction is the whole thing.",
       "scope": "gradescope",
@@ -505,14 +661,17 @@
         "did you use ai for this",
         "is this ai generated",
         "who built this site",
-        "did claude write this"
+        "did claude write this",
+        "who made this website",
+        "did you design this site",
+        "is this site ai generated"
       ],
       "a": "Partly, and it would honestly be weird if it hadn't, given what the rest of this site claims. I built it in VS Code with Claude Code. The interviews, the decisions about what to include, and every judgment call about what I can defend are mine. The model generates and enumerates. I judge. That division is the same one I use at work.",
       "scope": "global",
       "tone": "cheeky",
       "source": {
-        "label": "How I Work",
-        "path": "/how-i-work"
+        "label": "What I Do",
+        "path": "/what-i-do"
       }
     },
     {
@@ -522,14 +681,18 @@
         "am i talking to a bot",
         "is this ai",
         "is this chatgpt",
-        "are you a bot"
+        "are you a bot",
+        "am i talking to a robot",
+        "is this an llm",
+        "are you real",
+        "is this a bot"
       ],
       "a": "No. There is no model here. Every answer was written in advance and is being retrieved, which is why each one shows you where it came from and why it declines instead of improvising. I've been a vocal chatbot hater for years and it would be hypocritical to start here.",
       "scope": "global",
       "tone": "cheeky",
       "source": {
-        "label": "How I Work",
-        "path": "/how-i-work"
+        "label": "What I Do",
+        "path": "/what-i-do"
       }
     },
     {
@@ -538,14 +701,16 @@
       "aliases": [
         "do you write docs",
         "documentation",
-        "are you organized"
+        "are you organized",
+        "do you write things down",
+        "process documentation"
       ],
       "a": "Read it, yes. Write it, historically no. It is the thing I am worst at and it has a real cost, because far too much lives in my head. This site is the largest piece of documentation I have ever produced about my own work, which should tell you how overdue it was.",
       "scope": "global",
       "tone": "cheeky",
       "source": {
-        "label": "How I Work",
-        "path": "/how-i-work"
+        "label": "What I Do",
+        "path": "/what-i-do"
       }
     },
     {
@@ -554,14 +719,17 @@
       "aliases": [
         "show me your figma",
         "process files",
-        "can i see the work files"
+        "can i see the work files",
+        "can i see your process",
+        "show me your files",
+        "can i see your work files"
       ],
       "a": "Some of them, and fewer than you would expect. Most of my recent work happens in code, so the honest artifact is a pull request rather than a file full of frames. What survives from Turnitin and Slingshot I can walk you through. What I would rather show you is the running thing.",
       "scope": "global",
       "tone": "cheeky",
       "source": {
-        "label": "How I Work",
-        "path": "/how-i-work"
+        "label": "What I Do",
+        "path": "/what-i-do"
       }
     },
     {
@@ -570,14 +738,17 @@
       "aliases": [
         "will ai replace designers",
         "is design dead",
-        "should i be worried"
+        "should i be worried",
+        "are you worried about ai taking your job",
+        "will ai replace design",
+        "job security"
       ],
       "a": "Generation is delegable; evaluation and taste are not. The part of my job a model does well is producing more options than I would have made alone, and the part it does badly is knowing which one is right for a user it has never met in a domain it has thin data on. I have not found that second part getting easier. I am also a much better personality hire.",
       "scope": "global",
       "tone": "cheeky",
       "source": {
-        "label": "How I Work",
-        "path": "/how-i-work"
+        "label": "What I Do",
+        "path": "/what-i-do"
       }
     },
     {
@@ -586,15 +757,50 @@
       "aliases": [
         "favourite color",
         "favorite colour",
-        "best color"
+        "best color",
+        "what color do you like",
+        "best colour",
+        "favourite colour",
+        "what is your colour"
       ],
-      "a": "#244233. Hue 150, saturation 30, lightness 20. Nearest ink is Pantone 5605 C.",
+      "a": "#244233. Hue 150, saturation 30, lightness 20. The hue is the whole argument: 150 sits just off pure green toward blue, which is why it reads as pine rather than lawn. Real needles carry a waxy cuticle that scatters cool light, so they run colder than almost any other foliage. Saturation stays low because needles are never vivid, and lightness stays down because pine is a color you see in mass, not in a single leaf. Nearest ink is Pantone 5605 C.",
       "scope": "global",
       "tone": "cheeky",
       "swatch": {
         "hex": "#244233",
         "hsl": "hsl(150, 30%, 20%)"
       }
+    },
+    {
+      "id": "cheeky-outside-work",
+      "q": "What do you do when you are not designing?",
+      "aliases": [
+        "hobbies",
+        "outside work",
+        "what do you do for fun",
+        "personal",
+        "outside of work",
+        "weekends",
+        "do you have a life",
+        "interests",
+        "free time",
+        "what do you do on weekends",
+        "personal life",
+        "outside of design"
+      ],
+      "a": "I touch grass.",
+      "scope": "global",
+      "tone": "cheeky",
+      "photos": [
+        {
+          "src": "/photos/skiing.webp",
+          "alt": "Skiing in a neon geometric one-piece suit, with Mount Yotei behind."
+        },
+        {
+          "src": "/photos/hiking.webp",
+          "alt": "Hiking a narrow desert slot canyon, dwarfed by the rock walls."
+        }
+      ]
     }
   ]
 }

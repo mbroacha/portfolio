@@ -1,35 +1,20 @@
 import type { ReactNode } from "react";
-import { Link } from "react-router-dom";
 import { CvPage } from "../components/cv/CvPage";
 import { Jackalope } from "../components/cv/Jackalope";
-import { MetaList, Rule, SectionHeading, MediaSlot, WorkEntry } from "../components/cv/CvPrimitives";
+import { Rule, SectionHeading, MediaSlot, WorkEntry } from "../components/cv/CvPrimitives";
 import { Interrogate } from "../components/query/Interrogate";
 import { LensPrompt } from "../components/query/LensPrompt";
-import { cn } from "../lib/cn";
 import { useLens, type LensOption } from "../lib/useLens";
+import { NavCard } from "../components/cv/NavCard";
 
-const education = [
-  { degree: "Master of Human-Computer Interaction", school: "Carnegie Mellon University" },
-  { degree: "BA in Chinese, Economics, and Philosophy", school: "University of Pittsburgh" },
-];
-
-const employment = [
-  { company: "Sysgit", role: "Design Lead", years: "2023 - 2026" },
-  { company: "Slingshot Aerospace", role: "Senior Product Designer", years: "2022 - 2023" },
-  { company: "Turnitin", role: "Senior UX Designer", years: "2018 - 2022" },
-  { company: "Eaton", role: "UX Designer", years: "2018" },
-  { company: "Vitech", role: "Product Manager", years: "2015 - 2017" },
-  { company: "Epic", role: "QA & UX Research", years: "2013 - 2015" },
-];
-
-/** Carried over from the Greenhouse proof strip. Best copy on the old homepage. */
-const fieldwork = [
-  "Research in level-1 ER trauma centers",
-  "Yellowstone field studies",
-  "Onsite at rocket launches",
-  "Embedded in underfunded schools",
-];
-
+/**
+ * The rail: who this is, then where to go.
+ *
+ * Identity sits at the top because it is the first thing a reader needs and
+ * because on mobile the rail stacks above everything else. Then the three
+ * sections, then the field. The work list itself is the main column's job, so
+ * the rail does not repeat it.
+ */
 const Sidebar = ({ lens }: { lens: LensOption | null }) => (
   <>
     <div className="flex items-center gap-2.5">
@@ -37,84 +22,37 @@ const Sidebar = ({ lens }: { lens: LensOption | null }) => (
       <div className="font-display text-xl italic tracking-[0.5px] text-bone">Morgan Broacha</div>
     </div>
 
-    <Rule className="mt-2" />
-
-    <div className="flex flex-col gap-4">
-      <div className="text-bone">{lens ? lens.eyebrow : "CRAFT FOR HARD TECH"}</div>
+    <div className="flex flex-col gap-3">
       {lens ? <div className="text-bone">{lens.lead}</div> : null}
       <div>
-        I&rsquo;m a product designer in Oakland, CA with over a decade of experience in UX design, interaction
-        design, and product strategy. I bring craft to complicated systems, in domains where being wrong is
-        expensive: health records, academic integrity, aerospace collision avoidance, and systems engineering.
-      </div>
-      <div>
-        I&rsquo;m currently the sole designer at{" "}
+        I'm product designer based in Oakland, CA, with over a decade of experience in UX design, interaction design, and product strategy. I care about craft, decisiveness, and a bit of surprise. I am currently building {" "}
         <a href="https://sysgit.io" target="_blank" rel="noopener noreferrer" className="underline">
           Sysgit
         </a>
-        , where I own the product, the design system, and the brand. I prototype in code and ship my own
-        front-end PRs.
+        .
       </div>
-      <div className="flex flex-col gap-0.5">
-        <Link to="/how-i-work" className="underline">
-          How I work
-        </Link>
+      <div className="flex flex-wrap gap-x-4 gap-y-1">
         <a href="mailto:hello@morganbroacha.com" className="underline">
           Email
         </a>
-        <a href="https://www.linkedin.com/in/morganbroacha/" target="_blank" rel="noopener noreferrer" className="underline">
+        <a
+          href="https://www.linkedin.com/in/morganbroacha/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline"
+        >
           LinkedIn
         </a>
       </div>
     </div>
 
-    <Rule />
-    <div className="font-display text-base italic text-bone">BACKGROUND</div>
+    <div className="flex flex-col gap-2">
+      <NavCard to="/" label="Work" note="Selected case studies" active thumb={<Jackalope size={18} className="text-lichen" />} />
+      <NavCard to="/what-i-do" label="How to be AI native" note="One feature, end to end" />
+      <NavCard to="/about" label="About" note="Background, and the rest of it" />
+    </div>
 
-    <MetaList
-      items={[
-        {
-          label: "Education",
-          value: (
-            <div className="flex flex-col gap-5">
-              {education.map((e) => (
-                <div key={e.school}>
-                  {e.degree}
-                  <br />
-                  {e.school}
-                </div>
-              ))}
-            </div>
-          ),
-        },
-        {
-          label: "Employment",
-          value: (
-            <div className="flex flex-col gap-5">
-              {employment.map((e) => (
-                <div key={e.company}>
-                  {e.company}
-                  <br />
-                  {e.role}
-                  <br />
-                  {e.years}
-                </div>
-              ))}
-            </div>
-          ),
-        },
-        {
-          label: "Fieldwork",
-          value: (
-            <div className="flex flex-col gap-2">
-              {fieldwork.map((f) => (
-                <div key={f}>{f}</div>
-              ))}
-            </div>
-          ),
-        },
-      ]}
-    />
+    <Interrogate scope="global" />
   </>
 );
 
@@ -179,9 +117,9 @@ const WORK: Work[] = [
     ),
   },
   {
-    id: "how-i-work",
-    title: "How I Work",
-    to: "/how-i-work",
+    id: "what-i-do",
+    title: "What I Do",
+    to: "/what-i-do",
     meta: (
       <>
         <span className="italic">Practice</span>, design and front-end
@@ -225,39 +163,17 @@ const WORK: Work[] = [
   },
 ];
 
-/**
- * The two halves of the interface, together, as the first thing on the page.
- *
- * Declaring a lens shapes the page; the field answers a question. Different
- * jobs, but a reader meets them in the same moment, so they sit in one block
- * rather than being split across the layout. On the homepage the field does not
- * go in the rail: the rail is a long bio, and anything at the bottom of it is
- * below the fold on desktop and buried on mobile.
- *
- * Rendered twice, once for each breakpoint. Only one is ever visible, and both
- * read the same URL, so they cannot disagree.
- */
-const Head = ({ className }: { className?: string }) => {
-  const { lens, set, clear } = useLens();
-  return (
-    <div className={cn(className)}>
-      <LensPrompt lens={lens} onSet={set} onClear={clear} />
-      <Interrogate scope="global" className="mb-8" />
-    </div>
-  );
-};
-
 export const HomePage = () => {
-  const { lens, order } = useLens();
+  const { lens, order, set, clear } = useLens();
   const shown = order
     .map((id) => WORK.find((w) => w.id === id))
     .filter((w): w is Work => Boolean(w));
 
   return (
-    <CvPage sidebar={<Sidebar lens={lens} />} lead={<Head className="mb-2" />}>
-      <Head className="hidden md:block" />
+    <CvPage sidebar={<Sidebar lens={lens} />} rail="body">
+      <LensPrompt lens={lens} onSet={set} onClear={clear} className="max-w-[var(--measure-prose)]" />
 
-      <SectionHeading>WORK</SectionHeading>
+      <SectionHeading>SELECTED WORK</SectionHeading>
       <Rule className="mb-6" />
 
       {shown.map((w, i) => (

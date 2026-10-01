@@ -131,12 +131,23 @@ for (const e of bank.answers ?? []) {
       if (!f.alt || !f.alt.trim()) errors.push(`${e.id}: ${f.src} has no alt text.`);
     }
 
-    // An incomplete grid looks broken. Hold the whole entry and say so.
+    // Ship the photos that exist. Two side by side is a row, not a broken grid,
+    // and holding a written answer hostage to a missing image means a reader who
+    // asks a fair question gets told nothing has been written about it. Only an
+    // entry with no usable photo at all is held.
+    if (files.length === 0) {
+      warnings.push(`${e.id}: held. No photo is ready yet.`);
+      held.push(`${e.id} (no photos yet)`);
+      continue;
+    }
     if (files.length < want) {
       const missing = (e.photos.files ?? []).filter((f) => f.status !== "done").map((f) => f.src);
-      warnings.push(`${e.id}: held. ${files.length}/${want} photos ready, still waiting on ${missing.join(", ")}.`);
-      held.push(`${e.id} (incomplete photo grid)`);
-      continue;
+      warnings.push(
+        `${e.id}: shipping ${files.length} of ${want} photos. Still waiting on ${missing.join(", ")}.`,
+      );
+    }
+    if (files.length === 3) {
+      warnings.push(`${e.id}: 3 photos leaves an orphan in a two-column grid. Prefer 2 or 4.`);
     }
 
     out.photos = files.map((f) => ({ src: f.src, alt: f.alt }));

@@ -4,10 +4,15 @@ import { LENS_OPTIONS, type Lens, type LensOption } from "../../lib/useLens";
 /**
  * The first thing on the homepage.
  *
- * It is the top of the page, not a layer over it. No modal, no dismissal, no
- * typing theatre. The full work list sits directly underneath, so ignoring this
+ * It is part of the hero, not a layer over it. No modal, no dismissal, no
+ * typing theatre. The work list sits directly underneath, so ignoring this
  * costs one scroll and answering it costs one click. The reference is a search
  * field above a list: nobody resents one, because it does not block anything.
+ *
+ * Deliberately not phrased as a question. "Why are you here?" reads as an
+ * interrogation at the door, which is the opposite of the tone a portfolio
+ * wants. An offer works better than a demand: the page says what it will do,
+ * and the reader can ignore it.
  *
  * When a lens is on it says so and offers a way out. Reordering a page without
  * telling the reader is the thing that makes this pattern feel like a trick.
@@ -39,7 +44,7 @@ export const LensPrompt = ({
     ) : (
       <>
         <div className="cv-subhead mb-3 text-bone">
-          <em className="font-display not-italic">Why are you here?</em>
+          <em className="font-display not-italic">Start where it makes sense.</em>
         </div>
         <div className="flex flex-wrap gap-2">
           {LENS_OPTIONS.map((o) => (
@@ -54,7 +59,7 @@ export const LensPrompt = ({
           ))}
         </div>
         <div className="cv-meta mt-3 text-lichen">
-          Or scroll. Everything is below either way.
+          The page reorders to match. Nothing gets hidden, and scrolling works fine too.
         </div>
       </>
     )}

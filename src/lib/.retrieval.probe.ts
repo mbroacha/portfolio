@@ -1,4 +1,4 @@
-import data from "../data/answers.json";
+import data from "../data/answers.json" with { type: "json" };
 
 export interface AnswerSource {
   label: string;
