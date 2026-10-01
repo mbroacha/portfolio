@@ -43,9 +43,9 @@ export const About = () => {
 
           <MetaList
             items={[
-              { label: "Based", value: "Oakland, California" },
+              { label: "Hometown", value: "Green River, WY" },
               { label: "Now", value: <span className="text-bone">Design Lead at Sysgit</span> },
-              { label: "Email", value: <a href="mailto:hello@morganbroacha.com" className="underline">hello@morganbroacha.com</a> },
+              { label: "Email", value: <a href="mailto:mbroacha@gmail.com" className="underline">mbroacha@gmail.com</a> },
               {
                 label: "Elsewhere",
                 value: (

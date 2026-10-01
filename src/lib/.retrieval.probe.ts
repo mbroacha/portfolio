@@ -15,12 +15,17 @@ export interface Answer {
   scope: string;
   tone: string;
   source?: AnswerSource;
+  /** false keeps it out of the suggested list. It is still matchable. */
+  suggest?: boolean;
   swatch?: { hex: string; hsl: string };
   photos?: { src: string; alt: string }[];
 }
 
 const ANSWERS = (data.answers ?? []) as Answer[];
 export const DECLINE: string = data.decline ?? "Morgan hasn't written about that.";
+
+/** Curated order for the general questions. Set in the bank's _meta. */
+const SUGGESTED: string[] = (data as { suggested?: string[] }).suggested ?? [];
 
 /**
  * Retrieval, not generation.
@@ -198,12 +203,27 @@ export function findAnswer(query: string, scope?: string): Answer | null {
   return bestScore >= THRESHOLD ? best : null;
 }
 
-/** Suggested questions for a page: this project's first, then general ones. */
+/**
+ * Suggested questions for a page: this project's first, then general ones.
+ *
+ * Entries flagged `suggest: false` are left out. Those are the questions that
+ * plant a doubt a reader did not walk in with. Every one of them still answers
+ * if typed, which is the point: being ready for a hard question is not the same
+ * as opening with it.
+ */
 export function suggestionsFor(scope: string | undefined, limit = 6): Answer[] {
-  const mine = scope ? ANSWERS.filter((e) => e.scope === scope) : [];
-  const general = ANSWERS.filter((e) => e.scope === "global");
+  const open = ANSWERS.filter((e) => e.suggest !== false);
+  const mine = scope && scope !== "global" ? open.filter((e) => e.scope === scope) : [];
+
+  // The general list is curated in the bank rather than falling out of file
+  // order, because which questions get offered is an editorial decision.
+  const curated = SUGGESTED.map((id) => open.find((e) => e.id === id)).filter(
+    (e): e is Answer => Boolean(e),
+  );
+  const rest = open.filter((e) => e.scope === "global" && !SUGGESTED.includes(e.id));
+
   const seen = new Set<string>();
-  return [...mine, ...general]
+  return [...mine, ...curated, ...rest]
     .filter((e) => (seen.has(e.id) ? false : (seen.add(e.id), true)))
     .slice(0, limit);
 }

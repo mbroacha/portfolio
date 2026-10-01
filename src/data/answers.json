@@ -1,7 +1,19 @@
 {
-  "generated": "2026-09-24",
+  "generated": "2026-10-01",
   "source": "content/answer-bank.json",
   "decline": "Morgan hasn't written about that.",
+  "suggested": [
+    "why-hire",
+    "real-design-org",
+    "do-you-code",
+    "what-next",
+    "mentoring",
+    "cheeky-favorite-color",
+    "ai-refuse",
+    "left-figma",
+    "cheeky-ai-wrote-this",
+    "product-strategy"
+  ],
   "answers": [
     {
       "id": "why-hire",
@@ -20,7 +32,7 @@
         "sell yourself",
         "what is your value"
       ],
-      "a": "I learn hard domains fast. Space traffic, medical, academic integrity, disaster response, government, systems engineering...nothing I knew going in. I will understand the problem you are trying to solve as well as you do. Not for nothing I prototype and ship my own code, so will be as familiar with technical constraints as any front-end engineer.",
+      "a": "I get fluent in hard domains fast. Space traffic, health records, academic integrity, disaster response, government, systems engineering. Six of them, none of which I knew going in. I will understand the problem you are trying to solve as well as you do. And I prototype in code and ship my own front-end PRs, so what I hand you is the thing, not a picture of the thing.",
       "scope": "global",
       "tone": "straight",
       "source": {
@@ -45,6 +57,7 @@
       "a": "I had formal critique at Turnitin for four years and group critique at Slingshot. I lost it at Sysgit and built my own design critique skill to stand in for it, rather than getting comfortable without it. I would rather be a designer who missed critique than one who learned to do without.",
       "scope": "global",
       "tone": "straight",
+      "suggest": false,
       "source": {
         "label": "What I Do",
         "path": "/what-i-do"
@@ -91,7 +104,7 @@
         "did you manage designers",
         "are you a lead"
       ],
-      "a": "Yes. Lead to three junior designers at Turnitin. Not since then, because neither Slingshot nor Sysgit had other designers on the product to lead.",
+      "a": "Yes. Lead to three junior designers at Turnitin, inside a twenty-person design org with formal process and critique.",
       "scope": "global",
       "tone": "straight",
       "source": {
@@ -136,6 +149,7 @@
       "a": "I am pretty trash at documentation and formal process. Way too much lives in my head at any given time, and I regularly ignore my own advice to others, which is never be afraid to state the obvious, because it is not obvious to everyone. This site is partly the correction. Writing it forced most of that out of my head and into a file.",
       "scope": "global",
       "tone": "straight",
+      "suggest": false,
       "source": {
         "label": "What I Do",
         "path": "/what-i-do"
@@ -162,6 +176,7 @@
       "a": "Sysgit has no product analytics. Partly structural, since on-prem and air-gapped deployments often cannot phone home, and partly that we have not gotten to it. Beacon has two published adoption figures, both cited on its page with their denominators. Everywhere else I would rather show you the decision and the tradeoff than a number I cannot defend in a room.",
       "scope": "global",
       "tone": "straight",
+      "suggest": false,
       "source": {
         "label": "Sysgit, Outcome",
         "path": "/case-study/sysgit",
@@ -184,9 +199,10 @@
         "short tenures",
         "varied background"
       ],
-      "a": "I did not pick them for variety. Each one was a hard problem I did not already understand, and getting to competence fast is the actual skill. Space traffic, enterprise healthcare, academic integrity, disaster response, government, systems engineering. If you need someone who already knows your domain, I am the wrong hire. If you need someone who will know it in a month, that is the whole track record.",
+      "a": "I did not pick them for variety. Each one was a hard problem I did not already understand, and getting to competence fast is the actual skill. Space traffic, enterprise healthcare, academic integrity, disaster response, government, systems engineering. Six domains, none of which I knew going in.",
       "scope": "global",
       "tone": "straight",
+      "suggest": false,
       "source": {
         "label": "What I Do",
         "path": "/what-i-do"
@@ -266,6 +282,47 @@
       }
     },
     {
+      "id": "ai-view",
+      "q": "How do you feel about AI?",
+      "aliases": [
+        "what do you think about ai",
+        "your opinion on ai",
+        "what is your take on ai",
+        "thoughts on ai",
+        "do you like ai",
+        "are you optimistic about ai",
+        "is ai good for design",
+        "ai ethics",
+        "are you worried about ai",
+        "how do you feel about machine learning",
+        "is ai overhyped"
+      ],
+      "a": "As a designer it has been a game changer, because it opened code as a design medium. That is a gap Figma has been awkwardly trying to close for years. It also accelerates the backroom parts of creative work: brainstorming, finding inspiration. I am also deeply worried about the ethics of unrestrained models and recursive improvement. I have seen first-hand, in education and in healthcare, the human cost of leaning too hard on machine learning and taking a person out of the decision.",
+      "scope": "global",
+      "tone": "straight",
+      "suggest": false
+    },
+    {
+      "id": "ai-in-products",
+      "q": "When does AI belong in a product?",
+      "aliases": [
+        "when should we add ai",
+        "how do you decide where ai goes",
+        "when is ai the right call",
+        "should we put ai in our product",
+        "ai features",
+        "when not to use ai in a product",
+        "how do you evaluate ai features"
+      ],
+      "a": "It has to pass one of two tests. Either it is solving a real time sink that is nobody's actual job, or it is standing in for a subject matter expert you cannot get in the room. If it is neither, nobody has demonstrated a need. I said no to chatbots at Sysgit for three years on exactly that basis.",
+      "scope": "global",
+      "tone": "straight",
+      "source": {
+        "label": "What I Do",
+        "path": "/what-i-do"
+      }
+    },
+    {
       "id": "left-figma",
       "q": "Do you still use Figma?",
       "aliases": [
@@ -303,6 +360,7 @@
       "a": "Layoff for headcount reasons, Series A, 2023. About a year. Beacon's adoption at the time makes it fairly clear it was not a performance question.",
       "scope": "global",
       "tone": "straight",
+      "suggest": false,
       "source": {
         "label": "Beacon",
         "path": "/case-study/beacon"
@@ -373,6 +431,7 @@
       "a": "The commenting system. I assumed collaboration needed a discussion layer and designed the whole workflow before questioning the premise. It was too convoluted to implement and users were ambivalent. The async version control model was already doing the collaboration work. I had designed a synchronous-feeling layer on top of an async system.",
       "scope": "sysgit",
       "tone": "straight",
+      "suggest": false,
       "source": {
         "label": "Sysgit, Decisions",
         "path": "/case-study/sysgit",
@@ -396,6 +455,7 @@
       "a": "The modeling vocabulary. My whole thesis is that this is a translation problem: picture, document, and code, legible to two cohorts. The words are the one layer I have not been allowed to translate, because the founder wants strict spec fidelity and the company will not take a position on the language. So the product translates every representation except the language itself.",
       "scope": "sysgit",
       "tone": "straight",
+      "suggest": false,
       "source": {
         "label": "Sysgit, Constraints",
         "path": "/case-study/sysgit",
@@ -484,6 +544,7 @@
       "a": "I left Slingshot in 2023 and have no access to the product. Everything on this page is reconstructed from a couple of surviving Figma files and memory, and it is captioned that way. I would rather label a reconstruction than pass one off as a screenshot.",
       "scope": "beacon",
       "tone": "straight",
+      "suggest": false,
       "source": {
         "label": "Beacon",
         "path": "/case-study/beacon"
@@ -504,6 +565,7 @@
       "a": "I let the interface get ahead of the information architecture. There was a push from other product teams to make Beacon look especially cutting edge and I went along with it. In a product whose whole job is making dense, uneven data legible under time pressure, the structure was the thing worth polishing. I wish I had pushed back.",
       "scope": "beacon",
       "tone": "straight",
+      "suggest": false,
       "source": {
         "label": "Beacon, Reflection",
         "path": "/case-study/beacon",
@@ -588,6 +650,7 @@
       "a": "I made the product prescriptive first, using the phrase Investigation Recommended. Research found educators still read it as an accusation, which was the exact thing I was trying to design away from. I backed the severity down and moved to more nuanced signals that bring a piece of work to a teacher's attention rather than pronouncing on it.",
       "scope": "originality",
       "tone": "straight",
+      "suggest": false,
       "source": {
         "label": "Originality",
         "path": "/case-study/originality"
@@ -708,6 +771,7 @@
       "a": "Read it, yes. Write it, historically no. It is the thing I am worst at and it has a real cost, because far too much lives in my head. This site is the largest piece of documentation I have ever produced about my own work, which should tell you how overdue it was.",
       "scope": "global",
       "tone": "cheeky",
+      "suggest": false,
       "source": {
         "label": "What I Do",
         "path": "/what-i-do"
@@ -746,6 +810,7 @@
       "a": "Generation is delegable; evaluation and taste are not. The part of my job a model does well is producing more options than I would have made alone, and the part it does badly is knowing which one is right for a user it has never met in a domain it has thin data on. I have not found that second part getting easier. I am also a much better personality hire.",
       "scope": "global",
       "tone": "cheeky",
+      "suggest": false,
       "source": {
         "label": "What I Do",
         "path": "/what-i-do"

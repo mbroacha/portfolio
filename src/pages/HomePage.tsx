@@ -31,19 +31,6 @@ const Sidebar = ({ lens }: { lens: LensOption | null }) => (
         </a>
         .
       </div>
-      <div className="flex flex-wrap gap-x-4 gap-y-1">
-        <a href="mailto:hello@morganbroacha.com" className="underline">
-          Email
-        </a>
-        <a
-          href="https://www.linkedin.com/in/morganbroacha/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline"
-        >
-          LinkedIn
-        </a>
-      </div>
     </div>
 
     <div className="flex flex-col gap-2">
@@ -53,6 +40,29 @@ const Sidebar = ({ lens }: { lens: LensOption | null }) => (
     </div>
 
     <Interrogate scope="global" />
+
+    {/* Foot of the rail: the three things a reader leaves with. */}
+    <div className="mt-auto flex flex-col gap-1 border-t border-hedge pt-5">
+      <a href="mailto:mbroacha@gmail.com" className="underline underline-offset-4">
+        Email
+      </a>
+      <a
+        href="https://www.linkedin.com/in/morganbroacha/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline underline-offset-4"
+      >
+        LinkedIn
+      </a>
+      <a
+        href="/morgan-broacha-resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline underline-offset-4"
+      >
+        Resume &#8599;
+      </a>
+    </div>
   </>
 );
 
@@ -170,7 +180,7 @@ export const HomePage = () => {
     .filter((w): w is Work => Boolean(w));
 
   return (
-    <CvPage sidebar={<Sidebar lens={lens} />} rail="body">
+    <CvPage sidebar={<Sidebar lens={lens} />}>
       <LensPrompt lens={lens} onSet={set} onClear={clear} className="max-w-[var(--measure-prose)]" />
 
       <SectionHeading>SELECTED WORK</SectionHeading>

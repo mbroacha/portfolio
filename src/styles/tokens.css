@@ -130,8 +130,8 @@
   --max-width-page: 90rem;
   --max-width-content: 90rem;
   --max-width-prose: 68ch;
-  --max-width-rail: 33%;
-  --sidebar-width: 33%;
+  --max-width-rail: 25%;
+  --sidebar-width: 25%;
 
   /* ── Shape ────────────────────────────────────────────────── */
   /* The template is entirely square. Radii collapse to zero. */
