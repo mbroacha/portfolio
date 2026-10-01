@@ -3,7 +3,6 @@ import { CvPage } from "../components/cv/CvPage";
 import { Jackalope } from "../components/cv/Jackalope";
 import { Rule, SectionHeading, MediaSlot, WorkEntry } from "../components/cv/CvPrimitives";
 import { Interrogate } from "../components/query/Interrogate";
-import { LensPrompt } from "../components/query/LensPrompt";
 import { useLens, type LensOption } from "../lib/useLens";
 import { NavCard } from "../components/cv/NavCard";
 
@@ -174,14 +173,13 @@ const WORK: Work[] = [
 ];
 
 export const HomePage = () => {
-  const { lens, order, set, clear } = useLens();
+  const { lens, order } = useLens();
   const shown = order
     .map((id) => WORK.find((w) => w.id === id))
     .filter((w): w is Work => Boolean(w));
 
   return (
     <CvPage sidebar={<Sidebar lens={lens} />}>
-      <LensPrompt lens={lens} onSet={set} onClear={clear} className="max-w-[var(--measure-prose)]" />
 
       <SectionHeading>SELECTED WORK</SectionHeading>
       <Rule className="mb-6" />
