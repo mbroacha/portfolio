@@ -12,11 +12,14 @@ export interface Photo {
  * padding each side leaves 411px, so two across with a 12px gap is ~200px per
  * chip. Below `md` the rail stacks and the grid grows with it.
  *
+ * Two columns for anything but a lone photo, which gets the full width rather
+ * than sitting in half of one.
+ *
  * Photos stay in full color on purpose. The rest of the site is a grayscale
  * document, which is exactly what makes this land.
  */
 export const PhotoGrid = ({ photos }: { photos: Photo[] }) => (
-  <div className="mt-3 grid grid-cols-2 gap-3">
+  <div className={`mt-3 grid gap-3 ${photos.length === 1 ? "grid-cols-1" : "grid-cols-2"}`}>
     {photos.map((p) => (
       <div
         key={p.src}

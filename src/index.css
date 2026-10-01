@@ -116,6 +116,17 @@
     font-variant-numeric: tabular-nums;
   }
 
+  /* Back to body size, for a block sitting inside a 12px container.
+     The case study rail is project metadata, so 12px is right there. The
+     homepage rail is the bio: it is the primary self-description on the site
+     and it is prose, so it reads at 15px like everything else a person
+     actually reads. Same component, two jobs. */
+  .cv-body {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    letter-spacing: normal;
+  }
+
   /* The sub-heading level, one step above body.
      SectionHeading is an uppercase band between rules, so it reads as a label
      rather than as a size. That left decision titles, claims and outcome items

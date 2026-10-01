@@ -40,7 +40,7 @@ const STOP = new Set([
   "did", "do", "does", "for", "from", "had", "has", "have", "how", "i", "if", "in", "is", "it",
   "its", "just", "me", "my", "not", "of", "on", "or", "so", "some", "that", "the", "their",
   "them", "there", "they", "this", "to", "was", "were", "what", "when", "where", "which", "who",
-  "why", "will", "with", "would", "you", "your",
+  "we", "why", "will", "with", "would", "you", "your",
 ]);
 
 const flatten = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
@@ -55,11 +55,13 @@ const W_QUESTION = 3;
 const W_BODY = 1;
 
 /**
- * Below this, decline. Tuned so a one-word query that hits an alias lands, and
- * an off-topic sentence does not. Raise it if the interface starts answering
- * questions it was not really asked.
+ * Below this, decline.
+ *
+ * Deliberately high. A portfolio that says "Morgan hasn't written about that"
+ * reads as honest; one that answers a question nobody asked reads as broken.
+ * When this was loose, half-matches won constantly.
  */
-export const THRESHOLD = 0.34;
+export const THRESHOLD = 0.52;
 
 /** Pre-tokenised fields, built once. */
 interface Indexed {
@@ -92,33 +94,62 @@ for (const doc of INDEX) {
 const idf = (t: string) => Math.log(1 + INDEX.length / (1 + (DF.get(t) ?? 0)));
 
 /**
- * Prefix match rather than substring, so "work" still finds "worked" but "ai"
- * stops finding "said".
+ * Two tokens are the same word if they differ only by a common inflection.
+ *
+ * Arbitrary prefix matching was too loose: it made "person" match "personal",
+ * so "are you a figma person" came back as the answer about hiking and
+ * bowling. Matching only on real suffixes keeps "work" finding "worked"
+ * without letting unrelated words that happen to share a stem collide.
  */
-const has = (field: string[], t: string) =>
-  field.some((f) => f === t || (t.length >= 4 && (f.startsWith(t) || t.startsWith(f))));
+const SUFFIXES = ["s", "es", "ed", "d", "ing", "ly", "er", "ers"];
+
+const sameWord = (a: string, b: string): boolean => {
+  if (a === b) return true;
+  const [short, long] = a.length < b.length ? [a, b] : [b, a];
+  if (short.length < 3) return false;
+  // The long word has to actually begin with the short one. Without this check
+  // the slice below compares nonsense: "should".slice(5) is "d", which is a
+  // valid suffix, so "hello" matched "should" and every empty query returned
+  // the first answer in the file.
+  if (!long.startsWith(short)) return false;
+  return SUFFIXES.includes(long.slice(short.length));
+};
+
+const has = (field: string[], t: string) => field.some((f) => sameWord(f, t));
 
 function scoreOne(queryTokens: string[], doc: Indexed, scope?: string): number {
   if (queryTokens.length === 0) return 0;
 
   let earned = 0;
   let possible = 0;
+  let matched = 0;
   for (const t of queryTokens) {
     const w = idf(t);
     possible += W_QUESTION * w;
-    if (has(doc.asked, t)) earned += W_QUESTION * w;
-    else if (has(doc.body, t)) earned += W_BODY * w;
+    if (has(doc.asked, t)) {
+      earned += W_QUESTION * w;
+      matched++;
+    } else if (has(doc.body, t)) {
+      earned += W_BODY * w;
+      matched++;
+    }
   }
   if (possible === 0) return 0;
 
-  let score = earned / possible;
+  /**
+   * How much of what was asked got answered, not just how heavy the hits were.
+   *
+   * Without this, matching one word of a two-word question scored the same as
+   * matching a rare word in a question that was fully understood, which is how
+   * "do you know react native" ended up on the answer about being AI native.
+   * A partial match is worth less, always.
+   */
+  const coverage = matched / queryTokens.length;
+  let score = (earned / possible) * (0.45 + 0.55 * coverage);
 
-  // Scope is context, not a filter. An answer about this project ranks above an
-  // equally good one about another, but a global answer is never penalised.
-  if (scope) {
-    if (doc.entry.scope === scope) score += 0.15;
-    else if (doc.entry.scope !== "global") score -= 0.25;
-  }
+  // A small nudge for the page you are on. The heavy lifting is done by the
+  // scope filter in findAnswer, not here.
+  if (scope && doc.entry.scope === scope) score += 0.08;
 
   return score;
 }
@@ -132,7 +163,9 @@ export function findAnswer(query: string, scope?: string): Answer | null {
   // three different projects, and on the Beacon page it has to be the Beacon
   // answer. This page first, then anything general, then whatever is left.
   const exact = ANSWERS.filter(
-    (e) => flatten(e.q) === q || e.aliases.some((a) => flatten(a) === q),
+    (e) =>
+      (!scope || e.scope === "global" || e.scope === scope) &&
+      (flatten(e.q) === q || e.aliases.some((a) => flatten(a) === q)),
   );
   if (exact.length) {
     const mine = scope ? exact.find((e) => e.scope === scope) : undefined;
@@ -143,7 +176,18 @@ export function findAnswer(query: string, scope?: string): Answer | null {
   let best: Answer | null = null;
   let bestScore = 0;
 
+  /**
+   * On a project page, answers about a different project are off the table.
+   *
+   * A reader on Beacon asking "what would you change" means Beacon. Treating
+   * scope as a soft preference let a strongly worded Sysgit answer win anyway,
+   * which is the single strangest thing the field did. General answers still
+   * compete everywhere.
+   */
+  const inScope = (e: Answer) => !scope || e.scope === "global" || e.scope === scope;
+
   for (const doc of INDEX) {
+    if (!inScope(doc.entry)) continue;
     const s = scoreOne(qt, doc, scope);
     if (s > bestScore) {
       bestScore = s;

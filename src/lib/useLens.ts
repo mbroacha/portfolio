@@ -37,7 +37,7 @@ export const LENS_OPTIONS: LensOption[] = [
     label: "I'm hiring a product designer",
     applied: "Ordered by scope and ownership.",
     eyebrow: "SOLE DESIGNER, SIX HARD DOMAINS",
-    lead: "I get fluent in hard domains fast, and I have been the entire design function for three years.",
+    lead: "I learn hard domains fast, and I have been the entire design function for three years.",
     order: ["sysgit", "beacon", "originality", "gradescope"],
   },
   {
@@ -46,7 +46,7 @@ export const LENS_OPTIONS: LensOption[] = [
     applied: "Code and practice first.",
     eyebrow: "DESIGNER WHO SHIPS THE CODE",
     lead: "I prototype in code and ship my own front-end PRs, through the same review everyone else goes through.",
-    order: ["sysgit", "how-i-work", "originality", "beacon", "gradescope"],
+    order: ["sysgit", "what-i-do", "originality", "beacon", "gradescope"],
   },
   {
     id: "browsing",

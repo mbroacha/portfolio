@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { cn } from "../../lib/cn";
 import { Interrogate } from "../query/Interrogate";
 
 interface CvPageProps {
@@ -11,28 +12,23 @@ interface CvPageProps {
    */
   scope?: string;
   /**
-   * Rendered above the grid, on small screens only.
-   *
-   * Below `md` the rail stacks on top of the content, so anything at the top of
-   * the main column starts a full sidebar down the page. The homepage prompt
-   * has to be the first thing a reader meets, so it goes here on mobile and
-   * stays inside the content column on desktop, where the two columns already
-   * start level.
+   * Type register for the rail. Case studies carry project metadata, so "meta"
+   * at 12px. The homepage rail carries the bio, which is prose, so "body".
    */
-  lead?: ReactNode;
+  rail?: "meta" | "body";
 }
 
 /**
  * Dark CV shell: 33/67 grid, sticky left rail, hairline rules.
  * Collapses to a single column below `md`.
  */
-export const CvPage = ({ sidebar, children, scope, lead }: CvPageProps) => (
+export const CvPage = ({ sidebar, children, scope, rail = "meta" }: CvPageProps) => (
   <>
-    {lead ? (
-      <div className="mx-auto w-full max-w-page bg-fern px-8 pt-8 md:hidden">{lead}</div>
-    ) : null}
     <div className="mx-auto grid w-full max-w-page grid-cols-1 bg-fern md:grid-cols-[33%_67%]">
-      <aside className="cv-meta flex flex-col gap-6 border-b border-hedge p-8 md:sticky md:top-0 md:max-h-screen md:self-start md:overflow-y-auto md:border-b-0 md:border-r">
+      <aside className={cn(
+        rail === "body" ? "cv-body" : "cv-meta",
+        "flex flex-col gap-6 border-b border-hedge p-8 md:sticky md:top-0 md:max-h-screen md:self-start md:overflow-y-auto md:border-b-0 md:border-r",
+      )}>
         {sidebar}
         {scope ? (
           <Interrogate scope={scope} className="hidden border-t border-hedge pt-6 md:block" />

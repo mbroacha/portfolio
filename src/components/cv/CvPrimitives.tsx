@@ -33,7 +33,9 @@ export const Rule = ({ className }: { className?: string }) => (
 
 /** Sidebar label/value grid, matching the template's 80px column. */
 export const MetaList = ({ items }: { items: { label: string; value: ReactNode }[] }) => (
-  <dl className="grid grid-cols-[80px_1fr] gap-5">
+  // 80px floor keeps the case study rails aligned; max-content lets the column
+  // grow when the same list is set at body size on the homepage.
+  <dl className="grid grid-cols-[minmax(80px,max-content)_1fr] gap-5">
     {items.map((item) => (
       <div key={item.label} className="contents">
         <dt className="text-bone">{item.label}</dt>
@@ -115,7 +117,7 @@ export const WorkEntry = ({
   to?: string;
 }) => (
   <div className="grid grid-cols-1 gap-6 pb-6 sm:grid-cols-2">
-    <div className="cv-meta text-bone">
+    <div className="cv-subhead text-bone">
       {index}.{" "}
       {to ? (
         <Link to={to} className="underline underline-offset-4">
