@@ -8,8 +8,8 @@ export interface Photo {
 /**
  * Square 2x2 photo grid, for answers where a picture is the answer.
  *
- * Sized for the case study rail: 33% of a 90rem page is 475px, less 32px
- * padding each side leaves 411px, so two across with a 12px gap is ~200px per
+ * Sized for the case study rail: 25% of a 90rem page is 360px, less 32px
+ * padding each side leaves 296px, so two across with a 12px gap is ~142px per
  * chip. Below `md` the rail stacks and the grid grows with it.
  *
  * Two columns for anything but a lone photo, which gets the full width rather

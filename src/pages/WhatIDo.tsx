@@ -46,8 +46,7 @@ export const WhatIDo = () => (
       about, and it means my design decisions get tested in the real product instead of in a mock.
     </p>
     <p className="mb-6">
-      A very valid reaction may be to assume that all judgment is outsourced and I am a wrapper
-      around a model. So here is one real feature, in order, with the tool named at each step. Notice how none of the real product decisions are made by AI.
+      A very valid reaction may be to assume that all judgment is outsourced and I am just out here burning tokens. So here is one real feature, in order, with the tool named at each step. Notice how none of the real product decisions are made by AI.
     </p>
 
     <SectionHeading>ONE FEATURE, END TO END</SectionHeading>

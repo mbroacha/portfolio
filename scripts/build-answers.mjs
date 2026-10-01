@@ -98,6 +98,8 @@ for (const e of bank.answers ?? []) {
   if (n > WORD_LIMIT) errors.push(`${e.id}: ${n} words, over the ${WORD_LIMIT}-word rail limit.`);
 
   const out = { id: e.id, q: e.q, aliases: e.aliases ?? [], a: e.a, scope: e.scope, tone: e.tone };
+  // Answerable but not advertised. Absent means suggestable.
+  if (e.suggest === false) out.suggest = false;
   if (e.source) {
     // "Sysgit, Decisions" -> anchor "decisions", which is the id SectionHeading
     // derives from its own text. That is what lets a source link scroll the
@@ -160,6 +162,10 @@ const payload = {
   generated: new Date().toISOString().slice(0, 10),
   source: "content/answer-bank.json",
   decline: bank._meta?.decline ?? "Morgan hasn't written about that.",
+  // Which general questions get offered, in order. Editorial, not algorithmic.
+  suggested: (bank._meta?.suggested_order ?? []).filter((id) =>
+    shipped.some((s) => s.id === id && s.suggest !== false),
+  ),
   answers: shipped,
 };
 

@@ -19,12 +19,12 @@ interface CvPageProps {
 }
 
 /**
- * Dark CV shell: 33/67 grid, sticky left rail, hairline rules.
+ * Dark CV shell: 25/75 grid, sticky left rail, hairline rules.
  * Collapses to a single column below `md`.
  */
 export const CvPage = ({ sidebar, children, scope, rail = "meta" }: CvPageProps) => (
   <>
-    <div className="mx-auto grid w-full max-w-page grid-cols-1 bg-fern md:grid-cols-[33%_67%]">
+    <div className="mx-auto grid w-full max-w-page grid-cols-1 bg-fern md:grid-cols-[25%_75%]">
       <aside className={cn(
         rail === "body" ? "cv-body" : "cv-meta",
         "flex flex-col gap-6 border-b border-hedge p-8 md:sticky md:top-0 md:max-h-screen md:self-start md:overflow-y-auto md:border-b-0 md:border-r",

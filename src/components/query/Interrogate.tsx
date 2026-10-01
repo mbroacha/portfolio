@@ -54,7 +54,7 @@ export const Interrogate = ({ scope, className }: { scope?: string; className?: 
   return (
     <div className={className}>
       <div className="mb-2.5 uppercase text-bone" style={{ letterSpacing: "var(--tracking-label)" }}>
-        Ask
+        Ask me anything
       </div>
 
       <form
