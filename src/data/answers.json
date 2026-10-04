@@ -32,7 +32,7 @@
         "sell yourself",
         "what is your value"
       ],
-      "a": "I get fluent in hard domains fast. Space traffic, health records, academic integrity, disaster response, government, systems engineering. Six of them, none of which I knew going in. I will understand the problem you are trying to solve as well as you do. And I prototype in code and ship my own front-end PRs, so what I hand you is the thing, not a picture of the thing.",
+      "a": "I get fluent in hard domains fast: aerospace, healthcare, disaster response...I will understand the problem you are trying to solve as well as you do. I also code and ship, which brings me closer to the engineering team.",
       "scope": "global",
       "tone": "straight",
       "source": {
@@ -126,7 +126,7 @@
         "where do you want to work",
         "what do you want next"
       ],
-      "a": "A hard problem, and explicitly not necessarily systems engineering. Twice now I have found a standard-setting vacuum and not been able to fill it: interaction conventions for SysML v2 at Sysgit, and collision-avoidance procedure at Slingshot. So it is more specific than wanting a hard problem. I want somewhere I can set the standard, not only build inside one.",
+      "a": "I work best in fields where there is no standard or one right answer. So I naturally gravitate to hard problems, and teams that figure out what they need along the way.",
       "scope": "global",
       "tone": "straight",
       "source": {
@@ -228,7 +228,7 @@
         "do you build prototypes",
         "prototyping"
       ],
-      "a": "Full features, not just copy and CSS. I avoid anything that would substantially touch the backend. The process is deliberately not shortened: a design review with a prototype handoff, then a formal PR review like anyone else. Having merge access never became a reason to skip review. My engineers were supportive early on, when I was making a lot of junior dev mistakes.",
+      "a": "Full features, not just copy and CSS. I avoid anything that would substantially touch the backend. The process is deliberately not shortened: a design review with a prototype handoff, then a formal PR review like anyone else.",
       "scope": "global",
       "tone": "straight",
       "source": {
@@ -729,7 +729,7 @@
         "did you design this site",
         "is this site ai generated"
       ],
-      "a": "Partly, and it would honestly be weird if it hadn't, given what the rest of this site claims. I built it in VS Code with Claude Code. The interviews, the decisions about what to include, and every judgment call about what I can defend are mine. The model generates and enumerates. I judge. That division is the same one I use at work.",
+      "a": "Partly, and it would honestly be weird if it hadn't, given what the rest of this site claims. I built it in VS Code with Claude Code. The interviews, the decisions about what to include, and every judgment call about what I can defend are mine. That division is the same one I use at work.",
       "scope": "global",
       "tone": "cheeky",
       "source": {
@@ -828,7 +828,7 @@
         "favourite colour",
         "what is your colour"
       ],
-      "a": "#244233. Hue 150, saturation 30, lightness 20. The hue is the whole argument: 150 sits just off pure green toward blue, which is why it reads as pine rather than lawn. Real needles carry a waxy cuticle that scatters cool light, so they run colder than almost any other foliage. Saturation stays low because needles are never vivid, and lightness stays down because pine is a color you see in mass, not in a single leaf. Nearest ink is Pantone 5605 C.",
+      "a": "#244233. Hue 150, saturation 30, lightness 20. Nearest ink is Pantone 5605 C.",
       "scope": "global",
       "tone": "cheeky",
       "swatch": {
