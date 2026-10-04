@@ -39,7 +39,7 @@ export const SiteRail = ({ scope }: { /** Corpus scope for the field. */ scope?:
           active={pathname === "/" || pathname.startsWith("/case-study")}
           thumb={<Jackalope size={18} className="text-lichen" />}
         />
-        <NavCard to="/what-i-do" label="What I Do" note="One feature, end to end" active={pathname === "/what-i-do"} />
+        <NavCard to="/what-i-do" label="How to be AI native" note="And you can too" active={pathname === "/what-i-do"} />
         <NavCard to="/about" label="About" note="Background, and the rest of it" active={pathname === "/about"} />
       </div>
 
