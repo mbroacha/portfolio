@@ -45,6 +45,65 @@ export const MetaList = ({ items }: { items: { label: string; value: ReactNode }
   </dl>
 );
 
+/** A titled panel. The About page is a stack of these. */
+export const Panel = ({
+  title,
+  children,
+  className,
+}: {
+  title: string;
+  children: ReactNode;
+  className?: string;
+}) => (
+  <section
+    className={cn("border border-hedge p-5", className)}
+    style={{ backgroundColor: "var(--ink-900)" }}
+  >
+    <h2
+      className="m-0 mb-4 cv-meta font-normal uppercase text-bone"
+      style={{ letterSpacing: "var(--tracking-label)" }}
+    >
+      {title}
+    </h2>
+    {children}
+  </section>
+);
+
+/** Dated row: the label above, the thing below. */
+export const Entry = ({ when, what }: { when: string; what: ReactNode }) => (
+  <div className="mb-4 last:mb-0">
+    <div className="cv-meta text-lichen">{when}</div>
+    <div>{what}</div>
+  </div>
+);
+
+/** Plain column, for the skills and tools lists. */
+export const Bullets = ({ items }: { items: string[] }) => (
+  <ul className="m-0 flex list-none flex-col gap-1.5 p-0">
+    {items.map((i) => (
+      <li key={i}>{i}</li>
+    ))}
+  </ul>
+);
+
+/**
+ * Label above value, ruled between rows.
+ *
+ * The two-column `MetaList` is for short facts in a narrow rail. This one is
+ * for entries whose value is a paragraph or two, where an 80px label column
+ * would leave the text stranded in a thin stripe down the page.
+ */
+export const StackedList = ({ items }: { items: { label: string; value: ReactNode }[] }) => (
+  <dl className="m-0 flex flex-col">
+    {items.map((item, i) => (
+      <div key={item.label} className={cn("flex flex-col gap-1.5 py-5", i === 0 ? "pt-0" : "border-t border-hedge")}>
+        <dt className="cv-meta text-lichen">{item.label}</dt>
+        <dd className="m-0 flex max-w-[var(--measure-prose)] flex-col gap-4 text-bone">{item.value}</dd>
+      </div>
+    ))}
+  </dl>
+);
+
 type Ratio = "16/9" | "1/1" | "3/4" | "16/10";
 
 const ratioClass: Record<Ratio, string> = {

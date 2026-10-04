@@ -23,9 +23,8 @@ export const SiteRail = ({ scope }: { /** Corpus scope for the field. */ scope?:
       </Link>
 
       <div>
-        Product designer in Oakland, California. I bring craft to systems where being wrong is expensive:
-        health records, academic integrity, aerospace collision avoidance, systems engineering. Currently
-        the sole designer at{" "}
+        Product designer in Oakland, California. I bring craft to difficult systems. Currently
+        building {" "}
         <a href="https://sysgit.io" target="_blank" rel="noopener noreferrer" className="underline">
           Sysgit
         </a>
