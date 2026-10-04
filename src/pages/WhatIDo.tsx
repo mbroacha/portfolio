@@ -1,44 +1,32 @@
-import { Link } from "react-router-dom";
 import { CvPage } from "../components/cv/CvPage";
-import { Jackalope } from "../components/cv/Jackalope";
-import { MediaSlot, MetaList, Rule, SectionHeading } from "../components/cv/CvPrimitives";
+import { PageHead } from "../components/cv/PageHead";
+import { SiteRail } from "../components/cv/SiteRail";
+import { MediaSlot, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import { ConstraintGrid, InsightBlock, Ledger, PrevNext, Step, TwoCol } from "../components/cv/CaseStudyParts";
 
 export const WhatIDo = () => (
   <CvPage
     sidebar={
-      <>
-        <div className="flex items-center gap-2.5">
-          <Jackalope size={20} className="text-bone" />
-          <div className="font-display text-xl italic tracking-[0.5px] text-bone">Morgan Broacha</div>
-        </div>
-
-        <Link to="/" className="underline underline-offset-4">
-          &larr; Back to work
-        </Link>
-
-        <Rule />
-
-        <div className="font-display text-xl italic text-bone">What I do</div>
-        <div>
-          &ldquo;AI native&rdquo; from start to finish.
-        </div>
-
-        <Rule />
-
-        <MetaList
-          items={[
-            { label: "Research", value: "Interview transcription, and insight development"},
-            { label: "Product", value : "A custom skill that combs user feedback, Slack suggestions, and bug reports to curate product roadmap."},
-            { label: "Design", value: "Claude Design and Figma" },
-            { label: "Build", value: "Claude Code" },
-            { label: "Critique", value: "A design critique skill I wrote, run over the repo" },
-            { label: "Ship", value: <span className="text-bone">Full features. My own front-end PRs</span> },
-          ]}
-        />
-      </>
+      <SiteRail scope="global" />
     }
   >
+    <PageHead
+      title="What I do"
+      lede={<>&ldquo;AI native&rdquo; from start to finish.</>}
+      items={[
+        { label: "Research", value: "Interview transcription, and insight development" },
+        {
+          label: "Product",
+          value:
+            "A custom skill that combs user feedback, Slack suggestions, and bug reports to curate product roadmap.",
+        },
+        { label: "Design", value: "Claude Design and Figma" },
+        { label: "Build", value: "Claude Code" },
+        { label: "Critique", value: "A design critique skill I wrote, run over the repo" },
+        { label: "Ship", value: <span className="text-bone">Full features. My own front-end PRs</span> },
+      ]}
+    />
+
     <SectionHeading>THE CLAIM</SectionHeading>
     <Rule className="mb-6" />
     <p className="mb-6">

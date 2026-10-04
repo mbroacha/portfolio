@@ -1,69 +1,8 @@
 import type { ReactNode } from "react";
 import { CvPage } from "../components/cv/CvPage";
-import { Jackalope } from "../components/cv/Jackalope";
 import { Rule, SectionHeading, MediaSlot, WorkEntry } from "../components/cv/CvPrimitives";
-import { Interrogate } from "../components/query/Interrogate";
-import { useLens, type LensOption } from "../lib/useLens";
-import { NavCard } from "../components/cv/NavCard";
-
-/**
- * The rail: who this is, then where to go.
- *
- * Identity sits at the top because it is the first thing a reader needs and
- * because on mobile the rail stacks above everything else. Then the three
- * sections, then the field. The work list itself is the main column's job, so
- * the rail does not repeat it.
- */
-const Sidebar = ({ lens }: { lens: LensOption | null }) => (
-  <>
-    <div className="flex items-center gap-2.5">
-      <Jackalope size={20} className="text-bone" />
-      <div className="font-display text-xl italic tracking-[0.5px] text-bone">Morgan Broacha</div>
-    </div>
-
-    <div className="flex flex-col gap-3">
-      {lens ? <div className="text-bone">{lens.lead}</div> : null}
-      <div>
-        I'm product designer based in Oakland, CA, with over a decade of experience in UX design, interaction design, and product strategy. I care about craft, decisiveness, and a bit of surprise. I am currently building {" "}
-        <a href="https://sysgit.io" target="_blank" rel="noopener noreferrer" className="underline">
-          Sysgit
-        </a>
-        .
-      </div>
-    </div>
-
-    <div className="flex flex-col gap-2">
-      <NavCard to="/" label="Work" note="Selected case studies" active thumb={<Jackalope size={18} className="text-lichen" />} />
-      <NavCard to="/what-i-do" label="How to be AI native" note="One feature, end to end" />
-      <NavCard to="/about" label="About" note="Background, and the rest of it" />
-    </div>
-
-    <Interrogate scope="global" />
-
-    {/* Foot of the rail: the three things a reader leaves with. */}
-    <div className="mt-auto flex flex-col gap-1 border-t border-hedge pt-5">
-      <a href="mailto:mbroacha@gmail.com" className="underline underline-offset-4">
-        Email
-      </a>
-      <a
-        href="https://www.linkedin.com/in/morganbroacha/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="underline underline-offset-4"
-      >
-        LinkedIn
-      </a>
-      <a
-        href="/morgan-broacha-resume.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="underline underline-offset-4"
-      >
-        Resume &#8599;
-      </a>
-    </div>
-  </>
-);
+import { useLens } from "../lib/useLens";
+import { SiteRail } from "../components/cv/SiteRail";
 
 interface Work {
   id: string;
@@ -173,13 +112,13 @@ const WORK: Work[] = [
 ];
 
 export const HomePage = () => {
-  const { lens, order } = useLens();
+  const { order } = useLens();
   const shown = order
     .map((id) => WORK.find((w) => w.id === id))
     .filter((w): w is Work => Boolean(w));
 
   return (
-    <CvPage sidebar={<Sidebar lens={lens} />}>
+    <CvPage sidebar={<SiteRail scope="global" />}>
 
       <SectionHeading>SELECTED WORK</SectionHeading>
       <Rule className="mb-6" />
