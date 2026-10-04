@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import { CvPage } from "../components/cv/CvPage";
-import { Jackalope } from "../components/cv/Jackalope";
+import { PageHead } from "../components/cv/PageHead";
+import { SiteRail } from "../components/cv/SiteRail";
 import { MetaList, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import { PhotoGrid } from "../components/cv/PhotoGrid";
 import { TwoCol } from "../components/cv/CaseStudyParts";
@@ -20,50 +20,48 @@ export const About = () => {
 
   return (
     <CvPage
-      scope="global"
       sidebar={
-        <>
-          <div className="flex items-center gap-2.5">
-            <Jackalope size={20} className="text-bone" />
-            <div className="font-display text-xl italic tracking-[0.5px] text-bone">Morgan Broacha</div>
-          </div>
-
-          <Link to="/" className="underline underline-offset-4">
-            &larr; Back to work
-          </Link>
-
-          <Rule />
-
-          <div className="font-display text-xl italic text-bone">About</div>
-          <div>
-            Product designer in Oakland, California. A decade in domains where being wrong is expensive.
-          </div>
-
-          <Rule />
-
-          <MetaList
-            items={[
-              { label: "Hometown", value: "Green River, WY" },
-              { label: "Now", value: <span className="text-bone">Design Lead at Sysgit</span> },
-              { label: "Email", value: <a href="mailto:mbroacha@gmail.com" className="underline">mbroacha@gmail.com</a> },
-              {
-                label: "Elsewhere",
-                value: (
-                  <a
-                    href="https://www.linkedin.com/in/morganbroacha/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline"
-                  >
-                    LinkedIn
-                  </a>
-                ),
-              },
-            ]}
-          />
-        </>
+        <SiteRail scope="global" />
       }
     >
+      <img
+        src="/photos/morgan.webp"
+        alt="Morgan Broacha."
+        width={260}
+        height={260}
+        className="mb-7 block aspect-square w-[260px] max-w-full border border-[color:var(--edge)] object-cover"
+      />
+
+      <PageHead
+        title="About"
+        lede={<>Product designer in Oakland, California. A decade in domains where being wrong is expensive.</>}
+        items={[
+          { label: "Hometown", value: "Green River, WY" },
+          { label: "Now", value: <span className="text-bone">Design Lead at Sysgit</span> },
+          {
+            label: "Email",
+            value: (
+              <a href="mailto:mbroacha@gmail.com" className="underline">
+                mbroacha@gmail.com
+              </a>
+            ),
+          },
+          {
+            label: "Elsewhere",
+            value: (
+              <a
+                href="https://www.linkedin.com/in/morganbroacha/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline"
+              >
+                LinkedIn
+              </a>
+            ),
+          },
+        ]}
+      />
+
       <SectionHeading>BACKGROUND</SectionHeading>
       <Rule className="mb-6" />
 

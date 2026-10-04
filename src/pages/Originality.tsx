@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import { CvPage } from "../components/cv/CvPage";
-import { Jackalope } from "../components/cv/Jackalope";
-import { MediaSlot, MetaList, Rule, SectionHeading } from "../components/cv/CvPrimitives";
+import { PageHead } from "../components/cv/PageHead";
+import { SiteRail } from "../components/cv/SiteRail";
+import { MediaSlot, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import {
   ConstraintGrid,
   DecisionRow,
@@ -60,51 +60,38 @@ const decisions: Decision[] = [
 
 export const Originality = () => (
   <CvPage
-    scope="originality"
     sidebar={
-      <>
-        <div className="flex items-center gap-2.5">
-          <Jackalope size={20} className="text-bone" />
-          <div className="font-display text-xl italic tracking-[0.5px] text-bone">Morgan Broacha</div>
-        </div>
-
-        <Link to="/" className="underline underline-offset-4">
-          &larr; Back to work
-        </Link>
-
-        <Rule />
-
-        <div className="font-display text-xl italic text-bone">Originality</div>
-        <div>
-          <span className="text-bone">Contract cheating detection.</span> Machine learning flagged the papers.
-          Educators had to decide what it meant.
-        </div>
-
-        <Rule />
-
-        <MetaList
-          items={[
-            { label: "Role", value: <span className="text-bone">Senior UX Designer</span> },
-            { label: "Timeline", value: "2018. Shipped 2019" },
-            {
-              label: "Team",
-              value: (
-                <>
-                  8&ndash;9 engineers and a PM
-                  <br />
-                  Inside a 20-person design org
-                  <br />
-                  Lead to 3 junior designers
-                </>
-              ),
-            },
-            { label: "Scope", value: "Research, product design, information architecture" },
-            { label: "Platform", value: "Web" },
-          ]}
-        />
-      </>
+      <SiteRail scope="originality" />
     }
   >
+    <PageHead
+      title="Originality"
+      lede={
+        <>
+          <span className="text-bone">Contract cheating detection.</span> Machine learning flagged the papers.
+          Educators had to decide what it meant.
+        </>
+      }
+      items={[
+        { label: "Role", value: <span className="text-bone">Senior UX Designer</span> },
+        { label: "Timeline", value: "2018. Shipped 2019" },
+        {
+          label: "Team",
+          value: (
+            <>
+              8&ndash;9 engineers and a PM
+              <br />
+              Inside a 20-person design org
+              <br />
+              Lead to 3 junior designers
+            </>
+          ),
+        },
+        { label: "Scope", value: "Research, product design, information architecture" },
+        { label: "Platform", value: "Web" },
+      ]}
+    />
+
     <MediaSlot
       ratio="16/9"
       src="/case-studies/originality/authorship-banner.png"
@@ -187,8 +174,7 @@ export const Originality = () => (
       <MediaSlot
         ratio="3/4"
         src="/case-studies/originality/research-sticky-notes.png"
-        alt="Workshop notebook with sticky notes labeled with document metadata fields."
-      />
+        alt="Workshop notebook with sticky notes labeled with document metadata fields." />
       <div className="flex flex-col gap-3">
         <div className="text-bone">We asked experts to define what actually matters.</div>
         <div>Expert interviews and a card sorting exercise with experienced investigators. Four findings:</div>
