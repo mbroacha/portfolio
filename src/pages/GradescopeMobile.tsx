@@ -1,44 +1,32 @@
-import { Link } from "react-router-dom";
 import { CvPage } from "../components/cv/CvPage";
-import { Jackalope } from "../components/cv/Jackalope";
-import { MediaSlot, MetaList, Rule, SectionHeading } from "../components/cv/CvPrimitives";
+import { PageHead } from "../components/cv/PageHead";
+import { SiteRail } from "../components/cv/SiteRail";
+import { MediaSlot, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import { PrevNext, TwoCol } from "../components/cv/CaseStudyParts";
 
 export const GradescopeMobile = () => (
   <CvPage
     sidebar={
-      <>
-        <div className="flex items-center gap-2.5">
-          <Jackalope size={20} className="text-bone" />
-          <div className="font-display text-xl italic tracking-[0.5px] text-bone">Morgan Broacha</div>
-        </div>
-
-        <Link to="/" className="underline underline-offset-4">
-          &larr; Back to work
-        </Link>
-
-        <Rule />
-
-        <div className="font-display text-xl italic text-bone">Gradescope Mobile</div>
-        <div>
-          <span className="text-bone">Scan and submit handwritten homework from your phone.</span> It did not work,
-          and the reasons are more interesting than the product.
-        </div>
-
-        <Rule />
-
-        <MetaList
-          items={[
-            { label: "Role", value: <span className="text-bone">Senior Product Designer, one of two</span> },
-            { label: "Timeline", value: "Launched 2021" },
-            { label: "Team", value: "2 senior designers under a lead" },
-            { label: "Scope", value: "Workflow, screens, platform adaptation" },
-            { label: "Platform", value: "iOS and Android" },
-          ]}
-        />
-      </>
+      <SiteRail scope="gradescope" />
     }
   >
+    <PageHead
+      title="Gradescope Mobile"
+      lede={
+        <>
+          <span className="text-bone">Scan and submit handwritten homework from your phone.</span> It did not work,
+          and the reasons are more interesting than the product.
+        </>
+      }
+      items={[
+        { label: "Role", value: <span className="text-bone">Senior Product Designer, one of two</span> },
+        { label: "Timeline", value: "Launched 2021" },
+        { label: "Team", value: "2 senior designers under a lead" },
+        { label: "Scope", value: "Workflow, screens, platform adaptation" },
+        { label: "Platform", value: "iOS and Android" },
+      ]}
+    />
+
     <MediaSlot ratio="3/4" width="55%" caption="Scan, map, submit" />
 
     <SectionHeading>WHAT IT WAS</SectionHeading>
@@ -116,6 +104,6 @@ export const GradescopeMobile = () => (
       </div>
     </TwoCol>
 
-    <PrevNext prev={{ label: "Originality", to: "/case-study/originality" }} next={{ label: "How I work", to: "/how-i-work" }} />
+    <PrevNext prev={{ label: "Originality", to: "/case-study/originality" }} next={{ label: "What I do", to: "/what-i-do" }} />
   </CvPage>
 );

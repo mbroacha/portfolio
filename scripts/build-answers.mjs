@@ -24,6 +24,8 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SRC = resolve(ROOT, "content/answer-bank.json");
 const OUT = resolve(ROOT, "src/data/answers.json");
 const PUBLIC = resolve(ROOT, "public");
+const PAGES = resolve(ROOT, "src/pages");
+const APP = resolve(ROOT, "src/App.tsx");
 
 const WORD_LIMIT = 90; // the rail is max-h-screen; see content/QUERY_INTERFACE.md
 const checkOnly = process.argv.includes("--check");
@@ -47,6 +49,35 @@ try {
   process.exit(1);
 }
 
+/**
+ * Every section id that actually exists, per route.
+ *
+ * An answer's source anchor is only worth anything if the section is really on
+ * the page. Without this check a renamed section silently turns a traceability
+ * link into a no-op, which is worse than having no link at all.
+ */
+function sectionIndex() {
+  const routes = new Map(); // "/case-study/sysgit" -> Set of section ids
+  let app = "";
+  try { app = readFileSync(APP, "utf8"); } catch { return routes; }
+
+  const slug = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+  for (const m of app.matchAll(/path="([^"]+)"\s+element=\{<(\w+)\s*\/>\}/g)) {
+    const [, path, component] = m;
+    const file = resolve(PAGES, `${component}.tsx`);
+    if (!existsSync(file)) continue;
+    const src = readFileSync(file, "utf8");
+    const ids = new Set(
+      [...src.matchAll(/<SectionHeading>([^<]+)<\/SectionHeading>/g)].map((h) => slug(h[1])),
+    );
+    routes.set(path, ids);
+  }
+  return routes;
+}
+
+const SECTIONS = sectionIndex();
+
 const seen = new Set();
 const shipped = [];
 
@@ -67,7 +98,28 @@ for (const e of bank.answers ?? []) {
   if (n > WORD_LIMIT) errors.push(`${e.id}: ${n} words, over the ${WORD_LIMIT}-word rail limit.`);
 
   const out = { id: e.id, q: e.q, aliases: e.aliases ?? [], a: e.a, scope: e.scope, tone: e.tone };
-  if (e.source) out.source = e.source;
+  // Answerable but not advertised. Absent means suggestable.
+  if (e.suggest === false) out.suggest = false;
+  if (e.source) {
+    // "Sysgit, Decisions" -> anchor "decisions", which is the id SectionHeading
+    // derives from its own text. That is what lets a source link scroll the
+    // argument column to the exact passage instead of just to the page.
+    const section = (e.source.label.split(",")[1] ?? "").trim();
+    const anchor = section
+      ? section.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
+      : undefined;
+    if (anchor) {
+      const known = SECTIONS.get(e.source.path);
+      if (known && !known.has(anchor)) {
+        errors.push(
+          `${e.id}: source "${e.source.label}" points at ${e.source.path}#${anchor}, ` +
+            `but that page has no such section (${[...known].join(", ") || "none"}). ` +
+            `Drop the section from the label, or rename it to match.`,
+        );
+      }
+    }
+    out.source = anchor ? { ...e.source, anchor } : { ...e.source };
+  }
   if (e.swatch) out.swatch = { hex: e.swatch.hex, hsl: e.swatch.hsl };
 
   if (e.photos) {
@@ -81,12 +133,23 @@ for (const e of bank.answers ?? []) {
       if (!f.alt || !f.alt.trim()) errors.push(`${e.id}: ${f.src} has no alt text.`);
     }
 
-    // An incomplete grid looks broken. Hold the whole entry and say so.
+    // Ship the photos that exist. Two side by side is a row, not a broken grid,
+    // and holding a written answer hostage to a missing image means a reader who
+    // asks a fair question gets told nothing has been written about it. Only an
+    // entry with no usable photo at all is held.
+    if (files.length === 0) {
+      warnings.push(`${e.id}: held. No photo is ready yet.`);
+      held.push(`${e.id} (no photos yet)`);
+      continue;
+    }
     if (files.length < want) {
       const missing = (e.photos.files ?? []).filter((f) => f.status !== "done").map((f) => f.src);
-      warnings.push(`${e.id}: held. ${files.length}/${want} photos ready, still waiting on ${missing.join(", ")}.`);
-      held.push(`${e.id} (incomplete photo grid)`);
-      continue;
+      warnings.push(
+        `${e.id}: shipping ${files.length} of ${want} photos. Still waiting on ${missing.join(", ")}.`,
+      );
+    }
+    if (files.length === 3) {
+      warnings.push(`${e.id}: 3 photos leaves an orphan in a two-column grid. Prefer 2 or 4.`);
     }
 
     out.photos = files.map((f) => ({ src: f.src, alt: f.alt }));
@@ -99,6 +162,10 @@ const payload = {
   generated: new Date().toISOString().slice(0, 10),
   source: "content/answer-bank.json",
   decline: bank._meta?.decline ?? "Morgan hasn't written about that.",
+  // Which general questions get offered, in order. Editorial, not algorithmic.
+  suggested: (bank._meta?.suggested_order ?? []).filter((id) =>
+    shipped.some((s) => s.id === id && s.suggest !== false),
+  ),
   answers: shipped,
 };
 

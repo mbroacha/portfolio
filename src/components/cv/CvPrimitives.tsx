@@ -2,9 +2,24 @@ import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "../../lib/cn";
 
+/** "DECISIONS" -> "decisions". Gives every section a stable anchor to link at. */
+const sectionId = (children: ReactNode): string | undefined =>
+  typeof children === "string"
+    ? children.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
+    : undefined;
+
 /** Serif-italic section label. The only display type in the system. */
-export const SectionHeading = ({ children, className }: { children: ReactNode; className?: string }) => (
+export const SectionHeading = ({
+  children,
+  className,
+  id,
+}: {
+  children: ReactNode;
+  className?: string;
+  id?: string;
+}) => (
   <h2
+    id={id ?? sectionId(children)}
     className={cn("mb-6 font-display text-[length:var(--font-size-2xl)] font-normal not-italic text-bone", className)}
     style={{ fontStyle: "italic" }}
   >
@@ -18,11 +33,72 @@ export const Rule = ({ className }: { className?: string }) => (
 
 /** Sidebar label/value grid, matching the template's 80px column. */
 export const MetaList = ({ items }: { items: { label: string; value: ReactNode }[] }) => (
-  <dl className="grid grid-cols-[80px_1fr] gap-5">
+  // 80px floor keeps the case study rails aligned; max-content lets the column
+  // grow when the same list is set at body size on the homepage.
+  <dl className="grid grid-cols-[minmax(80px,max-content)_1fr] gap-5">
     {items.map((item) => (
       <div key={item.label} className="contents">
         <dt className="text-bone">{item.label}</dt>
         <dd className="m-0">{item.value}</dd>
+      </div>
+    ))}
+  </dl>
+);
+
+/** A titled panel. The About page is a stack of these. */
+export const Panel = ({
+  title,
+  children,
+  className,
+}: {
+  title: string;
+  children: ReactNode;
+  className?: string;
+}) => (
+  <section
+    className={cn("border border-hedge p-5", className)}
+    style={{ backgroundColor: "var(--ink-900)" }}
+  >
+    <h2
+      className="m-0 mb-4 cv-meta font-normal uppercase text-bone"
+      style={{ letterSpacing: "var(--tracking-label)" }}
+    >
+      {title}
+    </h2>
+    {children}
+  </section>
+);
+
+/** Dated row: the label above, the thing below. */
+export const Entry = ({ when, what }: { when: string; what: ReactNode }) => (
+  <div className="mb-4 last:mb-0">
+    <div className="cv-meta text-lichen">{when}</div>
+    <div>{what}</div>
+  </div>
+);
+
+/** Plain column, for the skills and tools lists. */
+export const Bullets = ({ items }: { items: string[] }) => (
+  <ul className="m-0 flex list-none flex-col gap-1.5 p-0">
+    {items.map((i) => (
+      <li key={i}>{i}</li>
+    ))}
+  </ul>
+);
+
+/**
+ * Label above value, ruled between rows.
+ *
+ * The two-column `MetaList` is for short facts in a narrow rail. This one is
+ * for entries whose value is a paragraph or two, where an 80px label column
+ * would leave the text stranded in a thin stripe down the page.
+ */
+export const StackedList = ({ items }: { items: { label: string; value: ReactNode }[] }) => (
+  <dl className="m-0 flex flex-col">
+    {items.map((item, i) => (
+      <div key={item.label} className={cn("flex flex-col gap-1.5 py-5", i === 0 ? "pt-0" : "border-t border-hedge")}>
+        <dt className="cv-meta text-lichen">{item.label}</dt>
+        <dd className="m-0 flex max-w-[var(--measure-prose)] flex-col gap-4 text-bone">{item.value}</dd>
       </div>
     ))}
   </dl>
@@ -100,7 +176,7 @@ export const WorkEntry = ({
   to?: string;
 }) => (
   <div className="grid grid-cols-1 gap-6 pb-6 sm:grid-cols-2">
-    <div className="cv-meta text-bone">
+    <div className="cv-subhead text-bone">
       {index}.{" "}
       {to ? (
         <Link to={to} className="underline underline-offset-4">

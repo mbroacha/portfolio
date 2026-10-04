@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import { CvPage } from "../components/cv/CvPage";
-import { Jackalope } from "../components/cv/Jackalope";
-import { MediaSlot, MetaList, Rule, SectionHeading } from "../components/cv/CvPrimitives";
+import { PageHead } from "../components/cv/PageHead";
+import { SiteRail } from "../components/cv/SiteRail";
+import { MediaSlot, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import {
   ConstraintGrid,
   DecisionRow,
@@ -50,38 +50,26 @@ const decisions: Decision[] = [
 export const Beacon = () => (
   <CvPage
     sidebar={
-      <>
-        <div className="flex items-center gap-2.5">
-          <Jackalope size={20} className="text-bone" />
-          <div className="font-display text-xl italic tracking-[0.5px] text-bone">Morgan Broacha</div>
-        </div>
-
-        <Link to="/" className="underline underline-offset-4">
-          &larr; Back to work
-        </Link>
-
-        <Rule />
-
-        <div className="font-display text-xl italic text-bone">Beacon</div>
-        <div>
-          <span className="text-bone">Space traffic coordination.</span> When two satellites are about to pass too
-          close, somebody has to move.
-        </div>
-
-        <Rule />
-
-        <MetaList
-          items={[
-            { label: "Role", value: <span className="text-bone">Senior Product Designer, sole designer on Beacon</span> },
-            { label: "Timeline", value: "2022 - 2023" },
-            { label: "Team", value: "7 engineers. Part of a company design team with a shared system" },
-            { label: "Scope", value: "Product design, research, product strategy" },
-            { label: "Platform", value: "Web" },
-          ]}
-        />
-      </>
+      <SiteRail scope="beacon" />
     }
   >
+    <PageHead
+      title="Beacon"
+      lede={
+        <>
+          <span className="text-bone">Space traffic coordination.</span> When two satellites are about to pass too
+          close, somebody has to move.
+        </>
+      }
+      items={[
+        { label: "Role", value: <span className="text-bone">Senior Product Designer, sole designer on Beacon</span> },
+        { label: "Timeline", value: "2022 - 2023" },
+        { label: "Team", value: "7 engineers. Part of a company design team with a shared system" },
+        { label: "Scope", value: "Product design, research, product strategy" },
+        { label: "Platform", value: "Web" },
+      ]}
+    />
+
     <MediaSlot ratio="16/9" caption="Conjunction dashboard &middot; dummy data" />
 
     <SectionHeading>PROBLEM</SectionHeading>
