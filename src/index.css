@@ -116,6 +116,17 @@
     font-variant-numeric: tabular-nums;
   }
 
+  /* Back to body size, for a block sitting inside a 12px container.
+     The case study rail is project metadata, so 12px is right there. The
+     homepage rail is the bio: it is the primary self-description on the site
+     and it is prose, so it reads at 15px like everything else a person
+     actually reads. Same component, two jobs. */
+  .cv-body {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-body);
+    letter-spacing: normal;
+  }
+
   /* The sub-heading level, one step above body.
      SectionHeading is an uppercase band between rules, so it reads as a label
      rather than as a size. That left decision titles, claims and outcome items
@@ -126,6 +137,25 @@
   .cv-subhead {
     font-size: var(--font-size-subhead);
     line-height: 1.35;
+  }
+
+  /* Where a source link lands. Traceability has to be visible or it is just a
+     link: the section the answer came from marks itself for a moment so the
+     reader can see they were handed a specific passage, not a page. */
+  .cv-hl {
+    animation: cv-hl 1.6s ease-out;
+  }
+
+  @keyframes cv-hl {
+    0%,
+    55% {
+      background-color: var(--surface-media);
+      box-shadow: -10px 0 0 var(--surface-media), 10px 0 0 var(--surface-media);
+    }
+    100% {
+      background-color: transparent;
+      box-shadow: none;
+    }
   }
 
   /* Cap the reading measure on standalone prose in the content column.

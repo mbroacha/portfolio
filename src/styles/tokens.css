@@ -88,7 +88,9 @@
   --font-size-2xl: 1rem; /* 16px — section heading (serif italic) */
   --font-size-3xl: 1.25rem;
   --font-size-stat: 1.75rem; /* 28px — outcome figures (serif italic) */
-  --font-size-hero: clamp(1.25rem, 2.4vw, 1.5rem);
+  /* The one poster moment on the site. Large enough to be a landing, small
+     enough that the case studies underneath are not a letdown. */
+  --font-size-hero: clamp(1.625rem, 3.4vw, 2.25rem);
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;
@@ -128,8 +130,8 @@
   --max-width-page: 90rem;
   --max-width-content: 90rem;
   --max-width-prose: 68ch;
-  --max-width-rail: 33%;
-  --sidebar-width: 33%;
+  --max-width-rail: 25%;
+  --sidebar-width: 25%;
 
   /* ── Shape ────────────────────────────────────────────────── */
   /* The template is entirely square. Radii collapse to zero. */

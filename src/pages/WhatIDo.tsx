@@ -1,54 +1,40 @@
-import { Link } from "react-router-dom";
 import { CvPage } from "../components/cv/CvPage";
-import { Jackalope } from "../components/cv/Jackalope";
-import { MediaSlot, MetaList, Rule, SectionHeading } from "../components/cv/CvPrimitives";
+import { PageHead } from "../components/cv/PageHead";
+import { SiteRail } from "../components/cv/SiteRail";
+import { MediaSlot, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import { ConstraintGrid, InsightBlock, Ledger, PrevNext, Step, TwoCol } from "../components/cv/CaseStudyParts";
 
-export const HowIWork = () => (
+export const WhatIDo = () => (
   <CvPage
     sidebar={
-      <>
-        <div className="flex items-center gap-2.5">
-          <Jackalope size={20} className="text-bone" />
-          <div className="font-display text-xl italic tracking-[0.5px] text-bone">Morgan Broacha</div>
-        </div>
-
-        <Link to="/" className="underline underline-offset-4">
-          &larr; Back to work
-        </Link>
-
-        <Rule />
-
-        <div className="font-display text-xl italic text-bone">How I work</div>
-        <div>
-          One feature, start to finish, with the tools named at every step. Written because &ldquo;AI native&rdquo;
-          is a claim, and a walkthrough is evidence.
-        </div>
-
-        <Rule />
-
-        <MetaList
-          items={[
-            { label: "Design", value: "Claude Design, with our design system loaded" },
-            { label: "Build", value: "Claude Code. VS Code" },
-            { label: "Critique", value: "A design critique skill I wrote, run over the repo" },
-            { label: "Ship", value: <span className="text-bone">Full features. My own front-end PRs</span> },
-            { label: "By hand", value: "Technical SE workflows. UI review. Always" },
-          ]}
-        />
-      </>
+      <SiteRail scope="global" />
     }
   >
+    <PageHead
+      title="What I do"
+      lede={<>&ldquo;AI native&rdquo; from start to finish.</>}
+      items={[
+        { label: "Research", value: "Interview transcription, and insight development" },
+        {
+          label: "Product",
+          value:
+            "A custom skill that combs user feedback, Slack suggestions, and bug reports to curate product roadmap.",
+        },
+        { label: "Design", value: "Claude Design and Figma" },
+        { label: "Build", value: "Claude Code" },
+        { label: "Critique", value: "A design critique skill I wrote, run over the repo" },
+        { label: "Ship", value: <span className="text-bone">Full features. My own front-end PRs</span> },
+      ]}
+    />
+
     <SectionHeading>THE CLAIM</SectionHeading>
     <Rule className="mb-6" />
     <p className="mb-6">
-      I prototype in code and ship my own front-end PRs. That collapses the handoff loop most product orgs complain
+      I prototype in code and ship my own front-end pull requests. This collapses the handoff loop most product orgs complain
       about, and it means my design decisions get tested in the real product instead of in a mock.
     </p>
     <p className="mb-6">
-      The suspicion that comes with saying this out loud is that the judgment is outsourced and I am a wrapper
-      around a model. So here is one real feature, in order, with the tool named at each step. Count the decisions.
-      The model made none of them.
+      A very valid reaction may be to assume that all judgment is outsourced and I am just out here burning tokens. So here is one real feature, in order, with the tool named at each step. Notice how none of the real product decisions are made by AI.
     </p>
 
     <SectionHeading>ONE FEATURE, END TO END</SectionHeading>

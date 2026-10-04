@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import { CvPage } from "../components/cv/CvPage";
-import { Jackalope } from "../components/cv/Jackalope";
-import { MediaSlot, MetaList, Rule, SectionHeading } from "../components/cv/CvPrimitives";
+import { PageHead } from "../components/cv/PageHead";
+import { SiteRail } from "../components/cv/SiteRail";
+import { MediaSlot, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import {
   ConstraintGrid,
   DecisionRow,
@@ -54,38 +54,26 @@ const decisions: Decision[] = [
 export const Sysgit = () => (
   <CvPage
     sidebar={
-      <>
-        <div className="flex items-center gap-2.5">
-          <Jackalope size={20} className="text-bone" />
-          <div className="font-display text-xl italic tracking-[0.5px] text-bone">Morgan Broacha</div>
-        </div>
-
-        <Link to="/" className="underline underline-offset-4">
-          &larr; Back to work
-        </Link>
-
-        <Rule />
-
-        <div className="font-display text-xl italic text-bone">Sysgit</div>
-        <div>
-          <span className="text-bone">Git for hardware.</span> Modeling, requirements and version control in one
-          workflow, for engineers who are not developers.
-        </div>
-
-        <Rule />
-
-        <MetaList
-          items={[
-            { label: "Role", value: <span className="text-bone">Design Lead, sole designer</span> },
-            { label: "Timeline", value: "2023 - 2026" },
-            { label: "Team", value: <span className="text-bone">1 designer (me)<br />6 engineers</span> },
-            { label: "Scope", value: "Product, design system, research, strategy, brand, front-end PRs" },
-            { label: "Platform", value: "Web, on-prem" },
-          ]}
-        />
-      </>
+      <SiteRail scope="sysgit" />
     }
   >
+    <PageHead
+      title="Sysgit"
+      lede={
+        <>
+          <span className="text-bone">Git for hardware.</span> Modeling, requirements and version control in one
+          workflow, for engineers who are not developers.
+        </>
+      }
+      items={[
+        { label: "Role", value: <span className="text-bone">Design Lead, sole designer</span> },
+        { label: "Timeline", value: "2023 - 2026" },
+        { label: "Team", value: <span className="text-bone">1 designer (me)<br />6 engineers</span> },
+        { label: "Scope", value: "Product, design system, research, strategy, brand, front-end PRs" },
+        { label: "Platform", value: "Web, on-prem" },
+      ]}
+    />
+
     <SysgitHero />
 
     <SectionHeading>PROBLEM</SectionHeading>
