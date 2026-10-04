@@ -1,4 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBrain, faFaceLaugh, faPenNib } from "@fortawesome/free-solid-svg-icons";
 import { Jackalope } from "./Jackalope";
 import { NavCard } from "./NavCard";
 import { Interrogate } from "../query/Interrogate";
@@ -37,10 +39,22 @@ export const SiteRail = ({ scope }: { /** Corpus scope for the field. */ scope?:
           label="Work"
           note="Selected case studies"
           active={pathname === "/" || pathname.startsWith("/case-study")}
-          thumb={<Jackalope size={18} className="text-lichen" />}
+          thumb={<FontAwesomeIcon icon={faPenNib} className="h-[18px] w-[18px] text-lichen" />}
         />
-        <NavCard to="/what-i-do" label="How to be AI native" note="And you can too" active={pathname === "/what-i-do"} />
-        <NavCard to="/about" label="About" note="Background, and the rest of it" active={pathname === "/about"} />
+        <NavCard
+          to="/what-i-do"
+          label="On being AI native"
+          note="An evolving process"
+          active={pathname === "/what-i-do"}
+          thumb={<FontAwesomeIcon icon={faBrain} className="h-[18px] w-[18px] text-lichen" />}
+        />
+        <NavCard
+          to="/about"
+          label="About"
+          note="Let me introduce myself"
+          active={pathname === "/about"}
+          thumb={<FontAwesomeIcon icon={faFaceLaugh} className="h-[18px] w-[18px] text-lichen" />}
+        />
       </div>
 
       <Interrogate scope={scope} className="border-t border-hedge pt-5" />
