@@ -136,7 +136,10 @@ export const Ledger = ({ rows }: { rows: { left: string; right: string; note?: s
     {rows.map((r, i) => (
       <div
         key={r.left}
-        className={cn("grid grid-cols-1 gap-4 py-3 sm:grid-cols-[1fr_1fr_auto]", i === 0 ? "" : "border-t border-hedge")}
+        className={cn(
+          "grid grid-cols-1 gap-1 py-3 sm:grid-cols-[12rem_1fr_8rem] sm:gap-x-6",
+          i === 0 ? "" : "border-t border-hedge",
+        )}
       >
         <div className="text-bone">{r.left}</div>
         <div>{r.right}</div>
