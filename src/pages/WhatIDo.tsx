@@ -1,25 +1,26 @@
+import type { ReactNode } from "react";
 import { CvPage } from "../components/cv/CvPage";
 import { PageHead } from "../components/cv/PageHead";
 import { SiteRail } from "../components/cv/SiteRail";
 import { MediaSlot, Panel, Rule, SectionHeading } from "../components/cv/CvPrimitives";
-import { Ledger, PrevNext } from "../components/cv/CaseStudyParts";
+import { Ledger } from "../components/cv/CaseStudyParts";
 
 /**
  * What I do.
  *
  * A practice overview, which is what the title promises. The six stages first,
- * then one worked example, then the two limits, then the chronology.
+ * then one worked example, then the three limits.
  *
  * This page used to be an eight-step walkthrough of a single feature with the
  * thesis stated twice, a hundred lines apart, in five different layout devices.
  * It read as a case study wearing a section heading. It is now three devices:
- * Panel for the stages and the limits, Ledger for both ordered sequences, and
+ * Panel for the stages and the limits, Ledger for the worked example, and
  * one MediaSlot. The cut walkthrough detail lives in the answer bank, under
  * do-you-code, ai-refuse, ai-native-buzzword and left-figma.
  */
 
 /** One stage of the practice. The tool is named, so the claim is checkable. */
-const Stage = ({ title, tool, children }: { title: string; tool: string; children: string }) => (
+const Stage = ({ title, tool, children }: { title: string; tool: string; children: ReactNode }) => (
   <Panel title={title}>
     <div className="cv-meta mb-2 text-lichen">{tool}</div>
     <div>{children}</div>
@@ -36,149 +37,122 @@ export const WhatIDo = () => (
       title="What I do"
       lede={
         <>
-          I prototype in code and ship my own front-end pull requests. The model generates and enumerates. I judge.
+          "AI native" is the hot new skill every designer needs to be marketable. But what does that actually mean? More than shipping code, it means being able to work with new interfaces and design materials that are rapidly changing. The skill is still fundamentally understanding a user problem, and solving it.
         </>
       }
     />
 
     <p className="mb-6">
       Shipping my own front end collapses the handoff loop most product orgs complain about, and it means my design
-      decisions get tested in the real product instead of in a mock. The reasonable worry is that judgment gets
-      outsourced somewhere along the way. So here is the practice, stage by stage, with the tool named at each one.
+      decisions get tested in the real product ecosystem instead of in a mock. The reasonable worry is that judgment gets
+      outsourced somewhere along the way. So here is my practice, stage by stage, with the tool named at each one:
     </p>
 
     <SectionHeading>THE PRACTICE</SectionHeading>
     <Rule className="mb-6" />
     <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-      <Stage title="Research" tool="Claude, plus protocols I wrote">
-        Interview transcription and insight development. The protocols exist because the feedback I was handed came
-        pre-loaded with founder bias.
+      <Stage title="Research" tool="My protocols and journalism, Claude and Attio">
+        Call transcription and insight development. The UX research protocols are what turn a sales call into a user discovery call.
       </Stage>
-      <Stage title="Product" tool="A custom skill I wrote">
+      <Stage title="Product Management" tool="My own Claude skills">
         It combs user feedback, Slack suggestions and bug reports, and returns weighted tickets. It is how we stopped
-        being purely reactive to whoever asked last.
+        being purely reactive to whoever asked the loudest.
       </Stage>
       <Stage title="Design" tool="Claude Design, and Figma">
-        Prompting is a thinking tool, not a generation tool. I ask for at least three iterations and tell it to go
-        wild on one, then look for what I forgot to specify.
+        Prompting is a brainstorming tool, not a generation tool. I ask for at least three iterations, tell it to go
+        wild on one, then look for workflow gaps and edge cases. This is also a fast way to find gaps in an existing design system.
       </Stage>
       <Stage title="Build" tool="Claude Code">
-        I prototype to answer a specific question, not because prototypes are generally good. The question is usually
-        about an interaction I cannot predict.
+        Lo-fi designs are still queen of quick consensus. I prototype not because I now can cheaply, but to answer a specific question. The question is usually
+        about an interaction that must be seen in its environment.
       </Stage>
-      <Stage title="Critique" tool="A design critique skill I wrote">
-        I run it over the actual repo locally, so it sees the whole codebase rather than a screenshot. I built it
-        because there is no design critique at my company.
+      <Stage title="Critique" tool="My own design critique skill">
+        I run it over the actual repo locally, so it sees the whole codebase rather than a screenshot. As a design team of one, I am vulnerable to <s>being drunk with power</s> being the sole product voice in the room and my own biases.
       </Stage>
-      <Stage title="Ship" tool="GitHub">
-        I write the UI changes myself, from a design perspective. Design review handoff, then engineering review, then
-        merge. Merge access is not a reason to skip review.
+      <Stage title="Ship" tool="GitLab">
+        I ship a lot of the UI changes myself, from a design perspective. There is some vibe checking of what might be too heavy (read:backend) to handle, and collaboration is part of the game. But design review, PR review, and unit tests are all still part of the process.
       </Stage>
     </div>
 
     <SectionHeading>ONE FEATURE, END TO END</SectionHeading>
     <Rule className="mb-6" />
     <p className="mb-6">
-      Customers kept asking to change the colors of boxes and lines in the graph. Sounds small. It was not.
+      Context: a complex decision modeling tool backed by a bespoke programming language used by hardware engineers. Customers really wanted to be able to change the colors of boxes and lines in the graph. Sounds small. It was not.
     </p>
     <Ledger
       rows={[
         {
           left: "Scope",
           right:
-            "Will anyone realistically recolor a diagram of 1000+ objects? Is this per diagram, per branch, or per project? Acceptance criteria first, because the answers change what gets built.",
-          note: "No tool",
+            "Will anyone realistically recolor a diagram of 1000+ objects? Is this per diagram, per branch, or per project? How heavy a technical lift would any one of those be? Acceptance criteria first, because the answers change what gets built.",
+          note: "No tools. Just noodling.",
         },
         {
-          left: "Prior art",
+          left: "Snoop on the neighbors",
           right:
-            "Diagram palettes and products with switchable themes, then Cameo's stereotype feature. Our users are already trained on the tool we are replacing. What they know is more useful to me than what looks good on Dribbble.",
+            "How do similar products solve this problem? How do our competitors handle it? Diagram palettes and products with switchable themes. Our users are already trained on the tool we are replacing. Their expectations are more useful to me than what looks good on Dribbble.",
           note: "Claude",
         },
         {
-          left: "Think by prompting",
+          left: "Brainstorm by prompting",
           right:
-            "Should the palette live on the canvas at all if it applies to every diagram in the project? Even set in one place, this asks a user to pick colors for 40+ objects. What if the base were a premade theme?",
+            "Should the palette live on the canvas at all if it applies to every diagram in the project? Even set in one place, this asks a user to pick colors for 40+ objects. What if the base were a premade theme? What if users override colors in the source code?",
           note: "Claude Design",
         },
         {
-          left: "Prototype, for a reason",
+          left: "Prototype, with reason",
           right:
-            "I wanted to see the palette override meet the color picker. Seeing the real object count is what made me group them so the list was survivable.",
+            "I wanted to see the theme override meet the color picker. Seeing the real object count is what made me group them so the list was survivable. Does it still feel daunting to a systems engineer not particularly concerned with aesthetics?",
           note: "Claude Code",
         },
         {
-          left: "Better inputs",
+          left: "Fieldwork",
           right:
-            "I was at a defense conference while building this, so I walked the floor and noted what every company used for branding. Then I asked my engineers for their favorite IDE themes.",
-          note: "Fieldwork",
+            "I happened to be at a defense engineering conference while building this, so I walked the floor and noted what every company was using for branding. Then I asked my engineers for their favorite IDE themes.",
+          note: "Boots on the ground",
         },
         {
-          left: "Get pedantic in the real thing",
+          left: "Get pedantic with edge cases",
           right:
             "If someone can override the accessibility colors, there needs to be a warning. A static mock of a color picker would never have surfaced that.",
           note: "Claude Code",
         },
         {
           left: "Critique",
-          right: "Run over the repo, with the design system and the real component code in context.",
+          right: "Run over the repo, with the design system and the real component code in context. I determine what is valid feedback and pivot accordingly.",
           note: "A skill I wrote",
         },
         {
           left: "Ship",
           right:
-            "I wrote the UI changes. Claude Code listed the technical ones. Review from my engineers, then merge.",
+            "I wrote the UI changes. Claude Code translated the technical changes. PR review, then merge.",
           note: "GitHub",
         },
       ]}
     />
     <p className="cv-subhead mb-6 text-bone">
-      Ten decisions in that sequence. The model made none of them.
+      Ten decisions in that sequence; models made none of them.
     </p>
     <p className="mb-6">
-      Scope. Per project or per diagram. Whether the palette belongs on the canvas. Premade themes as the base.
-      Grouping 40+ objects. Whether the built-in colors cohere. The accessibility warning. Scroll depth.
-      Discoverability. What to hand off, and when.
+      Scope. Where the color palette belongs. Premade themes as the base.
+      Grouping 40+ objects. Whether the built-in colors cohere. Preventing overload. Addressing accessibility. Scroll depth.
+      Discoverability. What to hand off to the user, and when.
     </p>
     <MediaSlot ratio="16/10" caption="Theme picker &middot; interactive recreation" />
 
-    <SectionHeading>WHERE I DO NOT USE A MODEL</SectionHeading>
+    <SectionHeading>WHERE A MODEL CAN'T DO THE WORK</SectionHeading>
     <Rule className="mb-6" />
-    <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-      <Panel title="Real systems engineering expertise">
-        I map technical workflows by hand. Systems engineering is niche enough that I cannot assume the training data
-        is there. Use the model where coverage is dense. Do not where it is sparse.
+    <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+      <Panel title="Real subject matter expertise">
+        You really see the limitations of large public models once you get into niche industries. The training data
+        is just nonexistent. I still map most technical workflows by hand, and frequently have to check for drift in model responses.
       </Panel>
       <Panel title="UI review, always manual">
-        I go in and click around. I need to feel what is clunky and find the interactions I did not expect.
-        Generation is delegable. Evaluation is not.
+        I go in and click around. I need to feel what is clunky and find the interactions I did not expect. What Claude thinks works for 99% of public apps doesn't necessarily work for our users.
+      </Panel>
+      <Panel title="Generate at your own risk">
+        As of the writing of this page, generative models specifically for UI/UX are...not great (looking at you, Figma.) Slop is everywhere, and the value of the designer is to be able to discern what is actually worth the product investment.
       </Panel>
     </div>
-
-    <SectionHeading>THE HABIT PREDATES THE TOOLS</SectionHeading>
-    <Rule className="mb-6" />
-    <p className="mb-6">
-      Every time a company I worked at was missing an organizational function, I built a system to stand in for it.
-      Four of these were built by hand, before any of this existed.
-    </p>
-    <Ledger
-      rows={[
-        { left: "No unbiased user input", right: "Interview and feedback protocols built to strip founder bias", note: "By hand" },
-        { left: "No product direction", right: "A roadmap, so we stopped being purely reactive to customer requests", note: "By hand" },
-        { left: "No shared vocabulary", right: "Naming conventions from the overlap of SE and Git language", note: "By hand" },
-        { left: "No design review", right: "A semi-formal process slotted into the existing dev review flow", note: "By hand" },
-        { left: "No product manager", right: "Listeners across Slack, support and call transcripts producing weighted tickets", note: "AI" },
-        { left: "No design critique", right: "A critique skill I wrote, run over the repo", note: "AI" },
-        { left: "No competitive intel", right: "A script that pulls competitor sites and repos and analyzes weekly focus", note: "AI" },
-      ]}
-    />
-    <p className="mb-6">
-      The disposition is the constant. AI is the leverage. The cost was leaving Figma, which was harder than it
-      sounds, because designers are professionally defined by that tool. Noticing I was rationalizing to protect an
-      identity-linked habit, and leaving anyway, is exactly what I ask systems engineers to do with Cameo. I do not
-      have to imagine that resistance.
-    </p>
-
-    <PrevNext prev={{ label: "Sysgit", to: "/case-study/sysgit" }} next={{ label: "Originality", to: "/case-study/originality" }} />
   </CvPage>
 );
