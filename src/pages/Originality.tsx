@@ -11,6 +11,7 @@ import {
   type Decision,
 } from "../components/cv/CaseStudyParts";
 import { BeforeAfterComparison } from "../components/case-study/BeforeAfterComparison";
+import { OriginalityHero } from "../components/case-study/OriginalityHero";
 import { EssayIntegrityDashboard } from "../components/case-study/EssayIntegrityDashboard";
 import { SubmissionsReportTable } from "../components/case-study/SubmissionsReportTable";
 import { SummaryPrioritizedModal } from "../components/case-study/SummaryPrioritizedModal";
@@ -92,11 +93,7 @@ export const Originality = () => (
       ]}
     />
 
-    <MediaSlot
-      ratio="16/9"
-      src="/case-studies/originality/authorship-banner.png"
-      alt="Turnitin authorship dashboard with submissions table and trend cards."
-    />
+    <OriginalityHero />
 
     <SectionHeading>PROBLEM</SectionHeading>
     <Rule className="mb-6" />
