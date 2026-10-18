@@ -98,29 +98,56 @@ export const WhatIDo = () => (
           right:
             "Should the palette live on the canvas at all if it applies to every diagram in the project? Even set in one place, this asks a user to pick colors for 40+ objects. What if the base were a premade theme? What if users override colors in the source code?",
           note: "Claude Design",
-          // Drop files in public/case-studies/what-i-do/ and pass src="/case-studies/what-i-do/<file>".
-          media: <MediaSlot ratio="16/9" caption="Three prompted directions, one told to go wild · capture" />,
+          media: (
+            <MediaSlot
+              ratio="16/9"
+              src="/case-studies/what-i-do/brainstorm-directions.webp"
+              alt="Claude Design session: answered scoping questions, then three live theming directions with thumbnails."
+              caption="Three prompted directions, one experimental · capture"
+            />
+          ),
         },
         {
           left: "Prototype, with reason",
           right:
             "I wanted to see the theme override meet the color picker. Seeing the real object count is what made me group them so the list was survivable. Does it still feel daunting to a systems engineer not particularly concerned with aesthetics?",
           note: "Claude Code",
-          media: <MediaSlot ratio="16/9" caption="Grouped object list in the prototype · capture" />,
+          media: (
+            <MediaSlot
+              ratio="16/9"
+              src="/case-studies/what-i-do/override-groups.webp"
+              alt="Overrides table grouping each node type into Definition and Usage color pairs."
+              caption="Overrides grouped as Definition and Usage pairs · capture"
+            />
+          ),
         },
         {
           left: "Fieldwork",
           right:
-            "I happened to be at a defense engineering conference while building this, so I walked the floor and noted what every company was using for branding. Then I asked my engineers for their favorite IDE themes.",
-          note: "Boots on the ground",
-          media: <MediaSlot ratio="16/9" caption="Booth branding, conference floor · photo" />,
+            "Engineers stare at IDE themes all day, so I ran an anecdotal poll: which one do you actually use? Not just my team, anyone who would answer. The favorites became themes in the gallery.",
+          note: "An informal poll",
+          media: (
+            <MediaSlot
+              ratio="16/9"
+              src="/case-studies/what-i-do/theme-gallery-poll.webp"
+              alt="Theme gallery cards including Catppuccin, Tokyo Night, Rosé Pine and Nord."
+              caption="Poll favorites in the theme gallery · capture, stitched from two scrolls"
+            />
+          ),
         },
         {
           left: "Get pedantic with edge cases",
           right:
             "If someone can override the accessibility colors, there needs to be a warning. A static mock of a color picker would never have surfaced that.",
           note: "Claude Code",
-          media: <MediaSlot ratio="16/9" caption="Accessibility override warning · capture" />,
+          media: (
+            <MediaSlot
+              ratio="16/9"
+              src="/case-studies/what-i-do/a11y-warning.webp"
+              alt="Theme gallery with High Contrast selected and the warning: Overrides may invalidate contrast."
+              caption="Contrast warning on the High Contrast theme · capture"
+            />
+          ),
         },
         {
           left: "Critique",
