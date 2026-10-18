@@ -98,24 +98,29 @@ export const WhatIDo = () => (
           right:
             "Should the palette live on the canvas at all if it applies to every diagram in the project? Even set in one place, this asks a user to pick colors for 40+ objects. What if the base were a premade theme? What if users override colors in the source code?",
           note: "Claude Design",
+          // Drop files in public/case-studies/what-i-do/ and pass src="/case-studies/what-i-do/<file>".
+          media: <MediaSlot ratio="16/9" caption="Three prompted directions, one told to go wild · capture" />,
         },
         {
           left: "Prototype, with reason",
           right:
             "I wanted to see the theme override meet the color picker. Seeing the real object count is what made me group them so the list was survivable. Does it still feel daunting to a systems engineer not particularly concerned with aesthetics?",
           note: "Claude Code",
+          media: <MediaSlot ratio="16/9" caption="Grouped object list in the prototype · capture" />,
         },
         {
           left: "Fieldwork",
           right:
             "I happened to be at a defense engineering conference while building this, so I walked the floor and noted what every company was using for branding. Then I asked my engineers for their favorite IDE themes.",
           note: "Boots on the ground",
+          media: <MediaSlot ratio="16/9" caption="Booth branding, conference floor · photo" />,
         },
         {
           left: "Get pedantic with edge cases",
           right:
             "If someone can override the accessibility colors, there needs to be a warning. A static mock of a color picker would never have surfaced that.",
           note: "Claude Code",
+          media: <MediaSlot ratio="16/9" caption="Accessibility override warning · capture" />,
         },
         {
           left: "Critique",
@@ -126,18 +131,32 @@ export const WhatIDo = () => (
           left: "Ship",
           right:
             "I wrote the UI changes. Claude Code translated the technical changes. PR review, then merge.",
-          note: "GitHub",
+          note: "GitLab",
         },
       ]}
     />
     <p className="cv-subhead mb-6 text-bone">
       Ten decisions in that sequence; models made none of them.
     </p>
-    <p className="mb-6">
-      Scope. Where the color palette belongs. Premade themes as the base.
-      Grouping 40+ objects. Whether the built-in colors cohere. Preventing overload. Addressing accessibility. Scroll depth.
-      Discoverability. What to hand off to the user, and when.
-    </p>
+    <ol className="mb-6 grid list-none grid-cols-1 gap-x-6 gap-y-2 p-0 sm:grid-cols-2">
+      {[
+        "Scope",
+        "Where the color palette belongs",
+        "Premade themes as the base",
+        "Grouping 40+ objects",
+        "Whether the built-in colors cohere",
+        "Preventing overload",
+        "Addressing accessibility",
+        "Scroll depth",
+        "Discoverability",
+        "What to hand off to the user, and when",
+      ].map((d, i) => (
+        <li key={d} className="flex gap-3 border-t border-hedge pt-2">
+          <span className="cv-meta w-6 shrink-0 text-lichen">{String(i + 1).padStart(2, "0")}</span>
+          <span>{d}</span>
+        </li>
+      ))}
+    </ol>
     <MediaSlot ratio="16/10" caption="Theme picker &middot; interactive recreation" />
 
     <SectionHeading>WHERE A MODEL CAN'T DO THE WORK</SectionHeading>
