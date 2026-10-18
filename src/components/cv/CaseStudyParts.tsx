@@ -131,7 +131,15 @@ export const Step = ({
 );
 
 /** Simple label/value ledger. Used for the pre-AI chronology. */
-export const Ledger = ({ rows }: { rows: { left: string; right: string; note?: string }[] }) => (
+/**
+ * Ledger. Optional `media` sits under the row's middle column, so an artifact
+ * lands beside the step it proves instead of piling up at the end.
+ */
+export const Ledger = ({
+  rows,
+}: {
+  rows: { left: string; right: string; note?: string; media?: ReactNode }[];
+}) => (
   <div className="pb-6">
     {rows.map((r, i) => (
       <div
@@ -144,6 +152,7 @@ export const Ledger = ({ rows }: { rows: { left: string; right: string; note?: s
         <div className="text-bone">{r.left}</div>
         <div>{r.right}</div>
         {r.note ? <div className="text-lichen sm:text-right">{r.note}</div> : null}
+        {r.media ? <div className="mt-3 sm:col-start-2 [&>*]:mb-0">{r.media}</div> : null}
       </div>
     ))}
   </div>
