@@ -115,7 +115,8 @@ const ratioClass: Record<Ratio, string> = {
 
 /**
  * Media slot. Renders a real image when `src` is given, otherwise the
- * template's diagonal placeholder frame.
+ * template's diagonal placeholder frame. With an image, the caption sits
+ * below the frame so every real image stays captioned.
  *
  * Caption color is --text-on-media, not --edge: --edge (#6b6b6b) is 2.13:1
  * against the slot fill and fails AA. See tokens.css.
@@ -158,6 +159,11 @@ export const MediaSlot = ({
         </>
       )}
     </div>
+    {src && caption ? (
+      <div className="cv-meta mt-2" style={{ color: "var(--text-on-media)" }}>
+        {caption}
+      </div>
+    ) : null}
   </div>
 );
 

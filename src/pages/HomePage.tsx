@@ -38,8 +38,8 @@ const WORK: Work[] = [
     media: (
       <MediaSlot
         ratio="16/9"
-        src="/case-studies/originality/authorship-banner.png"
-        alt="Turnitin authorship dashboard with submissions table and trend cards."
+        src="/case-studies/originality/hero-still.png"
+        alt="A student submission beside eight detection signals, ranked by what actually persuaded an educator: file metadata above the algorithm's linguistic analysis."
       />
     ),
   },

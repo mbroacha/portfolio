@@ -220,10 +220,8 @@ export function suggestionsFor(scope: string | undefined, limit = 6): Answer[] {
   const curated = SUGGESTED.map((id) => open.find((e) => e.id === id)).filter(
     (e): e is Answer => Boolean(e),
   );
-  const rest = open.filter((e) => e.scope === "global" && !SUGGESTED.includes(e.id));
-
   const seen = new Set<string>();
-  return [...mine, ...curated, ...rest]
+  return [...mine, ...curated]
     .filter((e) => (seen.has(e.id) ? false : (seen.add(e.id), true)))
     .slice(0, limit);
 }
