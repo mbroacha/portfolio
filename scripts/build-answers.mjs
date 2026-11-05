@@ -158,6 +158,22 @@ for (const e of bank.answers ?? []) {
   shipped.push(out);
 }
 
+/**
+ * Every project scope owes the rail three questions.
+ *
+ * A case study page offers its own scope and nothing else, so a scope that
+ * ships two advertises two and the slot reads as unfinished. This warns rather
+ * than fails, because the bank is often mid-edit and a short list still works.
+ */
+const PER_PROJECT = 3;
+const projectScopes = [...new Set(shipped.map((e) => e.scope))].filter((s) => s !== "global").sort();
+for (const scope of projectScopes) {
+  const n = shipped.filter((e) => e.scope === scope && e.suggest !== false).length;
+  if (n !== PER_PROJECT) {
+    warnings.push(`${scope}: ${n} suggestable answer(s). The rail offers ${PER_PROJECT}.`);
+  }
+}
+
 const payload = {
   generated: new Date().toISOString().slice(0, 10),
   source: "content/answer-bank.json",

@@ -203,8 +203,20 @@ export function findAnswer(query: string, scope?: string): Answer | null {
   return bestScore >= THRESHOLD ? best : null;
 }
 
+/** What a case study page offers. Three questions, all of them about itself. */
+const PER_PROJECT = 3;
+
 /**
- * Suggested questions for a page: this project's first, then general ones.
+ * Suggested questions for a page.
+ *
+ * A case study offers three questions about that case study and no general
+ * ones. Mixing in a general question made the list longer without making it
+ * better: a reader on Beacon wants to interrogate Beacon, and the general
+ * questions are one click away on every other page. Three is also what the rail
+ * can offer before the field reads as a menu rather than an invitation.
+ *
+ * Order inside a scope follows the bank, so the arc is editorial: how the work
+ * started, how it was made to work, what it left unfinished.
  *
  * Entries flagged `suggest: false` are left out. Those are the questions that
  * plant a doubt a reader did not walk in with. Every one of them still answers
@@ -213,7 +225,10 @@ export function findAnswer(query: string, scope?: string): Answer | null {
  */
 export function suggestionsFor(scope: string | undefined, limit = 6): Answer[] {
   const open = ANSWERS.filter((e) => e.suggest !== false);
-  const mine = scope && scope !== "global" ? open.filter((e) => e.scope === scope) : [];
+
+  if (scope && scope !== "global") {
+    return open.filter((e) => e.scope === scope).slice(0, PER_PROJECT);
+  }
 
   // The general list is curated in the bank rather than falling out of file
   // order, because which questions get offered is an editorial decision.
@@ -221,7 +236,7 @@ export function suggestionsFor(scope: string | undefined, limit = 6): Answer[] {
     (e): e is Answer => Boolean(e),
   );
   const seen = new Set<string>();
-  return [...mine, ...curated]
+  return curated
     .filter((e) => (seen.has(e.id) ? false : (seen.add(e.id), true)))
     .slice(0, limit);
 }
