@@ -30,7 +30,7 @@ const WORK: Work[] = [
       <>
         <span className="italic">Turnitin</span>, Senior UX Designer
         <br />
-        Academic integrity &middot; Shipped 2018
+        Academic integrity &middot; Shipped 2019
       </>
     ),
     description:

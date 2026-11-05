@@ -126,13 +126,13 @@ function SimilarityCell({ value }: { value: number }) {
           : "bg-[#34a853]";
   return (
     <div className="flex min-w-0 items-center gap-2">
-      <div className="h-2 min-w-[4.5rem] max-w-[7rem] flex-1 rounded-full bg-[#e8eaed]">
+      <div className="h-2 min-w-0 max-w-[7rem] flex-1 overflow-hidden rounded-full bg-[#e8eaed]">
         <div
           className={cn("h-full rounded-full transition-[width] duration-150", fillClass)}
           style={{ width: `${value}%` }}
         />
       </div>
-      <span className="whitespace-nowrap tabular-nums text-[13px] leading-none text-[#3c4043]">{value}%</span>
+      <span className="shrink-0 whitespace-nowrap tabular-nums text-[13px] leading-none text-[#3c4043]">{value}%</span>
     </div>
   );
 }
@@ -329,7 +329,7 @@ export function SubmissionsReportTable({ initialSelectedFilename, className }: S
                 <td className="truncate py-3.5 pr-2 align-middle" title={row.classLabel}>
                   {row.classLabel}
                 </td>
-                <td className="py-3.5 pr-2 align-middle">
+                <td className="overflow-hidden py-3.5 pr-2 align-middle">
                   <SimilarityCell value={row.similarity} />
                 </td>
                 <td className="truncate py-3.5 pr-1 text-left align-middle tabular-nums text-[#3c4043]">

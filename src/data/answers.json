@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08",
+  "generated": "2026-11-05",
   "source": "content/answer-bank.json",
   "decline": "Morgan hasn't written about that.",
   "suggested": [
@@ -492,6 +492,7 @@
       "a": "Engineers argue a design is more technically demanding than it looks. Founders argue it does not match their industry experience. Most recently an engineer built a proof of concept for a worker management activity. I tried repeatedly to reframe it as analogous to AI agent creation and could not get it across. We fixed it by sitting down and mapping the actual workflow, which should have happened before anyone touched code.",
       "scope": "sysgit",
       "tone": "straight",
+      "suggest": false,
       "source": {
         "label": "Sysgit",
         "path": "/case-study/sysgit"
@@ -588,6 +589,28 @@
       }
     },
     {
+      "id": "beacon-reciprocity",
+      "q": "How did you get operators to share data they did not have to share?",
+      "aliases": [
+        "why would operators share data",
+        "how did you build trust",
+        "data sharing",
+        "reciprocal disclosure",
+        "optional signals",
+        "what made operators trust it",
+        "sharing capability",
+        "why would anyone opt in"
+      ],
+      "a": "Position is not the sensitive part. Capability is. Ground sensor networks see your assets whether you like it or not, so sharing position helps everyone. What operators actually guard is their risk thresholds and whether an asset can maneuver at all. I built those as optional signals rather than requirements, and operators got more willing to share once they could see what others had shared in turn. Beacon ended up more trusted than the public catalog it sat alongside.",
+      "scope": "beacon",
+      "tone": "straight",
+      "source": {
+        "label": "Beacon, Insight",
+        "path": "/case-study/beacon",
+        "anchor": "insight"
+      }
+    },
+    {
       "id": "beacon-unsolved",
       "q": "What is still unsolved?",
       "aliases": [
@@ -670,6 +693,28 @@
       }
     },
     {
+      "id": "originality-business",
+      "q": "What happened when the research contradicted what the company sold?",
+      "aliases": [
+        "did leadership push back",
+        "you demoted the model",
+        "machine learning was the differentiator",
+        "what did leadership say",
+        "metadata over the model",
+        "business pressure",
+        "why is the model not first",
+        "how did you handle the company line"
+      ],
+      "a": "Research kept turning up the same thing: file metadata caught more cheating than the model did. Author name, editing time, dates that did not match. So I moved those to the top of the report and put the linguistic analysis below them. Leadership did not want the model demoted and we settled on a split. Sales kept leading with the machine learning. The product showed whatever actually made the case.",
+      "scope": "originality",
+      "tone": "straight",
+      "source": {
+        "label": "Originality, Decisions",
+        "path": "/case-study/originality",
+        "anchor": "decisions"
+      }
+    },
+    {
       "id": "gradescope-why",
       "q": "Why include a project that did not work?",
       "aliases": [
@@ -687,6 +732,28 @@
       "source": {
         "label": "Gradescope Mobile",
         "path": "/case-study/gradescope-mobile"
+      }
+    },
+    {
+      "id": "gradescope-pair",
+      "q": "What did you and the other designer disagree about?",
+      "aliases": [
+        "working with another designer",
+        "how did you collaborate",
+        "did you disagree",
+        "design system fidelity",
+        "who won the argument",
+        "tap targets",
+        "platform adaptation",
+        "two designers on one app"
+      ],
+      "a": "We disagreed about how faithful to be to the parent design system. The other senior designer wanted strict fidelity. I argued the system was built for web and did not survive the platform change: buttons were wrong as tap targets, type was not scaled, and the colors pulled too dark on a phone. I won on the interactive components and lost the rest. It is the same argument I would later lose at Sysgit, literal correctness against contextual fit.",
+      "scope": "gradescope",
+      "tone": "straight",
+      "source": {
+        "label": "Gradescope Mobile, Working as a pair",
+        "path": "/case-study/gradescope-mobile",
+        "anchor": "working-as-a-pair"
       }
     },
     {

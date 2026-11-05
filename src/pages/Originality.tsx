@@ -7,6 +7,7 @@ import {
   DecisionRow,
   InsightBlock,
   PrevNext,
+  QualOutcome,
   TwoCol,
   type Decision,
 } from "../components/cv/CaseStudyParts";
@@ -19,43 +20,43 @@ import { TaggingNotesCaseTools } from "../components/case-study/TaggingNotesCase
 
 const decisions: Decision[] = [
   {
-    title: "Lead with the evidence that persuades, not the evidence we sold",
-    rejected: "Leading with the algorithm's linguistic analysis, which was the company's differentiator.",
-    why: "Users were overwhelmed by volume, not short on information. Every signal carried equal weight, so the persuasive ones and the noise looked identical. The signals that actually made a case were often the plainest ones.",
-    tradeoff: "Less visibility into raw data, and I was demoting the thing we sold.",
-    result: "Users could focus on relevant signals instead of scanning everything.",
+    title: "Put the persuasive evidence first, even though it wasn't what we sold",
+    rejected: "Leading with the linguistic analysis. It was the company's differentiator.",
+    why: "Every signal got the same weight, so users had to read all of it to find the two or three that mattered. Those were usually the plain ones.",
+    tradeoff: "Users saw less of the raw data. And I was moving the thing we sold down the page.",
+    result: "Author, last-modified and editing time moved to the top of the report. They also showed up in the summary whenever they flagged an issue. The linguistic analysis sat below them.",
     visual: <SubmissionsReportTable />,
   },
   {
-    title: "Introduce a fixed summary",
-    rejected: "Letting each investigator find their own starting point.",
-    why: "Experienced investigators had strong intuition about where to begin. New users had none, and the report gave them nowhere to start.",
-    tradeoff: "The system now influences where attention goes first. That is a position we are taking on someone else's investigation.",
-    result: "Faster orientation and more consistent investigation paths.",
+    title: "Add a fixed summary",
+    rejected: "Letting each investigator pick their own starting point.",
+    why: "Experienced investigators knew where to look first. New users didn't, and the report gave them no hints.",
+    tradeoff: "Now the product decides what people look at first. That's a position we're taking on someone else's investigation.",
+    result: "Every report opens on the same summary. New users and experts start in the same place.",
     visual: <SummaryPrioritizedModal />,
   },
   {
-    title: "Show trends across assignments over time",
-    rejected: "Treating each submission as a self-contained report.",
-    why: "Signals are meaningful in context, not isolation. A single anomaly proves nothing. A pattern across a semester is a different conversation.",
-    tradeoff: "An added layer of abstraction between the user and the document in front of them.",
-    result: "Users could identify behavioral patterns instead of isolated anomalies.",
+    title: "Show trends across assignments",
+    rejected: "Treating each submission as its own report.",
+    why: "One odd paper doesn't prove much. Five odd papers in a semester is worth a conversation with the student.",
+    tradeoff: "Another layer between the user and the actual paper.",
+    result: "A semester of submissions on one chart. Users could see whether a flag was a one-off or part of a pattern.",
     visual: <EssayIntegrityDashboard />,
   },
   {
-    title: "Add tagging, notes and case-building",
-    rejected: "Optimizing for the single-session report scan.",
-    why: "Investigations happen over weeks, not in one sitting. Users were reconstructing their own reasoning from memory every time they came back.",
-    tradeoff: "More product complexity, on a product already accused of being hard to interpret.",
-    result: "Users could build and revisit cases instead of relying on memory.",
+    title: "Add tags, notes and cases",
+    rejected: "Designing for someone reading one report in one sitting.",
+    why: "Investigations take weeks. Every time users came back, they had to rebuild their reasoning from memory.",
+    tradeoff: "More complexity in a product people already found hard to read.",
+    result: "Users could save their reasoning as they went and pick it back up later.",
     visual: <TaggingNotesCaseTools />,
   },
   {
-    title: "Reversed: prescriptive language",
-    rejected: "The version I designed first, which labeled findings with phrases like Investigation Recommended.",
-    why: "I thought guidance meant telling users what to do next. For non-experts especially, a recommendation seemed like the helpful thing.",
-    tradeoff: "Design time on a language system that had to be walked back.",
-    result: "Research showed educators still read it as an accusation. I lowered the severity and moved to signals that bring a piece of work to someone's attention without pronouncing on it.",
+    title: "Reversed: telling users what to do",
+    rejected: "My first version, which labeled findings with phrases like Investigation Recommended.",
+    why: "I thought guidance meant telling users what to do next. For new users especially, a recommendation seemed helpful.",
+    tradeoff: "Time spent on a labeling system I had to walk back.",
+    result: "In research, educators read Investigation Recommended as an accusation. It was too damning. I lowered the severity, and the new labels just flag a paper for a closer look.",
   },
 ];
 
@@ -69,19 +70,18 @@ export const Originality = () => (
       title="Originality"
       lede={
         <>
-          <span className="text-bone">Contract cheating detection.</span> Machine learning flagged the papers.
-          Educators had to decide what it meant.
+          <span className="text-bone">Contract cheating detection.</span> Machine learning flagged suspicious student work, and suggested best practices for educators.
         </>
       }
       items={[
         { label: "Role", value: <span className="text-bone">Senior UX Designer</span> },
         { label: "Company", value: "Turnitin" },
-        { label: "Timeline", value: "2018. Shipped 2019" },
+        { label: "Timeline", value: "Closed beta 2018. Shipped 2019" },
         {
           label: "Team",
           value: (
             <>
-              8&ndash;9 engineers and a PM
+              8 engineers and a PM
             </>
           ),
         },
@@ -97,41 +97,31 @@ export const Originality = () => (
     <TwoCol
       claim={
         <em className="font-display not-italic">
-          The system did not tell you if a student cheated. It gave you signals and expected you to decide.
+          The product was a dashboard of figures, with no clear signal of what mattered.
         </em>
       }
     >
       <div>
-        Contract cheating is work a student paid someone else to write. In 2018 we shipped a product that used
-        machine learning to find patterns in student writing that might indicate it. The markers and anomalies were
-        esoteric and confusing.
+        Contract cheating is work a student paid someone else to write (before AI was ubiquitous). Teachers previously caught this off vibes, but serious academic offenses require proof.  Turnitin developed a model to profile a student's writing style in order to catch outlier assignments. The 2018 closed beta featured pages of obscure charts and tables that were not easily readible by educators.
       </div>
       <div>
-        My initial brief was to improve the results page, but after interviewing educators I reframed the problem.
-        It was not the page. It was that we gave equal weight to every possible signal, so users sifted noise that
-        generated anxiety rather than confidence.
-      </div>
-      <div>
-        Underneath that was a harder challenge. The system could imply wrongdoing, but the user had to carry the
-        consequence of acting on it.
+        I was brought in to improve the layout of the results page. After interviewing educators, I realized the layout wasn&rsquo;t was the issue. The report gave every datapoint the same weight, so users had to waded through a lot of noise to make a decision.
       </div>
     </TwoCol>
 
-    <TwoCol claim={<em className="font-display not-italic">We were selling an algorithm, even if it wasn&rsquo;t the best signal.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">We were selling an algorithm, even if it wasn&rsquo;t actually the best signal.</em>}>
       <div>
-        Enormous engineering effort went into the model. It analyzed sentence complexity, vocabulary, diction and
-        readability across thousands of papers already in the corpus, building a writing profile for each student to
-        compare future work against. Before it, educators worked on instinct, and instinct is impossible to defend
-        when the outcome is a serious academic penalty.
+        The company invested a lot in the model. It analyzed sentence complexity, vocabulary, diction and readability
+        across thousands of papers already in Turnitin&rsquo;s corpus, and built a writing profile for each student.
+        New work got compared against that profile.
       </div>
       <div>
-        Then research kept telling us the same thing. Most of the time you can tell from the file metadata. The
-        author name. The editing time. Dates that do not line up. We heard it internally and from our professor
-        research partners.
+        Research kept turning up the same thing. Most of the time you can tell a student cheated just from the
+        file metadata: author name, editing time, dates that didn&rsquo;t match.
       </div>
       <div>
-        So I pivoted to surfacing the signals that were actually damning, which were largely the plain ones, while
-        still having to demonstrate that the algorithm we were selling had value.
+        So I moved those plain signals to the top. Leadership didn&rsquo;t want the model demoted, and we settled on
+        a split. Sales kept leading with the machine learning. The product showed whatever actually made the case.
       </div>
     </TwoCol>
 
@@ -140,24 +130,24 @@ export const Originality = () => (
     <ConstraintGrid
       items={[
         {
-          title: "Legally, we could not accuse anyone",
+          title: "We couldn't legally accuse anyone",
           detail:
-            "The product could not say a student cheated. I had to design it very carefully as a tool that surfaces suspicious factors in a body of work. Accusing a student has serious academic consequences, and users needed confidence and defensibility rather than a verdict.",
+            "The product couldn't say a student cheated. It could only point out things in their work that looked suspicious. A misconduct finding follows a student, so educators needed evidence they could defend.",
         },
         {
           title: "Our own reputation",
           detail:
-            "Turnitin's flagship Similarity product was frequently wrong and hard to interpret, and you can still find students and teachers bemoaning unfair accusations because of it. I was designing inside that ecosystem, against damage the company had already done.",
+            "Educators already treated Turnitin's Similarity score as the final word, and students paid the price when the score was misinterpreted. I was adding a second score to the same product family, and we already had a trust disadvantage.",
         },
         {
-          title: "Probabilistic, interconnected evidence",
+          title: "Evidence that only works in combination",
           detail:
-            "No single factor proved anything. Signals only meant something in combination, which is exactly the kind of reasoning an interface flattens by accident.",
+            "No single datapoint proves anything. They only have meaning as an overall pattern, and most interfaces show signals one at a time.",
         },
         {
           title: "Two kinds of user, one report",
           detail:
-            "Experienced investigators had strong intuition and limited time. New users had no intuition at all. The same report had to serve both without patronizing one or abandoning the other.",
+            "Experienced investigators knew what they were looking for and didn't have much time. New users had no idea where to start. The same report had to work for both.",
         },
       ]}
     />
@@ -170,26 +160,31 @@ export const Originality = () => (
         src="/case-studies/originality/research-sticky-notes.png"
         alt="Workshop notebook with sticky notes labeled with document metadata fields." />
       <div className="flex flex-col gap-3">
-        <div className="text-bone">We asked experts to define what actually matters.</div>
-        <div>Expert interviews and a card sorting exercise with experienced investigators. Four findings:</div>
-        <div>Not all signals are equal. Some are consistently more persuasive when making a case.</div>
-        <div>Patterns emerge across a term, not within a single paper.</div>
-        <div>Investigations follow a mental workflow, not a linear report.</div>
-        <div>New users need guidance, not just data.</div>
+        <div className="text-bone">We asked experienced investigators what they actually look for.</div>
+        <div>
+          I led dozens of interviews and at least biweekly check-ins with academics at Deakin, Griffith, UC
+          San Diego, UNSW, Northampton, Queensland and Wollongong. I also ran a card sort with experienced
+          investigators. What we learned:
+        </div>
+        <div>While the algorithm data was interesting, file metadata was usually the smoking gun and easier to explain.</div>
+        <div>The same few signals persuaded people every time.</div>
+        <div>Patterns show up across a term. One paper rarely tells you much.</div>
+        <div>Investigators work a case in their own order. A top-to-bottom report fights that.</div>
+        <div>New users wanted to be told where to start.</div>
       </div>
     </div>
 
     <SectionHeading>INSIGHT</SectionHeading>
     <Rule className="mb-6" />
     <InsightBlock
-      quote="Educators were not asking for more signals. They needed permission to use their own judgment."
-      source="The score had become the authority in the room."
+      quote="Educators didn't want more signals. They wanted permission to trust their own judgment."
+      source="From interviews and biweekly check-ins with academics at seven universities."
     />
-    <TwoCol claim={<em className="font-display not-italic">Reframe the product from detection authority to investigation support.</em>}>
-      <div>Prioritize the persuasive signals. Guide the non-experts. Let the instructor own the verdict.</div>
+    <TwoCol claim={<em className="font-display not-italic">Stop acting like the judge. Help the educator build a case.</em>}>
       <div>
-        That reframe is what turned four separate feature decisions into one argument, and it is why the redesign
-        was about hierarchy rather than accuracy.
+        Turnitin&rsquo;s scores had become the final word in a lot of these decisions. I wanted to hand that back to
+        the educator. Every decision below follows from it, and it&rsquo;s why the redesign changed the hierarchy and
+        left the model alone.
       </div>
     </TwoCol>
 
@@ -199,7 +194,6 @@ export const Originality = () => (
       ratio="16/9"
       src="/case-studies/originality/design-evolution-sketches.png"
       alt="Five-stage progression from document sketches to final high-fidelity mockup."
-      caption="I explored automation and workflow-heavy approaches and rejected them"
     />
     {decisions.map((d, i) => (
       <DecisionRow key={d.title} decision={d} first={i === 0} />
@@ -207,18 +201,25 @@ export const Originality = () => (
 
     <SectionHeading>OUTCOME</SectionHeading>
     <Rule className="mb-6" />
-    <TwoCol claim={<em className="font-display not-italic">A scannable report that supports an investigation over time.</em>}>
-      <div>
-        The redesigned system reduced time to interpret reports, improved consistency across investigations, and
-        made the product usable by people who were not experts in it.
-      </div>
-      <div>
-        In August 2019 the Sydney Morning Herald reported that cheating found at the University of New South Wales
-        was up 2000% following new detection methods. That figure is UNSW&rsquo;s reported detection increase, not a
-        measure of this redesign.
-      </div>
-      <div>16,000 institutions used the product globally. That is product scale rather than my impact.</div>
-    </TwoCol>
+    <QualOutcome
+      items={[
+        {
+          title: "What shipped",
+          detail:
+            "A fixed summary. File metadata at the top of the report. Trends across a term. Tags, notes and cases. Softer labels that flag a paper for a closer look instead of recommending an investigation.",
+        },
+        {
+          title: "Results",
+          detail: (
+            <>
+              The product shipped to 16,000 institutions. UNSW, one
+              of our research partners, reported a 2000% jump in detected cheating in 2019 after bringing in new
+              detection methods (Sydney Morning Herald).
+            </>
+          ),
+        },
+      ]}
+    />
 
     <div className="mb-6">
       <BeforeAfterComparison
@@ -226,40 +227,39 @@ export const Originality = () => (
           label: "Before",
           src: "/case-studies/originality/outcome-before-sentences.png",
           alt: "Sentences view with stacked bar charts in an orange interface.",
-          caption: "Sentence-level charts buried the signal in identical-looking data.",
+          caption: "Closed beta. One sentence-type chart per paper. Capture.",
         }}
         after={{
           label: "After",
           src: "/case-studies/originality/outcome-after-authorship.png",
           alt: "Authorship dashboard with similarity, revisions and editing time trends.",
-          caption: "A scannable report that prioritizes what matters.",
+          caption: "Shipped. Easier to scan, but the similarity score still leads. Capture.",
         }}
       />
     </div>
 
     <SectionHeading>REFLECTION</SectionHeading>
     <Rule className="mb-6" />
-    <TwoCol claim={<em className="font-display not-italic">Demote the score, elevate judgment.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">Who was the machine learning for?</em>}>
       <div>
-        Instructors were not asking for better signals. They were asking for permission to use their own judgment.
-        The job was not to make detection smarter. It was to make the score where a conversation starts rather than
-        where one ends.
+        The company spent over two years on a model that was less useful than a file timestamp. I spent months
+        designing around the gap between what we sold and what convinced anyone. And the screens I shipped still
+        lead with scores.
+      </div>
+      <div>
+        Let's be honest, most AI products have the same problem now. People treat a probabilistic score as an answer unless the
+        design gives them a reason not to.
       </div>
     </TwoCol>
-    <TwoCol claim={<em className="font-display not-italic">Design for investigation, not accusation.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">I should have declared design bankruptcy sooner.</em>}>
       <div>
-        Moving from punitive to collaborative does not mean softer language. It means changing who holds the
-        verdict, and building tools that support a case over time instead of a one-off report scan.
+        I spent way too long getting the original version to read better. The whole layout needed to change.
       </div>
     </TwoCol>
-    <TwoCol claim={<em className="font-display not-italic">Ask who the machine learning is serving.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">We never talked to students.</em>}>
       <div>
-        We spent years on a model that turned out to be less useful than a file timestamp, and I spent months
-        designing around the gap between what we sold and what actually persuaded anyone.
-      </div>
-      <div>
-        The screens still center on numeric scores and maybes. The assumption underneath these tools runs deeper
-        than one redesign. I left with a different question than I came in with.
+        Our users were teachers and administrators. But students dealt with the fallout of whatever the product said, and
+        we never got any research or feedback from them.
       </div>
     </TwoCol>
 
