@@ -195,11 +195,6 @@ export const OriginalityHero = () => {
           </svg>
         </div>
       </div>
-      <figcaption className="cv-meta mt-4 max-w-prose px-8" style={{ color: "var(--text-muted)" }}>
-        Diagram. A recreation of the model&rsquo;s sentence-type chart, drawn at scale. We balanced deep
-        learning across a student&rsquo;s whole career against what could be defended in an academic
-        integrity case.
-      </figcaption>
     </figure>
   );
 };

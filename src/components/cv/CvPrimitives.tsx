@@ -127,16 +127,22 @@ export const MediaSlot = ({
   src,
   alt,
   width,
+  bordered = true,
 }: {
   ratio?: Ratio;
   caption?: string;
   src?: string;
   alt?: string;
   width?: string;
+  bordered?: boolean;
 }) => (
   <div className="mb-6 bg-[color:var(--surface-media)] p-4">
     <div
-      className={cn("relative mx-auto overflow-hidden border border-[color:var(--edge)]", ratioClass[ratio])}
+      className={cn(
+        "relative mx-auto overflow-hidden",
+        bordered && "border border-[color:var(--edge)]",
+        ratioClass[ratio],
+      )}
       style={{ width, backgroundColor: "var(--ink-600)" }}
     >
       {src ? (
