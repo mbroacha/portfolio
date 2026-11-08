@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-05",
+  "generated": "2026-11-08",
   "source": "content/answer-bank.json",
   "decline": "Morgan hasn't written about that.",
   "suggested": [
@@ -166,14 +166,14 @@
         "why is there no analytics",
         "do you track usage"
       ],
-      "a": "Sysgit has no product analytics. Partly structural, since on-prem and air-gapped deployments often cannot phone home, and partly that we have not gotten to it. Beacon has two published adoption figures, both cited on its page with their denominators. Everywhere else I would rather show you the decision and the tradeoff than a number I cannot defend in a room.",
+      "a": "Sysgit has no product analytics. That is a gap I own rather than defend. Beacon has two published adoption figures, both cited on its page with their denominators. Everywhere else I would rather show you the decision and the tradeoff than a number I cannot defend in a room.",
       "scope": "global",
       "tone": "straight",
       "suggest": false,
       "source": {
-        "label": "Sysgit, Outcome",
+        "label": "Sysgit, Where it landed",
         "path": "/case-study/sysgit",
-        "anchor": "outcome"
+        "anchor": "where-it-landed"
       }
     },
     {
@@ -399,9 +399,9 @@
       "scope": "sysgit",
       "tone": "straight",
       "source": {
-        "label": "Sysgit, Decisions",
+        "label": "Sysgit, What it looks like",
         "path": "/case-study/sysgit",
-        "anchor": "decisions"
+        "anchor": "what-it-looks-like"
       }
     },
     {
@@ -426,9 +426,8 @@
       "tone": "straight",
       "suggest": false,
       "source": {
-        "label": "Sysgit, Decisions",
-        "path": "/case-study/sysgit",
-        "anchor": "decisions"
+        "label": "Sysgit",
+        "path": "/case-study/sysgit"
       }
     },
     {
@@ -450,9 +449,8 @@
       "tone": "straight",
       "suggest": false,
       "source": {
-        "label": "Sysgit, Constraints",
-        "path": "/case-study/sysgit",
-        "anchor": "constraints"
+        "label": "Sysgit",
+        "path": "/case-study/sysgit"
       }
     },
     {
@@ -518,9 +516,9 @@
       "scope": "sysgit",
       "tone": "straight",
       "source": {
-        "label": "Sysgit, Insight",
+        "label": "Sysgit, The argument",
         "path": "/case-study/sysgit",
-        "anchor": "insight"
+        "anchor": "the-argument"
       }
     },
     {

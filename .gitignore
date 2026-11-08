@@ -7,3 +7,9 @@ dist/
 # When the query interface ships, commit the compiled sanitized JSON it
 # produces, never these files.
 content/
+
+# Local pre-purge backup. Never commit.
+_backup-pre-purge/
+
+# Working captures and scratch output. Never commit.
+Claude outputs/
