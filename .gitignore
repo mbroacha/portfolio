@@ -13,3 +13,4 @@ _backup-pre-purge/
 
 # Working captures and scratch output. Never commit.
 Claude outputs/
+_stage-original/
