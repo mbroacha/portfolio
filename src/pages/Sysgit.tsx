@@ -60,7 +60,6 @@ export const Sysgit = () => (
       ratio="16/10"
       src="/case-studies/sysgit/split-editor.png"
       alt="The Sysgit split editor. SysML source on the left defining a power subsystem with an energy capacity and a maximum power output, and on the right the same model drawn as part definitions and linked requirement cards."
-      caption="The split editor &middot; capture, demo model. The object drawn above, as it actually appears."
     />
 
     <SectionHeading>WHY IT EXISTS</SectionHeading>
@@ -91,9 +90,8 @@ export const Sysgit = () => (
 
     <TwoCol claim={<em className="font-display not-italic">Bad design is only one reason this persists.</em>}>
       <div>
-        The legacy enterprise tools in this space win on procurement, not on product. Their vendors have been very
-        effective at securing government contracts structured so that anyone on certain programs has to use their
-        software. That relationship is the moat, and until now UX was never the deciding factor.
+        Their vendors secured government contracts structured so that anyone on certain programs has to use their
+        software. That relationship is the moat, not the product.
       </div>
       <div>
         It is also genuinely hard. Interoperability, security and flexibility are difficult to solve together.
@@ -112,30 +110,29 @@ export const Sysgit = () => (
     <Rule className="mb-6" />
     <InsightBlock
       quote="One less tool beats one task done perfectly."
-      source="From 30+ interviews with systems engineers, reached by embedding myself in our RevOps process rather than waiting for research to be scheduled."
     />
     <CustomerStackDiagram />
 
-    <TwoCol claim={<em className="font-display not-italic">I went in holding a rule every designer is taught, and had to abandon it.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">I went in holding a rule every designer is taught, and broke it.</em>}>
       <div>
         Solve one problem really well. I pushed hard on it early, then had to stop and treat the problem as an
         ecosystem instead.
       </div>
       <div>
-        The reason is procurement, not craft. Customers run several tools with several integrations and have to
-        justify every seat they buy.
+        The reason is how these teams buy. Customers run several tools with several integrations and have to
+        justify every seat.
       </div>
       <div>
-        This is why Sysgit covers both modeling and requirements management rather than nailing either one alone.
+        This is why Sysgit covers multiple jobs rather than nailing any one alone. It reveals cracks in a user process on a macro level.
       </div>
     </TwoCol>
 
     <SectionHeading>WHAT IT LOOKS LIKE</SectionHeading>
     <Rule className="mb-6" />
-    <TwoCol claim={<em className="font-display not-italic">In hardware modeling, a square is not a square.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">In hardware modeling, a box is not just a box.</em>}>
       <div>
-        It carries model metadata, and position and lines have specific meaning. The same object has to read as a
-        picture, as a document and as code, for people who think visually and people who think in code.
+        It carries model metadata, and position and lines have specific meaning. For different users, the same object has to read as a
+        visual, as a document and as code.
       </div>
     </TwoCol>
     <TranslationTriptych />
@@ -143,13 +140,11 @@ export const Sysgit = () => (
       ratio="16/9"
       src="/case-studies/sysgit/diagram-editor-ide.png"
       alt="The same rail brake requirements open in Sysgit, source on the left and the requirement graph on the right."
-      caption="Those requirements in the product &middot; capture, demo model"
+      caption="Those requirements in the product."
     />
-    <TwoCol claim={<em className="font-display not-italic">Requirements arrive as documents. They have to leave as objects.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">Requirements arrive as documents. They have to leave as editable objects.</em>}>
       <div>
-        Their meaning comes from numbering and indentation, and they are frequently government-issued. A table meets
-        in the middle: cells become objects that can be linked, filtered and tokenized, and decomposition from broad
-        to specific stays visible.
+        The biggest challenge in this space is change management. Rather than constantly editing the same spreadsheet, individual objects are editable without affecting other users' work.
       </div>
     </TwoCol>
     <RequirementsTableRecreation />
@@ -159,28 +154,38 @@ export const Sysgit = () => (
     <QualOutcome
       items={[
         {
-          title: "What shipped",
-          detail:
-            "In two years: the diagramming tool, the requirements table, the IDE, views and filters, diffing, and reviews with branching and merging. Every feature is in use by someone. Nothing sat on a shelf.",
+          title: "What has shipped",
+          detail: (
+            <>
+              In two years: the diagramming tool, the requirements table, the IDE, views and filters, diffing, and reviews with branching and merging. Every feature is actively in use.
+              <br /><br />
+              Currently launching an in-house MCP and agent management.
+            </>
+          ),
         },
         {
           title: "How we measure it",
           detail:
-            "Acquisition. This market is governed by procurement and adverse incentives rather than usability. The meaningful question is whether organizations already locked into a legacy tool bought anyway. The US Air Force, Leidos, GTRI, Tradewinds and Constellr did, from a company of seven.",
+            "Acquisition. This market is slow and the meaningful question is whether organizations already locked into a legacy tool bought anyway. We currently support US Air Force, Leidos, GTRI, Tradewinds and Constellr, among others.",
         },
       ]}
     />
 
-    <SectionHeading>THE OPEN QUESTION</SectionHeading>
+    <SectionHeading>WHY DESIGN ACTUALLY MOVES</SectionHeading>
     <Rule className="mb-6" />
-    <TwoCol claim={<em className="font-display not-italic">Nobody has defined how SysML v2 should actually be used.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">The same engineer uses a beautifully made tool at 10 am and one that peaked in 2004 at 11 am.</em>}>
       <div>
-        Its governing body handed that to the community, and the question I heard constantly from users learning the
-        language as they went was what their standard operating procedure should be.
+        The reference points are not other systems engineering tools. They are Miro, Google, Airtable: general
+        purpose products doing structurally the same jobs, a canvas, a shared editor and a structured table, in
+        markets that punished anything less than polish.
       </div>
       <div>
-        We were in a unique position to set that standard and we were too cautious to take it. That is the piece of
-        work I did not get to do.
+        Sysgit is those three surfaces for hardware. Every user already knows what good feels like in each of them,
+        and that sets the bar whether or not this market has caught up.
+      </div>
+      <div>
+        So there is no excuse. Nothing about security,
+        interoperability or a dense specification requires the interaction model these tools still ship.
       </div>
     </TwoCol>
 
