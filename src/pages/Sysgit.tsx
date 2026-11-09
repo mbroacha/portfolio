@@ -46,56 +46,61 @@ export const Sysgit = () => (
 
     <SectionHeading>THE PRODUCT</SectionHeading>
     <Rule className="mb-6" />
-    <TwoCol claim={<em className="font-display not-italic">Three jobs that are normally three purchases.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">Three jobs that normally mean three very expensive software purchases.</em>}>
       <div>
-        A systems engineer describes a machine: what its parts are, what each one has to do, and how a change to one
-        propagates to the rest. Today that work is split across a modeling tool, a requirements tool and whatever
+        A systems engineer orchestrates hardware development: everything from materials to requirements to testing, all while wrangling several different teams. Today that work is split across a modeling tool, a requirements tool and whatever
         stands in for version control.
       </div>
       <div>
-        Sysgit puts them in one place. A diagram editor and a code editor over the same model, a requirements table
+        Sysgit puts them all in one place. A diagram editor and a code editor over the same model, a requirements table
         that behaves like a document, and branch, review and merge in language an engineer already uses.
       </div>
     </TwoCol>
+    <MediaSlot
+      ratio="16/10"
+      src="/case-studies/sysgit/split-editor.png"
+      alt="The Sysgit split editor. SysML source on the left defining a power subsystem with an energy capacity and a maximum power output, and on the right the same model drawn as part definitions and linked requirement cards."
+      caption="The split editor &middot; capture, demo model. The object drawn above, as it actually appears."
+    />
 
     <SectionHeading>WHY IT EXISTS</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">Systems engineering is a coordination problem, and it scales badly.</em>}>
       <div>
-        Licenses are expensive and per-seat, so they limit who can even open the file. Teams work in different tools
+        Licenses are expensive and per-seat, so they limit who can even open a file. Teams work in different tools
         with gates between them. Formal reviews become long meetings where nobody can agree what the source of truth
         is.
       </div>
     </TwoCol>
 
-    <TwoCol claim={<em className="font-display not-italic">The tools are not neutral. They encode a process.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">The existing tools reflect an outdated process.</em>}>
       <div>
         Our founders came from SpaceX, where hardware ran on software practices: version control, fast iteration, and
         systems engineering treated as something you revise continuously rather than something you approve once.
       </div>
       <div>
-        Legacy manufacturers and their government customers work the other way, and their tooling encodes it. A tool
-        without async version control assumes a process where the model gets approved rather than iterated, and it
+        Legacy manufacturers and government customers especially work the other way, and their tooling encodes it. A tool
+        without async version control assumes a process where every step gets final approval rather than iterated, and it
         makes any other way of working expensive.
       </div>
       <div>
-        The schedule is where that shows up. Falcon 9 took roughly four and a half years end to end. A new DoD
+        The proof is in the project. Falcon 9 took roughly four and a half years end to end. A new DoD
         capability typically takes eight to eleven. The F-35 has been in development since 2001.
       </div>
     </TwoCol>
 
     <TwoCol claim={<em className="font-display not-italic">Bad design is only one reason this persists.</em>}>
       <div>
-        The legacy enterprise tools in this space won on procurement, not on product. Their vendors have been very
+        The legacy enterprise tools in this space win on procurement, not on product. Their vendors have been very
         effective at securing government contracts structured so that anyone on certain programs has to use their
-        software. That relationship is the moat, and UX was never the thing that won it.
+        software. That relationship is the moat, and until now UX was never the deciding factor.
       </div>
       <div>
         It is also genuinely hard. Interoperability, security and flexibility are difficult to solve together.
       </div>
       <div>
-        The reason that took me longest to see: these tools are complicated enough that operating them has become the
-        job. Resistance is not a usability problem.
+        And the uncomfortable truth is, these  legacy tools are so complicated that operating them has become the
+        job. Resistance and fear is the unspoken usability problem.
       </div>
     </TwoCol>
 
@@ -137,8 +142,8 @@ export const Sysgit = () => (
     <MediaSlot
       ratio="16/9"
       src="/case-studies/sysgit/diagram-editor-ide.png"
-      alt="The Sysgit diagram editor beside the code editor, showing the same model object in both."
-      caption="Diagram editor and IDE, side by side &middot; capture, demo model"
+      alt="The same rail brake requirements open in Sysgit, source on the left and the requirement graph on the right."
+      caption="Those requirements in the product &middot; capture, demo model"
     />
     <TwoCol claim={<em className="font-display not-italic">Requirements arrive as documents. They have to leave as objects.</em>}>
       <div>
