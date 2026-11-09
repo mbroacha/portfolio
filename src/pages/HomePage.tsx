@@ -50,13 +50,13 @@ const WORK: Work[] = [
     to: "/case-study/sysgit",
     meta: (
       <>
-        <span className="italic">Sysgit</span>, Design Lead and sole designer
+        Design Lead and sole designer
         <br />
         Systems engineering &middot; 2023 &ndash; 2026
       </>
     ),
     description:
-      "Git for hardware. Modeling, requirements, and version control in one workflow, for engineers who are not developers. I own product design, the design system, research, competitive analysis, strategy, and brand.",
+      "Git for hardware: modeling, requirements, and version control in one platform. I own product design, the design system, research, competitive analysis, strategy, and brand.",
     media: (
       <MediaSlot
         ratio="16/9"
