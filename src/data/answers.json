@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-08",
+  "generated": "2026-11-09",
   "source": "content/answer-bank.json",
   "decline": "Morgan hasn't written about that.",
   "suggested": [
@@ -230,6 +230,78 @@
       }
     },
     {
+      "id": "cheeky-is-this-a-chatbot",
+      "q": "Is this a chatbot?",
+      "aliases": [
+        "am i talking to a bot",
+        "is this ai",
+        "is this chatgpt",
+        "are you a bot",
+        "am i talking to a robot",
+        "is this an llm",
+        "are you real",
+        "is this a bot",
+        "are you ai",
+        "are you chatgpt",
+        "are you a human",
+        "are you human",
+        "are you a person",
+        "who are you",
+        "what are you",
+        "is this a person",
+        "is this automated",
+        "are you an agent",
+        "am i talking to a human"
+      ],
+      "a": "No. There is no model here. Every answer was written in advance and is being retrieved, which is why each one shows you where it came from and why it declines instead of improvising. I've been a vocal chatbot hater for years and it would be hypocritical to start here.",
+      "scope": "global",
+      "tone": "cheeky",
+      "source": {
+        "label": "What I Do",
+        "path": "/what-i-do"
+      }
+    },
+    {
+      "id": "cheeky-ai-wrote-this",
+      "q": "Did AI write this site?",
+      "aliases": [
+        "did you use ai for this",
+        "is this ai generated",
+        "who built this site",
+        "did claude write this",
+        "who made this website",
+        "did you design this site",
+        "is this site ai generated"
+      ],
+      "a": "Partly, and it would honestly be weird if it hadn't, given what the rest of this site claims. I built it in VS Code with Claude Code. The interviews, the decisions about what to include, and every judgment call about what I can defend are mine. The model generates and enumerates. I judge. That division is the same one I use at work.",
+      "scope": "global",
+      "tone": "cheeky",
+      "source": {
+        "label": "What I Do",
+        "path": "/what-i-do"
+      }
+    },
+    {
+      "id": "cheeky-replaced-by-ai",
+      "q": "Are designers going to be replaced by AI?",
+      "aliases": [
+        "will ai replace designers",
+        "is design dead",
+        "should i be worried",
+        "are you worried about ai taking your job",
+        "will ai replace design",
+        "job security"
+      ],
+      "a": "Generation is delegable; evaluation and taste are not. The part of my job a model does well is producing more options than I would have made alone, and the part it does badly is knowing which one is right for a user it has never met in a domain it has thin data on. I have not found that second part getting easier. I am also a much better personality hire.",
+      "scope": "global",
+      "tone": "cheeky",
+      "suggest": false,
+      "source": {
+        "label": "What I Do",
+        "path": "/what-i-do"
+      }
+    },
+    {
       "id": "ai-refuse",
       "q": "What will you not use AI for?",
       "aliases": [
@@ -261,10 +333,7 @@
         "how does ai fit into your process",
         "what is your ai workflow",
         "are you actually ai native",
-        "how much ai do you use",
-        "what is your process",
-        "walk me through your process",
-        "how do you work"
+        "how much ai do you use"
       ],
       "a": "Check the chronology. Every time an organization was missing a function, I built a system to stand in for it. Research protocols, a roadmap, naming conventions, a design review process. Four of those predate AI entirely and were built by hand. The disposition is the constant. AI is the leverage. That is a different claim from prototyping faster, and it is checkable.",
       "scope": "global",
@@ -776,47 +845,6 @@
       }
     },
     {
-      "id": "cheeky-ai-wrote-this",
-      "q": "Did AI write this site?",
-      "aliases": [
-        "did you use ai for this",
-        "is this ai generated",
-        "who built this site",
-        "did claude write this",
-        "who made this website",
-        "did you design this site",
-        "is this site ai generated"
-      ],
-      "a": "Partly, and it would honestly be weird if it hadn't, given what the rest of this site claims. I built it in VS Code with Claude Code. The interviews, the decisions about what to include, and every judgment call about what I can defend are mine. The model generates and enumerates. I judge. That division is the same one I use at work.",
-      "scope": "global",
-      "tone": "cheeky",
-      "source": {
-        "label": "What I Do",
-        "path": "/what-i-do"
-      }
-    },
-    {
-      "id": "cheeky-is-this-a-chatbot",
-      "q": "Is this a chatbot?",
-      "aliases": [
-        "am i talking to a bot",
-        "is this ai",
-        "is this chatgpt",
-        "are you a bot",
-        "am i talking to a robot",
-        "is this an llm",
-        "are you real",
-        "is this a bot"
-      ],
-      "a": "No. There is no model here. Every answer was written in advance and is being retrieved, which is why each one shows you where it came from and why it declines instead of improvising. I've been a vocal chatbot hater for years and it would be hypocritical to start here.",
-      "scope": "global",
-      "tone": "cheeky",
-      "source": {
-        "label": "What I Do",
-        "path": "/what-i-do"
-      }
-    },
-    {
       "id": "cheeky-documentation",
       "q": "Do you actually read documentation?",
       "aliases": [
@@ -849,26 +877,6 @@
       "a": "Some of them, and fewer than you would expect. Most of my recent work happens in code, so the honest artifact is a pull request rather than a file full of frames. What survives from Turnitin and Slingshot I can walk you through. What I would rather show you is the running thing.",
       "scope": "global",
       "tone": "cheeky",
-      "source": {
-        "label": "What I Do",
-        "path": "/what-i-do"
-      }
-    },
-    {
-      "id": "cheeky-replaced-by-ai",
-      "q": "Are designers going to be replaced by AI?",
-      "aliases": [
-        "will ai replace designers",
-        "is design dead",
-        "should i be worried",
-        "are you worried about ai taking your job",
-        "will ai replace design",
-        "job security"
-      ],
-      "a": "Generation is delegable; evaluation and taste are not. The part of my job a model does well is producing more options than I would have made alone, and the part it does badly is knowing which one is right for a user it has never met in a domain it has thin data on. I have not found that second part getting easier. I am also a much better personality hire.",
-      "scope": "global",
-      "tone": "cheeky",
-      "suggest": false,
       "source": {
         "label": "What I Do",
         "path": "/what-i-do"

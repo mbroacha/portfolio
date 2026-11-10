@@ -38,6 +38,12 @@ const SUGGESTED: string[] = (data as { suggested?: string[] }).suggested ?? [];
  * Returning nothing is a feature. A system that admits its edges reads as more
  * confident than one that improvises, and it is the honest fix for
  * hallucination rather than a disclaimer about it.
+ *
+ * The corollary took an audit to learn: a wrong answer costs far more than a
+ * decline, so scoring alone cannot decide. Ranking says which answer is
+ * closest. Eligibility, below, says whether anything is close enough to be
+ * worth returning. Those are different questions and the earlier version
+ * conflated them.
  */
 
 const STOP = new Set([
@@ -55,44 +61,77 @@ const tokens = (s: string) =>
     .split(" ")
     .filter((t) => t.length > 1 && !STOP.has(t));
 
-/** Weight on where a token was found. A hit in the question means more than a hit in the prose. */
+/** Weight on where a token was found. A hit in a phrasing means more than a hit in the prose. */
 const W_QUESTION = 3;
 const W_BODY = 1;
 
 /**
  * Below this, decline.
  *
- * Deliberately high. A portfolio that says "Morgan hasn't written about that"
- * reads as honest; one that answers a question nobody asked reads as broken.
- * When this was loose, half-matches won constantly.
+ * Calibrated against two question sets written without looking at the alias
+ * lists, 134 questions in all. Tuning it against phrasings already in the bank
+ * is how the old threshold ended up meaningless: the probe passed every case
+ * while half of what the field answered in the wild was wrong.
  */
-export const THRESHOLD = 0.52;
+export const THRESHOLD = 0.42;
 
-/** Pre-tokenised fields, built once. */
+/**
+ * Three gates, all of them about whether a match is real rather than lucky.
+ *
+ * MASS_MIN is absolute matched weight. The score below is a ratio, and ratios
+ * cancel the rarity weighting: a one-word query used to score a flawless 1.0
+ * on any hit at all, which is how "work" returned the critique answer and
+ * "take" returned it again for "how long did this take."
+ *
+ * IDF_SOLO is what a single word has to be worth to answer on its own.
+ * "sysml" earns it. "work", "design", "ship", "data" and "team" do not, and
+ * each of those used to return a confident answer.
+ *
+ * MARGIN declines when the top two are within a hair of each other. Four
+ * entries once tied at exactly 1.00 for "who did you work with on this" and
+ * the winner was whichever sat earliest in the file. A coin flip presented as
+ * an answer is the one outcome worse than silence.
+ */
+const MASS_MIN = 1.5;
+const IDF_SOLO = 3.0;
+const MARGIN = 0.03;
+
+/** Pre-tokenised phrasings, built once. */
 interface Indexed {
   entry: Answer;
-  asked: string[];
+  /** The question and each alias, tokenised separately. See below. */
+  fields: string[][];
   body: string[];
 }
 
+/**
+ * One token list per phrasing, not one bag for all of them.
+ *
+ * Flattening the question and every alias together let a query match one word
+ * from one alias and a second word from a different one, then call that a
+ * two-word match. "Have you worked on enterprise software" scored 0.54 against
+ * the Figma answer that way: "work" came from "do you work in figma" and
+ * "software" from "what software do you use". Neither alias is wrong. Pooling
+ * them is. An alias is a whole way of asking the question, so a query is
+ * scored against each phrasing on its own and keeps its best.
+ */
 const INDEX: Indexed[] = ANSWERS.map((entry) => ({
   entry,
-  asked: tokens([entry.q, ...entry.aliases].join(" ")),
+  fields: [entry.q, ...entry.aliases].map(tokens).filter((f) => f.length > 0),
   body: tokens(entry.a),
 }));
 
 /**
  * How much a word is worth.
  *
- * Without this, "what do you do outside work" matches an answer about critique,
- * because "work" appears in "worked alone" and one common word out of two looks
- * like half a match. Weighting by rarity fixes that: "work" is worth little
- * because it is everywhere, "slingshot" or "figma" is worth a lot. A query
- * whose only hit is a common word no longer clears the bar.
+ * Weighting by rarity keeps a query whose only hit is a common word from
+ * looking like a real match. On its own it was not enough, because the ratio
+ * in scoreOne divides it straight back out. It earns its keep through
+ * IDF_SOLO, which reads the raw value rather than the ratio.
  */
 const DF = new Map<string, number>();
 for (const doc of INDEX) {
-  for (const t of new Set([...doc.asked, ...doc.body])) {
+  for (const t of new Set([...doc.fields.flat(), ...doc.body])) {
     DF.set(t, (DF.get(t) ?? 0) + 1);
   }
 }
@@ -122,51 +161,102 @@ const sameWord = (a: string, b: string): boolean => {
 
 const has = (field: string[], t: string) => field.some((f) => sameWord(f, t));
 
-function scoreOne(queryTokens: string[], doc: Indexed, scope?: string): number {
-  if (queryTokens.length === 0) return 0;
+interface Scored {
+  score: number;
+  /** Absolute matched weight, before the ratio throws the scale away. */
+  earned: number;
+  matched: number;
+  /** Matches that landed in a phrasing rather than in the prose. */
+  askedHits: number;
+  /** The rarest single word that matched. */
+  soloIdf: number;
+}
 
-  let earned = 0;
-  let possible = 0;
-  let matched = 0;
-  for (const t of queryTokens) {
-    const w = idf(t);
-    possible += W_QUESTION * w;
-    if (has(doc.asked, t)) {
-      earned += W_QUESTION * w;
+const NIL: Scored = { score: 0, earned: 0, matched: 0, askedHits: 0, soloIdf: 0 };
+
+function scoreOne(queryTokens: string[], doc: Indexed, scope?: string): Scored {
+  if (queryTokens.length === 0) return NIL;
+
+  const possible = queryTokens.reduce((n, t) => n + W_QUESTION * idf(t), 0);
+  if (possible === 0) return NIL;
+
+  let best = NIL;
+
+  const consider = (field: string[], weight: number) => {
+    let earned = 0;
+    let matched = 0;
+    let soloIdf = 0;
+    for (const t of queryTokens) {
+      if (!has(field, t)) continue;
+      const w = idf(t);
+      earned += weight * w;
       matched++;
-    } else if (has(doc.body, t)) {
-      earned += W_BODY * w;
-      matched++;
+      soloIdf = Math.max(soloIdf, w);
     }
-  }
-  if (possible === 0) return 0;
+    if (matched === 0) return;
 
-  /**
-   * How much of what was asked got answered, not just how heavy the hits were.
-   *
-   * Without this, matching one word of a two-word question scored the same as
-   * matching a rare word in a question that was fully understood, which is how
-   * "do you know react native" ended up on the answer about being AI native.
-   * A partial match is worth less, always.
-   */
-  const coverage = matched / queryTokens.length;
-  let score = (earned / possible) * (0.45 + 0.55 * coverage);
+    /**
+     * How much of what was asked got answered, not just how heavy the hits
+     * were. Matching one word of a two-word question should never score like a
+     * question that was understood whole, which is how "do you know react
+     * native" landed on the answer about being AI native.
+     */
+    const coverage = matched / queryTokens.length;
+    const score = (earned / possible) * (0.45 + 0.55 * coverage);
+    if (score > best.score) {
+      best = { score, earned, matched, askedHits: weight === W_QUESTION ? matched : 0, soloIdf };
+    }
+  };
 
-  // A small nudge for the page you are on. The heavy lifting is done by the
-  // scope filter in findAnswer, not here.
-  if (scope && doc.entry.scope === scope) score += 0.08;
+  for (const field of doc.fields) consider(field, W_QUESTION);
+  consider(doc.body, W_BODY);
 
-  return score;
+  // Scope is settled by a hard filter in findAnswer. A bonus here only pushed
+  // weak matches over the threshold, so there is none.
+  void scope;
+  return best;
+}
+
+/** Whether a match is solid enough to answer with. Ranking is a separate question. */
+function eligible(s: Scored, queryTokens: string[]): boolean {
+  if (s.matched === 0) return false;
+  if (s.earned < MASS_MIN) return false;
+  if (s.matched < 2 && s.soloIdf < IDF_SOLO) return false;
+  // A hit only in the prose, for a question of several words, is too thin.
+  if (queryTokens.length > 1 && s.askedHits === 0) return false;
+  return true;
+}
+
+interface Candidate {
+  entry: Answer;
+  scored: Scored;
+}
+
+/** Eligible candidates, best first. Ties break on id so file order never decides. */
+function candidates(query: string, scope?: string): Candidate[] {
+  const queryTokens = tokens(query);
+  const inScope = (e: Answer) => !scope || e.scope === "global" || e.scope === scope;
+  return INDEX.filter((doc) => inScope(doc.entry))
+    .map((doc) => ({ entry: doc.entry, scored: scoreOne(queryTokens, doc, scope) }))
+    .filter((c) => eligible(c.scored, queryTokens))
+    .sort((a, b) => b.scored.score - a.scored.score || (a.entry.id < b.entry.id ? -1 : 1));
 }
 
 export function findAnswer(query: string, scope?: string): Answer | null {
   const q = flatten(query);
   if (!q) return null;
 
-  // An exact question, or an exact alias, short-circuits the scoring. Scope
-  // still decides between them: "What did you get wrong?" is asked verbatim of
-  // three different projects, and on the Beacon page it has to be the Beacon
-  // answer. This page first, then anything general, then whatever is left.
+  /**
+   * An exact question, or an exact alias, short-circuits the scoring. Scope
+   * still decides between them: "What did you get wrong?" is asked verbatim of
+   * three different projects, and on the Beacon page it has to be the Beacon
+   * answer. This page first, then anything general, then whatever is left.
+   *
+   * This path is what aliases are for. A short idiomatic phrase nobody can
+   * score reliably, "are you ai" or "who are you", belongs here as a whole
+   * string. A single common word does not belong in an alias list at all: it
+   * can only ever fire through the scorer, where it collides.
+   */
   const exact = ANSWERS.filter(
     (e) =>
       (!scope || e.scope === "global" || e.scope === scope) &&
@@ -177,30 +267,11 @@ export function findAnswer(query: string, scope?: string): Answer | null {
     return mine ?? exact.find((e) => e.scope === "global") ?? exact[0];
   }
 
-  const qt = tokens(query);
-  let best: Answer | null = null;
-  let bestScore = 0;
-
-  /**
-   * On a project page, answers about a different project are off the table.
-   *
-   * A reader on Beacon asking "what would you change" means Beacon. Treating
-   * scope as a soft preference let a strongly worded Sysgit answer win anyway,
-   * which is the single strangest thing the field did. General answers still
-   * compete everywhere.
-   */
-  const inScope = (e: Answer) => !scope || e.scope === "global" || e.scope === scope;
-
-  for (const doc of INDEX) {
-    if (!inScope(doc.entry)) continue;
-    const s = scoreOne(qt, doc, scope);
-    if (s > bestScore) {
-      bestScore = s;
-      best = doc.entry;
-    }
-  }
-
-  return bestScore >= THRESHOLD ? best : null;
+  const ranked = candidates(query, scope);
+  if (!ranked.length) return null;
+  if (ranked[0].scored.score < THRESHOLD) return null;
+  if (ranked[1] && ranked[0].scored.score - ranked[1].scored.score < MARGIN) return null;
+  return ranked[0].entry;
 }
 
 /** What a case study page offers. Three questions, all of them about itself. */
@@ -243,4 +314,11 @@ export function suggestionsFor(scope: string | undefined, limit = 6): Answer[] {
 
 export function answerById(id: string): Answer | undefined {
   return ANSWERS.find((e) => e.id === id);
+}
+
+/** For the probe. Returns what was in contention and why, not just the winner. */
+export function explain(query: string, scope?: string, n = 3) {
+  return candidates(query, scope)
+    .slice(0, n)
+    .map((c) => ({ id: c.entry.id, score: c.scored.score, matched: c.scored.matched }));
 }
