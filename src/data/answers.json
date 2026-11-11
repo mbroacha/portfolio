@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-10",
+  "generated": "2026-11-11",
   "source": "content/answer-bank.json",
   "decline": "Morgan hasn't written about that.",
   "suggested": [
@@ -253,7 +253,7 @@
         "are you an agent",
         "am i talking to a human"
       ],
-      "a": "No. There is no model here. Every answer was written in advance and is being retrieved, which is why each one shows you where it came from and why it declines instead of improvising. I've been a vocal chatbot hater for years and it would be hypocritical to start here.",
+      "a": "No. There is no model here. Every answer was written in advance and is being retrieved. There is no improvising. I've been a vocal chatbot hater for years and it would be hypocritical to start here.",
       "scope": "global",
       "tone": "cheeky",
       "source": {
@@ -273,7 +273,7 @@
         "did you design this site",
         "is this site ai generated"
       ],
-      "a": "Partly, and it would honestly be weird if it hadn't, given what the rest of this site claims. I built it in VS Code with Claude Code. The interviews, the decisions about what to include, and every judgment call about what I can defend are mine. The model generates and enumerates. I judge. That division is the same one I use at work.",
+      "a": "Partly, and it would honestly be weird if it hadn't, given that I claim it's integral to my process. I built it in VS Code with Claude Code. The interviews, the decisions about what to include, and every judgment call about what I can defend are mine. The model generates and summarizes, and I have final say and polish. That division is the same one I use at work.",
       "scope": "global",
       "tone": "cheeky",
       "source": {
@@ -313,7 +313,7 @@
         "what stays manual",
         "what will you not automate"
       ],
-      "a": "Anything needing real systems engineering expertise. That is epistemic, not ideological: the field is niche enough that I cannot assume the training data is there. Use the model where coverage is dense, not where it is sparse. And UI review is always manual. I need to click around and find what feels clunky. Generation is delegable. Evaluation is not.",
+      "a": "Anything needing real subject matter expertise. I work in pretty niche fields and I cannot assume the training data is there. Use the model where coverage is dense, not where it is sparse. And UI review is always manual. I need to click around and find what feels clunky. Generation is delegable. Evaluation is not.",
       "scope": "global",
       "tone": "straight",
       "source": {
@@ -335,7 +335,7 @@
         "are you actually ai native",
         "how much ai do you use"
       ],
-      "a": "Check the chronology. Every time an organization was missing a function, I built a system to stand in for it. Research protocols, a roadmap, naming conventions, a design review process. Four of those predate AI entirely and were built by hand. The disposition is the constant. AI is the leverage. That is a different claim from prototyping faster, and it is checkable.",
+      "a": "To me, being AI native means it is an integral part of my design workflow, just as Figma was not too long ago. It has the same caveats: my job was never drawing boxes, any more than it is writing prompts. It's just a different material with which to do the same work. Being AI native also means fundamentally understanding where models weak, when to let them run wild, and having the expertise to know when they're wrong. ",
       "scope": "global",
       "tone": "straight",
       "source": {
@@ -588,6 +588,22 @@
         "label": "Sysgit, The argument",
         "path": "/case-study/sysgit",
         "anchor": "the-argument"
+      }
+    },
+    {
+      "id": "sysgit-solo",
+      "q": "What did being the only designer stop you from doing?",
+      "aliases": [
+        "sole designer",
+        "what suffered",
+        "cost of being solo"
+      ],
+      "a": "Product design is ultimately a collaborative process, and the benefit of the design team is a group of people who already know the rules and the language. Solo designers have to find unique ways to get outside perspective and create their own feedback loop.",
+      "scope": "sysgit",
+      "tone": "straight",
+      "source": {
+        "label": "Sysgit",
+        "path": "/case-study/sysgit"
       }
     },
     {
@@ -903,6 +919,19 @@
       }
     },
     {
+      "id": "cheeky-jackalope",
+      "q": "What is with the jackalope?",
+      "aliases": [
+        "jackalope",
+        "your logo",
+        "whats the rabbit",
+        "the animal"
+      ],
+      "a": "Jackalopes are a cryptid 'native' to the State of Wyoming, just like me.",
+      "scope": "global",
+      "tone": "cheeky"
+    },
+    {
       "id": "cheeky-outside-work",
       "q": "What do you do when you are not designing?",
       "aliases": [
@@ -940,6 +969,59 @@
           "alt": "Holding a bowling ball printed with kittens, under the lane lights."
         }
       ]
+    },
+    {
+      "id": "logistics-available",
+      "q": "Are you available?",
+      "aliases": [
+        "are you looking",
+        "open to work",
+        "can i hire you",
+        "are you interviewing"
+      ],
+      "a": "I am currently available for new projects.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "logistics-location",
+      "q": "Where are you based, and will you relocate?",
+      "aliases": [
+        "location",
+        "remote",
+        "timezone",
+        "where do you live",
+        "onsite"
+      ],
+      "a": "I live in the Bay Area, specifically Oakland, PST. Would love a hybrid role but willing to work remote.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "logistics-comp",
+      "q": "What are your salary expectations?",
+      "aliases": [
+        "comp",
+        "salary",
+        "rate",
+        "how much do you cost"
+      ],
+      "a": "Let's just say that my expectations align with the fact that I am very good at what I do, I am a senior strategy player, and I live in the most expensive area in the country.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "cheeky-worst-trend",
+      "q": "What is the worst thing happening in design right now?",
+      "aliases": [
+        "design trends",
+        "pet peeve",
+        "what do you hate",
+        "worst trend"
+      ],
+      "a": "Forced AI chatbots 😏.",
+      "scope": "global",
+      "tone": "cheeky"
     },
     {
       "id": "collab-engineers",
