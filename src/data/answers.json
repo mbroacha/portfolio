@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09",
+  "generated": "2026-11-10",
   "source": "content/answer-bank.json",
   "decline": "Morgan hasn't written about that.",
   "suggested": [
@@ -940,6 +940,443 @@
           "alt": "Holding a bowling ball printed with kittens, under the lane lights."
         }
       ]
+    },
+    {
+      "id": "collab-engineers",
+      "q": "How do you work with engineers?",
+      "aliases": [
+        "working with developers",
+        "how do you hand off to engineering",
+        "what is your relationship with eng",
+        "do you work closely with builders"
+      ],
+      "a": "Well, I'm basically an engineer now. But especially in a remote setting, I make sure there is always some form of kickoff and sanity check. I'm not just throwing designs over the fence. I also don't make builders wait on me for a fully fleshed design. We use the material of code and code reviews to communicate across different stages of the process.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "collab-stakeholders",
+      "q": "How do you align stakeholders who disagree?",
+      "aliases": [
+        "handling disagreement between stakeholders",
+        "how do you get people to agree",
+        "what if leadership disagrees"
+      ],
+      "a": "The goal is to make sure everyone feels that their perspective is heard. Most of the time this means literally just making a space and time. It also helps to have a strong, data-backed product arm to refer to and lead the primary direction.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "collab-hard-feedback",
+      "q": "How do you give difficult feedback?",
+      "aliases": [
+        "giving hard feedback",
+        "how do you critique someone's work",
+        "delivering bad news to a designer"
+      ],
+      "a": "Just say it. I tell the person I understand the parameters they previously operated under, and how we can both work toward a better outcome.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "collab-pm-solutions",
+      "q": "How do you handle a PM who hands you solutions?",
+      "aliases": [
+        "what if product hands you a solution",
+        "pm gives you designs",
+        "how do you push back on product"
+      ],
+      "a": "Sometimes it's a non-issue. I always ask them to walk me through the problems they were trying to solve and how they came to those solutions. I treat it as an opportunity to collaborate rather than marching orders.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "opinion-unpopular",
+      "q": "What is an opinion you hold that others disagree with?",
+      "aliases": [
+        "unpopular opinion",
+        "what do you believe that others do not",
+        "hot take"
+      ],
+      "a": "Design is a human-centered practice. Art is not.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "decide-what-first",
+      "q": "How do you decide what to build first?",
+      "aliases": [
+        "what do you tackle first",
+        "how do you sequence work",
+        "where do you start on a roadmap"
+      ],
+      "a": "What will move the needle most. This can be anything from low-hanging fruit to tackling the hardest workflow first, based on the situation and stakeholder factors.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "prioritize-competing",
+      "q": "How do you prioritize competing requests?",
+      "aliases": [
+        "too many requests",
+        "how do you triage requests",
+        "whose request wins"
+      ],
+      "a": "Where did the request come from and who is making it. I recommend product designers get a foot in the door of revops, because that's where a lot of decisions are being made.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "scope-deadline",
+      "q": "How do you scope a project under a deadline?",
+      "aliases": [
+        "working to a deadline",
+        "how do you cut scope",
+        "what if there is not enough time"
+      ],
+      "a": "I know the limits of my process and what the rest of my team needs. It's not just about establishing an MVP. When things are tight, I provide a menu of what I know I can do and make it the requester's decision.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "design-done",
+      "q": "How do you know when a design is done?",
+      "aliases": [
+        "when is it finished",
+        "how do you know to stop designing",
+        "what does done mean"
+      ],
+      "a": "The cheeky answer is never. But I know when the remaining questions are ones I won't be able to answer until the prototype or build is released into the wild for feedback.",
+      "scope": "global",
+      "tone": "cheeky"
+    },
+    {
+      "id": "handle-ambiguity",
+      "q": "How do you handle ambiguity?",
+      "aliases": [
+        "what if the problem is not defined",
+        "working without direction",
+        "how do you start when nothing is clear"
+      ],
+      "a": "It is always easier to react to something that exists than to a series of possibilities. In an ambiguous situation I pick a lane, and open the floor up to what I got right and what I got wrong. Preferably sooner than later.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "design-systems-approach",
+      "q": "What is your approach to design systems?",
+      "aliases": [
+        "how do you build a design system",
+        "do you start a design system from scratch",
+        "thinking about design systems"
+      ],
+      "a": "I am very rarely reinventing the wheel. A good starting point is finding a gold standard design system that is solving a similar issue, and then moulding it to fit the very specific needs and identity of the product. And always build in accessibility earlier than later.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "component-library",
+      "q": "Have you built a component library?",
+      "aliases": [
+        "component libraries",
+        "have you built components in figma and code",
+        "storybook experience"
+      ],
+      "a": "Yes. I have built entirely bespoke component systems bridging Figma, Storybook, and React components. But more commonly, and much more challenging, I have had to audit and revamp existing libraries, fix component creep, and pivot when an underlying technology disappears (please keep Tailwind in business 🙏).",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "accessibility",
+      "q": "How do you think about accessibility?",
+      "aliases": [
+        "is accessibility part of your process",
+        "a11y",
+        "wcag"
+      ],
+      "a": "There are so many tools now to bake in accessibility as quickly as possible. Part of curbing scope is knowing what is pretty easy to get in first, like color visibility and ARIA, versus what actually requires judicious knowledge of the intended industry and users.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "write-specs",
+      "q": "Do you write specs?",
+      "aliases": [
+        "what do you hand engineering",
+        "do you write documentation for handoff",
+        "annotated designs"
+      ],
+      "a": "Yes, depending on the scope of the work. For large concepts and initiatives, I typically keep a living document in Figma or, anymore, Claude that combines annotated screens with the overarching goals of the project, edge cases, and questions left unanswered. For smaller projects, the spec is a draft pull request, highlighting more minute changes, goals, and testing instructions to discover edge cases.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "documentation",
+      "q": "How do you document your work?",
+      "aliases": [
+        "where does your documentation live",
+        "do you keep prds",
+        "how do you record decisions"
+      ],
+      "a": "This answer seems to change every week. For large projects and concepts, I still like to bundle design specs with annotated screens in Figma files. I keep PRDs in a shared Claude project. Many of my designs I implement myself, and document in the code itself and in pull requests.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "validate-cheaply",
+      "q": "How do you validate an idea cheaply?",
+      "aliases": [
+        "cheap validation",
+        "how do you test an idea fast",
+        "do you still sketch"
+      ],
+      "a": "Believe it or not, I will still sketch on paper and snap photos of it. But for bigger product questions, or questions about interactions, AI is my new best friend. I can ideate three or four different interactive prototypes in Claude Design and send them to stakeholders to get clickthrough reactions within a few hours. Similarly, I can set up code sandboxes of prototypes that also reveal some of the technical cost of my ideas.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "after-launch",
+      "q": "What happens after launch?",
+      "aliases": [
+        "what do you do once it ships",
+        "post launch",
+        "how do you follow up after release"
+      ],
+      "a": "Feedback, feedback, followup. I never fall into the trap that anything launched is ever done. What users fixate on and report dictates the next step of work. I am part of weekly customer check-ins, and my Product Designer agent scrubs all feedback from in-app customer experience widgets, emails, and Slack.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "complex-data",
+      "q": "Have you designed for complex data?",
+      "aliases": [
+        "dense data",
+        "have you worked on data heavy products",
+        "complex information design"
+      ],
+      "a": "Sure. Did you know there are over 32,105 actively monitored objects in earth's orbit right now? I designed a platform that relied on advanced astrodynamics to notify and arbitrate if one of your objects was about to hit any of the other 32,104.",
+      "scope": "global",
+      "tone": "cheeky"
+    },
+    {
+      "id": "model-uncertainty",
+      "q": "How do you design for uncertainty in model output?",
+      "aliases": [
+        "designing for hallucination",
+        "how do you show model confidence",
+        "ai uncertainty in the ui"
+      ],
+      "a": "The most important thing is to make the uncertainty very explicit, both in the language used, like \"hmmm I'm not sure,\" and in the interaction, like intentionally displaying cycling or greying out unsure answers. Also surface anything the user can easily do to reduce the uncertainty, like follow-up questions or a request to rewrite the prompt.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "staff-level-means",
+      "q": "What does staff level mean to you?",
+      "aliases": [
+        "what is a staff designer",
+        "difference between senior and staff",
+        "why staff and not manager"
+      ],
+      "a": "This is someone who is primarily an IC, who creates designs and artifacts, but on a systems scale rather than an individual team or feature. They own product strategy and vision, and design outputs on a level that is adopted by all product teams.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "first-ninety-days",
+      "q": "What would you do in your first ninety days?",
+      "aliases": [
+        "first 90 days",
+        "what would you do when you join",
+        "how would you start in a new role"
+      ],
+      "a": "First is discovering the existing process and uncovering the gaps: how feedback is gathered, what the product strategy is, who decides what is built, and where the breakdowns are. That looks like bringing teams together and defining what a successful product looks like. Then an actual design audit: design systems, what is being built, and whether it matches the product goals.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "zero-to-one-or-scale",
+      "q": "Do you prefer zero to one or scaling?",
+      "aliases": [
+        "0 to 1 or growth",
+        "do you like greenfield work",
+        "new products or mature ones"
+      ],
+      "a": "As a dreamer, and someone who asks forgiveness not permission, I'll admit zero to one is more exciting.",
+      "scope": "global",
+      "tone": "cheeky"
+    },
+    {
+      "id": "systems-or-craft",
+      "q": "Are you more of a systems thinker or a craft person?",
+      "aliases": [
+        "systems or craft",
+        "are you a pixel person",
+        "do you care more about structure or polish"
+      ],
+      "a": "I would say I am a professional systems thinker with a craft hobby. I primarily want to solve problems, but I will talk at length about my favorite fonts.",
+      "scope": "global",
+      "tone": "cheeky"
+    },
+    {
+      "id": "ideal-team",
+      "q": "What is your ideal team structure?",
+      "aliases": [
+        "what team do you work best in",
+        "how big a team",
+        "who do you want to work with"
+      ],
+      "a": "I work best on relatively small, independent teams. A few engineers, a few other designers, and ideally a very capable product person. I work best where everyone feels like they have product ownership and aren't afraid to try some weird things.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "why-design-not-eng",
+      "q": "Why design instead of engineering?",
+      "aliases": [
+        "why not be an engineer",
+        "why did you choose design",
+        "design or code"
+      ],
+      "a": "Have you been talking to my immigrant parents? Seriously, pragmatically, I am both. I have always primarily been a visual and experiential person. I have a liberal arts background, but my entire career has been in tech working with complex systems. Even with AI, design is still the language of the masses, and the world needs more communicators than coders.",
+      "scope": "global",
+      "tone": "cheeky"
+    },
+    {
+      "id": "years-experience",
+      "q": "How many years of experience do you have?",
+      "aliases": [
+        "how long have you been designing",
+        "years of experience",
+        "how senior are you"
+      ],
+      "a": "I have 8 years of UX and product design experience, and over a decade working in product roles.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "visual-strength",
+      "q": "What is your visual design strength?",
+      "aliases": [
+        "what are you best at visually",
+        "your strongest craft skill",
+        "what do you do better than other designers"
+      ],
+      "a": "Information architecture. I make a hell of a table.",
+      "scope": "global",
+      "tone": "cheeky"
+    },
+    {
+      "id": "motion",
+      "q": "Do you do motion design?",
+      "aliases": [
+        "animation",
+        "do you animate",
+        "motion work"
+      ],
+      "a": "Yes! I love a Bezier curve.",
+      "scope": "global",
+      "tone": "cheeky"
+    },
+    {
+      "id": "branding",
+      "q": "Can you do branding?",
+      "aliases": [
+        "brand work",
+        "do you design logos",
+        "identity design"
+      ],
+      "a": "I can, but admittedly it's not my favorite.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "how-much-writing",
+      "q": "How much writing do you do?",
+      "aliases": [
+        "do you write",
+        "is writing part of your practice",
+        "ux writing"
+      ],
+      "a": "Anymore my assistant Claude does a lot of the writing. I write enough to get the point across.",
+      "scope": "global",
+      "tone": "cheeky"
+    },
+    {
+      "id": "inspiration",
+      "q": "Where do you find inspiration?",
+      "aliases": [
+        "what inspires you",
+        "where do your ideas come from",
+        "what do you look at"
+      ],
+      "a": "Nature, physical interfaces. I also play a lot of video games.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "keeping-up",
+      "q": "How do you keep up with the field?",
+      "aliases": [
+        "how do you stay current",
+        "who do you follow",
+        "what do you read"
+      ],
+      "a": "There will always be thought leaders on the future of design, but honestly a lot of it is staying curious and playing with new products.",
+      "scope": "global",
+      "tone": "straight"
+    },
+    {
+      "id": "originality-what-is-it",
+      "q": "What was Originality?",
+      "aliases": [
+        "what is this product",
+        "what does originality do",
+        "tell me about originality"
+      ],
+      "a": "Turnitin is primarily an academic integrity product. It is best known for its anti-plagiarism platform, but I worked on a lesser known issue: students buying papers from essay mills online. That was a slightly different problem, because the work was technically unique, just not by the student it was assigned to. The entire suite of academic integrity products was Originality. This has almost certainly changed since the AI boom.",
+      "scope": "originality",
+      "tone": "straight",
+      "suggest": false
+    },
+    {
+      "id": "gradescope-what-is-it",
+      "q": "What was Gradescope Mobile?",
+      "aliases": [
+        "what is this product",
+        "what does gradescope do",
+        "tell me about gradescope"
+      ],
+      "a": "Gradescope is an automated grading tool that was acquired by Turnitin. At the time there was no clean way for students to digitize physical assignments for grading on the platform, so we created an app that allowed scanning and automated grading.",
+      "scope": "gradescope",
+      "tone": "straight",
+      "suggest": false
+    },
+    {
+      "id": "originality-teacher-use",
+      "q": "How did teachers use it?",
+      "aliases": [
+        "who used this",
+        "how did instructors use it",
+        "what did teachers see"
+      ],
+      "a": "Originality is basically a series of reports generated when a student submits a written assignment online. Teachers then use the scores and flags to determine if a student may have cheated.",
+      "scope": "originality",
+      "tone": "straight",
+      "suggest": false
+    },
+    {
+      "id": "sysgit-what-is-it",
+      "q": "What is Sysgit?",
+      "aliases": [
+        "what is this product",
+        "what does sysgit do",
+        "tell me about sysgit"
+      ],
+      "a": "Systems engineering plus Git. It is a tool for hardware modeling and requirements management that uses existing Git principles for version control.",
+      "scope": "sysgit",
+      "tone": "straight",
+      "suggest": false
     }
   ]
 }

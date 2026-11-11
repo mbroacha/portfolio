@@ -69,31 +69,41 @@ const W_BODY = 1;
  * Below this, decline.
  *
  * Calibrated against two question sets written without looking at the alias
- * lists, 134 questions in all. Tuning it against phrasings already in the bank
+ * lists, and recalibrated when the bank grew from 41 entries to 77. Tuning it against phrasings already in the bank
  * is how the old threshold ended up meaningless: the probe passed every case
  * while half of what the field answered in the wild was wrong.
  */
-export const THRESHOLD = 0.42;
+export const THRESHOLD = 0.40;
 
 /**
- * Three gates, all of them about whether a match is real rather than lucky.
+ * Four rules, all of them about whether a match is real rather than lucky.
  *
  * MASS_MIN is absolute matched weight. The score below is a ratio, and ratios
- * cancel the rarity weighting: a one-word query used to score a flawless 1.0
- * on any hit at all, which is how "work" returned the critique answer and
- * "take" returned it again for "how long did this take."
+ * cancel the rarity weighting, so without this a thin match normalises up and
+ * looks like a strong one.
  *
- * IDF_SOLO is what a single word has to be worth to answer on its own.
- * "sysml" earns it. "work", "design", "ship", "data" and "team" do not, and
- * each of those used to return a confident answer.
+ * MIN_MATCHED is two words. One word is never enough to answer on, whatever
+ * the word. An earlier version allowed a single sufficiently rare word, and
+ * that held only while the bank was small: rarity is measured against the
+ * corpus, so when the bank grew from 41 entries to 77 the same bar admitted
+ * almost anything. "What did you not finish" came back as the answer about
+ * knowing when a design is done, on the word "finish" alone. A one-word
+ * question now resolves only as an exact alias, which is what the bank's
+ * single-word aliases are for and the only place they are safe.
  *
- * MARGIN declines when the top two are within a hair of each other. Four
- * entries once tied at exactly 1.00 for "who did you work with on this" and
- * the winner was whichever sat earliest in the file. A coin flip presented as
- * an answer is the one outcome worse than silence.
+ * SCOPE_PREF gives a page's own answers precedence over general ones, in the
+ * ranking only. It is not added to the score and cannot push anything over
+ * the threshold. Thirty-two general answers arrived in one go and started
+ * beating each case study on its own page: "what was the disagreement" on
+ * Gradescope returned the answer about aligning stakeholders.
+ *
+ * MARGIN declines when the top two are within a hair of each other. It reads
+ * the same ranking value SCOPE_PREF feeds, or an in-scope answer promoted over
+ * a general one would be killed immediately as a near-tie.
  */
 const MASS_MIN = 1.5;
-const IDF_SOLO = 3.0;
+const MIN_MATCHED = 2;
+const SCOPE_PREF = 0.1;
 const MARGIN = 0.03;
 
 /** Pre-tokenised phrasings, built once. */
@@ -125,9 +135,15 @@ const INDEX: Indexed[] = ANSWERS.map((entry) => ({
  * How much a word is worth.
  *
  * Weighting by rarity keeps a query whose only hit is a common word from
- * looking like a real match. On its own it was not enough, because the ratio
- * in scoreOne divides it straight back out. It earns its keep through
- * IDF_SOLO, which reads the raw value rather than the ratio.
+ * looking like a real match. On its own it was never enough, because the ratio
+ * in scoreOne divides it straight back out. It is one input to the score, not
+ * a gate; the gates above are what decide whether anything answers.
+ *
+ * One imprecision, deliberately left: a word the corpus does not contain still
+ * matches through sameWord, and its frequency reads as zero, which hands it the
+ * highest rarity in the index. Reading rarity from the word that actually
+ * matched is more correct and measured slightly worse, because MIN_MATCHED
+ * already removes the case where it mattered.
  */
 const DF = new Map<string, number>();
 for (const doc of INDEX) {
@@ -168,11 +184,9 @@ interface Scored {
   matched: number;
   /** Matches that landed in a phrasing rather than in the prose. */
   askedHits: number;
-  /** The rarest single word that matched. */
-  soloIdf: number;
 }
 
-const NIL: Scored = { score: 0, earned: 0, matched: 0, askedHits: 0, soloIdf: 0 };
+const NIL: Scored = { score: 0, earned: 0, matched: 0, askedHits: 0 };
 
 function scoreOne(queryTokens: string[], doc: Indexed, scope?: string): Scored {
   if (queryTokens.length === 0) return NIL;
@@ -185,13 +199,10 @@ function scoreOne(queryTokens: string[], doc: Indexed, scope?: string): Scored {
   const consider = (field: string[], weight: number) => {
     let earned = 0;
     let matched = 0;
-    let soloIdf = 0;
     for (const t of queryTokens) {
       if (!has(field, t)) continue;
-      const w = idf(t);
-      earned += weight * w;
+      earned += weight * idf(t);
       matched++;
-      soloIdf = Math.max(soloIdf, w);
     }
     if (matched === 0) return;
 
@@ -204,7 +215,7 @@ function scoreOne(queryTokens: string[], doc: Indexed, scope?: string): Scored {
     const coverage = matched / queryTokens.length;
     const score = (earned / possible) * (0.45 + 0.55 * coverage);
     if (score > best.score) {
-      best = { score, earned, matched, askedHits: weight === W_QUESTION ? matched : 0, soloIdf };
+      best = { score, earned, matched, askedHits: weight === W_QUESTION ? matched : 0 };
     }
   };
 
@@ -219,9 +230,8 @@ function scoreOne(queryTokens: string[], doc: Indexed, scope?: string): Scored {
 
 /** Whether a match is solid enough to answer with. Ranking is a separate question. */
 function eligible(s: Scored, queryTokens: string[]): boolean {
-  if (s.matched === 0) return false;
+  if (s.matched < MIN_MATCHED) return false;
   if (s.earned < MASS_MIN) return false;
-  if (s.matched < 2 && s.soloIdf < IDF_SOLO) return false;
   // A hit only in the prose, for a question of several words, is too thin.
   if (queryTokens.length > 1 && s.askedHits === 0) return false;
   return true;
@@ -232,6 +242,10 @@ interface Candidate {
   scored: Scored;
 }
 
+/** Where an answer sits for ranking: its score, plus precedence on its own page. */
+const ranking = (c: Candidate, scope?: string) =>
+  c.scored.score + (scope && c.entry.scope === scope ? SCOPE_PREF : 0);
+
 /** Eligible candidates, best first. Ties break on id so file order never decides. */
 function candidates(query: string, scope?: string): Candidate[] {
   const queryTokens = tokens(query);
@@ -239,7 +253,7 @@ function candidates(query: string, scope?: string): Candidate[] {
   return INDEX.filter((doc) => inScope(doc.entry))
     .map((doc) => ({ entry: doc.entry, scored: scoreOne(queryTokens, doc, scope) }))
     .filter((c) => eligible(c.scored, queryTokens))
-    .sort((a, b) => b.scored.score - a.scored.score || (a.entry.id < b.entry.id ? -1 : 1));
+    .sort((a, b) => ranking(b, scope) - ranking(a, scope) || (a.entry.id < b.entry.id ? -1 : 1));
 }
 
 export function findAnswer(query: string, scope?: string): Answer | null {
@@ -270,7 +284,7 @@ export function findAnswer(query: string, scope?: string): Answer | null {
   const ranked = candidates(query, scope);
   if (!ranked.length) return null;
   if (ranked[0].scored.score < THRESHOLD) return null;
-  if (ranked[1] && ranked[0].scored.score - ranked[1].scored.score < MARGIN) return null;
+  if (ranked[1] && ranking(ranked[0], scope) - ranking(ranked[1], scope) < MARGIN) return null;
   return ranked[0].entry;
 }
 
