@@ -1,3 +1,4 @@
+import { asset } from "../../lib/asset";
 /**
  * Originality splash.
  *
@@ -104,7 +105,7 @@ const CSS = `
 
 export const OriginalitySplash = ({
   background,
-  src = "/case-studies/originality/authorship-banner.png",
+  src = asset("/case-studies/originality/authorship-banner.png"),
   alt = "The Originality report with three authorship charts lifted onto cards above it, each plotting a student's submissions across August to October.",
 }: OriginalitySplashProps) => (
   /* -mx-8 cancels the main column's p-8 so the band runs the full grid cell. */

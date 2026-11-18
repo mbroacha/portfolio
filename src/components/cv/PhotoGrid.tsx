@@ -1,3 +1,4 @@
+import { asset } from "../../lib/asset";
 export interface Photo {
   /** Path under public/. */
   src: string;
@@ -26,7 +27,7 @@ export const PhotoGrid = ({ photos }: { photos: Photo[] }) => (
         className="aspect-square overflow-hidden border border-[color:var(--edge)]"
         style={{ backgroundColor: "var(--ink-600)" }}
       >
-        <img src={p.src} alt={p.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+        <img src={asset(p.src)} alt={p.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
       </div>
     ))}
   </div>

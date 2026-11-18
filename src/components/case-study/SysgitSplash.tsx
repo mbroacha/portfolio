@@ -49,6 +49,7 @@
  */
 
 import { cn } from "../../lib/cn";
+import { asset } from "../../lib/asset";
 
 interface SysgitSplashProps {
   /** Paths under /public. Cycled across the tile rhythm below. */
@@ -79,7 +80,7 @@ const BG_TILES = [
  * ones in the landscape tiles, so object-cover crops as little as possible.
  * Reorder freely; the list is read positionally.
  */
-const BG = "/case-studies/sysgit/bg";
+const BG = asset("/case-studies/sysgit/bg");
 const DEFAULT_BACKGROUND = [
   `${BG}/bg-circuit.webp`,
   `${BG}/bg-control-room.webp`,
@@ -168,7 +169,7 @@ export const SysgitSplash = ({ backgroundImages = DEFAULT_BACKGROUND }: SysgitSp
           <div className="relative mx-auto max-w-[1100px] md:pb-24">
             <div className="sgs-screen w-full border border-[color:var(--edge)] md:w-[78%]">
               <img
-                src="/case-studies/sysgit/graph-view.png"
+                src={asset("/case-studies/sysgit/graph-view.png")}
                 alt="The Sysgit graph view on the spacecraft branch. Requirement cards for the payload and deployability groups, each listing its documentation and attributes, connected by verify relationships to two verification cases that both report a passing verdict."
                 className="block h-auto w-full"
               />
@@ -180,7 +181,7 @@ export const SysgitSplash = ({ backgroundImages = DEFAULT_BACKGROUND }: SysgitSp
             */}
             <div className="sgs-screen sgs-inset mt-6 w-full border border-[color:var(--edge)] md:absolute md:bottom-0 md:right-0 md:mt-0 md:w-[46%]">
               <img
-                src="/case-studies/sysgit/requirements-inset.png"
+                src={asset("/case-studies/sysgit/requirements-inset.png")}
                 alt="The same model as a requirements table. Four deployability requirements with their identifiers, documentation and attributes, including crew size, launch footprint and setup time."
                 className="block h-auto w-full"
               />

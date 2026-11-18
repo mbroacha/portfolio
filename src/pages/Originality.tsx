@@ -18,6 +18,7 @@ import { EssayIntegrityDashboard } from "../components/case-study/EssayIntegrity
 import { SubmissionsReportTable } from "../components/case-study/SubmissionsReportTable";
 import { SummaryPrioritizedModal } from "../components/case-study/SummaryPrioritizedModal";
 import { TaggingNotesCaseTools } from "../components/case-study/TaggingNotesCaseTools";
+import { asset } from "../lib/asset";
 
 const decisions: Decision[] = [
   {
@@ -126,7 +127,7 @@ export const Originality = () => (
       </div>
     </TwoCol>
 
-    <OriginalitySplash background="/case-studies/originality/bg-zuccarelli.webp" />
+    <OriginalitySplash background={asset("/case-studies/originality/bg-zuccarelli.webp")} />
 
     <SectionHeading>CONSTRAINTS</SectionHeading>
     <Rule className="mb-6" />
@@ -160,7 +161,7 @@ export const Originality = () => (
     <div className="mb-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
       <MediaSlot
         ratio="3/4"
-        src="/case-studies/originality/research-sticky-notes.png"
+        src={asset("/case-studies/originality/research-sticky-notes.png")}
         alt="Workshop notebook with sticky notes labeled with document metadata fields." />
       <div className="flex flex-col gap-3">
         <div className="text-bone">We asked experienced investigators what they actually look for.</div>
@@ -195,7 +196,7 @@ export const Originality = () => (
     <Rule className="mb-6" />
     <MediaSlot
       ratio="16/9"
-      src="/case-studies/originality/design-evolution-sketches.png"
+      src={asset("/case-studies/originality/design-evolution-sketches.png")}
       alt="Five-stage progression from document sketches to final high-fidelity mockup."
     />
     {decisions.map((d, i) => (
@@ -228,13 +229,13 @@ export const Originality = () => (
       <BeforeAfterComparison
         before={{
           label: "Before",
-          src: "/case-studies/originality/outcome-before-sentences.png",
+          src: asset("/case-studies/originality/outcome-before-sentences.png"),
           alt: "Sentences view with stacked bar charts in an orange interface.",
           caption: "Closed beta. One sentence-type chart per paper. Capture.",
         }}
         after={{
           label: "After",
-          src: "/case-studies/originality/outcome-after-authorship.png",
+          src: asset("/case-studies/originality/outcome-after-authorship.png"),
           alt: "Authorship dashboard with similarity, revisions and editing time trends.",
           caption: "Shipped. Easier to scan, but the similarity score still leads. Capture.",
         }}
