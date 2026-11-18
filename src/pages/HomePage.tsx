@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import { CvPage } from "../components/cv/CvPage";
 import { Rule, SectionHeading, MediaSlot, WorkEntry } from "../components/cv/CvPrimitives";
-import { useLens } from "../lib/useLens";
 import { SiteRail } from "../components/cv/SiteRail";
 
 interface Work {
@@ -14,36 +13,13 @@ interface Work {
 }
 
 /**
- * The work list, keyed by id so a lens can reorder it.
+ * The work list, in display order.
  *
- * Reordering, changing which entries appear, and swapping the bio lead are real
- * operations over real data. Small, but true. A lens that produced a page
- * nobody could tell apart would be theatre, and this is a portfolio for a design
- * role, so being caught at that costs more than not doing it.
+ * Sysgit leads. It is the only project where Morgan was the entire design
+ * function, it carries the strongest artifacts, and a reader who bounces after
+ * one entry should have seen that one.
  */
 const WORK: Work[] = [
-  {
-    id: "originality",
-    title: "Originality",
-    to: "/case-study/originality",
-    meta: (
-      <>
-        <span className="italic">Turnitin</span>, Senior UX Designer
-        <br />
-        Academic integrity &middot; Shipped 2019
-      </>
-    ),
-    description:
-      "Originality reveals signs that a student's paper was written by someone else, but educators couldn't act on what they saw. I redesigned the core detection workflow so that a signal became a decision.",
-    media: (
-      <MediaSlot
-        ratio="16/9"
-        bordered={false}
-        src="/case-studies/originality/hero-still.png"
-        alt="A student submission beside eight detection signals, ranked by what actually persuaded an educator: file metadata above the algorithm's linguistic analysis."
-      />
-    ),
-  },
   {
     id: "sysgit",
     title: "Sysgit",
@@ -67,21 +43,6 @@ const WORK: Work[] = [
     ),
   },
   {
-    id: "what-i-do",
-    title: "What I Do",
-    to: "/what-i-do",
-    meta: (
-      <>
-        <span className="italic">Practice</span>, design and front-end
-        <br />
-        One feature, end to end
-      </>
-    ),
-    description:
-      "One color feature from scope to merged PR, naming where each tool entered and where I refused to hand anything over. The model generates and enumerates. I judge.",
-    media: <MediaSlot ratio="16/10" caption="Theme picker &middot; interactive recreation" />,
-  },
-  {
     id: "beacon",
     title: "Beacon",
     to: "/case-study/beacon",
@@ -95,6 +56,28 @@ const WORK: Work[] = [
     description:
       "The first collision avoidance platform in the aerospace industry. Sole designer, collaborating on product strategy.",
     media: <MediaSlot ratio="3/4" width="55%" caption="Beacon &middot; artifact pending" />,
+  },
+  {
+    id: "originality",
+    title: "Originality",
+    to: "/case-study/originality",
+    meta: (
+      <>
+        <span className="italic">Turnitin</span>, Senior UX Designer
+        <br />
+        Academic integrity &middot; Shipped 2019
+      </>
+    ),
+    description:
+      "Originality reveals signs that a student's paper was written by someone else, but educators couldn't act on what they saw. I redesigned the core detection workflow so that a signal became a decision.",
+    media: (
+      <MediaSlot
+        ratio="16/9"
+        bordered={false}
+        src="/case-studies/originality/hero-still.png"
+        alt="A student submission beside eight detection signals, ranked by what actually persuaded an educator: file metadata above the algorithm's linguistic analysis."
+      />
+    ),
   },
   {
     id: "gradescope",
@@ -114,18 +97,13 @@ const WORK: Work[] = [
 ];
 
 export const HomePage = () => {
-  const { order } = useLens();
-  const shown = order
-    .map((id) => WORK.find((w) => w.id === id))
-    .filter((w): w is Work => Boolean(w));
-
   return (
     <CvPage sidebar={<SiteRail scope="global" />}>
 
       <SectionHeading>SELECTED WORK</SectionHeading>
       <Rule className="mb-6" />
 
-      {shown.map((w, i) => (
+      {WORK.map((w, i) => (
         <div key={w.id}>
           {i > 0 ? <Rule className="mb-6" /> : null}
           {w.media}

@@ -186,6 +186,6 @@ export const Sysgit = () => (
       </div>
     </TwoCol>
 
-    <PrevNext next={{ label: "Originality", to: "/case-study/originality" }} />
+    <PrevNext next={{ label: "Beacon", to: "/case-study/beacon" }} />
   </CvPage>
 );

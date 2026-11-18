@@ -13,6 +13,7 @@ import {
 } from "../components/cv/CaseStudyParts";
 import { BeforeAfterComparison } from "../components/case-study/BeforeAfterComparison";
 import { OriginalityHero } from "../components/case-study/OriginalityHero";
+import { OriginalitySplash } from "../components/case-study/OriginalitySplash";
 import { EssayIntegrityDashboard } from "../components/case-study/EssayIntegrityDashboard";
 import { SubmissionsReportTable } from "../components/case-study/SubmissionsReportTable";
 import { SummaryPrioritizedModal } from "../components/case-study/SummaryPrioritizedModal";
@@ -97,7 +98,7 @@ export const Originality = () => (
     <TwoCol
       claim={
         <em className="font-display not-italic">
-          The product was a dashboard of figures, with no clear signal of what mattered.
+          The MVP product was a dashboard of figures, with no clear signal of what mattered.
         </em>
       }
     >
@@ -124,6 +125,8 @@ export const Originality = () => (
         a split. Sales kept leading with the machine learning. The product showed whatever actually made the case.
       </div>
     </TwoCol>
+
+    <OriginalitySplash background="/case-studies/originality/bg-zuccarelli.webp" />
 
     <SectionHeading>CONSTRAINTS</SectionHeading>
     <Rule className="mb-6" />

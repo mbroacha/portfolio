@@ -37,7 +37,7 @@ export const SiteRail = ({ scope }: { /** Corpus scope for the field. */ scope?:
         <NavCard
           to="/"
           label="Work"
-          note="Selected case studies"
+          note="Selected projects"
           active={pathname === "/" || pathname.startsWith("/case-study")}
           thumb={<FontAwesomeIcon icon={faPenNib} className="h-[18px] w-[18px] text-lichen" />}
         />
