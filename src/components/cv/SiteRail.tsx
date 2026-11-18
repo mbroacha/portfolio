@@ -4,6 +4,7 @@ import { faBrain, faFaceLaugh, faPenNib } from "@fortawesome/free-solid-svg-icon
 import { Jackalope } from "./Jackalope";
 import { NavCard } from "./NavCard";
 import { Interrogate } from "../query/Interrogate";
+import { asset } from "../../lib/asset";
 
 /**
  * The rail, identical on every page. No page-specific slot by design.
@@ -75,7 +76,7 @@ export const SiteRail = ({ scope }: { /** Corpus scope for the field. */ scope?:
           LinkedIn
         </a>
         <a
-          href="/morgan-broacha-resume.pdf?v=2"
+          href={asset("/morgan-broacha-resume.pdf?v=2")}
           target="_blank"
           rel="noopener noreferrer"
           className="underline underline-offset-4"

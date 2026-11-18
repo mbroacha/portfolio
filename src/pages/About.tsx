@@ -6,6 +6,7 @@ import { PhotoGrid } from "../components/cv/PhotoGrid";
 import { education, employment } from "../data/background";
 import { skills, tools } from "../data/skills";
 import { answerById } from "../lib/retrieval";
+import { asset } from "../lib/asset";
 
 /**
  * About.
@@ -27,7 +28,7 @@ export const About = () => {
         {/* Left: the person */}
         <div className="flex flex-col gap-6">
           <img
-            src="/photos/morgan.webp"
+            src={asset("/photos/morgan.webp")}
             alt="Morgan Broacha."
             width={800}
             height={800}
@@ -122,7 +123,7 @@ export const About = () => {
               when="Resume"
               what={
                 <a
-                  href="/morgan-broacha-resume.pdf?v=2"
+                  href={asset("/morgan-broacha-resume.pdf?v=2")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline"

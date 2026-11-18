@@ -1,0 +1,21 @@
+version: 2
+updates:
+  # npm packages. Minor and patch bumps arrive as one grouped PR a week so they
+  # don't bury the repo; majors still come one at a time, since those can break.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      minor-and-patch:
+        update-types: [minor, patch]
+    open-pull-requests-limit: 5
+
+  # The actions in .github/workflows/deploy.yml.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: ["*"]

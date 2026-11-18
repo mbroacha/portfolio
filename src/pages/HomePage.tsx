@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { CvPage } from "../components/cv/CvPage";
 import { Rule, SectionHeading, MediaSlot, WorkEntry } from "../components/cv/CvPrimitives";
 import { SiteRail } from "../components/cv/SiteRail";
+import { asset } from "../lib/asset";
 
 interface Work {
   id: string;
@@ -37,7 +38,7 @@ const WORK: Work[] = [
       <MediaSlot
         ratio="16/9"
         bordered={false}
-        src="/case-studies/sysgit/hero-still.png"
+        src={asset("/case-studies/sysgit/hero-still.png")}
         alt="One object from a Sysgit model, drawn: a part def carrying a typed value, a maximum output and a link to the test that verifies it, joined to the rest of the graph by derive, contains and satisfies relationships."
       />
     ),
@@ -74,7 +75,7 @@ const WORK: Work[] = [
       <MediaSlot
         ratio="16/9"
         bordered={false}
-        src="/case-studies/originality/hero-still.png"
+        src={asset("/case-studies/originality/hero-still.png")}
         alt="A student submission beside eight detection signals, ranked by what actually persuaded an educator: file metadata above the algorithm's linguistic analysis."
       />
     ),

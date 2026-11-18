@@ -23,6 +23,7 @@ import { SysgitGoals } from "../components/case-study/SysgitGoals";
 import { SysgitHero } from "../components/case-study/SysgitHero";
 import { SysgitSplash } from "../components/case-study/SysgitSplash";
 import { TranslationTriptych } from "../components/case-study/TranslationTriptych";
+import { asset } from "../lib/asset";
 
 export const Sysgit = () => (
   <CvPage sidebar={<SiteRail scope="sysgit" />}>
@@ -135,7 +136,7 @@ export const Sysgit = () => (
     <TranslationTriptych />
     <MediaSlot
       ratio="16/9"
-      src="/case-studies/sysgit/diagram-editor-ide.png"
+      src={asset("/case-studies/sysgit/diagram-editor-ide.png")}
       alt="The same rail brake requirements open in Sysgit, source on the left and the requirement graph on the right."
       caption="Those requirements in the product."
     />
