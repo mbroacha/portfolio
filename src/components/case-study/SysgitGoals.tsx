@@ -104,7 +104,7 @@ const goals = [
     mark: <MarkOneTool />,
     title: "Replace a toolchain, not a task",
     detail:
-      "Modeling and requirements management in one product. Customers run several tools with several integrations and justify every seat they buy, so breadth is the thing being bought.",
+      "Modeling and requirements management in one product. No extra logins, same seats, and not dozens of integrations.",
   },
   {
     mark: <MarkOneArtifact />,
@@ -114,9 +114,9 @@ const goals = [
   },
   {
     mark: <MarkRevise />,
-    title: "A model you revise, not one you approve",
+    title: "A model you revise, not wait to approve",
     detail:
-      "Branching, review and merge, borrowed from software and renamed in engineering vocabulary. The alternative is a formal meeting where nobody agrees what the source of truth is.",
+      "Branching, review and merge, borrowed from software and renamed in engineering vocabulary.",
   },
   {
     mark: <MarkTrace />,

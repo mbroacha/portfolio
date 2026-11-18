@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import { CvPage } from "../components/cv/CvPage";
 import { Rule, SectionHeading, MediaSlot, WorkEntry } from "../components/cv/CvPrimitives";
-import { useLens } from "../lib/useLens";
 import { SiteRail } from "../components/cv/SiteRail";
 
 interface Work {
@@ -14,14 +13,50 @@ interface Work {
 }
 
 /**
- * The work list, keyed by id so a lens can reorder it.
+ * The work list, in display order.
  *
- * Reordering, changing which entries appear, and swapping the bio lead are real
- * operations over real data. Small, but true. A lens that produced a page
- * nobody could tell apart would be theatre, and this is a portfolio for a design
- * role, so being caught at that costs more than not doing it.
+ * Sysgit leads. It is the only project where Morgan was the entire design
+ * function, it carries the strongest artifacts, and a reader who bounces after
+ * one entry should have seen that one.
  */
 const WORK: Work[] = [
+  {
+    id: "sysgit",
+    title: "Sysgit",
+    to: "/case-study/sysgit",
+    meta: (
+      <>
+        Design Lead and sole designer
+        <br />
+        Systems engineering &middot; 2023 &ndash; 2026
+      </>
+    ),
+    description:
+      "Git for hardware: modeling, requirements, and version control in one platform. I own product design, the design system, research, competitive analysis, strategy, and brand.",
+    media: (
+      <MediaSlot
+        ratio="16/9"
+        bordered={false}
+        src="/case-studies/sysgit/hero-still.png"
+        alt="One object from a Sysgit model, drawn: a part def carrying a typed value, a maximum output and a link to the test that verifies it, joined to the rest of the graph by derive, contains and satisfies relationships."
+      />
+    ),
+  },
+  {
+    id: "beacon",
+    title: "Beacon",
+    to: "/case-study/beacon",
+    meta: (
+      <>
+        <span className="italic">Slingshot Aerospace</span>, Senior Product Designer
+        <br />
+        Aerospace &middot; 2022 &ndash; 2023
+      </>
+    ),
+    description:
+      "The first collision avoidance platform in the aerospace industry. Sole designer, collaborating on product strategy.",
+    media: <MediaSlot ratio="3/4" width="55%" caption="Beacon &middot; artifact pending" />,
+  },
   {
     id: "originality",
     title: "Originality",
@@ -45,58 +80,6 @@ const WORK: Work[] = [
     ),
   },
   {
-    id: "sysgit",
-    title: "Sysgit",
-    to: "/case-study/sysgit",
-    meta: (
-      <>
-        <span className="italic">Sysgit</span>, Design Lead and sole designer
-        <br />
-        Systems engineering &middot; 2023 &ndash; 2026
-      </>
-    ),
-    description:
-      "Git for hardware. Modeling, requirements, and version control in one workflow, for engineers who are not developers. I own product design, the design system, research, competitive analysis, strategy, and brand.",
-    media: (
-      <MediaSlot
-        ratio="16/9"
-        bordered={false}
-        src="/case-studies/sysgit/hero-still.png"
-        alt="One object from a Sysgit model, drawn: a part def carrying a typed value, a maximum output and a link to the test that verifies it, joined to the rest of the graph by derive, contains and satisfies relationships."
-      />
-    ),
-  },
-  {
-    id: "what-i-do",
-    title: "What I Do",
-    to: "/what-i-do",
-    meta: (
-      <>
-        <span className="italic">Practice</span>, design and front-end
-        <br />
-        One feature, end to end
-      </>
-    ),
-    description:
-      "One color feature from scope to merged PR, naming where each tool entered and where I refused to hand anything over. The model generates and enumerates. I judge.",
-    media: <MediaSlot ratio="16/10" caption="Theme picker &middot; interactive recreation" />,
-  },
-  {
-    id: "beacon",
-    title: "Beacon",
-    to: "/case-study/beacon",
-    meta: (
-      <>
-        <span className="italic">Slingshot Aerospace</span>, Senior Product Designer
-        <br />
-        Aerospace &middot; 2022 &ndash; 2023
-      </>
-    ),
-    description:
-      "The first collision avoidance platform in the aerospace industry. Sole designer, collaborating on product strategy.",
-    media: <MediaSlot ratio="3/4" width="55%" caption="Beacon &middot; artifact pending" />,
-  },
-  {
     id: "gradescope",
     title: "Gradescope Mobile",
     to: "/case-study/gradescope-mobile",
@@ -114,18 +97,13 @@ const WORK: Work[] = [
 ];
 
 export const HomePage = () => {
-  const { order } = useLens();
-  const shown = order
-    .map((id) => WORK.find((w) => w.id === id))
-    .filter((w): w is Work => Boolean(w));
-
   return (
     <CvPage sidebar={<SiteRail scope="global" />}>
 
       <SectionHeading>SELECTED WORK</SectionHeading>
       <Rule className="mb-6" />
 
-      {shown.map((w, i) => (
+      {WORK.map((w, i) => (
         <div key={w.id}>
           {i > 0 ? <Rule className="mb-6" /> : null}
           {w.media}

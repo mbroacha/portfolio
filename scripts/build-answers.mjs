@@ -37,6 +37,12 @@ const held = [];
 const words = (s) => s.trim().split(/\s+/).filter(Boolean).length;
 
 if (!existsSync(SRC)) {
+  // A fresh clone (CI included) has no private bank, but the compiled output is
+  // committed, so build from that rather than fail.
+  if (!checkOnly && existsSync(OUT)) {
+    console.log(`No private bank at ${SRC}. Using the committed src/data/answers.json as is.`);
+    process.exit(0);
+  }
   console.error(`Missing ${SRC}. The private bank is gitignored, so a fresh clone will not have it.`);
   process.exit(1);
 }
