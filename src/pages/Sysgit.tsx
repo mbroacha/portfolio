@@ -21,6 +21,7 @@ import { CustomerStackDiagram } from "../components/case-study/CustomerStackDiag
 import { RequirementsTableRecreation } from "../components/case-study/RequirementsTableRecreation";
 import { SysgitGoals } from "../components/case-study/SysgitGoals";
 import { SysgitHero } from "../components/case-study/SysgitHero";
+import { SysgitSplash } from "../components/case-study/SysgitSplash";
 import { TranslationTriptych } from "../components/case-study/TranslationTriptych";
 
 export const Sysgit = () => (
@@ -56,11 +57,7 @@ export const Sysgit = () => (
         that behaves like a document, and branch, review and merge in language an engineer already uses.
       </div>
     </TwoCol>
-    <MediaSlot
-      ratio="16/10"
-      src="/case-studies/sysgit/split-editor.png"
-      alt="The Sysgit split editor. SysML source on the left defining a power subsystem with an energy capacity and a maximum power output, and on the right the same model drawn as part definitions and linked requirement cards."
-    />
+    <SysgitSplash />
 
     <SectionHeading>WHY IT EXISTS</SectionHeading>
     <Rule className="mb-6" />
