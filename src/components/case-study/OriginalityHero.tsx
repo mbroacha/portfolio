@@ -130,11 +130,11 @@ const useStageScale = () => {
   return { ref, scale };
 };
 
-export const OriginalityHero = () => {
+export const OriginalityHero = ({ bare = false }: { bare?: boolean }) => {
   const { ref, scale } = useStageScale();
   return (
     /* -mx-8 cancels the main column's p-8, matching the Sysgit hero. */
-    <figure className="oh-wrap -mx-8 mb-6">
+    <figure className={`oh-wrap ${bare ? "" : "-mx-8 mb-6"}`}>
       <style>{CSS}</style>
       <div className="oh-frame" ref={ref}>
         <div className="oh" style={{ transform: `scale(${scale})` }}>

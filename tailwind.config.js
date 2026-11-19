@@ -23,13 +23,11 @@ export default {
                 accent: "rgb(var(--color-accent) / <alpha-value>)",
             },
             fontFamily: {
-                sans: ["var(--font-body)"],
-                display: ["var(--font-display)"],
-                mono: ["var(--font-mono)"],
+                sans: ["var(--font-family-sans)"],
+                display: ["var(--font-family-display)"],
+                mono: ["var(--font-family-mono)"],
                 lexend: ['"Lexend Deca"', "system-ui", "sans-serif"],
-            },
-            fontSize: {
-                label: ["0.75rem", { lineHeight: "1", letterSpacing: "0.14em" }],
+                hand: ["Caveat", "Segoe Print", "Bradley Hand", "Apple Chancery", "cursive"],
             },
             maxWidth: {
                 prose: "var(--max-width-prose)",

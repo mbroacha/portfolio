@@ -79,14 +79,6 @@ export const Originality = () => (
         { label: "Role", value: <span className="text-bone">Senior UX Designer</span> },
         { label: "Company", value: "Turnitin" },
         { label: "Timeline", value: "Closed beta 2018. Shipped 2019" },
-        {
-          label: "Team",
-          value: (
-            <>
-              8 engineers and a PM
-            </>
-          ),
-        },
         { label: "Scope", value: "Research, product design, information architecture" },
         { label: "Platform", value: "Web" },
       ]}
@@ -94,7 +86,7 @@ export const Originality = () => (
 
     <OriginalityHero />
 
-    <SectionHeading>PROBLEM</SectionHeading>
+    <SectionHeading className="mt-12">PROBLEM</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol
       claim={
@@ -129,7 +121,7 @@ export const Originality = () => (
 
     <OriginalitySplash background={asset("/case-studies/originality/bg-zuccarelli.webp")} />
 
-    <SectionHeading>CONSTRAINTS</SectionHeading>
+    <SectionHeading className="mt-12">CONSTRAINTS</SectionHeading>
     <Rule className="mb-6" />
     <ConstraintGrid
       items={[
@@ -156,10 +148,10 @@ export const Originality = () => (
       ]}
     />
 
-    <SectionHeading>RESEARCH</SectionHeading>
+    <SectionHeading className="mt-12">RESEARCH</SectionHeading>
     <Rule className="mb-6" />
     <div className="mb-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-      <MediaSlot
+      <MediaSlot matted={false}
         ratio="3/4"
         src={asset("/case-studies/originality/research-sticky-notes.png")}
         alt="Workshop notebook with sticky notes labeled with document metadata fields." />
@@ -178,7 +170,7 @@ export const Originality = () => (
       </div>
     </div>
 
-    <SectionHeading>INSIGHT</SectionHeading>
+    <SectionHeading className="mt-12">INSIGHT</SectionHeading>
     <Rule className="mb-6" />
     <InsightBlock
       quote="Educators didn't want more signals. They wanted permission to trust their own judgment."
@@ -192,9 +184,9 @@ export const Originality = () => (
       </div>
     </TwoCol>
 
-    <SectionHeading>DECISIONS</SectionHeading>
+    <SectionHeading className="mt-12">DECISIONS</SectionHeading>
     <Rule className="mb-6" />
-    <MediaSlot
+    <MediaSlot matted={false}
       ratio="16/9"
       src={asset("/case-studies/originality/design-evolution-sketches.png")}
       alt="Five-stage progression from document sketches to final high-fidelity mockup."
@@ -203,7 +195,7 @@ export const Originality = () => (
       <DecisionRow key={d.title} decision={d} first={i === 0} />
     ))}
 
-    <SectionHeading>OUTCOME</SectionHeading>
+    <SectionHeading className="mt-12">OUTCOME</SectionHeading>
     <Rule className="mb-6" />
     <QualOutcome
       items={[
@@ -242,7 +234,7 @@ export const Originality = () => (
       />
     </div>
 
-    <SectionHeading>REFLECTION</SectionHeading>
+    <SectionHeading className="mt-12">REFLECTION</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">Who was the machine learning for?</em>}>
       <div>

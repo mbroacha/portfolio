@@ -84,7 +84,7 @@
   --font-size-base: 0.9375rem; /* 15px — prose */
   --font-size-lg: 1rem; /* 16px — lead prose */
   --font-size-subhead: 1.0625rem; /* 17px — decision titles, claims, outcome items */
-  --font-size-xl: 1.25rem; /* 20px — project title (serif italic) */
+  --font-size-xl: 1.75rem; /* 28px — project title (serif italic) */
   --font-size-2xl: 1rem; /* 16px — section heading (serif italic) */
   --font-size-3xl: 1.25rem;
   --font-size-stat: 1.75rem; /* 28px — outcome figures (serif italic) */

@@ -1,8 +1,10 @@
 import type { ReactNode } from "react";
+import { SysgitHero } from "../components/case-study/SysgitHero";
+import { BeaconHeroB } from "../components/case-study/BeaconHeroB";
+import { OriginalityHero } from "../components/case-study/OriginalityHero";
 import { CvPage } from "../components/cv/CvPage";
 import { Rule, SectionHeading, MediaSlot, WorkEntry } from "../components/cv/CvPrimitives";
 import { SiteRail } from "../components/cv/SiteRail";
-import { asset } from "../lib/asset";
 
 interface Work {
   id: string;
@@ -33,14 +35,15 @@ const WORK: Work[] = [
       </>
     ),
     description:
-      "Git for hardware: modeling, requirements, and version control in one platform. I own product design, the design system, research, competitive analysis, strategy, and brand.",
+      "Git for hardware. I own product design, the design system, research, competitive analysis, strategy, and brand.",
     media: (
       <MediaSlot
         ratio="16/9"
-        bordered={false}
-        src={asset("/case-studies/sysgit/hero-still.png")}
+        matted={false}
         alt="One object from a Sysgit model, drawn: a part def carrying a typed value, a maximum output and a link to the test that verifies it, joined to the rest of the graph by derive, contains and satisfies relationships."
-      />
+      >
+        <SysgitHero bare />
+      </MediaSlot>
     ),
   },
   {
@@ -51,12 +54,20 @@ const WORK: Work[] = [
       <>
         <span className="italic">Slingshot Aerospace</span>, Senior Product Designer
         <br />
-        Aerospace &middot; 2022 &ndash; 2023
+        Aerospace &middot; Shipped 2023
       </>
     ),
     description:
-      "The first collision avoidance platform in the aerospace industry. Sole designer, collaborating on product strategy.",
-    media: <MediaSlot ratio="3/4" width="55%" caption="Beacon &middot; artifact pending" />,
+      "The first platform of its kind for coordinating satellite conjunctions. Lead designer, and co-owner of product strategy.",
+    media: (
+      <MediaSlot
+        ratio="16/9"
+        matted={false}
+        alt="Two satellite tracks converge. A threshold ring draws around the operator's own asset, and the second track lifts away from it as a proposed maneuver."
+      >
+        <BeaconHeroB bare />
+      </MediaSlot>
+    ),
   },
   {
     id: "originality",
@@ -70,14 +81,15 @@ const WORK: Work[] = [
       </>
     ),
     description:
-      "Originality reveals signs that a student's paper was written by someone else, but educators couldn't act on what they saw. I redesigned the core detection workflow so that a signal became a decision.",
+      "Originality reveals signs that a student's paper was written by someone else. Lead designer of core detection workflow and design system.",
     media: (
       <MediaSlot
         ratio="16/9"
-        bordered={false}
-        src={asset("/case-studies/originality/hero-still.png")}
+        matted={false}
         alt="A student submission beside eight detection signals, ranked by what actually persuaded an educator: file metadata above the algorithm's linguistic analysis."
-      />
+      >
+        <OriginalityHero bare />
+      </MediaSlot>
     ),
   },
   {

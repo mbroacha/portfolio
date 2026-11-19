@@ -104,13 +104,15 @@ export const StackedList = ({ items }: { items: { label: string; value: ReactNod
   </dl>
 );
 
-type Ratio = "16/9" | "1/1" | "3/4" | "16/10";
+/** auto sizes the slot to the image's own aspect, so nothing letterboxes. */
+type Ratio = "16/9" | "1/1" | "3/4" | "16/10" | "auto";
 
 const ratioClass: Record<Ratio, string> = {
   "16/9": "aspect-[16/9]",
   "1/1": "aspect-square",
   "3/4": "aspect-[3/4]",
   "16/10": "aspect-[16/10]",
+  auto: "",
 };
 
 /**
@@ -128,25 +130,40 @@ export const MediaSlot = ({
   alt,
   width,
   bordered = true,
+  matted = true,
+  fit = "cover",
+  children,
 }: {
   ratio?: Ratio;
   caption?: string;
   src?: string;
   alt?: string;
   width?: string;
+  /** The frame: border plus slot fill. Off leaves the bare image. */
   bordered?: boolean;
+  /** The padded surface around the frame. Off leaves just the frame's border. */
+  matted?: boolean;
+  /** cover crops to the slot; contain letterboxes. A screenshot whose aspect
+      does not match the slot needs contain, or the UI gets cut off. */
+  fit?: "cover" | "contain";
+  /** A live hero component, in place of a still. Takes precedence over src. */
+  children?: ReactNode;
 }) => (
-  <div className="mb-6 bg-[color:var(--surface-media)] p-4">
+  <div className={cn("mb-6", matted && "bg-[color:var(--surface-media)] p-4")}>
     <div
       className={cn(
         "relative mx-auto overflow-hidden",
         bordered && "border border-[color:var(--edge)]",
         ratioClass[ratio],
       )}
-      style={{ width, backgroundColor: "var(--ink-600)" }}
+      style={{ width, backgroundColor: bordered ? "var(--ink-600)" : undefined }}
     >
-      {src ? (
-        <img src={src} alt={alt ?? ""} className="h-full w-full object-cover" />
+      {children ? (
+        <div className="absolute inset-0" role="img" aria-label={alt ?? ""}>
+          {children}
+        </div>
+      ) : src ? (
+        <img src={src} alt={alt ?? ""} className={cn("h-full w-full", fit === "contain" ? "object-contain" : "object-cover")} />
       ) : (
         <>
           <svg
@@ -165,7 +182,7 @@ export const MediaSlot = ({
         </>
       )}
     </div>
-    {src && caption ? (
+    {(src || children) && caption ? (
       <div className="cv-meta mt-2" style={{ color: "var(--text-on-media)" }}>
         {caption}
       </div>

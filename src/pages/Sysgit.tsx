@@ -38,7 +38,6 @@ export const Sysgit = () => (
       items={[
         { label: "Role", value: <span className="text-bone">Design Lead, sole designer</span> },
         { label: "Timeline", value: "2023 - 2026" },
-        { label: "Team", value: <span className="text-bone">1 designer (me)<br />6 engineers</span> },
         { label: "Scope", value: "Product, design system, research, strategy, brand, front-end PRs" },
         { label: "Page", value: "Overview. Detail available on request" },
       ]}
@@ -46,7 +45,7 @@ export const Sysgit = () => (
 
     <SysgitHero />
 
-    <SectionHeading>THE PRODUCT</SectionHeading>
+    <SectionHeading className="mt-12">THE PRODUCT</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">Three jobs that normally mean three very expensive software purchases.</em>}>
       <div>
@@ -60,7 +59,7 @@ export const Sysgit = () => (
     </TwoCol>
     <SysgitSplash />
 
-    <SectionHeading>WHY IT EXISTS</SectionHeading>
+    <SectionHeading className="mt-12">WHY IT EXISTS</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">Systems engineering is a coordination problem, and it scales badly.</em>}>
       <div>
@@ -100,11 +99,11 @@ export const Sysgit = () => (
       </div>
     </TwoCol>
 
-    <SectionHeading>GOALS</SectionHeading>
+    <SectionHeading className="mt-12">GOALS</SectionHeading>
     <Rule className="mb-6" />
     <SysgitGoals />
 
-    <SectionHeading>THE ARGUMENT</SectionHeading>
+    <SectionHeading className="mt-12">THE ARGUMENT</SectionHeading>
     <Rule className="mb-6" />
     <InsightBlock
       quote="One less tool beats one task done perfectly."
@@ -125,7 +124,7 @@ export const Sysgit = () => (
       </div>
     </TwoCol>
 
-    <SectionHeading>WHAT IT LOOKS LIKE</SectionHeading>
+    <SectionHeading className="mt-12">WHAT IT LOOKS LIKE</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">In hardware modeling, a box is not just a box.</em>}>
       <div>
@@ -134,7 +133,7 @@ export const Sysgit = () => (
       </div>
     </TwoCol>
     <TranslationTriptych />
-    <MediaSlot
+    <MediaSlot matted={false}
       ratio="16/9"
       src={asset("/case-studies/sysgit/diagram-editor-ide.png")}
       alt="The same rail brake requirements open in Sysgit, source on the left and the requirement graph on the right."
@@ -147,7 +146,7 @@ export const Sysgit = () => (
     </TwoCol>
     <RequirementsTableRecreation />
 
-    <SectionHeading>WHERE IT LANDED</SectionHeading>
+    <SectionHeading className="mt-12">WHERE IT LANDED</SectionHeading>
     <Rule className="mb-6" />
     <QualOutcome
       items={[
@@ -169,21 +168,17 @@ export const Sysgit = () => (
       ]}
     />
 
-    <SectionHeading>WHY DESIGN ACTUALLY MOVES</SectionHeading>
+    <SectionHeading className="mt-12">WHY DESIGN ACTUALLY MOVES</SectionHeading>
     <Rule className="mb-6" />
-    <TwoCol claim={<em className="font-display not-italic">The same engineer uses a beautifully made tool at 10 am and one that peaked in 2004 at 11 am.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">The same engineer uses a beautifully made tool at 10 am and a tool that peaked in 2004 at 11 am.</em>}>
       <div>
         The reference points are not other systems engineering tools. They are Miro, Google, Airtable: general
-        purpose products doing structurally the same jobs, a canvas, a shared editor and a structured table, in
-        markets that punished anything less than polish.
+        purpose products doing structurally the same jobs, in
+        markets that punish anything less than polish.
       </div>
       <div>
         Sysgit is those three surfaces for hardware. Every user already knows what good feels like in each of them,
         and that sets the bar whether or not this market has caught up.
-      </div>
-      <div>
-        So there is no excuse. Nothing about security,
-        interoperability or a dense specification requires the interaction model these tools still ship.
       </div>
     </TwoCol>
 

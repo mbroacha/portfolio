@@ -63,7 +63,7 @@ export const WhatIDo = () => (
         Prompting is a brainstorming tool, not a generation tool. I ask for at least three iterations, tell it to go
         wild on one, then look for workflow gaps and edge cases. This is also a fast way to find gaps in an existing design system.
       </Stage>
-      <Stage title="Build" tool="Claude Code">
+      <Stage title="Build" tool="Claude Code, Codex">
         Lo-fi designs are still queen of quick consensus. I prototype not because I now can cheaply, but to answer a specific question. The question is usually
         about an interaction that must be seen in its environment.
       </Stage>
@@ -104,7 +104,7 @@ export const WhatIDo = () => (
               ratio="16/9"
               src={asset("/case-studies/what-i-do/brainstorm-directions.webp")}
               alt="Claude Design session: answered scoping questions, then three live theming directions with thumbnails."
-              caption="Three prompted directions, one experimental · capture"
+              caption="Three prompted directions, one experimental"
             />
           ),
         },
@@ -118,7 +118,7 @@ export const WhatIDo = () => (
               ratio="16/9"
               src={asset("/case-studies/what-i-do/override-groups.webp")}
               alt="Overrides table grouping each node type into Definition and Usage color pairs."
-              caption="Overrides grouped as Definition and Usage pairs · capture"
+              caption="Overrides grouped as Definition and Usage pairs"
             />
           ),
         },
@@ -132,7 +132,7 @@ export const WhatIDo = () => (
               ratio="16/9"
               src={asset("/case-studies/what-i-do/theme-gallery-poll.webp")}
               alt="Theme gallery cards including Catppuccin, Tokyo Night, Rosé Pine and Nord."
-              caption="Poll favorites in the theme gallery · capture, stitched from two scrolls"
+              caption="Poll favorites in the theme gallery"
             />
           ),
         },
@@ -146,7 +146,7 @@ export const WhatIDo = () => (
               ratio="16/9"
               src={asset("/case-studies/what-i-do/a11y-warning.webp")}
               alt="Theme gallery with High Contrast selected and the warning: Overrides may invalidate contrast."
-              caption="Contrast warning on the High Contrast theme · capture"
+              caption="Contrast warning on the High Contrast theme"
             />
           ),
         },

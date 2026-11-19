@@ -21,15 +21,14 @@ export const GradescopeMobile = () => (
       items={[
         { label: "Role", value: <span className="text-bone">Senior Product Designer, one of two</span> },
         { label: "Timeline", value: "Launched 2021" },
-        { label: "Team", value: "2 senior designers under a lead" },
         { label: "Scope", value: "Workflow, screens, platform adaptation" },
         { label: "Platform", value: "iOS and Android" },
       ]}
     />
 
-    <MediaSlot ratio="3/4" width="55%" caption="Scan, map, submit" />
+    <MediaSlot matted={false} ratio="3/4" width="55%" caption="Scan, map, submit" />
 
-    <SectionHeading>WHAT IT WAS</SectionHeading>
+    <SectionHeading className="mt-12">WHAT IT WAS</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">One app instead of two.</em>}>
       <div>
@@ -42,7 +41,7 @@ export const GradescopeMobile = () => (
       </div>
     </TwoCol>
 
-    <SectionHeading>THE DECISION</SectionHeading>
+    <SectionHeading className="mt-12">THE DECISION</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">We required mapping before submission. Then we reversed it.</em>}>
       <div>
@@ -56,7 +55,7 @@ export const GradescopeMobile = () => (
       <div>We let students submit first and map afterward. It was the right call and it was not enough.</div>
     </TwoCol>
 
-    <SectionHeading>WORKING AS A PAIR</SectionHeading>
+    <SectionHeading className="mt-12">WORKING AS A PAIR</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">We disagreed about how faithful to be to the parent design system.</em>}>
       <div>
@@ -75,7 +74,7 @@ export const GradescopeMobile = () => (
       </div>
     </TwoCol>
 
-    <SectionHeading>WHY IT DID NOT WORK</SectionHeading>
+    <SectionHeading className="mt-12">WHY IT DID NOT WORK</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">Bad reviews, and I am not sure it is still supported.</em>}>
       <div>
@@ -89,7 +88,7 @@ export const GradescopeMobile = () => (
       <div>The technology was not there yet. That is most of it.</div>
     </TwoCol>
 
-    <SectionHeading>WHAT I TOOK FROM IT</SectionHeading>
+    <SectionHeading className="mt-12">WHAT I TOOK FROM IT</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">You inherit the blame for user error your own friction caused.</em>}>
       <div>
