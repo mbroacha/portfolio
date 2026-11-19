@@ -4,6 +4,7 @@ import { PageHead } from "../components/cv/PageHead";
 import { SiteRail } from "../components/cv/SiteRail";
 import { MediaSlot, Panel, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import { Ledger } from "../components/cv/CaseStudyParts";
+import { asset } from "../lib/asset";
 
 /**
  * What I do.
@@ -101,7 +102,7 @@ export const WhatIDo = () => (
           media: (
             <MediaSlot
               ratio="16/9"
-              src="/case-studies/what-i-do/brainstorm-directions.webp"
+              src={asset("/case-studies/what-i-do/brainstorm-directions.webp")}
               alt="Claude Design session: answered scoping questions, then three live theming directions with thumbnails."
               caption="Three prompted directions, one experimental"
             />
@@ -115,7 +116,7 @@ export const WhatIDo = () => (
           media: (
             <MediaSlot
               ratio="16/9"
-              src="/case-studies/what-i-do/override-groups.webp"
+              src={asset("/case-studies/what-i-do/override-groups.webp")}
               alt="Overrides table grouping each node type into Definition and Usage color pairs."
               caption="Overrides grouped as Definition and Usage pairs"
             />
@@ -129,7 +130,7 @@ export const WhatIDo = () => (
           media: (
             <MediaSlot
               ratio="16/9"
-              src="/case-studies/what-i-do/theme-gallery-poll.webp"
+              src={asset("/case-studies/what-i-do/theme-gallery-poll.webp")}
               alt="Theme gallery cards including Catppuccin, Tokyo Night, Rosé Pine and Nord."
               caption="Poll favorites in the theme gallery"
             />
@@ -143,7 +144,7 @@ export const WhatIDo = () => (
           media: (
             <MediaSlot
               ratio="16/9"
-              src="/case-studies/what-i-do/a11y-warning.webp"
+              src={asset("/case-studies/what-i-do/a11y-warning.webp")}
               alt="Theme gallery with High Contrast selected and the warning: Overrides may invalidate contrast."
               caption="Contrast warning on the High Contrast theme"
             />
