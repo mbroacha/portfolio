@@ -26,7 +26,7 @@ export const GradescopeMobile = () => (
       ]}
     />
 
-    <MediaSlot ratio="3/4" width="55%" caption="Scan, map, submit" />
+    <MediaSlot matted={false} ratio="3/4" width="55%" caption="Scan, map, submit" />
 
     <SectionHeading className="mt-12">WHAT IT WAS</SectionHeading>
     <Rule className="mb-6" />

@@ -150,7 +150,7 @@ export const Originality = () => (
     <SectionHeading className="mt-12">RESEARCH</SectionHeading>
     <Rule className="mb-6" />
     <div className="mb-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-      <MediaSlot
+      <MediaSlot matted={false}
         ratio="3/4"
         src="/case-studies/originality/research-sticky-notes.png"
         alt="Workshop notebook with sticky notes labeled with document metadata fields." />
@@ -185,7 +185,7 @@ export const Originality = () => (
 
     <SectionHeading className="mt-12">DECISIONS</SectionHeading>
     <Rule className="mb-6" />
-    <MediaSlot
+    <MediaSlot matted={false}
       ratio="16/9"
       src="/case-studies/originality/design-evolution-sketches.png"
       alt="Five-stage progression from document sketches to final high-fidelity mockup."

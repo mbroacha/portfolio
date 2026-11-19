@@ -132,7 +132,7 @@ export const Sysgit = () => (
       </div>
     </TwoCol>
     <TranslationTriptych />
-    <MediaSlot
+    <MediaSlot matted={false}
       ratio="16/9"
       src="/case-studies/sysgit/diagram-editor-ide.png"
       alt="The same rail brake requirements open in Sysgit, source on the left and the requirement graph on the right."
@@ -169,19 +169,15 @@ export const Sysgit = () => (
 
     <SectionHeading className="mt-12">WHY DESIGN ACTUALLY MOVES</SectionHeading>
     <Rule className="mb-6" />
-    <TwoCol claim={<em className="font-display not-italic">The same engineer uses a beautifully made tool at 10 am and one that peaked in 2004 at 11 am.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">The same engineer uses a beautifully made tool at 10 am and a tool that peaked in 2004 at 11 am.</em>}>
       <div>
         The reference points are not other systems engineering tools. They are Miro, Google, Airtable: general
-        purpose products doing structurally the same jobs, a canvas, a shared editor and a structured table, in
-        markets that punished anything less than polish.
+        purpose products doing structurally the same jobs, in
+        markets that punish anything less than polish.
       </div>
       <div>
         Sysgit is those three surfaces for hardware. Every user already knows what good feels like in each of them,
         and that sets the bar whether or not this market has caught up.
-      </div>
-      <div>
-        So there is no excuse. Nothing about security,
-        interoperability or a dense specification requires the interaction model these tools still ship.
       </div>
     </TwoCol>
 

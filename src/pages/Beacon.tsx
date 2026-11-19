@@ -1,3 +1,5 @@
+import { BeaconHeroB } from "../components/case-study/BeaconHeroB";
+import { BeaconSplash } from "../components/case-study/BeaconSplash";
 import { CvPage } from "../components/cv/CvPage";
 import { PageHead } from "../components/cv/PageHead";
 import { SiteRail } from "../components/cv/SiteRail";
@@ -19,23 +21,36 @@ const decisions: Decision[] = [
     why: "Nobody knows an operator's real risk tolerance better than the operator. A cubesat on a research grant and a commercial constellation do not agree on what counts as too close.",
     tradeoff: "I could see what would cause alert fatigue, and an open default would have produced it. A median default is wrong for everyone at the extremes.",
     result: "Operators tune to their own posture, and the ones who never touch the setting still get something survivable.",
-    visual: <MediaSlot ratio="16/9" caption="Threshold settings &middot; dummy data" />,
+    visual: (
+      <MediaSlot matted={false}
+        bordered={false}
+        ratio="auto"
+        width="62%"
+        src="/case-studies/beacon/satellite-detail.png"
+        alt="A satellite detail panel for Halcyon-3: catalog ID, international designator, type and country, orbit and mission parameters, and the operator's optional disclosures, maneuverable yes and power source solar plus Li-ion battery, with actions to view 13 events or add it to a watchlist."
+      />
+    ),
   },
   {
     title: "Suggest, never act",
     rejected: "Automated maneuvering, and arbitrating who moves.",
-    why: "Beacon proposes when and how to move, refined by maneuverability data if the operator chooses to share it. Touching an operator's asset was never in scope. In a system where the failure is physical and irreversible, the operator keeps the verdict.",
+    why: "Beacon proposes when and how to move, refined by maneuverability data if the operator chooses to share it. Touching an operator's asset oursevles was never in scope, because being wrong meant a real physical consequence",
     tradeoff: "It leaves the hardest part of the problem, deciding who yields, with the humans who were already struggling with it.",
     result: "Operators trusted it with their data because it could not act on their behalf. Declining to arbitrate is what made the rest possible.",
-    visual: <MediaSlot ratio="16/9" caption="Conjunction detail and proposed maneuver &middot; dummy data" />,
   },
   {
     title: "Interpret the data, never hide it",
     rejected: "A raw CDM ingest, and a black-box risk score.",
-    why: "CDMs are dense and unfriendly. We could compare values across them and weight by an operator's own thresholds, which raw ingest cannot do. But a weighting is an editorial position on someone else's risk model, so the source data always stays one click away.",
+    why: "CDMs are dense and unfriendly. We could compare values across them and weigh by an operator's own thresholds, which a raw ingest cannot do. But a weighting is an editorial position on someone else's risk model, so the source data always stays one click away.",
     tradeoff: "Any prioritization we apply is a judgment we are making on their behalf.",
     result: "To work out what mattered, I printed CDMs and had subject matter experts circle exactly what they looked at during core decision points. That is what let us cut the chaff without guessing.",
-    visual: <MediaSlot ratio="3/4" width="55%" caption="Annotated CDM printout from an SME session" />,
+    visual: (
+      <MediaSlot matted={false}
+        ratio="16/10"
+        src="/case-studies/beacon/conjunction-detail.webp"
+        alt="A conjunction detail screen: the list of conjunctions, the latest conjunction message and its history, and a panel where an operator takes responsibility and messages the other operator."
+      />
+    ),
   },
   {
     title: "Abandoned: one product for everyone",
@@ -43,7 +58,6 @@ const decisions: Decision[] = [
     why: "The contact problem was real and chat was the obvious fix. It was not the fix for everyone.",
     tradeoff: "Development time on a feature the largest operators would never open.",
     result: "SpaceX had no interest in chat and would not respond to it. They wanted an automated reply along the lines of we know it is close, these are our thresholds, we will move if we think it is too close. So I built separate automation for enterprise operators, and a heavily redacted workflow for the DoD where they alert us and we tell the other operator that for classified reasons they need to move. Both started as white-glove services I ran by hand. Running them manually first is what told me which parts were worth building, and both folded into the product.",
-    visual: <MediaSlot ratio="16/10" caption="Enterprise automation and the redacted DoD path" />,
   },
 ];
 
@@ -57,8 +71,7 @@ export const Beacon = () => (
       title="Beacon"
       lede={
         <>
-          <span className="text-bone">Space traffic coordination.</span> When two satellites are about to pass too
-          close, somebody has to move.
+          <span className="text-bone">Space traffic coordination.</span> When two satellites are about to pass too close, somebody has to move.
         </>
       }
       items={[
@@ -69,32 +82,33 @@ export const Beacon = () => (
       ]}
     />
 
-    <MediaSlot ratio="16/9" caption="Conjunction dashboard &middot; dummy data" />
+    <BeaconHeroB />
 
     <SectionHeading className="mt-12">PROBLEM</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">Avoiding a collision meant scrambling for someone&rsquo;s phone number.</em>}>
       <div>
-        The workflow before Beacon was insanely variable. No two operators had the same depth of information about
-        their own assets, and many did not know where their satellites were half the time. Most of what everyone
-        relied on lived in a public, honor-system catalog.
+        The workflow before Beacon was no workflow. No two operators have the same depth of information about
+        their own assets; many did not know where their satellites are half the time. The only resource was a public, honor-system catalog.
       </div>
       <div>
-        Resolution was calling the other operator and trying to work out which of you was more capable of moving out
+        Resolution was finding a contact at the other operator and working out which of you was more capable of moving out
         of the way.
       </div>
     </TwoCol>
 
-    <TwoCol claim={<em className="font-display not-italic">The capability gap was the real problem.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">The capability gap.</em>}>
       <div>
-        Large operators like SpaceX had automated systems that alerted other operators and moved their own
-        satellites. Everyone else had to figure out a plan on the spot.
+        Large operators like SpaceX have automated systems that alert other operators and move their own
+        satellites. Everyone else has to figure out a plan on the spot.
       </div>
       <div>
         So Beacon is not about detection. It gives the long tail of operators a coordination capability only
-        the largest players had. The failure mode here is physical and permanent.
+        the largest players had.
       </div>
     </TwoCol>
+
+    <BeaconSplash background="/case-studies/beacon/bg-startrails.webp" />
 
     <SectionHeading className="mt-12">CONSTRAINTS</SectionHeading>
     <Rule className="mb-6" />
@@ -103,7 +117,7 @@ export const Beacon = () => (
         {
           title: "No prior design language at all",
           detail:
-            "This was the first platform of its kind, so there was no interface convention to borrow and no incumbent habit to design toward. I anchored to the only thing that existed: CDMs and ephemerides, which are extremely dense, and low-tech reports from satellites and ground stations. When there is no precedent, the data model becomes the constraint. Sysgit was the opposite: an incumbent existed, so I designed toward what users were already trained on.",
+            "This was the first platform of its kind, so there was no interface convention to borrow and no incumbent habit to design toward. I anchored to the only thing that existed: CDMs and ephemerides, which are extremely dense, low-tech reports from satellites and ground stations. When there is no precedent, the data model becomes the constraint.",
         },
         {
           title: "Wildly uneven data quality",
@@ -123,13 +137,35 @@ export const Beacon = () => (
       ]}
     />
 
+    {/* The two sources the product was anchored to, since no interface
+        precedent existed. Labelled, unlike the product captures: these are
+        other people's documents, and a reader cannot be expected to know a
+        conjunction message from an ephemeris on sight. */}
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-[1fr_0.62fr]">
+      <MediaSlot
+        matted={false}
+        ratio="16/9"
+        src="/case-studies/beacon/spacetrack.webp"
+        alt="A public conjunction message list: rows of close approaches, each with the time of closest approach, a minimum range in metres, a collision probability to ten decimal places, and the catalogue number, name, object type and radar cross-section of both objects."
+        caption="Space-Track, public conjunction messages"
+      />
+      <MediaSlot
+        matted={false}
+        ratio="3/4"
+        fit="contain"
+        src="/case-studies/beacon/ephemeris.webp"
+        alt="An eleven-parameter ephemeris message from Intelsat, addressed to all stations operating at 302 degrees east, giving an epoch to the second and eleven orbital coefficients in degrees and degrees per day."
+        caption="Eleven-parameter ephemeris, Intelsat"
+      />
+    </div>
+
     <SectionHeading className="mt-12">INSIGHT</SectionHeading>
     <Rule className="mb-6" />
     <InsightBlock
-      quote="You cannot mandate disclosure. You can make it reciprocal."
+      quote="You cannot mandate disclosure, but you can incentivize it."
       source="From operator interviews and work with our in-house astrophysics team."
     />
-    <TwoCol claim={<em className="font-display not-italic">Position is not the sensitive part. Capability is.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">Position is not the sensitive part.</em>}>
       <div>
         Operators do not really have a choice about position. Ground sensor networks see your assets whether you
         like it or not, and sharing that helps everyone, because nobody wants to hit anyone.
@@ -140,7 +176,7 @@ export const Beacon = () => (
       </div>
       <div>
         The part that made it work: operators became more willing to share once they could see what others had
-        shared in turn. That is mechanism design rather than interface design, and it is why the data arrived.
+        shared in turn. It was design by exposure.
       </div>
     </TwoCol>
 
@@ -166,7 +202,6 @@ export const Beacon = () => (
         },
       ]}
     />
-    <MediaSlot ratio="16/9" caption="Coverage and shared-signal adoption over time" />
     <SectionHeading className="mt-12">REFLECTION</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">I let the interface get ahead of the information architecture.</em>}>
