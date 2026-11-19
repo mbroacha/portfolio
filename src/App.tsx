@@ -7,6 +7,8 @@ import { Sysgit } from "./pages/Sysgit";
 import { WhatIDo } from "./pages/WhatIDo";
 import { About } from "./pages/About";
 import { Beacon } from "./pages/Beacon";
+/* TEMPORARY: hero review route. Remove with src/pages/BeaconHeroes.tsx. */
+import { BeaconHeroes } from "./pages/BeaconHeroes";
 import { GradescopeMobile } from "./pages/GradescopeMobile";
 
 const App = () => (
@@ -16,6 +18,8 @@ const App = () => (
       <Route path="/case-study/originality" element={<Originality />} />
       <Route path="/case-study/sysgit" element={<Sysgit />} />
       <Route path="/case-study/beacon" element={<Beacon />} />
+      {/* TEMPORARY: hero review. */}
+      <Route path="/beacon-heroes" element={<BeaconHeroes />} />
       <Route path="/case-study/gradescope-mobile" element={<GradescopeMobile />} />
       <Route path="/what-i-do" element={<WhatIDo />} />
       <Route path="/about" element={<About />} />

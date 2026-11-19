@@ -28,8 +28,8 @@
  * once and composite cheaply. will-change on the camera keeps the zoom on the
  * compositor.
  *
- * Motion: one 10s pass, then it holds the resolved state. It does not loop, so
- * the story cannot snap back to the start and read as a glitch. The RESTING
+ * Motion: a 14s loop. 10s of action, a hold on the resolved state, then a fade
+ * to black that covers the reset, so the story never snaps back to the start. The RESTING
  * state is the resolved state, which is why the broken value is explicitly
  * hidden below: with animation off, prefers-reduced-motion gets
  * the finished picture rather than every state stacked on top of itself.
@@ -40,8 +40,8 @@
 
 const CSS = `
 .sgh * {
-  animation-duration: 10s;
-  animation-iteration-count: 1;
+  animation-duration: 14s;
+  animation-iteration-count: infinite;
   animation-fill-mode: both;
   animation-timing-function: ease-in-out;
 }
@@ -65,42 +65,35 @@ const CSS = `
 .sgh .satLabel { animation-name: satText }
 .sgh .vOk { animation-name: valOk } .sgh .vBad { animation-name: valBad }
 .sgh .glow { animation-name: breathe }
-@keyframes cam{0%,14%{transform:scale(.28)}32%,100%{transform:scale(1)}}
-@keyframes far{0%{opacity:0}5%,30%{opacity:1}40%,100%{opacity:.7}}
-@keyframes obj{0%{opacity:0}6%,100%{opacity:1}}
-@keyframes head{0%,30%{opacity:0}35%,100%{opacity:1}}
-@keyframes a1{0%,34%{opacity:0;transform:translateY(6px)}39%,100%{opacity:1;transform:translateY(0)}}
-@keyframes a2{0%,38%{opacity:0;transform:translateY(6px)}43%,100%{opacity:1;transform:translateY(0)}}
-@keyframes a3{0%,42%{opacity:0;transform:translateY(6px)}47%,100%{opacity:1;transform:translateY(0)}}
-@keyframes draw{0%,48%{stroke-dashoffset:1}58%,100%{stroke-dashoffset:0}}
-@keyframes mark{0%,57%{opacity:0}62%,100%{opacity:1}}
-@keyframes satStroke{0%,63%{stroke:#8b61dc;stroke-opacity:.5}68%,80%{stroke:#ef5f56;stroke-opacity:.95}87%,100%{stroke:#8b61dc;stroke-opacity:.5}}
-@keyframes satFill{0%,63%{fill:#a98cf0;fill-opacity:.5}68%,80%{fill:#ef5f56;fill-opacity:.95}87%,100%{fill:#a98cf0;fill-opacity:.5}}
-@keyframes satText{0%,63%{fill:#b9a6ee;fill-opacity:.55}68%,80%{fill:#ef5f56;fill-opacity:1}87%,100%{fill:#b9a6ee;fill-opacity:.55}}
-@keyframes valOk{0%,63%{opacity:1}68%,80%{opacity:0}87%,100%{opacity:1}}
-@keyframes valBad{0%,63%{opacity:0}68%,80%{opacity:1}87%,100%{opacity:0}}
-@keyframes breathe{0%,100%{opacity:.42}50%{opacity:.6}}
-.cam{animation-name:cam}
-.far{animation-name:far}
-.obj{animation-name:obj}
-.head{animation-name:head}
-.at1{animation-name:a1}.at2{animation-name:a2}.at3{animation-name:a3}
-.edge{animation-name:draw}
-.mark{animation-name:mark}
-.sat{animation-name:satStroke}
-.satArrow{animation-name:satFill}
-.satLabel{animation-name:satText}
-.vOk{animation-name:valOk}.vBad{animation-name:valBad}
-.glow{animation-name:breathe}
+/* The loop is closed with a shutter rather than by rewinding the camera, so the
+   resolved close-up never snaps back to the wide model. Resting opacity is 0,
+   so with animation off the shutter is simply not there. */
+.sgh .shutter { opacity: 0; animation-name: shutter }
+@keyframes cam{0%,10%{transform:scale(.28)}22.8571%,71.4286%{transform:scale(1)}}
+@keyframes far{0%{opacity:0}3.57143%,21.4286%{opacity:1}28.5714%,71.4286%{opacity:.7}}
+@keyframes obj{0%{opacity:0}4.28571%,71.4286%{opacity:1}}
+@keyframes head{0%,21.4286%{opacity:0}25%,71.4286%{opacity:1}}
+@keyframes a1{0%,24.2857%{opacity:0;transform:translateY(6px)}27.8571%,71.4286%{opacity:1;transform:translateY(0)}}
+@keyframes a2{0%,27.1429%{opacity:0;transform:translateY(6px)}30.7143%,71.4286%{opacity:1;transform:translateY(0)}}
+@keyframes a3{0%,30%{opacity:0;transform:translateY(6px)}33.5714%,71.4286%{opacity:1;transform:translateY(0)}}
+@keyframes draw{0%,34.2857%{stroke-dashoffset:1}41.4286%,71.4286%{stroke-dashoffset:0}}
+@keyframes mark{0%,40.7143%{opacity:0}44.2857%,71.4286%{opacity:1}}
+@keyframes satStroke{0%,45%{stroke:#8b61dc;stroke-opacity:.5}48.5714%,57.1429%{stroke:#ef5f56;stroke-opacity:.95}62.1429%,71.4286%{stroke:#8b61dc;stroke-opacity:.5}}
+@keyframes satFill{0%,45%{fill:#a98cf0;fill-opacity:.5}48.5714%,57.1429%{fill:#ef5f56;fill-opacity:.95}62.1429%,71.4286%{fill:#a98cf0;fill-opacity:.5}}
+@keyframes satText{0%,45%{fill:#b9a6ee;fill-opacity:.55}48.5714%,57.1429%{fill:#ef5f56;fill-opacity:1}62.1429%,71.4286%{fill:#b9a6ee;fill-opacity:.55}}
+@keyframes valOk{0%,45%{opacity:1}48.5714%,57.1429%{opacity:0}62.1429%,71.4286%{opacity:1}}
+@keyframes valBad{0%,45%{opacity:0}48.5714%,57.1429%{opacity:1}62.1429%,71.4286%{opacity:0}}
+@keyframes breathe{0%,71.4286%{opacity:.42}35.7143%{opacity:.6}}
+@keyframes shutter{0%{opacity:1}2.5%,95%{opacity:0}100%{opacity:1}}
 @media (prefers-reduced-motion: reduce) { .sgh * { animation: none !important } }
 `;
 
-export const SysgitHero = () => (
+export const SysgitHero = ({ bare = false }: { bare?: boolean }) => (
   /* -mx-8 cancels the main column's p-8 so the hero runs the full grid cell. */
-  <figure className="-mx-8 mb-6">
+  <figure className={bare ? "" : "-mx-8 mb-6"}>
     <style>{CSS}</style>
     <svg
-            className="sgh block h-auto w-full"
+            className={`sgh block w-full ${bare ? "h-full" : "h-auto"}`}
             viewBox="0 0 1600 900"
             xmlns="http://www.w3.org/2000/svg"
             role="img"
@@ -185,6 +178,8 @@ export const SysgitHero = () => (
           <text className="at3" x="584" y="534" fill="#d6c9f5" fillOpacity="0.58">verifiedBy : BatteryCapacityTest</text>
         </g>
       </g>
+
+      <rect className="shutter" width="1600" height="900" fill="#0d0d0d"/>
       </svg>
   </figure>
 );

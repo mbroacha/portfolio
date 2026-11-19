@@ -31,7 +31,7 @@
  * from dark; with prefers-reduced-motion the reader gets the finished picture.
  */
 
-const ORANGE = "var(--beacon-orange, #FF6A13)"; /* stand-in. Swap for Slingshot's brand orange. */
+const ORANGE = "var(--beacon-orange, #F1592B)"; /* Beacon brand orange. */
 
 type FieldNode = { x: number; y: number; rank: number; parent: number | null; holdout: boolean };
 
@@ -136,14 +136,14 @@ export const BeaconHeroA = () => (
     >
       <defs>
         <radialGradient id="bha-wash" cx="30%" cy="50%" r="72%">
-          <stop offset="0%" stopColor="#FF6A13" stopOpacity="0.16" />
-          <stop offset="48%" stopColor="#B33A00" stopOpacity="0.06" />
+          <stop offset="0%" stopColor="#F1592B" stopOpacity="0.16" />
+          <stop offset="48%" stopColor="#A43D1D" stopOpacity="0.06" />
           <stop offset="100%" stopColor="#0d0d0d" stopOpacity="0" />
         </radialGradient>
         <radialGradient id="bha-bloom" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#FF8A3D" stopOpacity="0.5" />
-          <stop offset="60%" stopColor="#FF6A13" stopOpacity="0.14" />
-          <stop offset="100%" stopColor="#FF6A13" stopOpacity="0" />
+          <stop offset="0%" stopColor="#F8845C" stopOpacity="0.5" />
+          <stop offset="60%" stopColor="#F1592B" stopOpacity="0.14" />
+          <stop offset="100%" stopColor="#F1592B" stopOpacity="0" />
         </radialGradient>
         <pattern id="bha-dots" width="26" height="26" patternUnits="userSpaceOnUse">
           <circle cx="1.4" cy="1.4" r="1.4" fill="#fff" fillOpacity="0.04" />

@@ -128,6 +128,8 @@ export const MediaSlot = ({
   alt,
   width,
   bordered = true,
+  matted = true,
+  children,
 }: {
   ratio?: Ratio;
   caption?: string;
@@ -135,8 +137,12 @@ export const MediaSlot = ({
   alt?: string;
   width?: string;
   bordered?: boolean;
+  /** The padded surface around the frame. Off leaves just the frame's border. */
+  matted?: boolean;
+  /** A live hero component, in place of a still. Takes precedence over src. */
+  children?: ReactNode;
 }) => (
-  <div className="mb-6 bg-[color:var(--surface-media)] p-4">
+  <div className={cn("mb-6", matted && "bg-[color:var(--surface-media)] p-4")}>
     <div
       className={cn(
         "relative mx-auto overflow-hidden",
@@ -145,7 +151,11 @@ export const MediaSlot = ({
       )}
       style={{ width, backgroundColor: "var(--ink-600)" }}
     >
-      {src ? (
+      {children ? (
+        <div className="absolute inset-0" role="img" aria-label={alt ?? ""}>
+          {children}
+        </div>
+      ) : src ? (
         <img src={src} alt={alt ?? ""} className="h-full w-full object-cover" />
       ) : (
         <>
@@ -165,7 +175,7 @@ export const MediaSlot = ({
         </>
       )}
     </div>
-    {src && caption ? (
+    {(src || children) && caption ? (
       <div className="cv-meta mt-2" style={{ color: "var(--text-on-media)" }}>
         {caption}
       </div>

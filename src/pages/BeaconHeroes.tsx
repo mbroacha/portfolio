@@ -34,8 +34,12 @@ export const BeaconHeroes = () => (
         <div className="text-bone">Beacon hero options</div>
         <div>Three directions, animated. Reload the page or hit Replay to see a pass again.</div>
         <div>
-          The orange is a stand-in. It is one CSS variable, <span className="font-mono">--beacon-orange</span>, in all
-          three files.
+          Orange is Beacon's own <span className="font-mono">#F1592B</span>, set as the fallback on{" "}
+          <span className="font-mono">--beacon-orange</span>.
+        </div>
+        <div>
+          B has been through the type and plain-language passes and is set in Montserrat and Inter. A and C have not:
+          they are still in the site face and still use raw CDM field names.
         </div>
       </div>
     }

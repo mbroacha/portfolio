@@ -17,14 +17,14 @@ const decisions: Decision[] = [
     title: "Operator-set thresholds, median default",
     rejected: "A single fixed threshold for everyone.",
     why: "Nobody knows an operator's real risk tolerance better than the operator. A cubesat on a research grant and a commercial constellation do not agree on what counts as too close.",
-    tradeoff: "I could also see what would cause alert fatigue, and a fully open default would have produced it. A median default is wrong for everyone at the extremes.",
+    tradeoff: "I could see what would cause alert fatigue, and an open default would have produced it. A median default is wrong for everyone at the extremes.",
     result: "Operators tune to their own posture, and the ones who never touch the setting still get something survivable.",
     visual: <MediaSlot ratio="16/9" caption="Threshold settings &middot; dummy data" />,
   },
   {
     title: "Suggest, never act",
     rejected: "Automated maneuvering, and arbitrating who moves.",
-    why: "Beacon proposes when and how to move, refined by maneuverability data if the operator chooses to share it. At no point was it in scope to touch anyone's asset. In a system where the failure is physical and irreversible, the operator keeps the verdict.",
+    why: "Beacon proposes when and how to move, refined by maneuverability data if the operator chooses to share it. Touching an operator's asset was never in scope. In a system where the failure is physical and irreversible, the operator keeps the verdict.",
     tradeoff: "It leaves the hardest part of the problem, deciding who yields, with the humans who were already struggling with it.",
     result: "Operators trusted it with their data because it could not act on their behalf. Declining to arbitrate is what made the rest possible.",
     visual: <MediaSlot ratio="16/9" caption="Conjunction detail and proposed maneuver &middot; dummy data" />,
@@ -42,7 +42,7 @@ const decisions: Decision[] = [
     rejected: "The version I shipped first. A single product, including a chat feature so operators would stop hunting for each other's contact details.",
     why: "The contact problem was real and chat was the obvious fix. It was not the fix for everyone.",
     tradeoff: "Development time on a feature the largest operators would never open.",
-    result: "SpaceX had no interest in chat and would not respond to it. They wanted an automated reply along the lines of we know it is close, these are our thresholds, we will move if we think it is too close. So I built separate automation for enterprise operators, and a heavily redacted workflow for the DoD where they alert us and we tell the other operator that for classified reasons they need to move. Both started as white-glove services I ran by hand, then folded into the product.",
+    result: "SpaceX had no interest in chat and would not respond to it. They wanted an automated reply along the lines of we know it is close, these are our thresholds, we will move if we think it is too close. So I built separate automation for enterprise operators, and a heavily redacted workflow for the DoD where they alert us and we tell the other operator that for classified reasons they need to move. Both started as white-glove services I ran by hand. Running them manually first is what told me which parts were worth building, and both folded into the product.",
     visual: <MediaSlot ratio="16/10" caption="Enterprise automation and the redacted DoD path" />,
   },
 ];
@@ -64,7 +64,11 @@ export const Beacon = () => (
       items={[
         { label: "Role", value: <span className="text-bone">Senior Product Designer, sole designer on Beacon</span> },
         { label: "Timeline", value: "2022 - 2023" },
-        { label: "Team", value: "7 engineers. Part of a company design team with a shared system" },
+        {
+          label: "Team",
+          value:
+            "7 engineers, a rotating cast of PMs, no design manager. Product strategy ran between me and the engineering manager. Part of a company design team with a shared system",
+        },
         { label: "Scope", value: "Product design, research, product strategy" },
         { label: "Platform", value: "Web" },
       ]}
@@ -92,9 +96,8 @@ export const Beacon = () => (
         satellites. Everyone else had to figure out a plan on the spot.
       </div>
       <div>
-        So Beacon is not really about detection. It is about giving the long tail of operators a coordination
-        capability that only the largest players had, in a domain where the failure mode is physical and
-        permanent.
+        So Beacon is not about detection. It gives the long tail of operators a coordination capability only
+        the largest players had. The failure mode here is physical and permanent.
       </div>
     </TwoCol>
 
@@ -105,7 +108,7 @@ export const Beacon = () => (
         {
           title: "No prior design language at all",
           detail:
-            "This was the first platform of its kind, so there was no interface convention to borrow and no incumbent habit to design toward. I anchored to the only thing that existed: CDMs and ephemerides, which are extremely dense, and low-tech reports from satellites and ground stations. When there is no precedent, the data model becomes the constraint.",
+            "This was the first platform of its kind, so there was no interface convention to borrow and no incumbent habit to design toward. I anchored to the only thing that existed: CDMs and ephemerides, which are extremely dense, and low-tech reports from satellites and ground stations. When there is no precedent, the data model becomes the constraint. Sysgit was the opposite: an incumbent existed, so I designed toward what users were already trained on.",
         },
         {
           title: "Wildly uneven data quality",
@@ -142,7 +145,7 @@ export const Beacon = () => (
       </div>
       <div>
         The part that made it work: operators became more willing to share once they could see what others had
-        shared in turn.
+        shared in turn. That is mechanism design rather than interface design, and it is why the data arrived.
       </div>
     </TwoCol>
 
@@ -157,14 +160,14 @@ export const Beacon = () => (
     <QualOutcome
       items={[
         {
-          title: "Adoption",
-          detail:
-            "Payload reported in March 2022 that the Beacon beta held data from 60% of companies operating in LEO. Slingshot's 2023 Year in Orbit report put it at over 90% of active LEO spacecraft, 6,000 satellites sharing data, and 160 million conjunction messages ingested to date. Those are two different denominators, companies and then spacecraft, and the second is the company's own figure published after I left. Operators on the platform included SpaceX, NASA, Inmarsat and Endurosat.",
-        },
-        {
           title: "The unintended one",
           detail:
             "Beacon became the de facto source of truth for satellite capabilities, more trusted than the public catalog it sat alongside. Optional, visible, reciprocal disclosure produced better data than an honor-system registry. We did not set out to replace it.",
+        },
+        {
+          title: "Adoption",
+          detail:
+            "Payload reported in March 2022 that the Beacon beta held data from 60% of companies operating in LEO. Slingshot's 2023 Year in Orbit report put it at over 90% of active LEO spacecraft, 6,000 satellites sharing data, and 160 million conjunction messages ingested to date. Those are two different denominators, companies and then spacecraft, and the second is the company's own figure published after I left. Operators on the platform included SpaceX, NASA, Inmarsat and Endurosat.",
         },
       ]}
     />

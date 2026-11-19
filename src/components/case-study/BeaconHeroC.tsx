@@ -30,7 +30,7 @@
  * the undifferentiated wall.
  */
 
-const ORANGE = "var(--beacon-orange, #FF6A13)"; /* stand-in. Swap for Slingshot's brand orange. */
+const ORANGE = "var(--beacon-orange, #F1592B)"; /* Beacon brand orange. */
 
 /* Real CCSDS CDM fields. A message carries a header, then a block per object,
    which is why names repeat down the wall: that repetition is the density. */
@@ -131,14 +131,14 @@ export const BeaconHeroC = () => (
     >
       <defs>
         <radialGradient id="bhc-wash" cx="68%" cy="48%" r="66%">
-          <stop offset="0%" stopColor="#FF6A13" stopOpacity="0.14" />
-          <stop offset="52%" stopColor="#B33A00" stopOpacity="0.05" />
+          <stop offset="0%" stopColor="#F1592B" stopOpacity="0.14" />
+          <stop offset="52%" stopColor="#A43D1D" stopOpacity="0.05" />
           <stop offset="100%" stopColor="#0d0d0d" stopOpacity="0" />
         </radialGradient>
         <linearGradient id="bhc-sweep" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#FF6A13" stopOpacity="0" />
-          <stop offset="55%" stopColor="#FF8A3D" stopOpacity="0.22" />
-          <stop offset="100%" stopColor="#FF6A13" stopOpacity="0" />
+          <stop offset="0%" stopColor="#F1592B" stopOpacity="0" />
+          <stop offset="55%" stopColor="#F8845C" stopOpacity="0.22" />
+          <stop offset="100%" stopColor="#F1592B" stopOpacity="0" />
         </linearGradient>
         <pattern id="bhc-dots" width="26" height="26" patternUnits="userSpaceOnUse">
           <circle cx="1.4" cy="1.4" r="1.4" fill="#fff" fillOpacity="0.035" />
