@@ -37,7 +37,6 @@ export const Sysgit = () => (
       items={[
         { label: "Role", value: <span className="text-bone">Design Lead, sole designer</span> },
         { label: "Timeline", value: "2023 - 2026" },
-        { label: "Team", value: <span className="text-bone">1 designer (me)<br />6 engineers</span> },
         { label: "Scope", value: "Product, design system, research, strategy, brand, front-end PRs" },
         { label: "Page", value: "Overview. Detail available on request" },
       ]}

@@ -78,14 +78,6 @@ export const Originality = () => (
         { label: "Role", value: <span className="text-bone">Senior UX Designer</span> },
         { label: "Company", value: "Turnitin" },
         { label: "Timeline", value: "Closed beta 2018. Shipped 2019" },
-        {
-          label: "Team",
-          value: (
-            <>
-              8 engineers and a PM
-            </>
-          ),
-        },
         { label: "Scope", value: "Research, product design, information architecture" },
         { label: "Platform", value: "Web" },
       ]}

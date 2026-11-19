@@ -64,11 +64,6 @@ export const Beacon = () => (
       items={[
         { label: "Role", value: <span className="text-bone">Senior Product Designer, sole designer on Beacon</span> },
         { label: "Timeline", value: "2022 - 2023" },
-        {
-          label: "Team",
-          value:
-            "7 engineers, a rotating cast of PMs, no design manager. Product strategy ran between me and the engineering manager. Part of a company design team with a shared system",
-        },
         { label: "Scope", value: "Product design, research, product strategy" },
         { label: "Platform", value: "Web" },
       ]}

@@ -21,7 +21,6 @@ export const GradescopeMobile = () => (
       items={[
         { label: "Role", value: <span className="text-bone">Senior Product Designer, one of two</span> },
         { label: "Timeline", value: "Launched 2021" },
-        { label: "Team", value: "2 senior designers under a lead" },
         { label: "Scope", value: "Workflow, screens, platform adaptation" },
         { label: "Platform", value: "iOS and Android" },
       ]}
