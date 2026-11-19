@@ -44,7 +44,7 @@ export const Sysgit = () => (
 
     <SysgitHero />
 
-    <SectionHeading>THE PRODUCT</SectionHeading>
+    <SectionHeading className="mt-12">THE PRODUCT</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">Three jobs that normally mean three very expensive software purchases.</em>}>
       <div>
@@ -58,7 +58,7 @@ export const Sysgit = () => (
     </TwoCol>
     <SysgitSplash />
 
-    <SectionHeading>WHY IT EXISTS</SectionHeading>
+    <SectionHeading className="mt-12">WHY IT EXISTS</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">Systems engineering is a coordination problem, and it scales badly.</em>}>
       <div>
@@ -98,11 +98,11 @@ export const Sysgit = () => (
       </div>
     </TwoCol>
 
-    <SectionHeading>GOALS</SectionHeading>
+    <SectionHeading className="mt-12">GOALS</SectionHeading>
     <Rule className="mb-6" />
     <SysgitGoals />
 
-    <SectionHeading>THE ARGUMENT</SectionHeading>
+    <SectionHeading className="mt-12">THE ARGUMENT</SectionHeading>
     <Rule className="mb-6" />
     <InsightBlock
       quote="One less tool beats one task done perfectly."
@@ -123,7 +123,7 @@ export const Sysgit = () => (
       </div>
     </TwoCol>
 
-    <SectionHeading>WHAT IT LOOKS LIKE</SectionHeading>
+    <SectionHeading className="mt-12">WHAT IT LOOKS LIKE</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">In hardware modeling, a box is not just a box.</em>}>
       <div>
@@ -145,7 +145,7 @@ export const Sysgit = () => (
     </TwoCol>
     <RequirementsTableRecreation />
 
-    <SectionHeading>WHERE IT LANDED</SectionHeading>
+    <SectionHeading className="mt-12">WHERE IT LANDED</SectionHeading>
     <Rule className="mb-6" />
     <QualOutcome
       items={[
@@ -167,7 +167,7 @@ export const Sysgit = () => (
       ]}
     />
 
-    <SectionHeading>WHY DESIGN ACTUALLY MOVES</SectionHeading>
+    <SectionHeading className="mt-12">WHY DESIGN ACTUALLY MOVES</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">The same engineer uses a beautifully made tool at 10 am and one that peaked in 2004 at 11 am.</em>}>
       <div>

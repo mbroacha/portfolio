@@ -71,7 +71,7 @@ export const Beacon = () => (
 
     <MediaSlot ratio="16/9" caption="Conjunction dashboard &middot; dummy data" />
 
-    <SectionHeading>PROBLEM</SectionHeading>
+    <SectionHeading className="mt-12">PROBLEM</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">Avoiding a collision meant scrambling for someone&rsquo;s phone number.</em>}>
       <div>
@@ -96,7 +96,7 @@ export const Beacon = () => (
       </div>
     </TwoCol>
 
-    <SectionHeading>CONSTRAINTS</SectionHeading>
+    <SectionHeading className="mt-12">CONSTRAINTS</SectionHeading>
     <Rule className="mb-6" />
     <ConstraintGrid
       items={[
@@ -123,7 +123,7 @@ export const Beacon = () => (
       ]}
     />
 
-    <SectionHeading>INSIGHT</SectionHeading>
+    <SectionHeading className="mt-12">INSIGHT</SectionHeading>
     <Rule className="mb-6" />
     <InsightBlock
       quote="You cannot mandate disclosure. You can make it reciprocal."
@@ -144,13 +144,13 @@ export const Beacon = () => (
       </div>
     </TwoCol>
 
-    <SectionHeading>DECISIONS</SectionHeading>
+    <SectionHeading className="mt-12">DECISIONS</SectionHeading>
     <Rule className="mb-6" />
     {decisions.map((d, i) => (
       <DecisionRow key={d.title} decision={d} first={i === 0} />
     ))}
 
-    <SectionHeading>OUTCOME</SectionHeading>
+    <SectionHeading className="mt-12">OUTCOME</SectionHeading>
     <Rule className="mb-6" />
     <QualOutcome
       items={[
@@ -167,7 +167,7 @@ export const Beacon = () => (
       ]}
     />
     <MediaSlot ratio="16/9" caption="Coverage and shared-signal adoption over time" />
-    <SectionHeading>REFLECTION</SectionHeading>
+    <SectionHeading className="mt-12">REFLECTION</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">I let the interface get ahead of the information architecture.</em>}>
       <div>

@@ -85,7 +85,7 @@ export const Originality = () => (
 
     <OriginalityHero />
 
-    <SectionHeading>PROBLEM</SectionHeading>
+    <SectionHeading className="mt-12">PROBLEM</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol
       claim={
@@ -120,7 +120,7 @@ export const Originality = () => (
 
     <OriginalitySplash background="/case-studies/originality/bg-zuccarelli.webp" />
 
-    <SectionHeading>CONSTRAINTS</SectionHeading>
+    <SectionHeading className="mt-12">CONSTRAINTS</SectionHeading>
     <Rule className="mb-6" />
     <ConstraintGrid
       items={[
@@ -147,7 +147,7 @@ export const Originality = () => (
       ]}
     />
 
-    <SectionHeading>RESEARCH</SectionHeading>
+    <SectionHeading className="mt-12">RESEARCH</SectionHeading>
     <Rule className="mb-6" />
     <div className="mb-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
       <MediaSlot
@@ -169,7 +169,7 @@ export const Originality = () => (
       </div>
     </div>
 
-    <SectionHeading>INSIGHT</SectionHeading>
+    <SectionHeading className="mt-12">INSIGHT</SectionHeading>
     <Rule className="mb-6" />
     <InsightBlock
       quote="Educators didn't want more signals. They wanted permission to trust their own judgment."
@@ -183,7 +183,7 @@ export const Originality = () => (
       </div>
     </TwoCol>
 
-    <SectionHeading>DECISIONS</SectionHeading>
+    <SectionHeading className="mt-12">DECISIONS</SectionHeading>
     <Rule className="mb-6" />
     <MediaSlot
       ratio="16/9"
@@ -194,7 +194,7 @@ export const Originality = () => (
       <DecisionRow key={d.title} decision={d} first={i === 0} />
     ))}
 
-    <SectionHeading>OUTCOME</SectionHeading>
+    <SectionHeading className="mt-12">OUTCOME</SectionHeading>
     <Rule className="mb-6" />
     <QualOutcome
       items={[
@@ -233,7 +233,7 @@ export const Originality = () => (
       />
     </div>
 
-    <SectionHeading>REFLECTION</SectionHeading>
+    <SectionHeading className="mt-12">REFLECTION</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">Who was the machine learning for?</em>}>
       <div>
