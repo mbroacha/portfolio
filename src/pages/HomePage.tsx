@@ -5,6 +5,7 @@ import { OriginalityHero } from "../components/case-study/OriginalityHero";
 import { CvPage } from "../components/cv/CvPage";
 import { Rule, SectionHeading, MediaSlot, WorkEntry } from "../components/cv/CvPrimitives";
 import { SiteRail } from "../components/cv/SiteRail";
+import { asset } from "../lib/asset";
 
 interface Work {
   id: string;
@@ -77,7 +78,7 @@ const WORK: Work[] = [
       <>
         <span className="italic">Turnitin</span>, Senior UX Designer
         <br />
-        Academic integrity &middot; Shipped 2019
+        Education &middot; Shipped 2019
       </>
     ),
     description:
@@ -98,14 +99,23 @@ const WORK: Work[] = [
     to: "/case-study/gradescope-mobile",
     meta: (
       <>
-        <span className="italic">Gradescope</span>, one of two designers
+        <span className="italic">Gradescope</span>, Senior UX Designer
         <br />
         Education &middot; Launched 2021
       </>
     ),
     description:
-      "Scan and submit handwritten homework from your phone. It did not work, and the reasons are more interesting than the product. My only mobile work, and the only project where I designed alongside another designer as a peer.",
-    media: <MediaSlot ratio="3/4" width="55%" caption="Gradescope Mobile &middot; artifact pending" />,
+      "Scan and submit handwritten homework from your phone. I'll tell you why it didn't work.",
+    media: (
+      <MediaSlot
+        ratio="16/9"
+        fit="contain"
+        matted={false}
+        bordered={false}
+        src={asset("/case-studies/gradescope/screens-perspective.webp")}
+        alt="Three phones in perspective: an assignment list with due dates, the question mapping screen over a scanned page, and a submitted assignment."
+      />
+    ),
   },
 ];
 

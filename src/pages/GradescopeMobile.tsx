@@ -3,6 +3,7 @@ import { PageHead } from "../components/cv/PageHead";
 import { SiteRail } from "../components/cv/SiteRail";
 import { MediaSlot, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import { PrevNext, TwoCol } from "../components/cv/CaseStudyParts";
+import { asset } from "../lib/asset";
 
 export const GradescopeMobile = () => (
   <CvPage
@@ -14,92 +15,83 @@ export const GradescopeMobile = () => (
       title="Gradescope Mobile"
       lede={
         <>
-          <span className="text-bone">Scan and submit handwritten homework from your phone.</span> It did not work,
-          and the reasons are more interesting than the product.
+          <span className="text-bone">Scan and submit handwritten homework from your phone.</span> Replaced taking a photo, using a third-party app to create a PDF, and uploading to a desktop site. One app instead of three.
         </>
       }
       items={[
-        { label: "Role", value: <span className="text-bone">Senior Product Designer, one of two</span> },
+        { label: "Role", value: <span className="text-bone">Senior UX Designer</span> },
         { label: "Timeline", value: "Launched 2021" },
         { label: "Scope", value: "Workflow, screens, platform adaptation" },
         { label: "Platform", value: "iOS and Android" },
       ]}
     />
 
-    <MediaSlot matted={false} ratio="3/4" width="55%" caption="Scan, map, submit" />
+    <MediaSlot
+      ratio="auto"
+      width="55%"
+      bleed
+      matted={false}
+      bordered={false}
+      src={asset("/case-studies/gradescope/screens-perspective.webp")}
+      alt="Three phones in perspective: an assignment list with due dates, the question mapping screen over a scanned page, and a submitted assignment."
+    />
 
-    <SectionHeading className="mt-12">WHAT IT WAS</SectionHeading>
+    <SectionHeading className="mt-12">MOVE TO MOBILE</SectionHeading>
     <Rule className="mb-6" />
-    <TwoCol claim={<em className="font-display not-italic">One app instead of two.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">The parent design system was built for web and had to be translated for mobile interactions.</em>}>
       <div>
-        Students scanned handwritten short-answer assignments into classes they were already enrolled in through
-        Gradescope. A teacher graded them, or the existing OCR autograder did.
-      </div>
-      <div>
-        Before this, a student used a separate scanning app to make a PDF, then uploaded it on the Gradescope site.
-        Collapsing that into one app was the whole premise.
+        This quickly revealed where buttons failed as tap targets, type didn't scale, and the colors pulled too dark on a phone. The team was torn between strict fidelty vs. an interpretation of the design system.
       </div>
     </TwoCol>
+
+    <MediaSlot
+      ratio="auto"
+      width="34%"
+      bleed
+      matted={false}
+      bordered={false}
+      src={asset("/case-studies/gradescope/submission-flow.webp")}
+      alt="A walkthrough of the submission path: the course list, a course's assignments, an unsubmitted assignment, then the same assignment submitted with its pages mapped to questions."
+    />
 
     <SectionHeading className="mt-12">THE DECISION</SectionHeading>
     <Rule className="mb-6" />
-    <TwoCol claim={<em className="font-display not-italic">We required mapping before submission. Then we reversed it.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">We all the work on the frontend. Then we reversed it.</em>}>
       <div>
-        The autograder has to be told where on the page each answer lives, so after scanning, the student maps the
-        area of every question. That is not a short process at 11:59 PM.
+        Imagine a worksheet (do those still exist?): you have a series of printed questions with spaces to answer by hand. Our existing autograder had to be told where each answer sits on the page, so after scanning the paper, the student maps the area
+        of every question. That is not a short process at 11:59 PM. But teachers don't want to have to do this for 30+ students.
       </div>
-      <div>
-        Students want to submit as fast as possible. Teachers do not want to map each assignment themselves. Both
-        are reasonable and they are directly opposed, and the constraint was inherited from the parent product.
-      </div>
-      <div>We let students submit first and map afterward. It was the right call and it was not enough.</div>
+      <div>Ultimately I compromised by letting students submit first to get that timestamp and then mapping afterward.</div>
     </TwoCol>
+    <MediaSlot
+      ratio="auto"
+      width="34%"
+      bleed
+      matted={false}
+      bordered={false}
+      src={asset("/case-studies/gradescope/submit-then-map.webp")}
+      alt="Submission confirmation screen offering Assign Pages as the primary action and Skip for now beneath it."
+    />
 
-    <SectionHeading className="mt-12">WORKING AS A PAIR</SectionHeading>
+    <SectionHeading className="mt-12">WHY IT FAILED</SectionHeading>
     <Rule className="mb-6" />
-    <TwoCol claim={<em className="font-display not-italic">We disagreed about how faithful to be to the parent design system.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">You inherit the blame for another product's friction.</em>}>
       <div>
-        The other senior designer wanted strict fidelity. My position was that the system was built for web and did
-        not survive the platform change. Buttons were wrong as tap targets, type was not scaled, and the colors
-        pulled too dark on a phone.
-      </div>
-      <div>
-        We went back and forth several times. I won on the interactive components and not on the rest, which is
-        probably the correct outcome for an argument neither of us could settle with evidence.
-      </div>
-      <div>
-        It is the same argument I would later lose at Sysgit, where the founder wants strict spec fidelity and I
-        want translation. Literal correctness against contextual fit. I have been on the winning and losing side of
-        it five years apart.
+        A tedious mapping step required for the web app produced rushed mapping, which produced a bad submission, which the teacher read as a
+        broken product. The actual OCR scanner was also a third party platform we could not control. In our own wireframing it was literally a black box.
       </div>
     </TwoCol>
+    <MediaSlot
+      ratio="auto"
+      matted={false}
+      bordered={false}
+      src={asset("/case-studies/gradescope/scanner-handoff.webp")}
+      alt="Three steps of the submission wireflow. The screen between Submit and Upload is a black box labeled Magical Scanning Stuff."
+    />
 
-    <SectionHeading className="mt-12">WHY IT DID NOT WORK</SectionHeading>
-    <Rule className="mb-6" />
-    <TwoCol claim={<em className="font-display not-italic">Bad reviews, and I am not sure it is still supported.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">Nobody had to use this app.</em>}>
       <div>
-        The scanner was a third party we could not control. We worked hard to make the handoff seamless and
-        Gradescope-branded, and it still felt like being punted to another app.
-      </div>
-      <div>
-        We also could not control how carefully a student marked question locations at midnight. And when they
-        rushed it, the bad submission looked to the teacher like our product failing.
-      </div>
-      <div>The technology was not there yet. That is most of it.</div>
-    </TwoCol>
-
-    <SectionHeading className="mt-12">WHAT I TOOK FROM IT</SectionHeading>
-    <Rule className="mb-6" />
-    <TwoCol claim={<em className="font-display not-italic">You inherit the blame for user error your own friction caused.</em>}>
-      <div>
-        A tedious mapping step produces rushed mapping, which produces a bad submission, which a teacher reads as a
-        broken product. The friction and the blame were the same problem, and fixing the friction was outside our
-        control.
-      </div>
-      <div>
-        The other thing was about voluntary users. Nobody had to use this app. The threshold for drop-off is a
-        completely different animal when the alternative is a process the student already tolerates. Every other
-        product I have worked on had captive users, and I had not designed against indifference before.
+        We had correctly identified a product gap: students are mobile first with grades, tests, and academic admin. We relied too heavily on the assumption that a phone app for turning in homework would just naturally be adopted. The threshold for drop-off is much lower when the alternative (web) is a process the student already tolerates.
       </div>
     </TwoCol>
 
