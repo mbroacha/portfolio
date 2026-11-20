@@ -1,15 +1,12 @@
 import { CvPage } from "../components/cv/CvPage";
 import { PageHead } from "../components/cv/PageHead";
-import { SiteRail } from "../components/cv/SiteRail";
 import { MediaSlot, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import { PrevNext, TwoCol } from "../components/cv/CaseStudyParts";
 import { asset } from "../lib/asset";
 
 export const GradescopeMobile = () => (
   <CvPage
-    sidebar={
-      <SiteRail scope="gradescope" />
-    }
+    scope="gradescope"
   >
     <PageHead
       title="Gradescope Mobile"

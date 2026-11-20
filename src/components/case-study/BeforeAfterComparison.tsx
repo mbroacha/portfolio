@@ -92,8 +92,13 @@ export const BeforeAfterComparison = ({
     <figure className="flex flex-col gap-4">
       <div
         ref={containerRef}
-        className="relative cursor-ew-resize overflow-hidden rounded-lg border border-hedge bg-moss touch-none select-none"
-        onPointerDown={onPointerDown}
+        // pan-y, not none: a thumb landing on the image while scrolling the page
+        // must still scroll it. On touch, only the handle starts a drag.
+        className="relative cursor-ew-resize overflow-hidden rounded-lg border border-hedge bg-moss touch-pan-y select-none"
+        onPointerDown={(event) => {
+          if (event.pointerType === "touch") return;
+          onPointerDown(event);
+        }}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
@@ -147,7 +152,7 @@ export const BeforeAfterComparison = ({
           className={cn(
             "absolute top-1/2 z-20 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full",
             "border border-hedge bg-moss shadow-[0_4px_16px_-4px_rgba(0,0,0,0.5)]",
-            "cursor-ew-resize transition-shadow hover:shadow-[0_6px_20px_-4px_rgba(0,0,0,0.55)]",
+            "cursor-ew-resize touch-none transition-shadow hover:shadow-[0_6px_20px_-4px_rgba(0,0,0,0.55)]",
             "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-glow",
           )}
           style={{ left: `${position}%` }}

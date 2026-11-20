@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import { CvPage } from "../components/cv/CvPage";
 import { PageHead } from "../components/cv/PageHead";
-import { SiteRail } from "../components/cv/SiteRail";
 import { MediaSlot, Panel, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import { Ledger } from "../components/cv/CaseStudyParts";
 import { asset } from "../lib/asset";
@@ -30,9 +29,7 @@ const Stage = ({ title, tool, children }: { title: string; tool: string; childre
 
 export const WhatIDo = () => (
   <CvPage
-    sidebar={
-      <SiteRail scope="global" />
-    }
+    scope="global"
   >
     <PageHead
       title="What I do"

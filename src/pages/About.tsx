@@ -1,6 +1,5 @@
 import { CvPage } from "../components/cv/CvPage";
 import { PageHead } from "../components/cv/PageHead";
-import { SiteRail } from "../components/cv/SiteRail";
 import { Bullets, Entry, Panel } from "../components/cv/CvPrimitives";
 import { PhotoGrid } from "../components/cv/PhotoGrid";
 import { education, employment } from "../data/background";
@@ -21,7 +20,7 @@ export const About = () => {
   const outside = answerById("cheeky-outside-work");
 
   return (
-    <CvPage sidebar={<SiteRail scope="global" />}>
+    <CvPage scope="global">
       <PageHead title="About" />
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -101,7 +100,7 @@ export const About = () => {
             <Entry
               when="Email"
               what={
-                <a href="mailto:mbroacha@gmail.com" className="underline">
+                <a href="mailto:mbroacha@gmail.com" className="inline-block py-1 underline">
                   mbroacha@gmail.com
                 </a>
               }
@@ -113,7 +112,7 @@ export const About = () => {
                   href="https://www.linkedin.com/in/morganbroacha/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline"
+                  className="inline-block py-1 underline"
                 >
                   linkedin.com/in/morganbroacha
                 </a>
@@ -126,7 +125,7 @@ export const About = () => {
                   href={asset("/morgan-broacha-resume.pdf?v=2")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline"
+                  className="inline-block py-1 underline"
                 >
                   PDF &#8599;
                 </a>

@@ -77,6 +77,14 @@
     margin: 0;
   }
 
+  /* Below lg the site header is sticky. Without this, a section the field
+     scrolls to lands underneath it. */
+  @media (max-width: 1023px) {
+    [id] {
+      scroll-margin-top: 4.5rem;
+    }
+  }
+
   small {
     font-size: var(--font-size-sm);
     color: var(--lichen);

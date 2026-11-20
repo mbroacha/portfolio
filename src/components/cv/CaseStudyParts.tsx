@@ -56,7 +56,7 @@ export const DecisionRow = ({ decision, first }: { decision: Decision; first?: b
         ] as const
       ).map(([label, value]) => (
         <div key={label} className="mb-3 flex flex-col gap-1">
-          <span className="cv-meta text-[11px] uppercase tracking-[0.08em] text-lichen">{label}</span>
+          <span className="cv-meta uppercase tracking-[0.08em] text-lichen">{label}</span>
           <span>{value}</span>
         </div>
       ))}
@@ -89,14 +89,14 @@ export const PrevNext = ({
 }) => (
   <div className="flex justify-between border-t border-hedge pt-6">
     {prev ? (
-      <Link to={prev.to} className="underline underline-offset-4">
+      <Link to={prev.to} className="inline-block py-2 underline underline-offset-4">
         &larr; {prev.label}
       </Link>
     ) : (
       <span />
     )}
     {next ? (
-      <Link to={next.to} className="underline underline-offset-4">
+      <Link to={next.to} className="inline-block py-2 underline underline-offset-4">
         {next.label} &rarr;
       </Link>
     ) : (

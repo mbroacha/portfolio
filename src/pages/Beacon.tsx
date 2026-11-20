@@ -2,7 +2,6 @@ import { BeaconHeroB } from "../components/case-study/BeaconHeroB";
 import { BeaconSplash } from "../components/case-study/BeaconSplash";
 import { CvPage } from "../components/cv/CvPage";
 import { PageHead } from "../components/cv/PageHead";
-import { SiteRail } from "../components/cv/SiteRail";
 import { MediaSlot, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import {
   ConstraintGrid,
@@ -64,9 +63,7 @@ const decisions: Decision[] = [
 
 export const Beacon = () => (
   <CvPage
-    sidebar={
-      <SiteRail scope="beacon" />
-    }
+    scope="beacon"
   >
     <PageHead
       title="Beacon"

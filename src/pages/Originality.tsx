@@ -1,6 +1,5 @@
 import { CvPage } from "../components/cv/CvPage";
 import { PageHead } from "../components/cv/PageHead";
-import { SiteRail } from "../components/cv/SiteRail";
 import { MediaSlot, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import {
   ConstraintGrid,
@@ -64,9 +63,7 @@ const decisions: Decision[] = [
 
 export const Originality = () => (
   <CvPage
-    sidebar={
-      <SiteRail scope="originality" />
-    }
+    scope="originality"
   >
     <PageHead
       title="Originality"

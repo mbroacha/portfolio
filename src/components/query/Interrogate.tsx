@@ -11,8 +11,8 @@ import { DECLINE, findAnswer, suggestionsFor, type Answer } from "../../lib/retr
  * the argument column to the passage it came from. The field routes people into
  * the static case study; it does not talk at them.
  *
- * One component, two placements. `CvPage` renders it in the sticky rail at `md`
- * and up, and as a section after the last one below that, because asking a
+ * One component, two placements. `CvPage` renders it in the sticky rail at `lg`
+ * and up, and in `SiteFooter` after the content below that, because asking a
  * question before reading the case study is backwards on a phone.
  */
 
@@ -78,13 +78,13 @@ export const Interrogate = ({ scope, className }: { scope?: string; className?: 
       </form>
 
       {asked === null ? (
-        <ul className="mt-3 flex list-none flex-col gap-1.5 p-0">
+        <ul className="mt-2 flex list-none flex-col p-0">
           {suggestions.map((s) => (
             <li key={s.id}>
               <button
                 type="button"
                 onClick={() => run(s.q)}
-                className="cursor-pointer border-0 bg-transparent p-0 text-left text-lichen underline decoration-transparent underline-offset-4 hover:text-bone hover:decoration-[color:var(--edge)]"
+                className="cursor-pointer border-0 bg-transparent px-0 py-1 text-left text-lichen underline decoration-transparent underline-offset-4 hover:text-bone hover:decoration-[color:var(--edge)]"
               >
                 {s.q}
               </button>
@@ -116,7 +116,7 @@ export const Interrogate = ({ scope, className }: { scope?: string; className?: 
                 <button
                   type="button"
                   onClick={() => followSource(hit)}
-                  className="mt-2.5 cursor-pointer border-0 bg-transparent p-0 text-left text-lichen underline underline-offset-4 hover:text-bone"
+                  className="mt-1.5 cursor-pointer border-0 bg-transparent px-0 py-1 text-left text-lichen underline underline-offset-4 hover:text-bone"
                 >
                   {hit.source.label} &rarr;
                 </button>
@@ -132,7 +132,7 @@ export const Interrogate = ({ scope, className }: { scope?: string; className?: 
               setAsked(null);
               setHit(null);
             }}
-            className="mt-3 block cursor-pointer border-0 bg-transparent p-0 text-left text-lichen underline underline-offset-4 hover:text-bone"
+            className="mt-2 block cursor-pointer border-0 bg-transparent px-0 py-1 text-left text-lichen underline underline-offset-4 hover:text-bone"
           >
             Other questions
           </button>

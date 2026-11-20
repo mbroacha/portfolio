@@ -257,7 +257,7 @@ export function SubmissionsReportTable({ initialSelectedFilename, className }: S
     >
       <div className="mb-3 text-[15px] font-medium text-[#202124]">Submissions Report</div>
       <div ref={tableShellRef} className="-mx-1 overflow-x-auto px-1">
-        <table ref={tableRef} className="w-full table-fixed border-collapse text-left text-[13px] text-[#3c4043]">
+        <table ref={tableRef} className="w-full min-w-[600px] table-fixed border-collapse text-left text-[13px] text-[#3c4043]">
           <colgroup>
             {widthsPct.map((pct, i) => (
               <col key={i} style={{ width: `${pct}%` }} />
@@ -280,7 +280,7 @@ export function SubmissionsReportTable({ initialSelectedFilename, className }: S
                     <button
                       type="button"
                       className={cn(
-                        "inline-flex max-w-full items-center gap-0.5 rounded px-0.5 hover:bg-black/[0.04]",
+                        "inline-flex max-w-full items-center gap-0.5 rounded px-0.5 py-0.5 hover:bg-black/[0.04]",
                         h.align === "right" ? "ml-auto justify-end text-right" : "text-left",
                       )}
                       onClick={() => toggleSort(h.key)}
@@ -294,7 +294,7 @@ export function SubmissionsReportTable({ initialSelectedFilename, className }: S
                         aria-hidden
                         tabIndex={-1}
                         title="Resize column"
-                        className="absolute right-0 top-1/2 z-10 h-[70%] w-3 -translate-y-1/2 translate-x-1/2 cursor-col-resize border-0 bg-transparent p-0 hover:bg-[#1a73e8]/10"
+                        className="absolute right-0 top-1/2 z-10 hidden h-[70%] w-3 [@media(hover:hover)]:block -translate-y-1/2 translate-x-1/2 cursor-col-resize border-0 bg-transparent p-0 hover:bg-[#1a73e8]/10"
                         onMouseDown={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
