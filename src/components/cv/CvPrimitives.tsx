@@ -163,7 +163,7 @@ export const MediaSlot = ({
     className={cn(
       "mb-6",
       inset(width, fit)
-        ? cn("bg-[color:var(--surface-media-backdrop)] px-8 py-8", bleed && "-mx-8")
+        ? cn("bg-[color:var(--surface-media-backdrop)] px-4 py-8 sm:px-8", bleed && "-mx-8")
         : matted && "bg-[color:var(--surface-media)] p-4",
     )}
   >
@@ -172,8 +172,14 @@ export const MediaSlot = ({
         "relative mx-auto overflow-hidden",
         bordered && "border border-[color:var(--edge)]",
         ratioClass[ratio],
+        // A percentage width sized for the desktop column leaves a phone screen
+        // ~100px wide on a phone. Below sm, double it, capped at full width.
+        width && "w-[min(100%,calc(var(--slot-w)*2))] sm:w-[var(--slot-w)]",
       )}
-      style={{ width, backgroundColor: bordered ? "var(--ink-600)" : undefined }}
+      style={{
+        ...(width ? { "--slot-w": width } : {}),
+        backgroundColor: bordered ? "var(--ink-600)" : undefined,
+      } as React.CSSProperties}
     >
       {children ? (
         <div className="absolute inset-0" role="img" aria-label={alt ?? ""}>
@@ -228,7 +234,7 @@ export const WorkEntry = ({
     <div className="cv-subhead text-bone">
       {index}.{" "}
       {to ? (
-        <Link to={to} className="underline underline-offset-4">
+        <Link to={to} className="inline-block py-1 underline underline-offset-4">
           {title}
         </Link>
       ) : (

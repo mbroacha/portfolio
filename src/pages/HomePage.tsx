@@ -4,7 +4,6 @@ import { BeaconHeroB } from "../components/case-study/BeaconHeroB";
 import { OriginalityHero } from "../components/case-study/OriginalityHero";
 import { CvPage } from "../components/cv/CvPage";
 import { Rule, SectionHeading, MediaSlot, WorkEntry } from "../components/cv/CvPrimitives";
-import { SiteRail } from "../components/cv/SiteRail";
 import { asset } from "../lib/asset";
 
 interface Work {
@@ -121,7 +120,7 @@ const WORK: Work[] = [
 
 export const HomePage = () => {
   return (
-    <CvPage sidebar={<SiteRail scope="global" />}>
+    <CvPage scope="global">
 
       <SectionHeading>SELECTED WORK</SectionHeading>
       <Rule className="mb-6" />

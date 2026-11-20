@@ -122,7 +122,7 @@ function LabelsModal({
         </div>
         <button
           type="button"
-          className="mt-3 text-[13px] font-medium text-[#1a73e8] transition-colors hover:text-[#174ea6]"
+          className="mt-2 py-1 text-[13px] font-medium text-[#1a73e8] transition-colors hover:text-[#174ea6]"
         >
           Create New
         </button>
@@ -166,7 +166,7 @@ function CommentsModal({ open, onClose }: { open: boolean; onClose: () => void }
             <button
               type="button"
               aria-label="Comment options"
-              className="shrink-0 rounded p-1 text-[#80868b] transition-colors hover:bg-[#f1f3f4] hover:text-[#5f6368]"
+              className="shrink-0 rounded p-1.5 text-[#80868b] transition-colors hover:bg-[#f1f3f4] hover:text-[#5f6368]"
             >
               <FontAwesomeIcon icon={faEllipsisVertical} className="h-3.5 w-3.5" />
             </button>

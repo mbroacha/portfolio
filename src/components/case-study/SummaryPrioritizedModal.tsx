@@ -45,10 +45,12 @@ export function SummaryPrioritizedModal() {
     <div
       className="summary-prioritized-modal overflow-hidden rounded-[20px] bg-white ring-1 ring-black/[0.06] shadow-[0_6px_18px_-10px_rgba(60,64,67,0.18)] transition-shadow duration-200 hover:shadow-[0_10px_28px_-8px_rgba(60,64,67,0.22)]"
     >
-      <div className="relative min-h-[360px] bg-[#f7f7f7]">
-        <div className="absolute inset-x-0 bottom-0 flex items-end justify-center">
-          <div className="mb-0 flex items-start gap-1">
-            <div className="w-[440px] rounded-t-[6px] bg-white px-4 pb-4 pt-5 shadow-[0_10px_24px_-16px_rgba(0,0,0,0.45)]">
+      {/* Bottom-aligned in flow rather than absolutely, so the panel can grow
+          upward when its text wraps on a phone instead of clipping. */}
+      <div className="flex min-h-[360px] flex-col justify-end bg-[#f7f7f7] px-3 pt-6 sm:px-0">
+        <div className="flex items-end justify-center">
+          <div className="mb-0 flex w-full items-start justify-center gap-1">
+            <div className="min-w-0 flex-1 rounded-t-[6px] sm:w-[440px] sm:flex-none bg-white px-4 pb-4 pt-5 shadow-[0_10px_24px_-16px_rgba(0,0,0,0.45)]">
               {activeTab === "summary" ? (
                 <>
                   <h3 className="text-center text-[28px] font-normal leading-none text-black">
@@ -111,7 +113,7 @@ export function SummaryPrioritizedModal() {
                             <button
                               type="button"
                               aria-label="Comment options"
-                              className="shrink-0 rounded p-1 text-[#8a8a8a] transition-colors hover:bg-[#f1f3f4] hover:text-[#595959]"
+                              className="shrink-0 rounded p-1.5 text-[#8a8a8a] transition-colors hover:bg-[#f1f3f4] hover:text-[#595959]"
                             >
                               <FontAwesomeIcon icon={faEllipsisVertical} className="h-3.5 w-3.5" />
                             </button>
@@ -148,7 +150,7 @@ export function SummaryPrioritizedModal() {
                   role="menuitemradio"
                   aria-checked={activeTab === tab.key}
                   className={cn(
-                    "flex h-[112px] w-[104px] flex-col items-center justify-center gap-1.5 rounded-[4px] bg-white px-2 transition-colors",
+                    "flex h-[76px] w-[68px] flex-col sm:h-[112px] sm:w-[104px] items-center justify-center gap-1.5 rounded-[4px] bg-white px-2 transition-colors",
                     activeTab === tab.key
                       ? "bg-[#f1f3f4] text-[#ff5d4d] ring-1 ring-[#d0d7de] shadow-[0_4px_10px_-10px_rgba(0,0,0,0.45)]"
                       : "text-[#242424] shadow-[0_4px_10px_-10px_rgba(0,0,0,0.45)] hover:bg-[#f1f3f4] hover:text-[#ff5d4d]",
@@ -156,9 +158,9 @@ export function SummaryPrioritizedModal() {
                 >
                   <FontAwesomeIcon
                     icon={tab.icon === "flag" ? faFlag : faMagnifyingGlass}
-                    className="h-6 w-6"
+                    className="h-5 w-5 sm:h-6 sm:w-6"
                   />
-                  <span className="w-full px-1 text-center text-[16px] font-semibold leading-tight">
+                  <span className="w-full px-1 text-center text-[12px] font-semibold sm:text-[16px] leading-tight">
                     {tab.label}
                   </span>
                 </button>

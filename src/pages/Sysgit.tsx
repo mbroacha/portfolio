@@ -14,7 +14,6 @@
 
 import { CvPage } from "../components/cv/CvPage";
 import { PageHead } from "../components/cv/PageHead";
-import { SiteRail } from "../components/cv/SiteRail";
 import { MediaSlot, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import { InsightBlock, PrevNext, QualOutcome, TwoCol } from "../components/cv/CaseStudyParts";
 import { CustomerStackDiagram } from "../components/case-study/CustomerStackDiagram";
@@ -26,7 +25,7 @@ import { TranslationTriptych } from "../components/case-study/TranslationTriptyc
 import { asset } from "../lib/asset";
 
 export const Sysgit = () => (
-  <CvPage sidebar={<SiteRail scope="sysgit" />}>
+  <CvPage scope="sysgit">
     <PageHead
       title="Sysgit"
       lede={

@@ -67,6 +67,12 @@ const CSS = `
 .tt .p3 {background:#f0f0f0;padding:8px 0 0}
 .tt .cl {display:flex;font-family:ui-monospace,Menlo,monospace;font-size:8.5px;line-height:1.85;white-space:pre;padding:0 6px 0 0}
 .tt .cl .g {width:24px;flex:0 0 auto;text-align:right;padding-right:7px;color:#3e7790;user-select:none}
+/* Three columns need roughly 600px. Below that, each panel collapses to a
+   word per line, so stack them and let the code panel scroll sideways. */
+@media (max-width: 639px) {
+.tt .cols {flex-direction:column;gap:20px}
+.tt .p3 {overflow-x:auto;padding-bottom:8px}
+}
 .tt .kw {color:#0000f5}.str{color:#96261f}.cm{color:#377e22}.ty{color:#377e7f}.pl{color:#000}
 `;
 

@@ -1,34 +1,34 @@
 import type { ReactNode } from "react";
-import { cn } from "../../lib/cn";
+import { SiteFooter, SiteHeader, SiteRail } from "./SiteRail";
 
 interface CvPageProps {
-  /** Left rail. Index supplies bio + resume; case studies supply project meta. */
-  sidebar: ReactNode;
+  /** Corpus scope for the "Ask me anything" field. */
+  scope?: string;
   children: ReactNode;
-  /**
-   * Type register for the rail. 12px by default. The rail is chrome around the
-   * page: identity, navigation, the field, contact. Page content lives in the
-   * content column, where it is set at reading size.
-   */
-  rail?: "meta" | "body";
 }
 
 /**
- * Dark CV shell: 25/75 grid, sticky left rail, hairline rules.
- * Collapses to a single column below `md`.
+ * Dark CV shell.
+ *
+ * At `lg` and up: 25/75 grid, sticky left rail, hairline rules.
+ * Below `lg`: a slim sticky header with a menu, the content, then the field
+ * and contact links. The rail is 12px structure type: chrome around the page.
+ * Page content lives in the content column, where it is set at reading size.
+ *
+ * The switch is `lg`, not `md`: at 768px a 25% rail is ~190px, and the nav
+ * card labels wrapped one word per line.
  */
-export const CvPage = ({ sidebar, children, rail = "meta" }: CvPageProps) => (
+export const CvPage = ({ scope, children }: CvPageProps) => (
   <>
-    <div className="mx-auto grid w-full max-w-page grid-cols-1 bg-fern md:grid-cols-[25%_75%]">
-      <aside className={cn(
-        rail === "body" ? "cv-body" : "cv-meta",
-        "flex flex-col gap-6 border-b border-hedge p-8 md:sticky md:top-0 md:max-h-screen md:self-start md:overflow-y-auto md:border-b-0 md:border-r",
-      )}>
-        {sidebar}
+    <SiteHeader />
+    <div className="mx-auto grid w-full max-w-page grid-cols-1 bg-fern lg:grid-cols-[25%_75%]">
+      <aside className="cv-meta hidden flex-col gap-6 border-r border-hedge p-8 lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:self-start lg:overflow-y-auto">
+        <SiteRail scope={scope} />
       </aside>
       <main className="cv-prose flex min-w-0 flex-col p-8">
         {children}
       </main>
+      <SiteFooter scope={scope} />
     </div>
     <footer
       className="cv-meta mx-auto w-full max-w-page border-t border-hedge bg-moss px-8 py-6"

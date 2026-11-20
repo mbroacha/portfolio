@@ -335,7 +335,11 @@ export function EssayIntegrityDashboard() {
                     transform: zoomed ? "scale(1.65)" : dimmed ? "scale(0.94)" : "scale(1)",
                     transformOrigin: "center center",
                   }}
-                  onMouseEnter={() => setHoveredChart(chart.id)}
+                  // Hover devices only. On a phone a tap fires mouseenter, and a
+                  // 1.65x card overflows the screen with nothing to dismiss it.
+                  onMouseEnter={() => {
+                    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) setHoveredChart(chart.id);
+                  }}
                 >
                   <MiniLineChart
                     values={SERIES[chart.id]}
@@ -353,8 +357,8 @@ export function EssayIntegrityDashboard() {
           </div>
         </div>
 
-        <div className="relative z-0 mt-5 overflow-hidden rounded-[6px] border border-[#e5e7eb] bg-white">
-          <table className="w-full border-collapse text-left text-[12px] text-[#374151]">
+        <div className="relative z-0 mt-5 overflow-x-auto rounded-[6px] border border-[#e5e7eb] bg-white">
+          <table className="w-full min-w-[640px] border-collapse text-left text-[12px] text-[#374151]">
             <thead>
               <tr className="bg-[#f9fafb] text-[10px] font-medium uppercase tracking-[0.04em] text-[#6b7280]">
                 <th className="px-4 py-2.5 font-medium">Filename</th>
