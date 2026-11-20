@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-11",
+  "generated": "2026-11-20",
   "source": "content/answer-bank.json",
   "decline": "Morgan hasn't written about that.",
   "suggested": [
@@ -228,6 +228,17 @@
         "label": "What I Do",
         "path": "/what-i-do"
       }
+    },
+    {
+      "id": "practice-process",
+      "q": "What is your process?",
+      "aliases": [
+        "walk me through your process",
+        "how do you work"
+      ],
+      "a": "I make something concrete as fast as I can, because people react more easily to something that exists over a list of possibilities. That might be a paper sketch or three prototypes built in an afternoon. Then I get it in front of the people who have to build it and the people who asked for it, early enough that being wrong is cheap. I know I’m done when the only questions left are ones only shipping will answer.",
+      "scope": "global",
+      "tone": "straight"
     },
     {
       "id": "cheeky-is-this-a-chatbot",
@@ -651,7 +662,7 @@
     },
     {
       "id": "beacon-no-prior-art",
-      "q": "How do you design something with no precedent?",
+      "q": "How do you design something with no prior art?",
       "aliases": [
         "no precedent",
         "first of its kind",
@@ -834,9 +845,9 @@
       "scope": "gradescope",
       "tone": "straight",
       "source": {
-        "label": "Gradescope Mobile, Working as a pair",
+        "label": "Gradescope Mobile, On a phone",
         "path": "/case-study/gradescope-mobile",
-        "anchor": "working-as-a-pair"
+        "anchor": "on-a-phone"
       }
     },
     {
@@ -873,7 +884,6 @@
       "a": "Read it, yes. Write it, historically no. It is the thing I am worst at and it has a real cost, because far too much lives in my head. This site is the largest piece of documentation I have ever produced about my own work, which should tell you how overdue it was.",
       "scope": "global",
       "tone": "cheeky",
-      "suggest": false,
       "source": {
         "label": "What I Do",
         "path": "/what-i-do"
@@ -910,7 +920,7 @@
         "favourite colour",
         "what is your colour"
       ],
-      "a": "#244233. Hue 150, saturation 30, lightness 20. The perfect pine green. Nearest ink is Pantone 5605 C.",
+      "a": "#244233. Hue 150, saturation 30, lightness 20. The hue is the whole argument: 150 sits just off pure green toward blue, which is why it reads as pine rather than lawn. Real needles carry a waxy cuticle that scatters cool light, so they run colder than almost any other foliage. Saturation stays low because needles are never vivid, and lightness stays down because pine is a color you see in mass, not in a single leaf. Nearest ink is Pantone 5605 C.",
       "scope": "global",
       "tone": "cheeky",
       "swatch": {
@@ -1418,8 +1428,7 @@
       ],
       "a": "Turnitin is primarily an academic integrity product. It is best known for its anti-plagiarism platform, but I worked on a lesser known issue: students buying papers from essay mills online. That was a slightly different problem, because the work was technically unique, just not by the student it was assigned to. The entire suite of academic integrity products was Originality. This has almost certainly changed since the AI boom.",
       "scope": "originality",
-      "tone": "straight",
-      "suggest": false
+      "tone": "straight"
     },
     {
       "id": "gradescope-what-is-it",
@@ -1431,8 +1440,7 @@
       ],
       "a": "Gradescope is an automated grading tool that was acquired by Turnitin. At the time there was no clean way for students to digitize physical assignments for grading on the platform, so we created an app that allowed scanning and automated grading.",
       "scope": "gradescope",
-      "tone": "straight",
-      "suggest": false
+      "tone": "straight"
     },
     {
       "id": "originality-teacher-use",
@@ -1444,8 +1452,7 @@
       ],
       "a": "Originality is basically a series of reports generated when a student submits a written assignment online. Teachers then use the scores and flags to determine if a student may have cheated.",
       "scope": "originality",
-      "tone": "straight",
-      "suggest": false
+      "tone": "straight"
     },
     {
       "id": "sysgit-what-is-it",
@@ -1457,8 +1464,7 @@
       ],
       "a": "Systems engineering plus Git. It is a tool for hardware modeling and requirements management that uses existing Git principles for version control.",
       "scope": "sysgit",
-      "tone": "straight",
-      "suggest": false
+      "tone": "straight"
     }
   ]
 }

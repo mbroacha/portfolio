@@ -75,7 +75,7 @@ function sectionIndex() {
     if (!existsSync(file)) continue;
     const src = readFileSync(file, "utf8");
     const ids = new Set(
-      [...src.matchAll(/<SectionHeading>([^<]+)<\/SectionHeading>/g)].map((h) => slug(h[1])),
+      [...src.matchAll(/<SectionHeading[^>]*>([^<]+)<\/SectionHeading>/g)].map((h) => slug(h[1])),
     );
     routes.set(path, ids);
   }
