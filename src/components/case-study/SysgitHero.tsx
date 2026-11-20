@@ -33,9 +33,6 @@
  * state is the resolved state, which is why the broken value is explicitly
  * hidden below: with animation off, prefers-reduced-motion gets
  * the finished picture rather than every state stacked on top of itself.
- *
- * The still used on the home page is this same picture at rest, exported to
- * public/case-studies/sysgit/hero-still.png.
  */
 
 const CSS = `

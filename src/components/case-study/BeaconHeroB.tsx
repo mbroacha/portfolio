@@ -58,9 +58,6 @@
  * object and measure are hidden in the base style, and the old track sits at
  * ghost opacity. With prefers-reduced-motion the reader gets the resolution
  * rather than every state stacked on top of itself.
- *
- * The still used on the home page is this same picture at rest, exported to
- * public/case-studies/beacon/hero-still.png.
  */
 
 const ORANGE = "var(--beacon-orange, #F1592B)"; /* Beacon brand orange. */
