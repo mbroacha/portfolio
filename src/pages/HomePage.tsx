@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Link } from "react-router-dom";
 import { SysgitHero } from "../components/case-study/SysgitHero";
 import { BeaconHeroB } from "../components/case-study/BeaconHeroB";
 import { OriginalityHero } from "../components/case-study/OriginalityHero";
@@ -106,14 +107,22 @@ const WORK: Work[] = [
     description:
       "Scan and submit handwritten homework from your phone. I'll tell you why it didn't work.",
     media: (
+      // Framed like the three above it: a bordered 16:9 slot on the media
+      // fill the hero components paint. The PNG is a transparent portrait, so
+      // it is contained and padded off the frame edge rather than cropped.
       <MediaSlot
         ratio="16/9"
-        fit="contain"
         matted={false}
-        bordered={false}
-        src={asset("/case-studies/gradescope/screens-perspective.webp")}
         alt="Three phones in perspective: an assignment list with due dates, the question mapping screen over a scanned page, and a submitted assignment."
-      />
+      >
+        <div className="h-full w-full p-4 sm:p-6" style={{ backgroundColor: "var(--surface-media-backdrop)" }}>
+          <img
+            src={asset("/case-studies/gradescope/screens-perspective.webp")}
+            alt=""
+            className="h-full w-full bg-transparent object-contain"
+          />
+        </div>
+      </MediaSlot>
     ),
   },
 ];
@@ -128,7 +137,17 @@ export const HomePage = () => {
       {WORK.map((w, i) => (
         <div key={w.id}>
           {i > 0 ? <Rule className="mb-6" /> : null}
-          {w.media}
+          {/* The image is a second way into the case study, not a second tab
+              stop: keyboard users already have the title link right below.
+              Screen readers still hear the image's alt as the link's name. */}
+          <Link
+            to={w.to}
+            tabIndex={-1}
+            // Same cue as the nav cards: the frame's border brightens on hover.
+            className="block no-underline [&:hover_.cv-frame]:border-[color:var(--text-tertiary)]"
+          >
+            {w.media}
+          </Link>
           <WorkEntry index={i + 1} title={w.title} to={w.to} meta={w.meta} description={w.description} />
         </div>
       ))}

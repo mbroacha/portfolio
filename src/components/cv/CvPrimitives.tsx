@@ -169,8 +169,9 @@ export const MediaSlot = ({
   >
     <div
       className={cn(
-        "relative mx-auto overflow-hidden",
-        bordered && "border border-[color:var(--edge)]",
+        // cv-frame: a hook for a parent link to restyle the frame on hover.
+        "cv-frame relative mx-auto overflow-hidden",
+        bordered && "border border-[color:var(--edge)] transition-colors",
         ratioClass[ratio],
         // A percentage width sized for the desktop column leaves a phone screen
         // ~100px wide on a phone. Below sm, double it, capped at full width.
