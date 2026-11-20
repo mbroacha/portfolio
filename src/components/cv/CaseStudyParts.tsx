@@ -67,7 +67,7 @@ export const DecisionRow = ({ decision, first }: { decision: Decision; first?: b
 
 /**
  * Outcome, qualitative variant. Use where there are no defensible metrics.
- * See PORTFOLIO_PLAN.md 3c: a three-slot metric row invites invention.
+ * A three-slot metric row invites invention.
  */
 export const QualOutcome = ({ items }: { items: { title: string; detail: ReactNode }[] }) => (
   <div className="grid grid-cols-1 gap-6 pb-6 sm:grid-cols-2">

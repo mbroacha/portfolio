@@ -10,7 +10,7 @@ interface JackalopeProps {
 
 /**
  * Site mark. Inherits the current text color, so it takes the palette
- * wherever it sits. Source: src/assets/site.logo.pri.svg
+ * wherever it sits. Same mark as the favicon, public/jackalope.svg.
  */
 export const Jackalope = ({ size = 20, className, label }: JackalopeProps) => (
   <svg

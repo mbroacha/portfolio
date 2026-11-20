@@ -108,7 +108,7 @@ const ALIAS_CASES = [
 
 /** [query, scope, expected] — must NOT be a verbatim phrasing. */
 const CASES = [
-  ["walk me through your design process", "global", "DECLINE"],
+  ["walk me through your design process", "global", "practice-process"],
   ["how do you work with product managers", "global", "product-strategy"],
   ["tell me about a time you influenced strategy", "global", "product-strategy"],
   ["how do you run a critique session", "global", "no-critique"],
@@ -156,7 +156,7 @@ const CASES = [
   ["what was your role exactly", "originality", "originality-constraint"],
   ["why did it not ship", "gradescope", "DECLINE"],
   ["what was your contribution", "gradescope", "gradescope-pair"],
-  ["what is your salary expectation", "global", "DECLINE"],
+  ["what is your salary expectation", "global", "logistics-comp"],
   ["are you authorized to work in the us", "global", "DECLINE"],
   ["do you want coffee", "global", "DECLINE"],
   ["python", "global", "DECLINE"],

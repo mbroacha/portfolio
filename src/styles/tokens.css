@@ -2,10 +2,9 @@
  * Dark CV design tokens.
  *
  * Palette and type sourced from the Dark CV template (Portfolio CV + Case Study).
- * See PORTFOLIO_PLAN.md §3 for why the Greenhouse brand was retired.
  *
  * MIGRATION NOTE: the legacy Greenhouse variable names (--moss, --fern, --hedge,
- * --bone, --sage, --lichen, --glow, --ember) are retained as aliases and repointed
+ * --bone, --sage, --lichen, --glow) are retained as aliases and repointed
  * at the new palette. This re-skins every existing component from this one file
  * with zero risk of dangling references. Prefer the semantic names below in new
  * code; the legacy aliases can be renamed in a later mechanical pass.
@@ -23,18 +22,10 @@
   --text-primary: #d9d9d9; /* headings, labels, links */
   --text-secondary: #b8b8b8; /* body copy */
   --text-tertiary: #8a8a8a; /* captions, muted metadata */
-  --text-hover: #ffffff; /* link hover */
 
   /* ── Semantic aliases ─────────────────────────────────────── */
-  --surface-page: var(--ink-900);
-  --surface-card: var(--ink-800);
   --surface-media: var(--ink-700);
   --surface-media-backdrop: var(--ink-950);
-  --border-default: var(--rule);
-  --text-heading: var(--text-primary);
-  --text-body: var(--text-secondary);
-  --text-muted: var(--text-tertiary);
-  --accent-action: var(--text-primary);
 
   /* ── Legacy Greenhouse aliases, repointed ─────────────────── */
   --moss: var(--ink-900);
@@ -44,22 +35,10 @@
   --sage: var(--text-secondary);
   --lichen: var(--text-tertiary);
   --glow: var(--text-primary);
-  --glow-hover: var(--text-hover);
-  /* Ember is retired. Repointed to muted so any stray usage degrades quietly
-     instead of rendering orange in a monochrome system. */
-  --ember: var(--text-tertiary);
 
   /* Tailwind RGB channels (alpha-capable utilities) */
-  --color-background: 22 22 22;
-  --color-surface: 30 30 30;
-  --color-module: 30 30 30;
-  --color-text: 217 217 217;
-  --color-text-muted: 184 184 184;
   --color-text-caption: 138 138 138;
   --color-border: 51 51 51;
-  --color-primary: 217 217 217;
-  --color-accent: 217 217 217;
-  --color-ember: 138 138 138;
 
   /* ── Typography ───────────────────────────────────────────── */
   /* Two families, three roles.
@@ -72,7 +51,7 @@
   --font-body: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
   /* There is no mono face in this system. IBM Plex Sans carries both prose and
      structure. --font-mono is kept as an alias so Tailwind's font-mono utility
-     and the legacy Greenhouse components keep resolving. Do not point it at a
+     keeps resolving. Do not point it at a
      monospace family again without deciding that on purpose. */
   --font-mono: var(--font-body);
   --font-family-display: var(--font-display);
@@ -80,31 +59,23 @@
   --font-family-mono: var(--font-mono);
 
   /* Type ramp. Template baseline is 12px/1.5. */
-  --font-size-xs: 0.6875rem; /* 11px — micro labels */
   --font-size-sm: 0.75rem; /* 12px — mono metadata, captions, the rail */
-  --font-size-label: 0.75rem; /* 12px — eyebrows, buttons */
   --font-size-base: 0.9375rem; /* 15px — prose */
-  --font-size-lg: 1rem; /* 16px — lead prose */
   --font-size-subhead: 1.0625rem; /* 17px — decision titles, claims, outcome items */
   --font-size-xl: 1.75rem; /* 28px — project title (serif italic) */
   --font-size-2xl: 1rem; /* 16px — section heading (serif italic) */
   --font-size-3xl: 1.25rem;
-  --font-size-stat: 1.75rem; /* 28px — outcome figures (serif italic) */
   /* The one poster moment on the site. Large enough to be a landing, small
      enough that the case studies underneath are not a letdown. */
   --font-size-hero: clamp(1.625rem, 3.4vw, 2.25rem);
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;
-  --font-weight-semibold: 500;
 
   --tracking-label: 0.08em;
-  --tracking-label-wide: 0.12em;
-  --tracking-button: 0.04em;
 
   --line-height-body: 1.6;
   --line-height-meta: 1.5;
-  --line-height-mono: var(--line-height-meta); /* alias, see --font-mono */
 
   /* Plex Sans at 12px sets tighter than Plex Mono did. A little tracking
      restores the rail's document feel without making it look like UI chrome.
@@ -112,45 +83,17 @@
   --tracking-meta: 0.02em;
   --measure-prose: 68ch;
 
-  /* ── Spacing ──────────────────────────────────────────────── */
-  --space-0: 0;
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-
   /* ── Layout ───────────────────────────────────────────────── */
   /* Template: 1440 max, 33/67 split, 32px padding. */
-  --gutter: 2rem;
-  --section-y: 1.5rem;
-  --page-gutter: var(--gutter);
-  --section-padding-y: 1.5rem;
   --max-width-page: 90rem;
-  --max-width-content: 90rem;
   --max-width-prose: 68ch;
-  --max-width-rail: 25%;
-  --sidebar-width: 25%;
 
   /* ── Shape ────────────────────────────────────────────────── */
   /* The template is entirely square. Radii collapse to zero. */
   --radius-sm: 0;
   --radius-md: 0;
   --radius-lg: 0;
-
-  --border-1: 1px solid var(--rule);
   --transition-fast: 150ms ease-out;
-
-  /* ── Media placeholders ───────────────────────────────────── */
-  /* No gradients in this system. Retained as flat fills so any component
-     still referencing them renders correctly. */
-  --gradient-hero: none;
-  --gradient-footer: none;
-  --placeholder-stripes: none;
-  --gradient-placeholder: none;
 }
 
 /**

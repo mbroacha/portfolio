@@ -17,3 +17,6 @@ _stage-original/
 
 # TypeScript incremental build cache. Rewritten on every build.
 *.tsbuildinfo
+
+# macOS Finder metadata.
+.DS_Store
