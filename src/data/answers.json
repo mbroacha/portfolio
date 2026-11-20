@@ -845,9 +845,9 @@
       "scope": "gradescope",
       "tone": "straight",
       "source": {
-        "label": "Gradescope Mobile, On a phone",
+        "label": "Gradescope Mobile, Move to mobile",
         "path": "/case-study/gradescope-mobile",
-        "anchor": "on-a-phone"
+        "anchor": "move-to-mobile"
       }
     },
     {

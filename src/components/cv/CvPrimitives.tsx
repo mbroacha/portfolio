@@ -115,6 +115,9 @@ const ratioClass: Record<Ratio, string> = {
   auto: "",
 };
 
+/** A frame that cannot fill the column: fixed width, or letterboxed by contain. */
+const inset = (width?: string, fit?: "cover" | "contain") => Boolean(width) || fit === "contain";
+
 /**
  * Media slot. Renders a real image when `src` is given, otherwise the
  * template's diagonal placeholder frame. With an image, the caption sits
@@ -132,6 +135,7 @@ export const MediaSlot = ({
   bordered = true,
   matted = true,
   fit = "cover",
+  bleed = false,
   children,
 }: {
   ratio?: Ratio;
@@ -146,10 +150,23 @@ export const MediaSlot = ({
   /** cover crops to the slot; contain letterboxes. A screenshot whose aspect
       does not match the slot needs contain, or the UI gets cut off. */
   fit?: "cover" | "contain";
+  /** Pull the backdrop out through the content column's padding. Only for a
+      slot placed directly in the page column, never inside a grid cell. */
+  bleed?: boolean;
   /** A live hero component, in place of a still. Takes precedence over src. */
   children?: ReactNode;
 }) => (
-  <div className={cn("mb-6", matted && "bg-[color:var(--surface-media)] p-4")}>
+  // A frame narrower than the column, by explicit width or by letterboxing,
+  // leaves dead page around the image. The backdrop takes that space instead,
+  // so every image reads as a full-width band whatever its own proportions.
+  <div
+    className={cn(
+      "mb-6",
+      inset(width, fit)
+        ? cn("bg-[color:var(--surface-media-backdrop)] px-8 py-8", bleed && "-mx-8")
+        : matted && "bg-[color:var(--surface-media)] p-4",
+    )}
+  >
     <div
       className={cn(
         "relative mx-auto overflow-hidden",
@@ -163,7 +180,10 @@ export const MediaSlot = ({
           {children}
         </div>
       ) : src ? (
-        <img src={src} alt={alt ?? ""} className={cn("h-full w-full", fit === "contain" ? "object-contain" : "object-cover")} />
+        <img src={src} alt={alt ?? ""} // The global img rule paints --moss behind every image. A transparent PNG
+          // would show that as a lighter rectangle inside the slot, so clear it and
+          // let the slot's own surface read through.
+          className={cn("h-full w-full bg-transparent", fit === "contain" ? "object-contain" : "object-cover")} />
       ) : (
         <>
           <svg

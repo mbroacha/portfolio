@@ -112,8 +112,8 @@ const WORK: Work[] = [
         fit="contain"
         matted={false}
         bordered={false}
-        src={asset("/case-studies/gradescope/screens.webp")}
-        alt="Three phone screens: an assignment list with due dates, the question mapping screen over a scanned page, and a graded submission."
+        src={asset("/case-studies/gradescope/screens-perspective.webp")}
+        alt="Three phones in perspective: an assignment list with due dates, the question mapping screen over a scanned page, and a submitted assignment."
       />
     ),
   },
