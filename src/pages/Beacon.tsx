@@ -145,7 +145,6 @@ export const Beacon = () => (
         ratio="16/9"
         src="/case-studies/beacon/spacetrack.webp"
         alt="A public conjunction message list: rows of close approaches, each with the time of closest approach, a minimum range in metres, a collision probability to ten decimal places, and the catalogue number, name, object type and radar cross-section of both objects."
-        caption="Space-Track, public conjunction messages"
       />
       <MediaSlot
         matted={false}
@@ -153,7 +152,6 @@ export const Beacon = () => (
         fit="contain"
         src="/case-studies/beacon/ephemeris.webp"
         alt="An eleven-parameter ephemeris message from Intelsat, addressed to all stations operating at 302 degrees east, giving an epoch to the second and eleven orbital coefficients in degrees and degrees per day."
-        caption="Eleven-parameter ephemeris, Intelsat"
       />
     </div>
 

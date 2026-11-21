@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "../../lib/cn";
 
@@ -118,18 +119,135 @@ const ratioClass: Record<Ratio, string> = {
 /** A frame that cannot fill the column: fixed width, or letterboxed by contain. */
 const inset = (width?: string, fit?: "cover" | "contain") => Boolean(width) || fit === "contain";
 
+/** The slot's video source. */
+type SlotVideoSource = { src: string; poster?: string };
+
+/** Read at first paint, so the first render is already the right one. */
+const prefersLessMotion = () =>
+  typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 /**
- * Media slot. Renders a real image when `src` is given, otherwise the
- * template's diagonal placeholder frame. With an image, the caption sits
- * below the frame so every real image stays captioned.
+ * An autoplaying slot video: muted and looping, so it reads as a figure on the
+ * page rather than a player with chrome.
  *
- * Caption color is --text-on-media, not --edge: --edge (#6b6b6b) is 2.13:1
- * against the slot fill and fails AA. See tokens.css.
+ * Three things CSS cannot express, so they live here. Playback waits for the
+ * slot to be on screen, which keeps a multi-megabyte capture off the wire for a
+ * reader who never scrolls that far and starts the loop at its first frame
+ * rather than somewhere in the middle. Under prefers-reduced-motion nothing
+ * moves on its own: the poster holds and the native controls appear. And for
+ * everyone else the frame itself is a pause button, so motion this long has a
+ * stop, which is what WCAG 2.2.2 asks for, without a player bar sitting under
+ * every figure. A reader who pauses stays paused: scrolling away and back does
+ * not restart it.
+ */
+const SlotVideo = ({
+  video,
+  alt,
+  fit,
+}: {
+  video: SlotVideoSource;
+  alt?: string;
+  fit: "cover" | "contain";
+}) => {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [still, setStill] = useState(prefersLessMotion);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const apply = () => setStill(mq.matches);
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, []);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    // Held still, by the reader or by their motion setting. No observer, so
+    // scrolling past cannot start it again.
+    if (still || paused) {
+      el.pause();
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) void el.play().catch(() => {});
+        else el.pause();
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [still, paused]);
+
+  const frame = (
+    <video
+      ref={ref}
+      src={video.src}
+      poster={video.poster}
+      controls={still}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      aria-label={alt ?? ""}
+      className={cn("h-full w-full bg-transparent", fit === "contain" ? "object-contain" : "object-cover")}
+    />
+  );
+
+  // Reduced motion already has the native controls, which are the pause.
+  if (still) return frame;
+
+  return (
+    <>
+      {frame}
+      <button
+        type="button"
+        onClick={() => setPaused((p) => !p)}
+        aria-label={paused ? "Play the capture" : "Pause the capture"}
+        className={cn(
+          "group absolute inset-0 z-10 cursor-pointer bg-transparent",
+          "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-glow",
+        )}
+      >
+        {/* Sits where the caption used to, so it lands on quiet pixels. Hidden
+            until hover or focus, then held once paused so a still frame never
+            reads as a broken one. */}
+        <span
+          aria-hidden
+          className={cn(
+            "pointer-events-none absolute bottom-2 left-3 flex items-center gap-[3px] transition-opacity",
+            paused ? "opacity-100" : "opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100",
+          )}
+          style={{ color: "var(--text-on-media)" }}
+        >
+          {paused ? (
+            <svg viewBox="0 0 10 12" className="h-3 w-3 fill-current">
+              <polygon points="0,0 10,6 0,12" />
+            </svg>
+          ) : (
+            <>
+              <span className="h-3 w-[3px] bg-current" />
+              <span className="h-3 w-[3px] bg-current" />
+            </>
+          )}
+        </span>
+      </button>
+    </>
+  );
+};
+
+/**
+ * Media slot. Renders a real image when `src` is given, a muted capture when
+ * `video` is given, otherwise the template's diagonal placeholder frame.
+ *
+ * No captions, on purpose: images on this site stand on their own, with the
+ * surrounding prose doing the explaining. Describe the image in `alt`.
  */
 export const MediaSlot = ({
   ratio = "16/9",
-  caption,
   src,
+  video,
   alt,
   width,
   bordered = true,
@@ -139,8 +257,11 @@ export const MediaSlot = ({
   children,
 }: {
   ratio?: Ratio;
-  caption?: string;
   src?: string;
+  /** A silent screen capture, in place of a still. Takes precedence over src.
+      Plays muted on loop once scrolled to, and holds still under
+      prefers-reduced-motion. See SlotVideo. */
+  video?: SlotVideoSource;
   alt?: string;
   width?: string;
   /** The frame: border plus slot fill. Off leaves the bare image. */
@@ -186,34 +307,24 @@ export const MediaSlot = ({
         <div className="absolute inset-0" role="img" aria-label={alt ?? ""}>
           {children}
         </div>
+      ) : video ? (
+        <SlotVideo video={video} alt={alt} fit={fit} />
       ) : src ? (
         <img src={src} alt={alt ?? ""} // The global img rule paints --moss behind every image. A transparent PNG
           // would show that as a lighter rectangle inside the slot, so clear it and
           // let the slot's own surface read through.
           className={cn("h-full w-full bg-transparent", fit === "contain" ? "object-contain" : "object-cover")} />
       ) : (
-        <>
-          <svg
-            className="absolute inset-0 h-full w-full"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <line x1="2" y1="2" x2="98" y2="98" stroke="var(--edge)" strokeWidth="0.3" />
-          </svg>
-          {caption ? (
-            <div className="cv-meta absolute bottom-2 left-3" style={{ color: "var(--text-on-media)" }}>
-              {caption}
-            </div>
-          ) : null}
-        </>
+        <svg
+          className="absolute inset-0 h-full w-full"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <line x1="2" y1="2" x2="98" y2="98" stroke="var(--edge)" strokeWidth="0.3" />
+        </svg>
       )}
     </div>
-    {(src || children) && caption ? (
-      <div className="cv-meta mt-2" style={{ color: "var(--text-on-media)" }}>
-        {caption}
-      </div>
-    ) : null}
   </div>
 );
 

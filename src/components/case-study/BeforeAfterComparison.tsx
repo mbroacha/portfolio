@@ -5,7 +5,6 @@ interface BeforeAfterPanel {
   label: string;
   src: string;
   alt: string;
-  caption?: string;
 }
 
 interface BeforeAfterComparisonProps {
@@ -85,8 +84,6 @@ export const BeforeAfterComparison = ({
       setPosition(100);
     }
   }, []);
-
-  const hasCaptions = before.caption || after.caption;
 
   return (
     <figure className="flex flex-col gap-4">
@@ -169,21 +166,6 @@ export const BeforeAfterComparison = ({
           {before.alt} Compared with {after.alt}. Drag the slider or use arrow keys to reveal more of each image.
         </p>
       </div>
-
-      {hasCaptions ? (
-        <div className="grid gap-4 md:grid-cols-2 md:gap-6">
-          {before.caption ? (
-            <figcaption className="type-body max-w-prose text-sm text-caption">
-              <span className="font-medium text-bone">{before.label}:</span> {before.caption}
-            </figcaption>
-          ) : null}
-          {after.caption ? (
-            <figcaption className="type-body max-w-prose text-sm text-caption">
-              <span className="font-medium text-bone">{after.label}:</span> {after.caption}
-            </figcaption>
-          ) : null}
-        </div>
-      ) : null}
     </figure>
   );
 };

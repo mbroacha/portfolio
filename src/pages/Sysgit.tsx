@@ -136,7 +136,6 @@ export const Sysgit = () => (
       ratio="16/9"
       src={asset("/case-studies/sysgit/diagram-editor-ide.png")}
       alt="The same rail brake requirements open in Sysgit, source on the left and the requirement graph on the right."
-      caption="Those requirements in the product."
     />
     <TwoCol claim={<em className="font-display not-italic">Requirements arrive as documents. They have to leave as editable objects.</em>}>
       <div>

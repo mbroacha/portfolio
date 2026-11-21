@@ -135,8 +135,5 @@ export const TranslationTriptych = () => (
       </div></div>
 
       </div>
-    <figcaption className="cv-meta mt-4 max-w-prose" style={{ color: "var(--text-on-media)" }}>
-      One requirement in three notations.
-    </figcaption>
   </figure>
 );

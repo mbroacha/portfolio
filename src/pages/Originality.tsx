@@ -220,13 +220,11 @@ export const Originality = () => (
           label: "Before",
           src: asset("/case-studies/originality/outcome-before-sentences.png"),
           alt: "Sentences view with stacked bar charts in an orange interface.",
-          caption: "Closed beta. One sentence-type chart per paper. Capture.",
         }}
         after={{
           label: "After",
           src: asset("/case-studies/originality/outcome-after-authorship.png"),
           alt: "Authorship dashboard with similarity, revisions and editing time trends.",
-          caption: "Shipped. Easier to scan, but the similarity score still leads. Capture.",
         }}
       />
     </div>
