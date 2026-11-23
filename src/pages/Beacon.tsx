@@ -69,11 +69,11 @@ export const Beacon = () => (
       title="Beacon"
       lede={
         <>
-          <span className="text-bone">Space traffic coordination.</span> When two satellites are about to pass too close, somebody has to move.
+          <span className="text-primary">Space traffic coordination.</span> When two satellites are about to pass too close, somebody has to move.
         </>
       }
       items={[
-        { label: "Role", value: <span className="text-bone">Senior Product Designer, sole designer on Beacon</span> },
+        { label: "Role", value: <span className="text-primary">Senior Product Designer, sole designer on Beacon</span> },
         { label: "Timeline", value: "2022 - 2023" },
         { label: "Scope", value: "Product design, research, product strategy" },
         { label: "Platform", value: "Web" },

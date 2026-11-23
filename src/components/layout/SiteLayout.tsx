@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
  * `components/cv/CvPage`, because the left rail content differs per page.
  */
 export const SiteLayout = () => (
-  <div className="min-h-screen bg-moss">
+  <div className="min-h-screen bg-page">
     <Outlet />
   </div>
 );

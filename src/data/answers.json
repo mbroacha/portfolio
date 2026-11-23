@@ -1,7 +1,7 @@
 {
-  "generated": "2026-11-20",
+  "generated": "2026-11-23",
   "source": "content/answer-bank.json",
-  "decline": "Morgan hasn't written about that.",
+  "decline": "I haven't written about that.",
   "suggested": [
     "why-hire",
     "mentoring",
@@ -171,9 +171,9 @@
       "tone": "straight",
       "suggest": false,
       "source": {
-        "label": "Sysgit, Where it landed",
+        "label": "Sysgit, Where it stands",
         "path": "/case-study/sysgit",
-        "anchor": "where-it-landed"
+        "anchor": "where-it-stands"
       }
     },
     {

@@ -31,15 +31,15 @@ export const About = () => {
             alt="Morgan Broacha."
             width={800}
             height={800}
-            className="block aspect-square w-full border border-hedge object-cover"
+            className="block aspect-square w-full border border-rule object-cover"
           />
 
           <div className="flex flex-col gap-4">
             <div>
-              <div className="cv-subhead text-bone">Hey, I&rsquo;m Morgan</div>
-              <div className="cv-subhead mt-3 text-lichen">
+              <div className="cv-subhead text-primary">Hey, I&rsquo;m Morgan</div>
+              <div className="cv-subhead mt-3 text-tertiary">
                 I&rsquo;m currently designing at{" "}
-                <a href="https://sysgit.io" target="_blank" rel="noopener noreferrer" className="text-bone underline">
+                <a href="https://sysgit.io" target="_blank" rel="noopener noreferrer" className="text-primary underline">
                   Sysgit
                 </a>
               </div>
@@ -72,7 +72,7 @@ export const About = () => {
                 when={e.years}
                 what={
                   <>
-                    {e.role} at <span className="text-bone">{e.company}</span>
+                    {e.role} at <span className="text-primary">{e.company}</span>
                   </>
                 }
               />
@@ -84,7 +84,7 @@ export const About = () => {
               <Entry
                 key={e.school}
                 when={e.degree}
-                what={<span className="text-bone">{e.school}</span>}
+                what={<span className="text-primary">{e.school}</span>}
               />
             ))}
           </Panel>

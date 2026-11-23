@@ -5,7 +5,7 @@ import { cn } from "../../lib/cn";
 /** Claim left, evidence right. The template's core editorial device. */
 export const TwoCol = ({ claim, children }: { claim: ReactNode; children: ReactNode }) => (
   <div className="grid grid-cols-1 gap-6 pb-6 sm:grid-cols-2">
-    <div className="cv-subhead text-bone">{claim}</div>
+    <div className="cv-subhead text-primary">{claim}</div>
     <div className="flex flex-col gap-3">{children}</div>
   </div>
 );
@@ -14,7 +14,7 @@ export const ConstraintGrid = ({ items }: { items: { title: string; detail: stri
   <div className="grid grid-cols-1 gap-4 pb-6 sm:grid-cols-2">
     {items.map((c) => (
       <div key={c.title} className="border-l border-[color:var(--edge)] pl-3.5">
-        <b className="cv-subhead mb-1.5 block font-normal text-bone">{c.title}</b>
+        <b className="cv-subhead mb-1.5 block font-normal text-primary">{c.title}</b>
         {c.detail}
       </div>
     ))}
@@ -24,10 +24,10 @@ export const ConstraintGrid = ({ items }: { items: { title: string; detail: stri
 /** One claim, lots of air. */
 export const InsightBlock = ({ quote, source }: { quote: string; source?: string }) => (
   <div className="pb-7 pt-1">
-    <blockquote className="m-0 max-w-[34ch] font-display text-[22px] italic leading-[1.35] text-bone">
+    <blockquote className="m-0 max-w-[34ch] font-display text-[22px] italic leading-[1.35] text-primary">
       {quote}
     </blockquote>
-    {source ? <div className="mt-3 text-lichen">{source}</div> : null}
+    {source ? <div className="mt-3 text-tertiary">{source}</div> : null}
   </div>
 );
 
@@ -42,10 +42,10 @@ export interface Decision {
 }
 
 export const DecisionRow = ({ decision, first }: { decision: Decision; first?: boolean }) => (
-  <div className={cn("grid grid-cols-1 gap-6 py-5 sm:grid-cols-2", first ? "pt-0" : "border-t border-hedge")}>
-    <div className="text-bone">
+  <div className={cn("grid grid-cols-1 gap-6 py-5 sm:grid-cols-2", first ? "pt-0" : "border-t border-rule")}>
+    <div className="text-primary">
       <em className="cv-subhead font-display not-italic">{decision.title}</em>
-      {decision.rejected ? <span className="mt-2.5 block text-lichen">Rejected: {decision.rejected}</span> : null}
+      {decision.rejected ? <span className="mt-2.5 block text-tertiary">Rejected: {decision.rejected}</span> : null}
     </div>
     <div>
       {(
@@ -56,7 +56,7 @@ export const DecisionRow = ({ decision, first }: { decision: Decision; first?: b
         ] as const
       ).map(([label, value]) => (
         <div key={label} className="mb-3 flex flex-col gap-1">
-          <span className="cv-meta uppercase tracking-[0.08em] text-lichen">{label}</span>
+          <span className="cv-meta uppercase tracking-[0.08em] text-tertiary">{label}</span>
           <span>{value}</span>
         </div>
       ))}
@@ -73,7 +73,7 @@ export const QualOutcome = ({ items }: { items: { title: string; detail: ReactNo
   <div className="grid grid-cols-1 gap-6 pb-6 sm:grid-cols-2">
     {items.map((q) => (
       <div key={q.title} className="border-l border-[color:var(--edge)] pl-3.5">
-        <b className="cv-subhead mb-1.5 block font-normal text-bone">{q.title}</b>
+        <b className="cv-subhead mb-1.5 block font-normal text-primary">{q.title}</b>
         {q.detail}
       </div>
     ))}
@@ -87,7 +87,7 @@ export const PrevNext = ({
   prev?: { label: string; to: string };
   next?: { label: string; to: string };
 }) => (
-  <div className="flex justify-between border-t border-hedge pt-6">
+  <div className="flex justify-between border-t border-rule pt-6">
     {prev ? (
       <Link to={prev.to} className="inline-block py-2 underline underline-offset-4">
         &larr; {prev.label}
@@ -119,12 +119,12 @@ export const Step = ({
   children: ReactNode;
   first?: boolean;
 }) => (
-  <div className={cn("grid grid-cols-1 gap-6 py-5 sm:grid-cols-2", first ? "pt-0" : "border-t border-hedge")}>
+  <div className={cn("grid grid-cols-1 gap-6 py-5 sm:grid-cols-2", first ? "pt-0" : "border-t border-rule")}>
     <div>
-      <div className="cv-subhead text-bone">
+      <div className="cv-subhead text-primary">
         {n}. {title}
       </div>
-      {tool ? <div className="mt-2 text-lichen">{tool}</div> : null}
+      {tool ? <div className="mt-2 text-tertiary">{tool}</div> : null}
     </div>
     <div className="flex flex-col gap-3">{children}</div>
   </div>
@@ -146,12 +146,12 @@ export const Ledger = ({
         key={r.left}
         className={cn(
           "grid grid-cols-1 gap-1 py-3 sm:grid-cols-[12rem_1fr_8rem] sm:gap-x-6",
-          i === 0 ? "" : "border-t border-hedge",
+          i === 0 ? "" : "border-t border-rule",
         )}
       >
-        <div className="text-bone">{r.left}</div>
+        <div className="text-primary">{r.left}</div>
         <div>{r.right}</div>
-        {r.note ? <div className="text-lichen sm:text-right">{r.note}</div> : null}
+        {r.note ? <div className="text-tertiary sm:text-right">{r.note}</div> : null}
         {r.media ? <div className="mt-3 sm:col-start-2 [&>*]:mb-0">{r.media}</div> : null}
       </div>
     ))}

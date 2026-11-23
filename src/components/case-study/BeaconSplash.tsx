@@ -139,7 +139,7 @@ export const BeaconSplash = ({ background }: BeaconSplashProps) => (
   <figure className="-mx-8 mb-6">
     <style>{CSS}</style>
 
-    <div className="relative overflow-hidden border-y border-hedge bg-moss">
+    <div className="relative overflow-hidden border-y border-rule bg-page">
       {/* ── the field ───────────────────────────────────────────────── */}
       {background ? (
         <>

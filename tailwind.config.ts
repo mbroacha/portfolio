@@ -5,13 +5,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        moss: "var(--moss)",
-        fern: "var(--fern)",
-        hedge: "var(--hedge)",
-        bone: "var(--bone)",
-        sage: "var(--sage)",
-        lichen: "var(--lichen)",
-        glow: "var(--glow)",
+        page: "var(--ink-900)",
+        panel: "var(--ink-800)",
+        rule: "var(--rule)",
+        primary: "var(--text-primary)",
+        secondary: "var(--text-secondary)",
+        tertiary: "var(--text-tertiary)",
         caption: "rgb(var(--color-text-caption) / <alpha-value>)",
         line: "rgb(var(--color-border) / <alpha-value>)",
       },

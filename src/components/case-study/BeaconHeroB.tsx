@@ -168,6 +168,10 @@ const CSS = `
 @keyframes bhbNew { 0%, 51% { stroke-dashoffset: 1 } 61.5%, 75% { stroke-dashoffset: 0 } }
 @keyframes bhbMv { 0%, 51% { opacity: 0 } 60%, 75% { opacity: 1 } }
 @keyframes bhbBreathe { 0%, 75% { opacity: .36 } 37.5% { opacity: .54 } }
+/* playTwice: two cycles, then hold. 1.94 stops just short of the second
+   cycle's shutter (which starts closing at 95%), so with fill-mode both it rests
+   on the resolved close-up rather than on black. */
+.bhb.twice * { animation-iteration-count: 1.94 }
 @media (prefers-reduced-motion: reduce) { .bhb * { animation: none !important } }
 @keyframes bhbShutter { 0% { opacity: 1 } 2.5%, 95% { opacity: 0 } 100% { opacity: 1 } }
 `;
@@ -199,12 +203,19 @@ const Measure = ({
   );
 };
 
-export const BeaconHeroB = ({ bare = false }: { bare?: boolean }) => (
+export const BeaconHeroB = ({
+  bare = false,
+  playTwice = false,
+}: {
+  bare?: boolean;
+  /** Run the sequence twice and stop on the resolved state instead of looping. */
+  playTwice?: boolean;
+}) => (
   /* -mx-8 cancels the main column's p-8 so the hero runs the full grid cell. */
   <figure className={bare ? "" : "-mx-8 mb-6"}>
     <style>{CSS}</style>
     <svg
-      className={`bhb block w-full ${bare ? "h-full" : "h-auto"}`}
+      className={`bhb block w-full ${bare ? "h-full" : "h-auto"}${playTwice ? " twice" : ""}`}
       viewBox="0 0 1600 900"
       xmlns="http://www.w3.org/2000/svg"
       role="img"

@@ -91,7 +91,7 @@ export const BeforeAfterComparison = ({
         ref={containerRef}
         // pan-y, not none: a thumb landing on the image while scrolling the page
         // must still scroll it. On touch, only the handle starts a drag.
-        className="relative cursor-ew-resize overflow-hidden rounded-lg border border-hedge bg-moss touch-pan-y select-none"
+        className="relative cursor-ew-resize overflow-hidden rounded-lg border border-rule bg-page touch-pan-y select-none"
         onPointerDown={(event) => {
           if (event.pointerType === "touch") return;
           onPointerDown(event);
@@ -124,10 +124,10 @@ export const BeforeAfterComparison = ({
           />
         </div>
 
-        <span className="pointer-events-none absolute left-3 top-3 rounded-sm bg-moss/90 px-2 py-1 font-mono text-[0.625rem] font-semibold uppercase tracking-mono text-glow">
+        <span className="pointer-events-none absolute left-3 top-3 rounded-sm bg-page/90 px-2 py-1 font-mono text-[0.625rem] font-semibold uppercase tracking-mono text-primary">
           {before.label}
         </span>
-        <span className="pointer-events-none absolute right-3 top-3 rounded-sm bg-moss/90 px-2 py-1 font-mono text-[0.625rem] font-semibold uppercase tracking-mono text-glow">
+        <span className="pointer-events-none absolute right-3 top-3 rounded-sm bg-page/90 px-2 py-1 font-mono text-[0.625rem] font-semibold uppercase tracking-mono text-primary">
           {after.label}
         </span>
 
@@ -148,15 +148,15 @@ export const BeforeAfterComparison = ({
           aria-valuetext={`${Math.round(position)}% ${before.label}, ${Math.round(100 - position)}% ${after.label}`}
           className={cn(
             "absolute top-1/2 z-20 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full",
-            "border border-hedge bg-moss shadow-[0_4px_16px_-4px_rgba(0,0,0,0.5)]",
+            "border border-rule bg-page shadow-[0_4px_16px_-4px_rgba(0,0,0,0.5)]",
             "cursor-ew-resize touch-none transition-shadow hover:shadow-[0_6px_20px_-4px_rgba(0,0,0,0.55)]",
-            "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-glow",
+            "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
           )}
           style={{ left: `${position}%` }}
           onPointerDown={onPointerDown}
           onKeyDown={onKeyDown}
         >
-          <span className="flex items-center gap-0.5 text-glow/70" aria-hidden>
+          <span className="flex items-center gap-0.5 text-primary/70" aria-hidden>
             <span className="h-3 w-0.5 rounded-full bg-current" />
             <span className="h-3 w-0.5 rounded-full bg-current" />
           </span>

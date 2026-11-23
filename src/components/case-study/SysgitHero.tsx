@@ -82,15 +82,26 @@ const CSS = `
 @keyframes valBad{0%,45%{opacity:0}48.5714%,57.1429%{opacity:1}62.1429%,71.4286%{opacity:0}}
 @keyframes breathe{0%,71.4286%{opacity:.42}35.7143%{opacity:.6}}
 @keyframes shutter{0%{opacity:1}2.5%,95%{opacity:0}100%{opacity:1}}
+/* playTwice: two cycles, then hold. 1.94 stops just short of the second
+   cycle's shutter (which starts closing at 95%), so with fill-mode both it rests
+   on the resolved close-up rather than on black. */
+.sgh.twice * { animation-iteration-count: 1.94 }
 @media (prefers-reduced-motion: reduce) { .sgh * { animation: none !important } }
 `;
 
-export const SysgitHero = ({ bare = false }: { bare?: boolean }) => (
+export const SysgitHero = ({
+  bare = false,
+  playTwice = false,
+}: {
+  bare?: boolean;
+  /** Run the sequence twice and stop on the resolved state instead of looping. */
+  playTwice?: boolean;
+}) => (
   /* -mx-8 cancels the main column's p-8 so the hero runs the full grid cell. */
   <figure className={bare ? "" : "-mx-8 mb-6"}>
     <style>{CSS}</style>
     <svg
-            className={`sgh block w-full ${bare ? "h-full" : "h-auto"}`}
+            className={`sgh block w-full ${bare ? "h-full" : "h-auto"}${playTwice ? " twice" : ""}`}
             viewBox="0 0 1600 900"
             xmlns="http://www.w3.org/2000/svg"
             role="img"

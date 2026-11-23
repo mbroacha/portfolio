@@ -112,6 +112,12 @@ const CSS = `
 .oh-wrap .oh-bloom{animation:ohBloom 24s ease-in-out infinite alternate}
 @keyframes ohBloom{from{opacity:.82}to{opacity:1}}
 
+/* playTwice: each column breathes twice (four alternating passes, lo to hi and
+   back, twice) and holds its last frame; the bloom breathes once each way and
+   holds. Columns run out of phase, so they come to rest one by one. */
+.oh-wrap.twice .oh-bar{animation-iteration-count:4;animation-fill-mode:forwards}
+.oh-wrap.twice .oh-bloom{animation-iteration-count:2;animation-fill-mode:forwards}
+
 @media (prefers-reduced-motion: reduce){.oh-wrap .oh-bar,.oh-wrap .oh-bloom{animation:none !important}}
 `;
 
@@ -130,11 +136,18 @@ const useStageScale = () => {
   return { ref, scale };
 };
 
-export const OriginalityHero = ({ bare = false }: { bare?: boolean }) => {
+export const OriginalityHero = ({
+  bare = false,
+  playTwice = false,
+}: {
+  bare?: boolean;
+  /** Breathe twice and hold the last frame instead of looping. */
+  playTwice?: boolean;
+}) => {
   const { ref, scale } = useStageScale();
   return (
     /* -mx-8 cancels the main column's p-8, matching the Sysgit hero. */
-    <figure className={`oh-wrap ${bare ? "" : "-mx-8 mb-6"}`}>
+    <figure className={`oh-wrap ${bare ? "" : "-mx-8 mb-6"}${playTwice ? " twice" : ""}`}>
       <style>{CSS}</style>
       <div className="oh-frame" ref={ref}>
         <div className="oh" style={{ transform: `scale(${scale})` }}>

@@ -21,7 +21,7 @@ export const SectionHeading = ({
 }) => (
   <h2
     id={id ?? sectionId(children)}
-    className={cn("mb-6 font-display text-[length:var(--font-size-2xl)] font-normal not-italic text-bone", className)}
+    className={cn("mb-6 font-display text-[length:var(--font-size-2xl)] font-normal not-italic text-primary", className)}
     style={{ fontStyle: "italic" }}
   >
     {children}
@@ -29,7 +29,7 @@ export const SectionHeading = ({
 );
 
 export const Rule = ({ className }: { className?: string }) => (
-  <div className={cn("border-t border-hedge", className)} />
+  <div className={cn("border-t border-rule", className)} />
 );
 
 /** Sidebar label/value grid, matching the template's 80px column. */
@@ -39,7 +39,7 @@ export const MetaList = ({ items }: { items: { label: string; value: ReactNode }
   <dl className="grid grid-cols-[minmax(80px,max-content)_1fr] gap-5">
     {items.map((item) => (
       <div key={item.label} className="contents">
-        <dt className="text-bone">{item.label}</dt>
+        <dt className="text-primary">{item.label}</dt>
         <dd className="m-0">{item.value}</dd>
       </div>
     ))}
@@ -57,11 +57,11 @@ export const Panel = ({
   className?: string;
 }) => (
   <section
-    className={cn("border border-hedge p-5", className)}
+    className={cn("border border-rule p-5", className)}
     style={{ backgroundColor: "var(--ink-900)" }}
   >
     <h2
-      className="m-0 mb-4 cv-meta font-normal uppercase text-bone"
+      className="m-0 mb-4 cv-meta font-normal uppercase text-primary"
       style={{ letterSpacing: "var(--tracking-label)" }}
     >
       {title}
@@ -73,7 +73,7 @@ export const Panel = ({
 /** Dated row: the label above, the thing below. */
 export const Entry = ({ when, what }: { when: string; what: ReactNode }) => (
   <div className="mb-4 last:mb-0">
-    <div className="cv-meta text-lichen">{when}</div>
+    <div className="cv-meta text-tertiary">{when}</div>
     <div>{what}</div>
   </div>
 );
@@ -97,9 +97,9 @@ export const Bullets = ({ items }: { items: string[] }) => (
 export const StackedList = ({ items }: { items: { label: string; value: ReactNode }[] }) => (
   <dl className="m-0 flex flex-col">
     {items.map((item, i) => (
-      <div key={item.label} className={cn("flex flex-col gap-1.5 py-5", i === 0 ? "pt-0" : "border-t border-hedge")}>
-        <dt className="cv-meta text-lichen">{item.label}</dt>
-        <dd className="m-0 flex max-w-[var(--measure-prose)] flex-col gap-4 text-bone">{item.value}</dd>
+      <div key={item.label} className={cn("flex flex-col gap-1.5 py-5", i === 0 ? "pt-0" : "border-t border-rule")}>
+        <dt className="cv-meta text-tertiary">{item.label}</dt>
+        <dd className="m-0 flex max-w-[var(--measure-prose)] flex-col gap-4 text-primary">{item.value}</dd>
       </div>
     ))}
   </dl>
@@ -207,7 +207,7 @@ const SlotVideo = ({
         aria-label={paused ? "Play the capture" : "Pause the capture"}
         className={cn(
           "group absolute inset-0 z-10 cursor-pointer bg-transparent",
-          "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-glow",
+          "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary",
         )}
       >
         {/* Sits where the caption used to, so it lands on quiet pixels. Hidden
@@ -310,7 +310,7 @@ export const MediaSlot = ({
       ) : video ? (
         <SlotVideo video={video} alt={alt} fit={fit} />
       ) : src ? (
-        <img src={src} alt={alt ?? ""} // The global img rule paints --moss behind every image. A transparent PNG
+        <img src={src} alt={alt ?? ""} // The global img rule paints --ink-900 behind every image. A transparent PNG
           // would show that as a lighter rectangle inside the slot, so clear it and
           // let the slot's own surface read through.
           className={cn("h-full w-full bg-transparent", fit === "contain" ? "object-contain" : "object-cover")} />
@@ -343,7 +343,10 @@ export const WorkEntry = ({
   to?: string;
 }) => (
   <div className="grid grid-cols-1 gap-6 pb-6 sm:grid-cols-2">
-    <div className="cv-subhead text-bone">
+    {/* An h3 under the list's h2, so heading navigation lands on each
+        project. The base heading style sets the display face and medium
+        weight; the entry keeps the body face it always had. */}
+    <h3 className="cv-subhead font-sans font-normal text-primary">
       {index}.{" "}
       {to ? (
         <Link to={to} className="inline-block py-1 underline underline-offset-4">
@@ -352,7 +355,7 @@ export const WorkEntry = ({
       ) : (
         title
       )}
-    </div>
+    </h3>
     <div className="flex flex-col gap-3">
       <div className="cv-meta">{meta}</div>
       <div className="max-w-[var(--measure-prose)]">{description}</div>

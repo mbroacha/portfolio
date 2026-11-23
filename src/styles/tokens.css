@@ -2,12 +2,6 @@
  * Dark CV design tokens.
  *
  * Palette and type sourced from the Dark CV template (Portfolio CV + Case Study).
- *
- * MIGRATION NOTE: the legacy Greenhouse variable names (--moss, --fern, --hedge,
- * --bone, --sage, --lichen, --glow) are retained as aliases and repointed
- * at the new palette. This re-skins every existing component from this one file
- * with zero risk of dangling references. Prefer the semantic names below in new
- * code; the legacy aliases can be renamed in a later mechanical pass.
  */
 :root {
   /* ── Base palette ─────────────────────────────────────────── */
@@ -26,15 +20,6 @@
   /* ── Semantic aliases ─────────────────────────────────────── */
   --surface-media: var(--ink-700);
   --surface-media-backdrop: var(--ink-950);
-
-  /* ── Legacy Greenhouse aliases, repointed ─────────────────── */
-  --moss: var(--ink-900);
-  --fern: var(--ink-800);
-  --hedge: var(--rule);
-  --bone: var(--text-primary);
-  --sage: var(--text-secondary);
-  --lichen: var(--text-tertiary);
-  --glow: var(--text-primary);
 
   /* Tailwind RGB channels (alpha-capable utilities) */
   --color-text-caption: 138 138 138;

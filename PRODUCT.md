@@ -42,12 +42,11 @@ Success looks like:
 
 - **Generic designer portfolios** — coffee-and-tacos personality, Dribbble-shot polish without narrative, beige SaaS landing page aesthetics, "creative" headshots and hobby lists as substitute for work depth.
 - **AI-generated landing page grammar** — cream/sand body backgrounds, small uppercase eyebrow kickers on every section, numbered section markers (01 / 02 / 03) as scaffolding, identical icon-heading-text card grids, gradient text, glassmorphism cards, hero-metric templates.
-- **Loud accent misuse** — chartreuse (glow) beyond ~2.5% of any viewport; ember on buttons or primary CTAs.
 - **Portfolio theater** — animations and visual effects that obscure rather than explain systems thinking.
 
 ## Design Principles
 
-1. **Field-tested over portfolio theater.** Credibility comes from embedded research and operational context, not from visual performance. The proof strip and case study depth do the selling.
+1. **Field-tested over portfolio theater.** Credibility comes from embedded research and operational context, not from visual performance. Case study depth does the selling.
 
 2. **Show the system, not just the screens.** Every case study must explain constraints, decisions, and outcomes — the thinking behind the interface, not a gallery of polished mocks.
 
@@ -55,11 +54,11 @@ Success looks like:
 
 4. **Practice what you preach.** The portfolio chrome must meet the same craft bar as the work it showcases — precise type, disciplined accent use, accessible contrast, intentional motion.
 
-5. **Unmistakable, not loud.** Distinctiveness through the Greenhouse identity (drenched green, glow accent, jackalope, mono labels) — not through novelty effects or trend-chasing layout patterns.
+5. **Unmistakable, not loud.** Distinctiveness comes from the work and the voice — not through novelty effects or trend-chasing layout patterns.
 
 ## Accessibility & Inclusion
 
-- Target **WCAG 2.1 AA** for text contrast on dark greenhouse surfaces (bone/sage on moss/fern, glow on moss for buttons).
+- Target **WCAG 2.1 AA** for text contrast on the dark page and panel surfaces.
 - **Reduced motion:** respect `prefers-reduced-motion` for all transitions and hover animations; provide instant or crossfade alternatives.
 - **Keyboard navigation:** all interactive elements (buttons, cards, nav links, before/after handles) must be focusable with visible focus states.
-- **Color:** glow and ember accents must not be the sole carrier of meaning — pair with text labels, borders, or typographic hierarchy.
+- **Color:** color must not be the sole carrier of meaning — pair with text labels, borders, or typographic hierarchy.

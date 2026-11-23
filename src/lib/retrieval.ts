@@ -22,7 +22,7 @@ export interface Answer {
 }
 
 const ANSWERS = (data.answers ?? []) as Answer[];
-export const DECLINE: string = data.decline ?? "Morgan hasn't written about that.";
+export const DECLINE: string = data.decline ?? "I haven't written about that.";
 
 /** Curated order for the general questions. Set in the bank's _meta. */
 const SUGGESTED: string[] = (data as { suggested?: string[] }).suggested ?? [];

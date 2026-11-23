@@ -25,7 +25,7 @@ export const PageHead = ({
   stacked?: boolean;
 }) => (
   <div className="mb-8">
-    <h1 className="m-0 font-display text-[length:var(--font-size-xl)] font-normal italic text-bone">{title}</h1>
+    <h1 className="m-0 font-display text-[length:var(--font-size-xl)] font-normal italic text-primary">{title}</h1>
     {lede ? <div className="mt-5 max-w-[90ch]">{lede}</div> : null}
     {items ? (
       <>

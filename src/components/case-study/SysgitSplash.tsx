@@ -131,7 +131,7 @@ export const SysgitSplash = ({ backgroundImages = DEFAULT_BACKGROUND }: SysgitSp
     <figure className="-mx-8 mb-6">
       <style>{CSS}</style>
 
-      <div className="relative overflow-hidden border-y border-hedge bg-moss">
+      <div className="relative overflow-hidden border-y border-rule bg-page">
         {/* ── back: the drifting field, full height ──────────────────── */}
         <div className="sgs-bg pointer-events-none absolute inset-0 opacity-40" aria-hidden="true">
           <div className="sgs-track gap-6 px-6">

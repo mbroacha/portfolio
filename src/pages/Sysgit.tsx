@@ -30,12 +30,12 @@ export const Sysgit = () => (
       title="Sysgit"
       lede={
         <>
-          <span className="text-bone">Git for hardware.</span> Modeling, requirements and version control in one
+          <span className="text-primary">Git for hardware.</span> Modeling, requirements and version control in one
           workflow, for engineers who are not developers.
         </>
       }
       items={[
-        { label: "Role", value: <span className="text-bone">Design Lead, sole designer</span> },
+        { label: "Role", value: <span className="text-primary">Design Lead, sole designer</span> },
         { label: "Timeline", value: "2023 - 2026" },
         { label: "Scope", value: "Product, design system, research, strategy, brand, front-end PRs" },
         { label: "Page", value: "Overview. Detail available on request" },

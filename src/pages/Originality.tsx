@@ -69,11 +69,11 @@ export const Originality = () => (
       title="Originality"
       lede={
         <>
-          <span className="text-bone">Contract cheating detection.</span> Machine learning flagged suspicious student work, and suggested best practices for educators.
+          <span className="text-primary">Contract cheating detection.</span> Machine learning flagged suspicious student work, and suggested best practices for educators.
         </>
       }
       items={[
-        { label: "Role", value: <span className="text-bone">Senior UX Designer</span> },
+        { label: "Role", value: <span className="text-primary">Senior UX Designer</span> },
         { label: "Company", value: "Turnitin" },
         { label: "Timeline", value: "Closed beta 2018. Shipped 2019" },
         { label: "Scope", value: "Research, product design, information architecture" },
@@ -153,7 +153,7 @@ export const Originality = () => (
         src={asset("/case-studies/originality/research-sticky-notes.png")}
         alt="Workshop notebook with sticky notes labeled with document metadata fields." />
       <div className="flex flex-col gap-3">
-        <div className="text-bone">We asked experienced investigators what they actually look for.</div>
+        <div className="text-primary">We asked experienced investigators what they actually look for.</div>
         <div>
           I led dozens of interviews and at least biweekly check-ins with academics at Deakin, Griffith, UC
           San Diego, UNSW, Northampton, Queensland and Wollongong. I also ran a card sort with experienced

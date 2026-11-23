@@ -25,7 +25,7 @@
   }
 
   img {
-    background-color: var(--moss);
+    background-color: var(--ink-900);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
@@ -35,7 +35,7 @@
   }
 
   body {
-    @apply bg-moss font-sans text-sage antialiased;
+    @apply bg-page font-sans text-secondary antialiased;
     margin: 0;
     min-height: 100vh;
     font-size: var(--font-size-base);
@@ -50,7 +50,7 @@
   h5,
   h6 {
     margin: 0;
-    color: var(--bone);
+    color: var(--text-primary);
     font-family: var(--font-family-display);
     font-weight: var(--font-weight-medium);
     font-optical-sizing: auto;
@@ -87,17 +87,26 @@
 
   small {
     font-size: var(--font-size-sm);
-    color: var(--lichen);
+    color: var(--text-tertiary);
   }
 
   a {
-    color: var(--glow);
+    color: var(--text-primary);
     text-decoration: none;
     transition: color var(--transition-fast);
   }
 
   a:hover {
-    color: var(--bone);
+    color: var(--text-primary);
+  }
+
+  /* One focus ring for the whole site, in the palette instead of the browser's
+     blue. Keyboard focus only: a mouse click does not draw it. The offset
+     keeps it off underlines and frame borders. #d9d9d9 on #161616/#1e1e1e is
+     well past the 3:1 a focus indicator needs. */
+  :focus-visible {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 3px;
   }
 }
 

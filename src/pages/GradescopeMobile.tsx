@@ -12,11 +12,11 @@ export const GradescopeMobile = () => (
       title="Gradescope Mobile"
       lede={
         <>
-          <span className="text-bone">Scan and submit handwritten homework from your phone.</span> Replaced taking a photo, using a third-party app to create a PDF, and uploading to a desktop site. One app instead of three.
+          <span className="text-primary">Scan and submit handwritten homework from your phone.</span> Replaced taking a photo, using a third-party app to create a PDF, and uploading to a desktop site. One app instead of three.
         </>
       }
       items={[
-        { label: "Role", value: <span className="text-bone">Senior UX Designer</span> },
+        { label: "Role", value: <span className="text-primary">Senior UX Designer</span> },
         { label: "Timeline", value: "Launched 2021" },
         { label: "Scope", value: "Workflow, screens, platform adaptation" },
         { label: "Platform", value: "iOS and Android" },

@@ -131,7 +131,7 @@ export const SysgitGoals = () => (
     {goals.map((g) => (
       <div key={g.title}>
         {g.mark}
-        <b className="cv-subhead mb-1.5 block font-normal text-bone">{g.title}</b>
+        <b className="cv-subhead mb-1.5 block font-normal text-primary">{g.title}</b>
         <div className="max-w-[var(--measure-prose)]">{g.detail}</div>
       </div>
     ))}

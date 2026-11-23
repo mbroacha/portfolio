@@ -43,7 +43,7 @@ const WORK: Work[] = [
         matted={false}
         alt="One object from a Sysgit model, drawn: a part def carrying a typed value, a maximum output and a link to the test that verifies it, joined to the rest of the graph by derive, contains and satisfies relationships."
       >
-        <SysgitHero bare />
+        <SysgitHero bare playTwice />
       </MediaSlot>
     ),
   },
@@ -66,7 +66,7 @@ const WORK: Work[] = [
         matted={false}
         alt="Two satellite tracks converge. A threshold ring draws around the operator's own asset, and the second track lifts away from it as a proposed maneuver."
       >
-        <BeaconHeroB bare />
+        <BeaconHeroB bare playTwice />
       </MediaSlot>
     ),
   },
@@ -89,7 +89,7 @@ const WORK: Work[] = [
         matted={false}
         alt="A student submission beside eight detection signals, ranked by what actually persuaded an educator: file metadata above the algorithm's linguistic analysis."
       >
-        <OriginalityHero bare />
+        <OriginalityHero bare playTwice />
       </MediaSlot>
     ),
   },
@@ -129,7 +129,13 @@ const WORK: Work[] = [
 
 export const HomePage = () => {
   return (
-    <CvPage scope="global">
+    <CvPage scope="global" intro>
+      {/* Every other page names itself in PageHead's h1. The homepage's
+          visible identity is the name in the rail and header, which is a link,
+          not a heading, so a screen reader jumping by heading found only
+          "Selected work". This gives the outline its top without adding a
+          visible title the layout never had. */}
+      <h1 className="sr-only">Morgan Broacha, product designer</h1>
 
       <SectionHeading>SELECTED WORK</SectionHeading>
       <Rule className="mb-6" />

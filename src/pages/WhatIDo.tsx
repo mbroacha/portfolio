@@ -22,7 +22,7 @@ import { asset } from "../lib/asset";
 /** One stage of the practice. The tool is named, so the claim is checkable. */
 const Stage = ({ title, tool, children }: { title: string; tool: string; children: ReactNode }) => (
   <Panel title={title}>
-    <div className="cv-meta mb-2 text-lichen">{tool}</div>
+    <div className="cv-meta mb-2 text-tertiary">{tool}</div>
     <div>{children}</div>
   </Panel>
 );
@@ -175,7 +175,7 @@ export const WhatIDo = () => (
         },
       ]}
     />
-    <p className="cv-subhead mb-6 text-bone">
+    <p className="cv-subhead mb-6 text-primary">
       Ten decisions in that sequence; models made none of them.
     </p>
     <ol className="mb-6 grid list-none grid-cols-1 gap-x-6 gap-y-2 p-0 sm:grid-cols-2">
@@ -191,8 +191,8 @@ export const WhatIDo = () => (
         "Discoverability",
         "What to hand off to the user, and when",
       ].map((d, i) => (
-        <li key={d} className="flex gap-3 border-t border-hedge pt-2">
-          <span className="cv-meta w-6 shrink-0 text-lichen">{String(i + 1).padStart(2, "0")}</span>
+        <li key={d} className="flex gap-3 border-t border-rule pt-2">
+          <span className="cv-meta w-6 shrink-0 text-tertiary">{String(i + 1).padStart(2, "0")}</span>
           <span>{d}</span>
         </li>
       ))}
