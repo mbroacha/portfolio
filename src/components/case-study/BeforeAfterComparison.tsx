@@ -163,7 +163,7 @@ export const BeforeAfterComparison = ({
         </button>
 
         <p className="sr-only">
-          {before.alt} Compared with {after.alt}. Drag the slider or use arrow keys to reveal more of each image.
+          {before.alt} Compared with {after.alt} Drag the slider or use arrow keys to reveal more of each image.
         </p>
       </div>
     </figure>

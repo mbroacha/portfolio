@@ -37,7 +37,7 @@ export const GradescopeMobile = () => (
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">The parent design system was built for web and had to be translated for mobile interactions.</em>}>
       <div>
-        This quickly revealed where buttons failed as tap targets, type didn't scale, and the colors pulled too dark on a phone. The team was torn between strict fidelty vs. an interpretation of the design system.
+        This quickly revealed where buttons failed as tap targets, type didn't scale, and the colors pulled too dark on a phone. The team was torn between strict fidelity and an interpretation of the design system.
       </div>
     </TwoCol>
 
@@ -53,7 +53,7 @@ export const GradescopeMobile = () => (
 
     <SectionHeading className="mt-12">THE DECISION</SectionHeading>
     <Rule className="mb-6" />
-    <TwoCol claim={<em className="font-display not-italic">We all the work on the frontend. Then we reversed it.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">We put all the work on the frontend. Then we reversed it.</em>}>
       <div>
         Imagine a worksheet (do those still exist?): you have a series of printed questions with spaces to answer by hand. Our existing autograder had to be told where each answer sits on the page, so after scanning the paper, the student maps the area
         of every question. That is not a short process at 11:59 PM. But teachers don't want to have to do this for 30+ students.
@@ -75,7 +75,7 @@ export const GradescopeMobile = () => (
     <TwoCol claim={<em className="font-display not-italic">You inherit the blame for another product's friction.</em>}>
       <div>
         A tedious mapping step required for the web app produced rushed mapping, which produced a bad submission, which the teacher read as a
-        broken product. The actual OCR scanner was also a third party platform we could not control. In our own wireframing it was literally a black box.
+        broken product. The actual OCR scanner was also a third-party platform we could not control. In our own wireframing it was literally a black box.
       </div>
     </TwoCol>
     <MediaSlot
@@ -92,6 +92,6 @@ export const GradescopeMobile = () => (
       </div>
     </TwoCol>
 
-    <PrevNext prev={{ label: "Originality", to: "/case-study/originality" }} next={{ label: "What I do", to: "/what-i-do" }} />
+    <PrevNext prev={{ label: "Originality", to: "/case-study/originality" }} next={{ label: "On Being AI Native", to: "/what-i-do" }} />
   </CvPage>
 );

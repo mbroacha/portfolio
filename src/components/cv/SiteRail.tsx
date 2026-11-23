@@ -55,7 +55,7 @@ const SiteNav = () => {
       />
       <NavCard
         to="/what-i-do"
-        label="On being AI native"
+        label="On Being AI Native"
         note="An evolving process"
         active={pathname === "/what-i-do"}
         thumb={<FontAwesomeIcon icon={faBrain} className="h-[18px] w-[18px] text-lichen" />}

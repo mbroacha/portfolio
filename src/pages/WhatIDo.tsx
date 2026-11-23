@@ -2,13 +2,13 @@ import type { ReactNode } from "react";
 import { CvPage } from "../components/cv/CvPage";
 import { PageHead } from "../components/cv/PageHead";
 import { MediaSlot, Panel, Rule, SectionHeading } from "../components/cv/CvPrimitives";
-import { Ledger } from "../components/cv/CaseStudyParts";
+import { Ledger, TwoCol } from "../components/cv/CaseStudyParts";
 import { asset } from "../lib/asset";
 
 /**
- * What I do.
+ * On Being AI Native.
  *
- * A practice overview, which is what the title promises. The six stages first,
+ * A practice overview. The six stages first,
  * then one worked example, then the three limits.
  *
  * This page used to be an eight-step walkthrough of a single feature with the
@@ -32,7 +32,7 @@ export const WhatIDo = () => (
     scope="global"
   >
     <PageHead
-      title="What I do"
+      title="On Being AI Native"
       lede={
         <>
           "AI native" is the hot new skill every designer needs to be marketable. But what does that actually mean? More than shipping code, it means being able to work with new interfaces and design materials that are rapidly changing. The skill is still fundamentally understanding a user problem, and solving it.
@@ -61,18 +61,37 @@ export const WhatIDo = () => (
         wild on one, then look for workflow gaps and edge cases. This is also a fast way to find gaps in an existing design system.
       </Stage>
       <Stage title="Build" tool="Claude Code, Codex">
-        Lo-fi designs are still queen of quick consensus. I prototype not because I now can cheaply, but to answer a specific question. The question is usually
+        Lo-fi designs are still queen of quick consensus. I prototype not because it is now cheap, but to answer a specific question. The question is usually
         about an interaction that must be seen in its environment.
       </Stage>
       <Stage title="Critique" tool="My own design critique skill">
         I run it over the actual repo locally, so it sees the whole codebase rather than a screenshot. As a design team of one, I am vulnerable to <s>being drunk with power</s> being the sole product voice in the room and my own biases.
       </Stage>
       <Stage title="Ship" tool="GitLab">
-        I ship a lot of the UI changes myself, from a design perspective. There is some vibe checking of what might be too heavy (read:backend) to handle, and collaboration is part of the game. But design review, PR review, and unit tests are all still part of the process.
+        I ship a lot of the UI changes myself, from a design perspective. There is some vibe checking of what might be too heavy (read: backend) to handle, and collaboration is part of the game. But design review, PR review, and unit tests are all still part of the process.
       </Stage>
     </div>
 
-    <SectionHeading>ONE FEATURE, END TO END</SectionHeading>
+    <SectionHeading>THE DESIGN SYSTEM</SectionHeading>
+    <Rule className="mb-6" />
+    <TwoCol claim={<em className="font-display not-italic">Asking where it lives is now the wrong question.</em>}>
+      <div>
+        The system predated all of this, and paid the usual tax: versions that lived in Figma, code, and Storybook in between, each
+       with an obscene amount of work keeping them all in harmony.
+      </div>
+      <div>
+        It went into Claude as a one-time import. What came out is a breathing set of standards that pushes to code
+        faster than the sync loop allowed.
+      </div>
+      <div>
+        With a small team, the design system has to scale while the product scales. There was never a version where it
+        stabilized first. Making it a required part of Codex's directive means every generation tests whether the
+        standards still describe what we are building, so revision needs surface long before use would have surfaced
+        them.
+      </div>
+    </TwoCol>
+
+    <SectionHeading className="mt-6">ONE FEATURE, END TO END</SectionHeading>
     <Rule className="mb-6" />
     <p className="mb-6">
       Context: a complex decision modeling tool backed by a bespoke programming language used by hardware engineers. Customers really wanted to be able to change the colors of boxes and lines in the graph. Sounds small. It was not.
@@ -198,7 +217,7 @@ export const WhatIDo = () => (
         I go in and click around. I need to feel what is clunky and find the interactions I did not expect. What Claude thinks works for 99% of public apps doesn't necessarily work for our users.
       </Panel>
       <Panel title="Generate at your own risk">
-        As of the writing of this page, generative models specifically for UI/UX are...not great (looking at you, Figma.) Slop is everywhere, and the value of the designer is to be able to discern what is actually worth the product investment.
+        As of the writing of this page, generative models specifically for UI/UX are...not great (looking at you, Figma). Slop is everywhere, and the value of the designer is to be able to discern what is actually worth the product investment.
       </Panel>
     </div>
   </CvPage>

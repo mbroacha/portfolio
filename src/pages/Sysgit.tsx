@@ -144,24 +144,23 @@ export const Sysgit = () => (
     </TwoCol>
     <RequirementsTableRecreation />
 
-    <SectionHeading className="mt-12">WHERE IT LANDED</SectionHeading>
+    <SectionHeading className="mt-12">WHERE IT STANDS</SectionHeading>
     <Rule className="mb-6" />
     <QualOutcome
       items={[
         {
-          title: "What has shipped",
-          detail: (
-            <>
-              In two years: the diagramming tool, the requirements table, the IDE, views and filters, diffing, and reviews with branching and merging. Every feature is actively in use.
-              <br /><br />
-              Currently launching an in-house MCP and agent management.
-            </>
-          ),
+          title: "Shipped",
+          detail:
+            "In two years: the diagramming tool, the requirements table, the IDE, views and filters, diffing, and reviews with branching and merging. Every feature is in active use.",
         },
         {
-          title: "How we measure it",
+          title: "In flight",
+          detail: "An in-house MCP and agent management, launching now.",
+        },
+        {
+          title: "What I watch",
           detail:
-            "Acquisition. This market is slow and the meaningful question is whether organizations already locked into a legacy tool bought anyway. We currently support US Air Force, Leidos, GTRI, Tradewinds and Constellr, among others.",
+            "Acquisition. In a market this slow the only honest question is whether an organization already standardized on an incumbent bought anyway. The US Air Force, Leidos, GTRI, Tradewinds, and Constellr did, and that helped secure $4.1M in funding.",
         },
       ]}
     />

@@ -34,7 +34,7 @@ const decisions: Decision[] = [
   {
     title: "Suggest, never act",
     rejected: "Automated maneuvering, and arbitrating who moves.",
-    why: "Beacon proposes when and how to move, refined by maneuverability data if the operator chooses to share it. Touching an operator's asset oursevles was never in scope, because being wrong meant a real physical consequence",
+    why: "Beacon proposes when and how to move, refined by maneuverability data if the operator chooses to share it. Touching an operator's asset ourselves was never in scope, because being wrong meant a real physical consequence.",
     tradeoff: "It leaves the hardest part of the problem, deciding who yields, with the humans who were already struggling with it.",
     result: "Operators trusted it with their data because it could not act on their behalf. Declining to arbitrate is what made the rest possible.",
   },

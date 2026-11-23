@@ -93,10 +93,10 @@ export const Originality = () => (
       }
     >
       <div>
-        Contract cheating is work a student paid someone else to write (before AI was ubiquitous). Teachers previously caught this off vibes, but serious academic offenses require proof.  Turnitin developed a model to profile a student's writing style in order to catch outlier assignments. The 2018 closed beta featured pages of obscure charts and tables that were not easily readible by educators.
+        Contract cheating is work a student paid someone else to write (before AI was ubiquitous). Teachers previously caught this off vibes, but serious academic offenses require proof. Turnitin developed a model to profile a student's writing style in order to catch outlier assignments. The 2018 closed beta featured pages of obscure charts and tables that were not easily readable by educators.
       </div>
       <div>
-        I was brought in to improve the layout of the results page. After interviewing educators, I realized the layout wasn&rsquo;t was the issue. The report gave every datapoint the same weight, so users had to waded through a lot of noise to make a decision.
+        I was brought in to improve the layout of the results page. After interviewing educators, I realized the layout wasn&rsquo;t the issue. The report gave every datapoint the same weight, so users had to wade through a lot of noise to make a decision.
       </div>
     </TwoCol>
 
@@ -224,7 +224,7 @@ export const Originality = () => (
         after={{
           label: "After",
           src: asset("/case-studies/originality/outcome-after-authorship.png"),
-          alt: "Authorship dashboard with similarity, revisions and editing time trends.",
+          alt: "Originality dashboard with similarity, revisions and editing time trends.",
         }}
       />
     </div>
@@ -254,6 +254,6 @@ export const Originality = () => (
       </div>
     </TwoCol>
 
-    <PrevNext prev={{ label: "Beacon", to: "/case-study/beacon" }} next={{ label: "What I do", to: "/what-i-do" }} />
+    <PrevNext prev={{ label: "Beacon", to: "/case-study/beacon" }} next={{ label: "On Being AI Native", to: "/what-i-do" }} />
   </CvPage>
 );
