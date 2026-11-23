@@ -13,6 +13,7 @@
  */
 
 import { CvPage } from "../components/cv/CvPage";
+import { HeroReplay } from "../components/cv/HeroReplay";
 import { PlayWhenVisible } from "../components/cv/PlayWhenVisible";
 import { PageHead } from "../components/cv/PageHead";
 import { MediaSlot, Rule, SectionHeading } from "../components/cv/CvPrimitives";
@@ -44,7 +45,9 @@ export const Sysgit = () => (
     />
 
     <PlayWhenVisible>
-      <SysgitHero playOnce />
+      <HeroReplay>
+        <SysgitHero playOnce />
+      </HeroReplay>
     </PlayWhenVisible>
 
     <SectionHeading className="mt-12">The product</SectionHeading>

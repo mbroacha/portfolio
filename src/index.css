@@ -230,6 +230,12 @@
     }
   }
 
+  /* HeroReplay: the reader skipped to the end. Every hero's base style is its
+     resolved frame, so switching the animation off is the conclusion. */
+  [data-still] * {
+    animation: none !important;
+  }
+
   /* PlayWhenVisible (components/cv/PlayWhenVisible.tsx): animations hold still while off screen. */
   [data-offscreen] * {
     animation-play-state: paused !important;

@@ -2,13 +2,13 @@ import { asset } from "../lib/asset";
 import { BeaconHeroB } from "../components/case-study/BeaconHeroB";
 import { BeaconSplash } from "../components/case-study/BeaconSplash";
 import { CvPage } from "../components/cv/CvPage";
+import { HeroReplay } from "../components/cv/HeroReplay";
 import { PlayWhenVisible } from "../components/cv/PlayWhenVisible";
 import { PageHead } from "../components/cv/PageHead";
 import { MediaSlot, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import {
   ConstraintGrid,
   DecisionRow,
-  InsightBlock,
   PrevNext,
   QualOutcome,
   TwoCol,
@@ -106,7 +106,9 @@ export const Beacon = () => (
     />
 
     <PlayWhenVisible>
-      <BeaconHeroB playOnce />
+      <HeroReplay>
+        <BeaconHeroB playOnce />
+      </HeroReplay>
     </PlayWhenVisible>
 
     <SectionHeading className="mt-12">Problem</SectionHeading>
@@ -184,11 +186,11 @@ export const Beacon = () => (
 
     <SectionHeading className="mt-12">Insight</SectionHeading>
     <Rule className="mb-6" />
-    <InsightBlock
-      quote="You cannot mandate disclosure, but you can incentivize it."
-      source="From operator interviews and work with our in-house astrophysics team."
-    />
-    <TwoCol claim={<em className="font-display not-italic">Position is not the sensitive part.</em>}>
+    {/* Same shape as Originality's Insight: the finding is the claim, and the
+        source and what followed from it sit beside it on the page's one grid. */}
+    <TwoCol claim={<p className="m-0">You cannot mandate disclosure, but you can incentivize it.</p>}>
+      <div className="text-tertiary">From operator interviews and work with our in-house astrophysics team.</div>
+      <div className="text-primary">Position is not the sensitive part.</div>
       <div>
         Operators do not really have a choice about position. Ground sensor networks see your assets whether you
         like it or not, and sharing that helps everyone, because nobody wants to hit anyone.

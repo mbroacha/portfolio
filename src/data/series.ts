@@ -18,10 +18,10 @@ export const SERIES: SeriesEntry[] = [
   { id: "gradescope", title: "Gradescope Mobile", to: "/case-study/gradescope-mobile" },
 ];
 
-/** Where an entry sits: its 1-based position, and its neighbours. */
-export const seriesPosition = (id: SeriesEntry["id"]) => {
+/** An entry's neighbours in reading order. */
+export const seriesNeighbours = (id: SeriesEntry["id"]) => {
   const i = SERIES.findIndex((e) => e.id === id);
-  return { n: i + 1, total: SERIES.length, prev: SERIES[i - 1], next: SERIES[i + 1] };
+  return { prev: SERIES[i - 1], next: SERIES[i + 1] };
 };
 
 /** The entry a path belongs to, if it is a case study. */

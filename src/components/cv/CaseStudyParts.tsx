@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "../../lib/cn";
-import { seriesPosition, type SeriesEntry } from "../../data/series";
+import { seriesNeighbours, type SeriesEntry } from "../../data/series";
 
 /**
  * Claim left, evidence right. The template's core editorial device.
@@ -147,7 +147,7 @@ export const PrevNext = ({
   prev?: NavTarget;
   next?: NavTarget;
 }) => {
-  const pos = series ? seriesPosition(series) : undefined;
+  const pos = series ? seriesNeighbours(series) : undefined;
   const before: NavTarget | undefined = pos?.prev ? { label: pos.prev.title, to: pos.prev.to } : prev;
   // The last case study hands on to How I Work.
   const after: NavTarget | undefined = pos?.next

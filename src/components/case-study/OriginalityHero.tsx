@@ -117,9 +117,13 @@ const CSS = `
    holds. Columns run out of phase, so they come to rest one by one. */
 .oh-wrap.twice .oh-bar{animation-iteration-count:4;animation-fill-mode:forwards}
 .oh-wrap.twice .oh-bloom{animation-iteration-count:2;animation-fill-mode:forwards}
-/* playOnce: one rising pass per column, held at its raised scale. */
-.oh-wrap.once .oh-bar{animation-iteration-count:1;animation-fill-mode:forwards}
-.oh-wrap.once .oh-bloom{animation-iteration-count:1;animation-fill-mode:forwards}
+/* playOnce: each column rises once from its low scale and settles at rest,
+   scaleY(1). Ending on the resting frame means the natural end and the still
+   frame (reduced motion, or HeroReplay's skip) are the same picture. The bloom
+   holds still: its 24s breath is atmosphere, and would outlast the bars. */
+@keyframes ohSettle{from{transform:scaleY(var(--lo))}to{transform:none}}
+.oh-wrap.once .oh-bar{animation-name:ohSettle;animation-iteration-count:1;animation-direction:normal;animation-fill-mode:backwards;animation-timing-function:cubic-bezier(.16,1,.3,1)}
+.oh-wrap.once .oh-bloom{animation:none}
 
 @media (prefers-reduced-motion: reduce){.oh-wrap .oh-bar,.oh-wrap .oh-bloom{animation:none !important}}
 `;

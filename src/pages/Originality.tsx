@@ -1,4 +1,5 @@
 import { CvPage } from "../components/cv/CvPage";
+import { HeroReplay } from "../components/cv/HeroReplay";
 import { PlayWhenVisible } from "../components/cv/PlayWhenVisible";
 import { PageHead } from "../components/cv/PageHead";
 import { MediaSlot, Rule, SectionHeading } from "../components/cv/CvPrimitives";
@@ -84,7 +85,9 @@ export const Originality = () => (
     />
 
     <PlayWhenVisible>
-      <OriginalityHero playOnce />
+      <HeroReplay>
+        <OriginalityHero playOnce />
+      </HeroReplay>
     </PlayWhenVisible>
 
     <SectionHeading className="mt-12">Problem</SectionHeading>
