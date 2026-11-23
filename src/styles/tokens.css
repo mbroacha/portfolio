@@ -67,9 +67,11 @@
   --font-size-claim: 1.3125rem; /* 21px — claims and decision titles (serif roman) */
   --font-size-section: 1.75rem; /* 28px — section headings (serif italic, sentence case) */
   --font-size-title: clamp(2.125rem, 1.5rem + 2.2vw, 2.75rem); /* 34–44px — case study title */
-  --font-size-xl: 1.75rem; /* 28px — project title (serif italic) */
-  --font-size-2xl: 1rem; /* 16px — section heading (serif italic) */
-  --font-size-3xl: 1.25rem;
+  --font-size-xl: 1.75rem; /* 28px — spare step; page titles use --font-size-title */
+  /* The base h2 clamp (index.css) and PageHead's subtitle. Section headings
+     use --font-size-section. */
+  --font-size-2xl: 1rem; /* 16px */
+  --font-size-3xl: 1.25rem; /* 20px */
   /* The one poster moment on the site. Large enough to be a landing, small
      enough that the case studies underneath are not a letdown. */
   --font-size-hero: clamp(1.625rem, 3.4vw, 2.25rem);

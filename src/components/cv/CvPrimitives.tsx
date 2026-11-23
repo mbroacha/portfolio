@@ -249,6 +249,56 @@ const SlotVideo = ({
 };
 
 /**
+ * The slot's still image, with a failure state.
+ *
+ * A file that 404s or will not decode used to leave an empty frame that read
+ * as intentional. Now the frame says the image did not load and carries the
+ * alt text, so the reader still gets what the picture was there to show.
+ */
+const SlotImage = ({
+  src,
+  avif,
+  alt,
+  size,
+  fit,
+}: {
+  src: string;
+  avif?: string;
+  alt?: string;
+  size?: [number, number];
+  fit: "cover" | "contain";
+}) => {
+  const [failed, setFailed] = useState(false);
+  if (failed) {
+    return (
+      <div className="flex h-full min-h-[12rem] w-full flex-col justify-center gap-2 p-6 text-left">
+        <span className="cv-meta text-primary">This image didn&rsquo;t load.</span>
+        {alt ? <span className="cv-meta max-w-[var(--measure-prose)] text-secondary">{alt}</span> : null}
+      </div>
+    );
+  }
+  return (
+    // contents: the img sizes against the slot, as it did before the wrapper.
+    <picture className="contents">
+      {avif ? <source type="image/avif" srcSet={avif} /> : null}
+      {/* The global img rule paints --ink-900 behind every image. A transparent
+          PNG would show that as a lighter rectangle inside the slot, so clear it
+          and let the slot's own surface read through. */}
+      <img
+        src={src}
+        alt={alt ?? ""}
+        loading="lazy"
+        decoding="async"
+        width={size?.[0]}
+        height={size?.[1]}
+        onError={() => setFailed(true)}
+        className={cn("h-full w-full bg-transparent", fit === "contain" ? "object-contain" : "object-cover")}
+      />
+    </picture>
+  );
+};
+
+/**
  * Media slot. Renders a real image when `src` is given, a muted capture when
  * `video` is given, otherwise the template's diagonal placeholder frame.
  *
@@ -333,14 +383,7 @@ export const MediaSlot = ({
         <SlotVideo video={video} alt={alt} fit={fit} />
       ) : src ? (
         // contents: the img sizes against the slot, as it did before the wrapper.
-        <picture className="contents">
-          {avif ? <source type="image/avif" srcSet={avif} /> : null}
-          <img src={src} alt={alt ?? ""} loading="lazy" decoding="async"
-            width={size?.[0]} height={size?.[1]} // The global img rule paints --ink-900 behind every image. A transparent PNG
-            // would show that as a lighter rectangle inside the slot, so clear it and
-            // let the slot's own surface read through.
-            className={cn("h-full w-full bg-transparent", fit === "contain" ? "object-contain" : "object-cover")} />
-        </picture>
+        <SlotImage src={src} avif={avif} alt={alt} size={size} fit={fit} />
       ) : (
         <svg
           className="absolute inset-0 h-full w-full"

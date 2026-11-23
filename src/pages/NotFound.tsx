@@ -32,7 +32,7 @@ export const NotFound = () => {
       <div className="flex flex-col items-start gap-6 py-8 sm:py-16">
         <Jackalope size={72} className="text-tertiary" />
         <div>
-          <h1 className="m-0 font-display text-[length:var(--font-size-xl)] font-normal italic text-primary">
+          <h1 className="m-0 font-display text-[length:var(--font-size-title)] font-normal italic leading-[1.05] text-primary">
             This page is a cryptid.
           </h1>
           <p className="mt-3 [text-wrap:balance]">Plenty of reported sightings, no evidence it exists.</p>

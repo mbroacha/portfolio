@@ -95,13 +95,16 @@ const DEFAULT_BACKGROUND = [
 
 /* The knobs for the glass treatment, in one place. */
 const CSS = `
-.sgs-track { display: flex; width: max-content; height: 100% }
-/* The track used to drift on an endless 120s loop. Motion behind two product
-   captures was decoration with no stop, so it now holds on the composed frame
-   for everyone, which is what reduced motion always showed. */
+.sgs-track { display: flex; width: max-content; height: 100%; will-change: transform }
+.sgs-bg .sgs-track { animation: sgs-drift 120s linear infinite }
+@keyframes sgs-drift { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+/* Motion here is decorative. Stopped, the track rests on the composed frame. */
+@media (prefers-reduced-motion: reduce) {
+  .sgs-bg .sgs-track { animation: none }
+}
 .sgs-screen { border-radius: 12px; overflow: hidden }
 /* On the image, not the wrapper: the frame and shadow stay at full strength. */
-.sgs-screen > img { opacity: 0.85 }
+.sgs-screen img { opacity: 0.85 }
 .sgs-inset { box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.4) }
 `;
 

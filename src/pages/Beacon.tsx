@@ -165,23 +165,38 @@ export const Beacon = () => (
     />
 
     {/* The two sources the product was anchored to, since no interface
-        precedent existed. Labelled, unlike the product captures: these are
-        other people's documents, and a reader cannot be expected to know a
-        conjunction message from an ephemeris on sight. */}
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-[1fr_0.62fr]">
-      <MediaSlot
-        matted={false}
-        ratio="16/9"
-        src={asset("/case-studies/beacon/spacetrack.webp")}
-        alt="A public conjunction message list: rows of close approaches, each with the time of closest approach, a minimum range in metres, a collision probability to ten decimal places, and the catalogue number, name, object type and radar cross-section of both objects."
-      />
-      <MediaSlot
-        matted={false}
-        ratio="3/4"
-        fit="contain"
-        src={asset("/case-studies/beacon/ephemeris.webp")}
-        alt="An eleven-parameter ephemeris message from Intelsat, addressed to all stations operating at 302 degrees east, giving an epoch to the second and eleven orbital coefficients in degrees and degrees per day."
-      />
+        precedent existed. Captioned, unlike the rest of the site's media, at
+        Morgan's request: these are other people's documents, and a reader
+        cannot be expected to know an orbit catalogue from an ephemeris on
+        sight.
+        One dark band bleeding to the column edges, like the page's other inset
+        images. Side by side the columns are sized by each image's aspect ratio
+        (1760x990 and 1000x1194), so the two frames come out the same height. */}
+    <div className="-mx-8 mb-6 bg-[color:var(--surface-media-backdrop)] px-4 py-8 sm:px-8">
+      <div className="mx-auto grid max-w-[1000px] grid-cols-1 items-end gap-x-6 gap-y-8 sm:grid-cols-[1.778fr_0.838fr]">
+        <figure className="m-0 [&>div]:mb-0">
+          <MediaSlot
+            matted={false}
+            ratio="auto"
+            size={[1760, 990]}
+            src={asset("/case-studies/beacon/spacetrack.webp")}
+            alt="A public conjunction message list: rows of close approaches, each with the time of closest approach, a minimum range in metres, a collision probability to ten decimal places, and the catalogue number, name, object type and radar cross-section of both objects."
+          />
+          <figcaption className="cv-meta mt-3 text-center text-secondary">
+            Public active orbit information in Space-Track
+          </figcaption>
+        </figure>
+        <figure className="m-0 mx-auto w-full max-w-[18rem] sm:max-w-none [&>div]:mb-0">
+          <MediaSlot
+            matted={false}
+            ratio="auto"
+            size={[1000, 1194]}
+            src={asset("/case-studies/beacon/ephemeris.webp")}
+            alt="An eleven-parameter ephemeris message from Intelsat, addressed to all stations operating at 302 degrees east, giving an epoch to the second and eleven orbital coefficients in degrees and degrees per day."
+          />
+          <figcaption className="cv-meta mt-3 text-center text-secondary">Example ephemeris file</figcaption>
+        </figure>
+      </div>
     </div>
 
     <SectionHeading className="mt-12">Insight</SectionHeading>

@@ -23,7 +23,9 @@ export const BeforeAfterComparison = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState(defaultPosition);
   const [containerWidth, setContainerWidth] = useState(0);
-  const isDraggingRef = useRef(false);
+  /** The pointer driving the current drag, or null. One drag at a time: a
+      second finger landing mid-drag must not seize the divider. */
+  const dragPointerRef = useRef<number | null>(null);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -48,7 +50,8 @@ export const BeforeAfterComparison = ({
 
   const onPointerDown = useCallback(
     (event: PointerEvent<HTMLElement>) => {
-      isDraggingRef.current = true;
+      if (dragPointerRef.current !== null) return;
+      dragPointerRef.current = event.pointerId;
       containerRef.current?.setPointerCapture(event.pointerId);
       setPositionFromClientX(event.clientX);
     },
@@ -57,15 +60,28 @@ export const BeforeAfterComparison = ({
 
   const onPointerMove = useCallback(
     (event: PointerEvent<HTMLElement>) => {
-      if (!isDraggingRef.current) return;
+      if (event.pointerId !== dragPointerRef.current) return;
       setPositionFromClientX(event.clientX);
     },
     [setPositionFromClientX],
   );
 
-  const onPointerUp = useCallback((event: PointerEvent<HTMLElement>) => {
-    isDraggingRef.current = false;
-    containerRef.current?.releasePointerCapture(event.pointerId);
+  /** Ends the drag on release, cancel (the browser took the gesture to
+      scroll) or lost capture. Only the dragging pointer can end it. */
+  const endDrag = useCallback((event: PointerEvent<HTMLElement>) => {
+    if (event.pointerId !== dragPointerRef.current) return;
+    dragPointerRef.current = null;
+    const el = containerRef.current;
+    if (el?.hasPointerCapture(event.pointerId)) el.releasePointerCapture(event.pointerId);
+  }, []);
+
+  // A drag cannot outlive the window losing focus (alt-tab mid-drag).
+  useEffect(() => {
+    const clear = () => {
+      dragPointerRef.current = null;
+    };
+    window.addEventListener("blur", clear);
+    return () => window.removeEventListener("blur", clear);
   }, []);
 
   const onKeyDown = useCallback((event: KeyboardEvent<HTMLButtonElement>) => {
@@ -97,8 +113,9 @@ export const BeforeAfterComparison = ({
           onPointerDown(event);
         }}
         onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerUp}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
+        onLostPointerCapture={endDrag}
       >
         <img
           src={after.src}
