@@ -21,7 +21,7 @@ export const SectionHeading = ({
 }) => (
   <h2
     id={id ?? sectionId(children)}
-    className={cn("mb-6 font-display text-[length:var(--font-size-2xl)] font-normal not-italic text-primary", className)}
+    className={cn("mb-6 font-display text-[length:var(--font-size-3xl)] font-normal not-italic text-primary", className)}
     style={{ fontStyle: "italic" }}
   >
     {children}
@@ -217,7 +217,9 @@ const SlotVideo = ({
           aria-hidden
           className={cn(
             "pointer-events-none absolute bottom-2 left-3 flex items-center gap-[3px] transition-opacity",
-            paused ? "opacity-100" : "opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100",
+            paused
+              ? "opacity-100"
+              : "opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 [@media(hover:none)]:opacity-100",
           )}
           style={{ color: "var(--text-on-media)" }}
         >

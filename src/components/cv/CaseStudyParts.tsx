@@ -130,15 +130,21 @@ export const Step = ({
   </div>
 );
 
-/** Simple label/value ledger. Used for the pre-AI chronology. */
 /**
- * Ledger. Optional `media` sits under the row's middle column, so an artifact
- * lands beside the step it proves instead of piling up at the end.
+ * Ledger: label, what happened, and the tool, one row per step.
+ *
+ * Optional `media` sits under the row's middle column, so an artifact lands
+ * beside the step it proves instead of piling up at the end. Optional
+ * `decided` names the decisions made at that step, so a claim about who made
+ * them can be checked row by row rather than taken on trust.
+ *
+ * The middle column is capped at the reading measure: on a wide screen a bare
+ * 1fr ran to ~95 characters a line.
  */
 export const Ledger = ({
   rows,
 }: {
-  rows: { left: string; right: string; note?: string; media?: ReactNode }[];
+  rows: { left: string; right: ReactNode; note?: string; media?: ReactNode; decided?: string[] }[];
 }) => (
   <div className="pb-6">
     {rows.map((r, i) => (
@@ -150,7 +156,15 @@ export const Ledger = ({
         )}
       >
         <div className="text-primary">{r.left}</div>
-        <div>{r.right}</div>
+        <div className="max-w-[var(--measure-prose)]">
+          {r.right}
+          {r.decided?.length ? (
+            <p className="mb-0 mt-2 text-primary">
+              <span className="text-tertiary">Decided: </span>
+              {r.decided.join("; ")}
+            </p>
+          ) : null}
+        </div>
         {r.note ? <div className="text-tertiary sm:text-right">{r.note}</div> : null}
         {r.media ? <div className="mt-3 sm:col-start-2 [&>*]:mb-0">{r.media}</div> : null}
       </div>
