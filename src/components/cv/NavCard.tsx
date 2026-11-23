@@ -26,12 +26,13 @@ export const NavCard = ({
     to={to}
     aria-current={active ? "page" : undefined}
     className={cn(
-      "flex items-center gap-3 border p-3 no-underline transition-colors",
+      // group: the thumbnail reveals on the card's hover and focus (NavThumbs).
+      "group flex items-center gap-3 border p-3 no-underline transition-colors",
       active ? "border-[color:var(--edge)] bg-[color:var(--surface-media)]" : "border-rule hover:border-[color:var(--edge)]",
     )}
   >
     <span
-      className="flex h-10 w-10 shrink-0 items-center justify-center border border-rule"
+      className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden border border-rule"
       style={{ backgroundColor: "var(--ink-600)" }}
       aria-hidden="true"
     >

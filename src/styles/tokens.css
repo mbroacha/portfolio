@@ -21,6 +21,19 @@
   --surface-media: var(--ink-700);
   --surface-media-backdrop: var(--ink-950);
 
+  /* ── Project colors ───────────────────────────────────────── */
+  /* The site's own chrome is gray. Color belongs to the work: each project
+     carries its product's hue, and only into that project's entry and case
+     study, as underlines, the hovered frame and the focus ring. Never as a
+     fill. On the rail they appear once, in the Work nav card's thumbnail, and
+     only when it is hovered or current. Each is lifted from the product's own
+     color until it clears 3:1 on --ink-800 (#1e1e1e), the bar for a non-text mark;
+     all four clear 4.5:1, so they also hold as text. */
+  --project-sysgit: #a98cf0; /* the Sysgit hero's purple. 6.1:1 */
+  --project-beacon: #f1592b; /* Beacon orange, unchanged. 4.9:1 */
+  --project-originality: #3f9ce0; /* Turnitin blue, the hero's second tint. 5.6:1 */
+  --project-gradescope: #5fa3ad; /* Gradescope teal (approx. #2a5a64), lifted. 5.8:1 */
+
   /* Tailwind RGB channels (alpha-capable utilities) */
   --color-text-caption: 138 138 138;
   --color-border: 51 51 51;

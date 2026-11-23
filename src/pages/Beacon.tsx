@@ -27,6 +27,7 @@ const decisions: Decision[] = [
         width="62%"
         bleed
         src="/case-studies/beacon/satellite-detail.png"
+        avif="/case-studies/beacon/satellite-detail.avif"
         alt="A satellite detail panel for Halcyon-3: catalog ID, international designator, type and country, orbit and mission parameters, and the operator's optional disclosures, maneuverable yes and power source solar plus Li-ion battery, with actions to view 13 events or add it to a watchlist."
       />
     ),

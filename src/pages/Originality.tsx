@@ -254,6 +254,6 @@ export const Originality = () => (
       </div>
     </TwoCol>
 
-    <PrevNext prev={{ label: "Beacon", to: "/case-study/beacon" }} next={{ label: "On Being AI Native", to: "/what-i-do" }} />
+    <PrevNext prev={{ label: "Beacon", to: "/case-study/beacon" }} next={{ label: "How I Work", to: "/how-i-work" }} />
   </CvPage>
 );

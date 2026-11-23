@@ -114,7 +114,6 @@ const CATALOG = (() => {
 })();
 
 const CSS = `
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@500;600&display=swap");
 .bhb * {
   animation-duration: 12s;
   animation-iteration-count: infinite;

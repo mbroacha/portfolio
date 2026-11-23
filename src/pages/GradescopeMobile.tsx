@@ -92,6 +92,6 @@ export const GradescopeMobile = () => (
       </div>
     </TwoCol>
 
-    <PrevNext prev={{ label: "Originality", to: "/case-study/originality" }} next={{ label: "On Being AI Native", to: "/what-i-do" }} />
+    <PrevNext prev={{ label: "Originality", to: "/case-study/originality" }} next={{ label: "How I Work", to: "/how-i-work" }} />
   </CvPage>
 );

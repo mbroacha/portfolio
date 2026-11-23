@@ -1,9 +1,8 @@
 import { useEffect, useId, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faBrain, faFaceLaugh, faPenNib, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Jackalope } from "./Jackalope";
 import { NavCard } from "./NavCard";
+import { CurtainThumb, PortraitThumb, WorkThumb } from "./NavThumbs";
 import { Interrogate } from "../query/Interrogate";
 import { asset } from "../../lib/asset";
 import { cn } from "../../lib/cn";
@@ -25,6 +24,18 @@ import { cn } from "../../lib/cn";
  * Anything that varies by page lives in the content column, in `PageHead`.
  */
 
+/** Menu and close glyphs, drawn inline. These two were the only icons the main
+    bundle needed, and FontAwesome's runtime cost ~20KB gzipped to draw them. */
+const MenuIcon = ({ open }: { open: boolean }) => (
+  <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+    {open ? (
+      <path d="M3.5 3.5l9 9M12.5 3.5l-9 9" strokeLinecap="round" />
+    ) : (
+      <path d="M2 4h12M2 8h12M2 12h12" strokeLinecap="round" />
+    )}
+  </svg>
+);
+
 const SiteName = () => (
   <Link to="/" className="flex items-center gap-2.5 no-underline">
     <Jackalope size={20} className="text-primary" />
@@ -34,8 +45,7 @@ const SiteName = () => (
 
 const Bio = () => (
   <div>
-    Product designer in Oakland, California, for software where decisions carry weight: space traffic, health
-    records, academic integrity, systems engineering. Currently building{" "}
+    Product designer in Oakland, California, for software where decisions carry weight: aerospace, healthcare, academic integrity, hardware engineering. Currently building{" "}
     <a href="https://sysgit.io" target="_blank" rel="noopener noreferrer" className="underline">
       Sysgit
     </a>
@@ -52,21 +62,21 @@ const SiteNav = () => {
         label="Work"
         note="Selected projects"
         active={pathname === "/" || pathname.startsWith("/case-study")}
-        thumb={<FontAwesomeIcon icon={faPenNib} className="h-[18px] w-[18px] text-tertiary" />}
+        thumb={<WorkThumb />}
       />
       <NavCard
-        to="/what-i-do"
-        label="On Being AI Native"
-        note="How I design with AI"
-        active={pathname === "/what-i-do"}
-        thumb={<FontAwesomeIcon icon={faBrain} className="h-[18px] w-[18px] text-tertiary" />}
+        to="/how-i-work"
+        label="How I Work"
+        note="Take a peek behind the curtain"
+        active={pathname === "/how-i-work"}
+        thumb={<CurtainThumb />}
       />
       <NavCard
         to="/about"
         label="About"
         note="Let me introduce myself"
         active={pathname === "/about"}
-        thumb={<FontAwesomeIcon icon={faFaceLaugh} className="h-[18px] w-[18px] text-tertiary" />}
+        thumb={<PortraitThumb />}
       />
     </nav>
   );
@@ -142,7 +152,7 @@ export const SiteHeader = () => {
           style={{ letterSpacing: "var(--tracking-label)" }}
         >
           {open ? "Close" : "Menu"}
-          <FontAwesomeIcon icon={open ? faXmark : faBars} className="h-4 w-4" aria-hidden />
+          <MenuIcon open={open} />
         </button>
       </div>
       <div id={panelId} hidden={!open} className="border-t border-rule px-8 pb-6 pt-4">

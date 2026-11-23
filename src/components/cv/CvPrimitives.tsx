@@ -247,6 +247,7 @@ const SlotVideo = ({
 export const MediaSlot = ({
   ratio = "16/9",
   src,
+  avif,
   video,
   alt,
   width,
@@ -258,6 +259,10 @@ export const MediaSlot = ({
 }: {
   ratio?: Ratio;
   src?: string;
+  /** An AVIF encoding of `src`, served to browsers that support it, with `src`
+      as the fallback. Worth it for big screenshots: a 820KB PNG of the Sysgit
+      editor is 227KB as AVIF with no visible loss. */
+  avif?: string;
   /** A silent screen capture, in place of a still. Takes precedence over src.
       Plays muted on loop once scrolled to, and holds still under
       prefers-reduced-motion. See SlotVideo. */
@@ -310,10 +315,14 @@ export const MediaSlot = ({
       ) : video ? (
         <SlotVideo video={video} alt={alt} fit={fit} />
       ) : src ? (
-        <img src={src} alt={alt ?? ""} // The global img rule paints --ink-900 behind every image. A transparent PNG
-          // would show that as a lighter rectangle inside the slot, so clear it and
-          // let the slot's own surface read through.
-          className={cn("h-full w-full bg-transparent", fit === "contain" ? "object-contain" : "object-cover")} />
+        // contents: the img sizes against the slot, as it did before the wrapper.
+        <picture className="contents">
+          {avif ? <source type="image/avif" srcSet={avif} /> : null}
+          <img src={src} alt={alt ?? ""} loading="lazy" decoding="async" // The global img rule paints --ink-900 behind every image. A transparent PNG
+            // would show that as a lighter rectangle inside the slot, so clear it and
+            // let the slot's own surface read through.
+            className={cn("h-full w-full bg-transparent", fit === "contain" ? "object-contain" : "object-cover")} />
+        </picture>
       ) : (
         <svg
           className="absolute inset-0 h-full w-full"

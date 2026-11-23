@@ -168,11 +168,14 @@ export const SysgitSplash = ({ backgroundImages = DEFAULT_BACKGROUND }: SysgitSp
         <div className="relative px-6 pb-12 pt-12 sm:px-10 md:pb-16 md:pt-16">
           <div className="relative mx-auto max-w-[1100px] md:pb-24">
             <div className="sgs-screen w-full border border-[color:var(--edge)] md:w-[78%]">
-              <img
-                src={asset("/case-studies/sysgit/graph-view.png")}
-                alt="The Sysgit graph view on the spacecraft branch. Requirement cards for the payload and deployability groups, each listing its documentation and attributes, connected by verify relationships to two verification cases that both report a passing verdict."
-                className="block h-auto w-full"
-              />
+              <picture className="contents">
+                <source type="image/avif" srcSet={asset("/case-studies/sysgit/graph-view.avif")} />
+                <img
+                  src={asset("/case-studies/sysgit/graph-view.png")}
+                  alt="The Sysgit graph view on the spacecraft branch. Requirement cards for the payload and deployability groups, each listing its documentation and attributes, connected by verify relationships to two verification cases that both report a passing verdict."
+                  className="block h-auto w-full"
+                />
+              </picture>
             </div>
 
             {/*

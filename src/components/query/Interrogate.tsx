@@ -18,6 +18,32 @@ import { DECLINE, findAnswer, suggestionsFor, type Answer } from "../../lib/retr
 
 const HIGHLIGHT_MS = 1600;
 
+/** The offered questions, as one-click buttons. Shown before anything is asked
+    and again under a decline. */
+const SuggestionList = ({
+  suggestions,
+  onPick,
+  className,
+}: {
+  suggestions: Answer[];
+  onPick: (q: string) => void;
+  className?: string;
+}) => (
+  <ul className={`flex list-none flex-col p-0 ${className ?? ""}`}>
+    {suggestions.map((s) => (
+      <li key={s.id}>
+        <button
+          type="button"
+          onClick={() => onPick(s.q)}
+          className="cursor-pointer border-0 bg-transparent px-0 py-1 text-left text-tertiary underline decoration-transparent underline-offset-4 hover:text-primary hover:decoration-[color:var(--edge)]"
+        >
+          {s.q}
+        </button>
+      </li>
+    ))}
+  </ul>
+);
+
 export const Interrogate = ({ scope, className }: { scope?: string; className?: string }) => {
   const [draft, setDraft] = useState("");
   const [asked, setAsked] = useState<string | null>(null);
@@ -59,7 +85,7 @@ export const Interrogate = ({ scope, className }: { scope?: string; className?: 
     <div className={className}>
       {/* The visible label is the field's label, so a screen reader announces
           the same words a sighted reader sees. The hint answers the question
-          the field raises next to an "AI Native" nav item: is this a chatbot? */}
+          the field raises next to an AI-themed nav item: is this a chatbot? */}
       <label htmlFor={fieldId} className="block uppercase text-primary" style={{ letterSpacing: "var(--tracking-label)" }}>
         Ask me anything
       </label>
@@ -97,19 +123,7 @@ export const Interrogate = ({ scope, className }: { scope?: string; className?: 
           whatever lands in it. */}
       <div aria-live="polite">
         {asked === null ? (
-          <ul className="mt-2 flex list-none flex-col p-0">
-            {suggestions.map((s) => (
-              <li key={s.id}>
-                <button
-                  type="button"
-                  onClick={() => run(s.q)}
-                  className="cursor-pointer border-0 bg-transparent px-0 py-1 text-left text-tertiary underline decoration-transparent underline-offset-4 hover:text-primary hover:decoration-[color:var(--edge)]"
-                >
-                  {s.q}
-                </button>
-              </li>
-            ))}
-          </ul>
+          <SuggestionList className="mt-2" suggestions={suggestions} onPick={run} />
         ) : (
           <div className="mt-3.5 border-l border-[color:var(--edge)] pl-3">
             {/* A typed question echoes back as-is; break-words keeps an unbroken
@@ -144,19 +158,30 @@ export const Interrogate = ({ scope, className }: { scope?: string; className?: 
                 ) : null}
               </>
             ) : (
-              <div className="text-primary">{DECLINE}</div>
+              <>
+                {/* A decline is a dead end only if it stops there. Hand the
+                    reader the questions that do have answers, one click each,
+                    instead of making them find "Other questions" first. No
+                    nearest-match guessing: the threshold exists because a
+                    confident wrong answer is worse than none. */}
+                <div className="text-primary">{DECLINE}</div>
+                <div className="mt-2.5 text-tertiary">I have written about these:</div>
+                <SuggestionList suggestions={suggestions} onPick={run} />
+              </>
             )}
 
-            <button
-              type="button"
-              onClick={() => {
-                setAsked(null);
-                setHit(null);
-              }}
-              className="mt-2 block cursor-pointer border-0 bg-transparent px-0 py-1 text-left text-tertiary underline underline-offset-4 hover:text-primary"
-            >
-              Other questions
-            </button>
+            {hit ? (
+              <button
+                type="button"
+                onClick={() => {
+                  setAsked(null);
+                  setHit(null);
+                }}
+                className="mt-2 block cursor-pointer border-0 bg-transparent px-0 py-1 text-left text-tertiary underline underline-offset-4 hover:text-primary"
+              >
+                Other questions
+              </button>
+            ) : null}
           </div>
         )}
       </div>

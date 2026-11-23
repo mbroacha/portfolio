@@ -6,7 +6,7 @@ import { Ledger, TwoCol } from "../components/cv/CaseStudyParts";
 import { asset } from "../lib/asset";
 
 /**
- * On Being AI Native.
+ * How I Work, or How to be AI Native.
  *
  * A practice overview. The six stages first,
  * then one worked example, then the three limits.
@@ -32,16 +32,17 @@ export const WhatIDo = () => (
     scope="global"
   >
     <PageHead
-      title="On Being AI Native"
+      title="How I Work"
+      subtitle="or How to be AI Native"
       lede={
         <>
-          "AI native" is the hot new skill every designer needs to be marketable. But what does that actually mean? More than shipping code, it means being able to work with new interfaces and design materials that are rapidly changing. The skill is still fundamentally understanding a user problem, and solving it.
+          Needless to say the product game has changed about as often as my job title. And the most recent challenge is taking a stance on how to incorporate, embrace (justify?) the use of AI in our work. For me, beyond shipping code, it means being able to work with new interfaces and design materials that are rapidly changing. The skill is still fundamentally understanding a user problem, and solving it.
         </>
       }
     />
 
     <p className="mb-6">
-      Shipping my own front end collapses the handoff loop most product orgs complain about, and it means my design
+      Shipping my own front-end collapses the handoff loop most product orgs complain about, and it means my design
       decisions get tested in the real product ecosystem instead of in a mock. The reasonable worry is that judgment gets
       outsourced somewhere along the way. So here is my practice, stage by stage, with the tool named at each one:
     </p>

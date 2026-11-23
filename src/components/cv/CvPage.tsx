@@ -22,7 +22,13 @@ interface CvPageProps {
  * The switch is `lg`, not `md`: at 768px a 25% rail is ~190px, and the nav
  * card labels wrapped one word per line.
  */
-export const CvPage = ({ scope, intro = false, children }: CvPageProps) => (
+/** Case studies whose scope names a project take that project's color in the
+    content column. The rail stays gray on every page. */
+const PROJECT_SCOPES = new Set(["sysgit", "beacon", "originality", "gradescope"]);
+
+export const CvPage = ({ scope, intro = false, children }: CvPageProps) => {
+  const project = scope && PROJECT_SCOPES.has(scope) ? scope : undefined;
+  return (
   <>
     {/* First tab stop on every page. On desktop the rail holds about a dozen
         controls before the content; this lets a keyboard reader past them.
@@ -40,7 +46,13 @@ export const CvPage = ({ scope, intro = false, children }: CvPageProps) => (
       </aside>
       {/* tabIndex -1: the skip link moves focus here, not only the scroll
           position, so the next Tab continues inside the content. */}
-      <main id="content" tabIndex={-1} className="cv-prose flex min-w-0 flex-col p-8 focus:outline-none">
+      <main
+        id="content"
+        tabIndex={-1}
+        className="cv-prose flex min-w-0 flex-col p-8 focus:outline-none"
+        data-project={project}
+        style={project ? ({ "--project": `var(--project-${project})` } as React.CSSProperties) : undefined}
+      >
         {intro ? <MobileIntro /> : null}
         {children}
       </main>
@@ -54,4 +66,5 @@ export const CvPage = ({ scope, intro = false, children }: CvPageProps) => (
       © Morgan Broacha 2026
     </footer>
   </>
-);
+  );
+};

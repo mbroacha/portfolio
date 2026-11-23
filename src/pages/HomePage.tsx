@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { SysgitHero } from "../components/case-study/SysgitHero";
 import { BeaconHeroB } from "../components/case-study/BeaconHeroB";
@@ -59,7 +59,7 @@ const WORK: Work[] = [
       </>
     ),
     description:
-      "The first platform of its kind for coordinating satellite conjunctions. Lead designer, and co-owner of product strategy.",
+      "The first platform of its kind for coordinating satellite conjunctions. Lead designer, and co\u2011owner of product strategy.",
     media: (
       <MediaSlot
         ratio="16/9"
@@ -78,7 +78,7 @@ const WORK: Work[] = [
       <>
         <span className="italic">Turnitin</span>, Senior UX Designer
         <br />
-        Education &middot; Shipped 2019
+        Education, Machine Learning &middot; Shipped 2019
       </>
     ),
     description:
@@ -119,6 +119,8 @@ const WORK: Work[] = [
           <img
             src={asset("/case-studies/gradescope/screens-perspective.webp")}
             alt=""
+            loading="lazy"
+            decoding="async"
             className="h-full w-full bg-transparent object-contain"
           />
         </div>
@@ -126,6 +128,37 @@ const WORK: Work[] = [
     ),
   },
 ];
+
+/**
+ * Holds its animated contents still while they are off screen.
+ *
+ * The three hero diagrams are CSS animations, and CSS animations run whether or
+ * not anyone can see them. Paused off screen, they cost nothing until scrolled
+ * to, and because each plays twice and stops (playTwice), those two plays now
+ * happen when the reader actually reaches the entry, not during page load.
+ * Starts paused; the observer's first callback releases whatever is already in
+ * view. The pause rule is [data-offscreen] in index.css.
+ */
+const PlayWhenVisible = ({ children }: { children: ReactNode }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !("IntersectionObserver" in window)) {
+      el?.removeAttribute("data-offscreen");
+      return;
+    }
+    const io = new IntersectionObserver(([entry]) => {
+      el.toggleAttribute("data-offscreen", !entry.isIntersecting);
+    });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return (
+    <div ref={ref} data-offscreen="">
+      {children}
+    </div>
+  );
+};
 
 export const HomePage = () => {
   return (
@@ -141,7 +174,13 @@ export const HomePage = () => {
       <Rule className="mb-6" />
 
       {WORK.map((w, i) => (
-        <div key={w.id}>
+        // Each entry carries its project's color (--project-<id> in tokens.css):
+        // the title underline and focus ring take it through [data-project].
+        <div
+          key={w.id}
+          data-project={w.id}
+          style={{ "--project": `var(--project-${w.id})` } as React.CSSProperties}
+        >
           {i > 0 ? <Rule className="mb-6" /> : null}
           {/* The image is a second way into the case study, not a second tab
               stop: keyboard users already have the title link right below.
@@ -149,10 +188,10 @@ export const HomePage = () => {
           <Link
             to={w.to}
             tabIndex={-1}
-            // Same cue as the nav cards: the frame's border brightens on hover.
-            className="block no-underline [&:hover_.cv-frame]:border-[color:var(--text-tertiary)]"
+            // The frame's border lights up in the project's color on hover.
+            className="block no-underline [&:hover_.cv-frame]:border-[color:var(--project)]"
           >
-            {w.media}
+            <PlayWhenVisible>{w.media}</PlayWhenVisible>
           </Link>
           <WorkEntry index={i + 1} title={w.title} to={w.to} meta={w.meta} description={w.description} />
         </div>

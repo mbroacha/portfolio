@@ -1,6 +1,5 @@
-/* EB Garamond is not vendored via @fontsource yet. Swap to a local import with
-   `npm i @fontsource-variable/eb-garamond` if you want self-hosted fonts. */
-@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Sans:wght@400;500&display=swap");
+/* Fonts load from index.html <head>, not from here: an @import in the CSS
+   delays every font until this file is downloaded and parsed. */
 @import "./styles/tokens.css";
 
 @tailwind base;
@@ -96,8 +95,12 @@
     transition: color var(--transition-fast);
   }
 
+  /* Most links already sit in primary text, so a color change on hover
+     changes nothing. The underline thickens instead: visible on every
+     underlined link, and it moves no layout. */
   a:hover {
     color: var(--text-primary);
+    text-decoration-thickness: 2px;
   }
 
   /* One focus ring for the whole site, in the palette instead of the browser's
@@ -173,6 +176,23 @@
       background-color: transparent;
       box-shadow: none;
     }
+  }
+
+  /* Inside a project's region (its homepage entry, or its case study's content
+     column), links underline in the project's color and focus rings take it
+     too. Link text stays primary gray: the hue marks the work, it does not
+     recolor the reading. See --project-* in tokens.css. */
+  [data-project] a {
+    text-decoration-color: var(--project);
+  }
+
+  [data-project] :focus-visible {
+    outline-color: var(--project);
+  }
+
+  /* PlayWhenVisible (HomePage.tsx): animations hold still while off screen. */
+  [data-offscreen] * {
+    animation-play-state: paused !important;
   }
 
   /* Cap the reading measure on standalone prose in the content column.
