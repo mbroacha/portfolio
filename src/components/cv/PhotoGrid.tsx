@@ -18,9 +18,12 @@ export interface Photo {
  *
  * Photos stay in full color on purpose. The rest of the site is a grayscale
  * document, which is exactly what makes this land.
+ *
+ * `className` adds to the grid, for a page that sets it differently from the
+ * rail: About lays the four out in one row from md up.
  */
-export const PhotoGrid = ({ photos }: { photos: Photo[] }) => (
-  <div className={`mt-3 grid gap-3 ${photos.length === 1 ? "grid-cols-1" : "grid-cols-2"}`}>
+export const PhotoGrid = ({ photos, className }: { photos: Photo[]; className?: string }) => (
+  <div className={`mt-3 grid gap-3 ${photos.length === 1 ? "grid-cols-1" : "grid-cols-2"} ${className ?? ""}`}>
     {photos.map((p) => (
       <div
         key={p.src}

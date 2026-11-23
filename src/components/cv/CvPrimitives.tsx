@@ -87,15 +87,6 @@ export const Entry = ({ when, what }: { when: string; what: ReactNode }) => (
   </div>
 );
 
-/** Plain column, for the skills and tools lists. */
-export const Bullets = ({ items }: { items: string[] }) => (
-  <ul className="m-0 flex list-none flex-col gap-1.5 p-0">
-    {items.map((i) => (
-      <li key={i}>{i}</li>
-    ))}
-  </ul>
-);
-
 /**
  * Label above value, ruled between rows.
  *
