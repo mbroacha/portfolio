@@ -14,19 +14,28 @@ import { MetaList, Rule, StackedList } from "./CvPrimitives";
  */
 export const PageHead = ({
   title,
+  subtitle,
   lede,
   items,
   stacked,
 }: {
   title: string;
+  /** A second title in the old book manner ("or, ..."). Part of the heading,
+      so it sits inside the h1 and is read with it, one step down in size. */
+  subtitle?: string;
   lede?: ReactNode;
   items?: { label: string; value: ReactNode }[];
   /** Label above value, for entries whose value runs to paragraphs. */
   stacked?: boolean;
 }) => (
   <div className="mb-8">
-    <h1 className="m-0 font-display text-[length:var(--font-size-xl)] font-normal italic text-bone">{title}</h1>
-    {lede ? <div className="mt-5 max-w-[90ch]">{lede}</div> : null}
+    <h1 className="m-0 font-display text-[length:var(--font-size-title)] font-normal italic leading-[1.05] text-primary">
+      {title}
+      {subtitle ? (
+        <span className="mt-1 block text-[length:var(--font-size-3xl)] text-tertiary">{subtitle}</span>
+      ) : null}
+    </h1>
+    {lede ? <div className="mt-5 max-w-[60ch] [text-wrap:pretty]">{lede}</div> : null}
     {items ? (
       <>
         <Rule className="my-5" />

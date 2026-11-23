@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "../../lib/cn";
 
@@ -8,7 +9,14 @@ const sectionId = (children: ReactNode): string | undefined =>
     ? children.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
     : undefined;
 
-/** Serif-italic section label. The only display type in the system. */
+/**
+ * Section heading: serif italic, sentence case, the largest type in the
+ * content column after the page title.
+ *
+ * It used to be set in capitals at 20px, which made it read as a label rather
+ * than a level, barely above the 17px claim beneath it. Write the text in
+ * sentence case; the id is derived from it either way.
+ */
 export const SectionHeading = ({
   children,
   className,
@@ -20,15 +28,17 @@ export const SectionHeading = ({
 }) => (
   <h2
     id={id ?? sectionId(children)}
-    className={cn("mb-6 font-display text-[length:var(--font-size-2xl)] font-normal not-italic text-bone", className)}
-    style={{ fontStyle: "italic" }}
+    className={cn(
+      "mb-6 font-display text-[length:var(--font-size-section)] font-normal italic leading-[1.15] text-primary",
+      className,
+    )}
   >
     {children}
   </h2>
 );
 
 export const Rule = ({ className }: { className?: string }) => (
-  <div className={cn("border-t border-hedge", className)} />
+  <div className={cn("border-t border-rule", className)} />
 );
 
 /** Sidebar label/value grid, matching the template's 80px column. */
@@ -38,7 +48,7 @@ export const MetaList = ({ items }: { items: { label: string; value: ReactNode }
   <dl className="grid grid-cols-[minmax(80px,max-content)_1fr] gap-5">
     {items.map((item) => (
       <div key={item.label} className="contents">
-        <dt className="text-bone">{item.label}</dt>
+        <dt className="text-primary">{item.label}</dt>
         <dd className="m-0">{item.value}</dd>
       </div>
     ))}
@@ -56,11 +66,11 @@ export const Panel = ({
   className?: string;
 }) => (
   <section
-    className={cn("border border-hedge p-5", className)}
+    className={cn("border border-rule p-5", className)}
     style={{ backgroundColor: "var(--ink-900)" }}
   >
     <h2
-      className="m-0 mb-4 cv-meta font-normal uppercase text-bone"
+      className="m-0 mb-4 cv-meta font-normal uppercase text-primary"
       style={{ letterSpacing: "var(--tracking-label)" }}
     >
       {title}
@@ -72,18 +82,9 @@ export const Panel = ({
 /** Dated row: the label above, the thing below. */
 export const Entry = ({ when, what }: { when: string; what: ReactNode }) => (
   <div className="mb-4 last:mb-0">
-    <div className="cv-meta text-lichen">{when}</div>
+    <div className="cv-meta text-tertiary">{when}</div>
     <div>{what}</div>
   </div>
-);
-
-/** Plain column, for the skills and tools lists. */
-export const Bullets = ({ items }: { items: string[] }) => (
-  <ul className="m-0 flex list-none flex-col gap-1.5 p-0">
-    {items.map((i) => (
-      <li key={i}>{i}</li>
-    ))}
-  </ul>
 );
 
 /**
@@ -96,9 +97,9 @@ export const Bullets = ({ items }: { items: string[] }) => (
 export const StackedList = ({ items }: { items: { label: string; value: ReactNode }[] }) => (
   <dl className="m-0 flex flex-col">
     {items.map((item, i) => (
-      <div key={item.label} className={cn("flex flex-col gap-1.5 py-5", i === 0 ? "pt-0" : "border-t border-hedge")}>
-        <dt className="cv-meta text-lichen">{item.label}</dt>
-        <dd className="m-0 flex max-w-[var(--measure-prose)] flex-col gap-4 text-bone">{item.value}</dd>
+      <div key={item.label} className={cn("flex flex-col gap-1.5 py-5", i === 0 ? "pt-0" : "border-t border-rule")}>
+        <dt className="cv-meta text-tertiary">{item.label}</dt>
+        <dd className="m-0 flex max-w-[var(--measure-prose)] flex-col gap-4 text-primary">{item.value}</dd>
       </div>
     ))}
   </dl>
@@ -118,29 +119,211 @@ const ratioClass: Record<Ratio, string> = {
 /** A frame that cannot fill the column: fixed width, or letterboxed by contain. */
 const inset = (width?: string, fit?: "cover" | "contain") => Boolean(width) || fit === "contain";
 
+/** The slot's video source. */
+type SlotVideoSource = { src: string; poster?: string };
+
+/** Read at first paint, so the first render is already the right one. */
+const prefersLessMotion = () =>
+  typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 /**
- * Media slot. Renders a real image when `src` is given, otherwise the
- * template's diagonal placeholder frame. With an image, the caption sits
- * below the frame so every real image stays captioned.
+ * An autoplaying slot video: muted and looping, so it reads as a figure on the
+ * page rather than a player with chrome.
  *
- * Caption color is --text-on-media, not --edge: --edge (#6b6b6b) is 2.13:1
- * against the slot fill and fails AA. See tokens.css.
+ * Three things CSS cannot express, so they live here. Playback waits for the
+ * slot to be on screen, which keeps a multi-megabyte capture off the wire for a
+ * reader who never scrolls that far and starts the loop at its first frame
+ * rather than somewhere in the middle. Under prefers-reduced-motion nothing
+ * moves on its own: the poster holds and the native controls appear. And for
+ * everyone else the frame itself is a pause button, so motion this long has a
+ * stop, which is what WCAG 2.2.2 asks for, without a player bar sitting under
+ * every figure. A reader who pauses stays paused: scrolling away and back does
+ * not restart it.
+ */
+const SlotVideo = ({
+  video,
+  alt,
+  fit,
+}: {
+  video: SlotVideoSource;
+  alt?: string;
+  fit: "cover" | "contain";
+}) => {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [still, setStill] = useState(prefersLessMotion);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const apply = () => setStill(mq.matches);
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, []);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    // Held still, by the reader or by their motion setting. No observer, so
+    // scrolling past cannot start it again.
+    if (still || paused) {
+      el.pause();
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) void el.play().catch(() => {});
+        else el.pause();
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [still, paused]);
+
+  const frame = (
+    <video
+      ref={ref}
+      src={video.src}
+      poster={video.poster}
+      controls={still}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      aria-label={alt ?? ""}
+      className={cn("h-full w-full bg-transparent", fit === "contain" ? "object-contain" : "object-cover")}
+    />
+  );
+
+  // Reduced motion already has the native controls, which are the pause.
+  if (still) return frame;
+
+  return (
+    <>
+      {frame}
+      <button
+        type="button"
+        onClick={() => setPaused((p) => !p)}
+        aria-label={paused ? "Play the capture" : "Pause the capture"}
+        className={cn(
+          "group absolute inset-0 z-10 cursor-pointer bg-transparent",
+          "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary",
+        )}
+      >
+        {/* Sits where the caption used to, so it lands on quiet pixels. Hidden
+            until hover or focus, then held once paused so a still frame never
+            reads as a broken one. */}
+        <span
+          aria-hidden
+          className={cn(
+            "pointer-events-none absolute bottom-2 left-3 flex items-center gap-[3px] transition-opacity",
+            paused
+              ? "opacity-100"
+              : "opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 [@media(hover:none)]:opacity-100",
+          )}
+          style={{ color: "var(--text-on-media)" }}
+        >
+          {paused ? (
+            <svg viewBox="0 0 10 12" className="h-3 w-3 fill-current">
+              <polygon points="0,0 10,6 0,12" />
+            </svg>
+          ) : (
+            <>
+              <span className="h-3 w-[3px] bg-current" />
+              <span className="h-3 w-[3px] bg-current" />
+            </>
+          )}
+        </span>
+      </button>
+    </>
+  );
+};
+
+/**
+ * The slot's still image, with a failure state.
+ *
+ * A file that 404s or will not decode used to leave an empty frame that read
+ * as intentional. Now the frame says the image did not load and carries the
+ * alt text, so the reader still gets what the picture was there to show.
+ */
+const SlotImage = ({
+  src,
+  avif,
+  alt,
+  size,
+  fit,
+}: {
+  src: string;
+  avif?: string;
+  alt?: string;
+  size?: [number, number];
+  fit: "cover" | "contain";
+}) => {
+  const [failed, setFailed] = useState(false);
+  if (failed) {
+    return (
+      <div className="flex h-full min-h-[12rem] w-full flex-col justify-center gap-2 p-6 text-left">
+        <span className="cv-meta text-primary">This image didn&rsquo;t load.</span>
+        {alt ? <span className="cv-meta max-w-[var(--measure-prose)] text-secondary">{alt}</span> : null}
+      </div>
+    );
+  }
+  return (
+    // contents: the img sizes against the slot, as it did before the wrapper.
+    <picture className="contents">
+      {avif ? <source type="image/avif" srcSet={avif} /> : null}
+      {/* The global img rule paints --ink-900 behind every image. A transparent
+          PNG would show that as a lighter rectangle inside the slot, so clear it
+          and let the slot's own surface read through. */}
+      <img
+        src={src}
+        alt={alt ?? ""}
+        loading="lazy"
+        decoding="async"
+        width={size?.[0]}
+        height={size?.[1]}
+        onError={() => setFailed(true)}
+        className={cn("h-full w-full bg-transparent", fit === "contain" ? "object-contain" : "object-cover")}
+      />
+    </picture>
+  );
+};
+
+/**
+ * Media slot. Renders a real image when `src` is given, a muted capture when
+ * `video` is given, otherwise the template's diagonal placeholder frame.
+ *
+ * No captions, on purpose: images on this site stand on their own, with the
+ * surrounding prose doing the explaining. Describe the image in `alt`.
  */
 export const MediaSlot = ({
   ratio = "16/9",
-  caption,
   src,
+  avif,
+  video,
   alt,
   width,
   bordered = true,
   matted = true,
   fit = "cover",
   bleed = false,
+  size,
   children,
 }: {
   ratio?: Ratio;
-  caption?: string;
+  /** The image's pixel size. Required in practice for ratio="auto": without
+      it the slot has no height until the file arrives, so it collapses to a
+      band and the page jumps when it loads. */
+  size?: [number, number];
   src?: string;
+  /** An AVIF encoding of `src`, served to browsers that support it, with `src`
+      as the fallback. Worth it for big screenshots: a 820KB PNG of the Sysgit
+      editor is 227KB as AVIF with no visible loss. */
+  avif?: string;
+  /** A silent screen capture, in place of a still. Takes precedence over src.
+      Plays muted on loop once scrolled to, and holds still under
+      prefers-reduced-motion. See SlotVideo. */
+  video?: SlotVideoSource;
   alt?: string;
   width?: string;
   /** The frame: border plus slot fill. Off leaves the bare image. */
@@ -179,6 +362,7 @@ export const MediaSlot = ({
       )}
       style={{
         ...(width ? { "--slot-w": width } : {}),
+        ...(ratio === "auto" && size ? { aspectRatio: `${size[0]} / ${size[1]}` } : {}),
         backgroundColor: bordered ? "var(--ink-600)" : undefined,
       } as React.CSSProperties}
     >
@@ -186,34 +370,22 @@ export const MediaSlot = ({
         <div className="absolute inset-0" role="img" aria-label={alt ?? ""}>
           {children}
         </div>
+      ) : video ? (
+        <SlotVideo video={video} alt={alt} fit={fit} />
       ) : src ? (
-        <img src={src} alt={alt ?? ""} // The global img rule paints --moss behind every image. A transparent PNG
-          // would show that as a lighter rectangle inside the slot, so clear it and
-          // let the slot's own surface read through.
-          className={cn("h-full w-full bg-transparent", fit === "contain" ? "object-contain" : "object-cover")} />
+        // contents: the img sizes against the slot, as it did before the wrapper.
+        <SlotImage src={src} avif={avif} alt={alt} size={size} fit={fit} />
       ) : (
-        <>
-          <svg
-            className="absolute inset-0 h-full w-full"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <line x1="2" y1="2" x2="98" y2="98" stroke="var(--edge)" strokeWidth="0.3" />
-          </svg>
-          {caption ? (
-            <div className="cv-meta absolute bottom-2 left-3" style={{ color: "var(--text-on-media)" }}>
-              {caption}
-            </div>
-          ) : null}
-        </>
+        <svg
+          className="absolute inset-0 h-full w-full"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <line x1="2" y1="2" x2="98" y2="98" stroke="var(--edge)" strokeWidth="0.3" />
+        </svg>
       )}
     </div>
-    {(src || children) && caption ? (
-      <div className="cv-meta mt-2" style={{ color: "var(--text-on-media)" }}>
-        {caption}
-      </div>
-    ) : null}
   </div>
 );
 
@@ -232,7 +404,10 @@ export const WorkEntry = ({
   to?: string;
 }) => (
   <div className="grid grid-cols-1 gap-6 pb-6 sm:grid-cols-2">
-    <div className="cv-subhead text-bone">
+    {/* An h3 under the list's h2, so heading navigation lands on each
+        project. The base heading style sets the display face and medium
+        weight; the entry keeps the body face it always had. */}
+    <h3 className="cv-subhead font-sans font-normal text-primary">
       {index}.{" "}
       {to ? (
         <Link to={to} className="inline-block py-1 underline underline-offset-4">
@@ -241,7 +416,7 @@ export const WorkEntry = ({
       ) : (
         title
       )}
-    </div>
+    </h3>
     <div className="flex flex-col gap-3">
       <div className="cv-meta">{meta}</div>
       <div className="max-w-[var(--measure-prose)]">{description}</div>

@@ -1,12 +1,14 @@
+import { asset } from "../lib/asset";
 import { BeaconHeroB } from "../components/case-study/BeaconHeroB";
 import { BeaconSplash } from "../components/case-study/BeaconSplash";
 import { CvPage } from "../components/cv/CvPage";
+import { HeroReplay } from "../components/cv/HeroReplay";
+import { PlayWhenVisible } from "../components/cv/PlayWhenVisible";
 import { PageHead } from "../components/cv/PageHead";
 import { MediaSlot, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import {
   ConstraintGrid,
   DecisionRow,
-  InsightBlock,
   PrevNext,
   QualOutcome,
   TwoCol,
@@ -21,22 +23,36 @@ const decisions: Decision[] = [
     tradeoff: "I could see what would cause alert fatigue, and an open default would have produced it. A median default is wrong for everyone at the extremes.",
     result: "Operators tune to their own posture, and the ones who never touch the setting still get something survivable.",
     visual: (
-      <MediaSlot matted={false}
-        bordered={false}
+      <MediaSlot
+        matted={false}
         ratio="auto"
-        width="62%"
+        size={[1348, 1564]}
+        width="44%"
         bleed
-        src="/case-studies/beacon/satellite-detail.png"
-        alt="A satellite detail panel for Halcyon-3: catalog ID, international designator, type and country, orbit and mission parameters, and the operator's optional disclosures, maneuverable yes and power source solar plus Li-ion battery, with actions to view 13 events or add it to a watchlist."
+        src={asset("/case-studies/beacon/conjunction-history.webp")}
+        alt="The latest conjunction data message, with time to closest approach, probability of collision, miss distance, speed, message age and source, above a conjunction history chart. Readings from two sources step upward over time toward an orange High PC threshold line."
       />
     ),
   },
   {
     title: "Suggest, never act",
     rejected: "Automated maneuvering, and arbitrating who moves.",
-    why: "Beacon proposes when and how to move, refined by maneuverability data if the operator chooses to share it. Touching an operator's asset oursevles was never in scope, because being wrong meant a real physical consequence",
+    why: "Beacon proposes when and how to move, refined by maneuverability data if the operator chooses to share it. Touching an operator's asset ourselves was never in scope, because being wrong meant a real physical consequence.",
     tradeoff: "It leaves the hardest part of the problem, deciding who yields, with the humans who were already struggling with it.",
     result: "Operators trusted it with their data because it could not act on their behalf. Declining to arbitrate is what made the rest possible.",
+    visual: (
+      <MediaSlot
+        matted={false}
+        bordered={false}
+        ratio="auto"
+        size={[1564, 1446]}
+        width="62%"
+        bleed
+        src={asset("/case-studies/beacon/satellite-detail.png")}
+        avif={asset("/case-studies/beacon/satellite-detail.avif")}
+        alt="A satellite detail panel for Halcyon-3: catalog ID, international designator, type and country, orbit and mission parameters, and the operator's optional disclosures, maneuverable yes and power source solar plus Li-ion battery, with actions to view 13 events or add it to a watchlist."
+      />
+    ),
   },
   {
     title: "Interpret the data, never hide it",
@@ -44,20 +60,29 @@ const decisions: Decision[] = [
     why: "CDMs are dense and unfriendly. We could compare values across them and weigh by an operator's own thresholds, which a raw ingest cannot do. But a weighting is an editorial position on someone else's risk model, so the source data always stays one click away.",
     tradeoff: "Any prioritization we apply is a judgment we are making on their behalf.",
     result: "To work out what mattered, I printed CDMs and had subject matter experts circle exactly what they looked at during core decision points. That is what let us cut the chaff without guessing.",
-    visual: (
-      <MediaSlot matted={false}
-        ratio="16/10"
-        src="/case-studies/beacon/conjunction-detail.webp"
-        alt="A conjunction detail screen: the list of conjunctions, the latest conjunction message and its history, and a panel where an operator takes responsibility and messages the other operator."
-      />
-    ),
   },
   {
     title: "Abandoned: one product for everyone",
+    rejectedLabel: "Walked back",
     rejected: "The version I shipped first. A single product, including a chat feature so operators would stop hunting for each other's contact details.",
     why: "The contact problem was real and chat was the obvious fix. It was not the fix for everyone.",
     tradeoff: "Development time on a feature the largest operators would never open.",
-    result: "SpaceX had no interest in chat and would not respond to it. They wanted an automated reply along the lines of we know it is close, these are our thresholds, we will move if we think it is too close. So I built separate automation for enterprise operators, and a heavily redacted workflow for the DoD where they alert us and we tell the other operator that for classified reasons they need to move. Both started as white-glove services I ran by hand. Running them manually first is what told me which parts were worth building, and both folded into the product.",
+    result: (
+      <>
+        <p>
+          SpaceX had no interest in chat and would not respond to it. They wanted an automated reply along the lines
+          of: we know it is close, these are our thresholds, we will move if we think it is too close.
+        </p>
+        <p>
+          So I built separate automation for enterprise operators, and a heavily redacted workflow for the DoD where
+          they alert us and we tell the other operator that for classified reasons they need to move.
+        </p>
+        <p>
+          Both started as white-glove services I ran by hand. Running them manually first is what told me which parts
+          were worth building, and both folded into the product.
+        </p>
+      </>
+    ),
   },
 ];
 
@@ -69,20 +94,24 @@ export const Beacon = () => (
       title="Beacon"
       lede={
         <>
-          <span className="text-bone">Space traffic coordination.</span> When two satellites are about to pass too close, somebody has to move.
+          <span className="text-primary">Space traffic coordination.</span> When two satellites are about to pass too close, somebody has to move.
         </>
       }
       items={[
-        { label: "Role", value: <span className="text-bone">Senior Product Designer, sole designer on Beacon</span> },
+        { label: "Role", value: <span className="text-primary">Senior Product Designer, sole designer on Beacon</span> },
         { label: "Timeline", value: "2022 - 2023" },
         { label: "Scope", value: "Product design, research, product strategy" },
         { label: "Platform", value: "Web" },
       ]}
     />
 
-    <BeaconHeroB />
+    <PlayWhenVisible>
+      <HeroReplay>
+        <BeaconHeroB playOnce />
+      </HeroReplay>
+    </PlayWhenVisible>
 
-    <SectionHeading className="mt-12">PROBLEM</SectionHeading>
+    <SectionHeading className="mt-12">Problem</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">Avoiding a collision meant scrambling for someone&rsquo;s phone number.</em>}>
       <div>
@@ -106,16 +135,16 @@ export const Beacon = () => (
       </div>
     </TwoCol>
 
-    <BeaconSplash background="/case-studies/beacon/bg-startrails.webp" />
+    <BeaconSplash background={asset("/case-studies/beacon/bg-startrails.webp")} />
 
-    <SectionHeading className="mt-12">CONSTRAINTS</SectionHeading>
+    <SectionHeading className="mt-12">Constraints</SectionHeading>
     <Rule className="mb-6" />
     <ConstraintGrid
       items={[
         {
           title: "No prior design language at all",
           detail:
-            "This was the first platform of its kind, so there was no interface convention to borrow and no incumbent habit to design toward. I anchored to the only thing that existed: CDMs and ephemerides, which are extremely dense, low-tech reports from satellites and ground stations. When there is no precedent, the data model becomes the constraint.",
+            "This was the first platform of its kind, so there was no interface convention to borrow and no incumbent habit to design toward. I anchored to the only thing that existed: CDMs (conjunction data messages) and ephemerides, which are extremely dense, low-tech reports from satellites and ground stations. When there is no precedent, the data model becomes the constraint.",
         },
         {
           title: "Wildly uneven data quality",
@@ -136,34 +165,47 @@ export const Beacon = () => (
     />
 
     {/* The two sources the product was anchored to, since no interface
-        precedent existed. Labelled, unlike the product captures: these are
-        other people's documents, and a reader cannot be expected to know a
-        conjunction message from an ephemeris on sight. */}
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-[1fr_0.62fr]">
-      <MediaSlot
-        matted={false}
-        ratio="16/9"
-        src="/case-studies/beacon/spacetrack.webp"
-        alt="A public conjunction message list: rows of close approaches, each with the time of closest approach, a minimum range in metres, a collision probability to ten decimal places, and the catalogue number, name, object type and radar cross-section of both objects."
-        caption="Space-Track, public conjunction messages"
-      />
-      <MediaSlot
-        matted={false}
-        ratio="3/4"
-        fit="contain"
-        src="/case-studies/beacon/ephemeris.webp"
-        alt="An eleven-parameter ephemeris message from Intelsat, addressed to all stations operating at 302 degrees east, giving an epoch to the second and eleven orbital coefficients in degrees and degrees per day."
-        caption="Eleven-parameter ephemeris, Intelsat"
-      />
+        precedent existed. Captioned, unlike the rest of the site's media, at
+        Morgan's request: these are other people's documents, and a reader
+        cannot be expected to know an orbit catalogue from an ephemeris on
+        sight.
+        One dark band bleeding to the column edges, like the page's other inset
+        images. Side by side the columns are sized by each image's aspect ratio
+        (1760x990 and 1000x1194), so the two frames come out the same height. */}
+    <div className="-mx-8 mb-6 bg-[color:var(--surface-media-backdrop)] px-4 py-8 sm:px-8">
+      <div className="mx-auto grid max-w-[1000px] grid-cols-1 items-end gap-x-6 gap-y-8 sm:grid-cols-[1.778fr_0.838fr]">
+        <figure className="m-0 [&>div]:mb-0">
+          <MediaSlot
+            matted={false}
+            ratio="auto"
+            size={[1760, 990]}
+            src={asset("/case-studies/beacon/spacetrack.webp")}
+            alt="A public conjunction message list: rows of close approaches, each with the time of closest approach, a minimum range in metres, a collision probability to ten decimal places, and the catalogue number, name, object type and radar cross-section of both objects."
+          />
+          <figcaption className="cv-meta mt-3 text-center text-secondary">
+            Public active orbit information in Space-Track
+          </figcaption>
+        </figure>
+        <figure className="m-0 mx-auto w-full max-w-[18rem] sm:max-w-none [&>div]:mb-0">
+          <MediaSlot
+            matted={false}
+            ratio="auto"
+            size={[1000, 1194]}
+            src={asset("/case-studies/beacon/ephemeris.webp")}
+            alt="An eleven-parameter ephemeris message from Intelsat, addressed to all stations operating at 302 degrees east, giving an epoch to the second and eleven orbital coefficients in degrees and degrees per day."
+          />
+          <figcaption className="cv-meta mt-3 text-center text-secondary">Example ephemeris file</figcaption>
+        </figure>
+      </div>
     </div>
 
-    <SectionHeading className="mt-12">INSIGHT</SectionHeading>
+    <SectionHeading className="mt-12">Insight</SectionHeading>
     <Rule className="mb-6" />
-    <InsightBlock
-      quote="You cannot mandate disclosure, but you can incentivize it."
-      source="From operator interviews and work with our in-house astrophysics team."
-    />
-    <TwoCol claim={<em className="font-display not-italic">Position is not the sensitive part.</em>}>
+    {/* Same shape as Originality's Insight: the finding is the claim, and the
+        source and what followed from it sit beside it on the page's one grid. */}
+    <TwoCol claim={<p className="m-0">You cannot mandate disclosure, but you can incentivize it.</p>}>
+      <div className="text-tertiary">From operator interviews and work with our in-house astrophysics team.</div>
+      <div className="text-primary">Position is not the sensitive part.</div>
       <div>
         Operators do not really have a choice about position. Ground sensor networks see your assets whether you
         like it or not, and sharing that helps everyone, because nobody wants to hit anyone.
@@ -178,13 +220,13 @@ export const Beacon = () => (
       </div>
     </TwoCol>
 
-    <SectionHeading className="mt-12">DECISIONS</SectionHeading>
+    <SectionHeading className="mt-12">Decisions</SectionHeading>
     <Rule className="mb-6" />
     {decisions.map((d, i) => (
       <DecisionRow key={d.title} decision={d} first={i === 0} />
     ))}
 
-    <SectionHeading className="mt-12">OUTCOME</SectionHeading>
+    <SectionHeading className="mt-12">Outcome</SectionHeading>
     <Rule className="mb-6" />
     <QualOutcome
       items={[
@@ -200,7 +242,7 @@ export const Beacon = () => (
         },
       ]}
     />
-    <SectionHeading className="mt-12">REFLECTION</SectionHeading>
+    <SectionHeading className="mt-12">Reflection</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">I let the interface get ahead of the information architecture.</em>}>
       <div>
@@ -221,6 +263,6 @@ export const Beacon = () => (
       </div>
     </TwoCol>
 
-    <PrevNext prev={{ label: "Sysgit", to: "/case-study/sysgit" }} next={{ label: "Originality", to: "/case-study/originality" }} />
+    <PrevNext series="beacon" />
   </CvPage>
 );

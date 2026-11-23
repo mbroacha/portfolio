@@ -1,6 +1,5 @@
-/* EB Garamond is not vendored via @fontsource yet. Swap to a local import with
-   `npm i @fontsource-variable/eb-garamond` if you want self-hosted fonts. */
-@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Sans:wght@400;500&display=swap");
+/* Fonts load from index.html <head>, not from here: an @import in the CSS
+   delays every font until this file is downloaded and parsed. */
 @import "./styles/tokens.css";
 
 @tailwind base;
@@ -25,7 +24,7 @@
   }
 
   img {
-    background-color: var(--moss);
+    background-color: var(--ink-900);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
@@ -35,7 +34,7 @@
   }
 
   body {
-    @apply bg-moss font-sans text-sage antialiased;
+    @apply bg-page font-sans text-secondary antialiased;
     margin: 0;
     min-height: 100vh;
     font-size: var(--font-size-base);
@@ -50,7 +49,7 @@
   h5,
   h6 {
     margin: 0;
-    color: var(--bone);
+    color: var(--text-primary);
     font-family: var(--font-family-display);
     font-weight: var(--font-weight-medium);
     font-optical-sizing: auto;
@@ -87,17 +86,30 @@
 
   small {
     font-size: var(--font-size-sm);
-    color: var(--lichen);
+    color: var(--text-tertiary);
   }
 
   a {
-    color: var(--glow);
+    color: var(--text-primary);
     text-decoration: none;
     transition: color var(--transition-fast);
   }
 
+  /* Most links already sit in primary text, so a color change on hover
+     changes nothing. The underline thickens instead: visible on every
+     underlined link, and it moves no layout. */
   a:hover {
-    color: var(--bone);
+    color: var(--text-primary);
+    text-decoration-thickness: 2px;
+  }
+
+  /* One focus ring for the whole site, in the palette instead of the browser's
+     blue. Keyboard focus only: a mouse click does not draw it. The offset
+     keeps it off underlines and frame borders. #d9d9d9 on #161616/#1e1e1e is
+     well past the 3:1 a focus indicator needs. */
+  :focus-visible {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 3px;
   }
 }
 
@@ -135,16 +147,30 @@
     letter-spacing: normal;
   }
 
-  /* The sub-heading level, one step above body.
-     SectionHeading is an uppercase band between rules, so it reads as a label
-     rather than as a size. That left decision titles, claims and outcome items
-     sitting at body size with nothing but color separating them from the
-     paragraph underneath. 17px is enough to register as a heading without
-     turning the page into a magazine. Family is not set here, so each caller
-     keeps the face it already had. */
+  /* The sub-heading level, one step above body: constraint and outcome
+     titles, homepage entry titles. 17px registers as a heading without
+     competing with the steps above it.
+     The full ramp, decided in the case study audit (Nov 2026) and kept
+     site-wide: page title 34–44px serif italic, section heading 28px serif
+     italic in sentence case, claim and decision title 21px serif roman
+     (.cv-claim), this 17px level, 15px prose. It replaced an uppercase 20px
+     section band that read as a label, which left section and claim too close
+     in size to tell apart. Family is not set here, so each caller keeps the
+     face it already had. */
   .cv-subhead {
     font-size: var(--font-size-subhead);
     line-height: 1.35;
+  }
+
+  /* A claim: the one-line argument a block of evidence supports, and each
+     decision's title. Serif roman, so it reads as the writer's voice against
+     the italic section headings above it and the sans prose beside it. */
+  .cv-claim {
+    font-family: var(--font-display);
+    font-size: var(--font-size-claim);
+    line-height: 1.3;
+    /* Claims run one to three lines; balance keeps a lone word off the last. */
+    text-wrap: balance;
   }
 
   /* Where a source link lands. Traceability has to be visible or it is just a
@@ -164,6 +190,58 @@
       background-color: transparent;
       box-shadow: none;
     }
+  }
+
+  /* Inside a project's region (its homepage entry, or its case study's content
+     column), links underline in the project's color and focus rings take it
+     too. Link text stays primary gray: the hue marks the work, it does not
+     recolor the reading. See --project-* in tokens.css. */
+  [data-project] a {
+    text-decoration-color: var(--project);
+  }
+
+  [data-project] :focus-visible {
+    outline-color: var(--project);
+  }
+
+  /* A table wider than a phone. Without a cue, the columns past the edge read
+     as missing rather than as off screen. The right edge fades while there is
+     more to scroll, and clears once the reader reaches the end. Phones only:
+     on a wide column the table fits and nothing should fade. */
+  @media (max-width: 639px) {
+    .cv-scroll-x {
+      -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 3rem), transparent);
+      mask-image: linear-gradient(to right, #000 calc(100% - 3rem), transparent);
+    }
+    @supports (animation-timeline: scroll()) {
+      .cv-scroll-x {
+        animation: cv-scroll-cue linear both;
+        animation-timeline: scroll(self inline);
+      }
+    }
+  }
+
+  @keyframes cv-scroll-cue {
+    0%,
+    92% {
+      -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 3rem), transparent);
+      mask-image: linear-gradient(to right, #000 calc(100% - 3rem), transparent);
+    }
+    100% {
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+  }
+
+  /* HeroReplay: the reader skipped to the end. Every hero's base style is its
+     resolved frame, so switching the animation off is the conclusion. */
+  [data-still] * {
+    animation: none !important;
+  }
+
+  /* PlayWhenVisible (components/cv/PlayWhenVisible.tsx): animations hold still while off screen. */
+  [data-offscreen] * {
+    animation-play-state: paused !important;
   }
 
   /* Cap the reading measure on standalone prose in the content column.

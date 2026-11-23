@@ -57,7 +57,7 @@ const CSS = `
 .tt .sec {display:flex;gap:6px;align-items:flex-start}
 .tt .sec .dot {width:9px;height:9px;border:1.5px solid #979797;border-radius:50%;flex:0 0 auto;margin-top:3px;position:relative}
 .tt .sec .dot::after {content:"";position:absolute;inset:2px;background:#979797;border-radius:50%}
-.tt .sec h4 {font-size:11.5px;font-weight:700;line-height:1.35;color:#333}
+.tt .sec .h4 {font-size:11.5px;font-weight:700;line-height:1.35;color:#333}
 .tt .para {display:flex;gap:7px;margin-top:9px;padding:2px 3px}
 .tt .badge {flex:0 0 auto;background:#dcdcdc;color:#333;border-radius:3px;font-size:9.5px;padding:1px 5px;margin-top:1px}
 .tt .para p {font-size:10.5px;line-height:1.5;color:#333}
@@ -82,14 +82,14 @@ export const TranslationTriptych = () => (
     <div className="cols">
 
       
-      <div className="col"><div className="cv-meta mb-3 uppercase text-bone" style={{ letterSpacing: "var(--tracking-label)" }}>As a document</div><div className="panel p2">
-        <div className="sec"><span className="dot"></span><h4>&sect; 232.103 General requirements for all train brake systems.</h4></div>
+      <div className="col"><div className="cv-meta mb-3 uppercase text-primary" style={{ letterSpacing: "var(--tracking-label)" }}>As a document</div><div className="panel p2">
+        <div className="sec"><span className="dot"></span><p className="h4">&sect; 232.103 General requirements for all train brake systems.</p></div>
         <div className="para"><span className="badge">(c)</span><p>A train brake system shall respond as intended to signals from the train line.</p></div>
         <div className="para"><span className="badge">(d)</span><p>One hundred percent of the brakes on a train shall be effective and operative brakes prior to use or departure from any location where a Class I brake test is required to be performed on the train pursuant to <a>&sect; 232.205</a>.</p></div>
         <div className="para lit"><span className="badge">(e)</span><p>A train shall not move if less than 85 percent of the cars in that train have operative and effective brakes.</p></div>
         <div className="para"><span className="badge">(f)</span><p>Each car in a train shall have its air brakes in effective operating condition unless the car is being moved for repairs in accordance with <a>&sect;&sect; 232.15</a> and <a>232.609</a>.</p></div>
       </div></div>
-<div className="col"><div className="cv-meta mb-3 uppercase text-bone" style={{ letterSpacing: "var(--tracking-label)" }}>As a diagram</div><div className="panel p1">
+<div className="col"><div className="cv-meta mb-3 uppercase text-primary" style={{ letterSpacing: "var(--tracking-label)" }}>As a diagram</div><div className="panel p1">
         <svg className="arrow" width="15" height="16" viewBox="0 0 15 16" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M4 1l3.5 4.5L11 1M4 7l3.5 4.5L11 7"/></svg>
         <div className="card">
           <div className="kind">requirement</div>
@@ -106,7 +106,7 @@ export const TranslationTriptych = () => (
         </div>
       </div></div>
 
-      <div className="col"><div className="cv-meta mb-3 uppercase text-bone" style={{ letterSpacing: "var(--tracking-label)" }}>As code</div><div className="panel p3">
+      <div className="col"><div className="cv-meta mb-3 uppercase text-primary" style={{ letterSpacing: "var(--tracking-label)" }}>As code</div><div className="panel p3">
         <div className="cl"><span className="g">99</span><span className="kw">requirement</span><span className="pl"> </span><span className="str">&lt;'REQ-103-003'&gt;</span><span className="pl"> </span><span className="str">'Minimum Operative Brake Ratio'</span><span className="pl"> &#123;</span></div>
         <div className="cl"><span className="g">100</span><span className="pl">  </span><span className="kw">doc</span></div>
         <div className="cl"><span className="g">101</span><span className="pl">  </span><span className="cm">/*</span></div>
@@ -135,8 +135,5 @@ export const TranslationTriptych = () => (
       </div></div>
 
       </div>
-    <figcaption className="cv-meta mt-4 max-w-prose" style={{ color: "var(--text-on-media)" }}>
-      One requirement in three notations.
-    </figcaption>
   </figure>
 );

@@ -112,7 +112,7 @@ export const OriginalitySplash = ({
   <figure className="-mx-8 mb-6">
     <style>{CSS}</style>
 
-    <div className="relative overflow-hidden border-y border-hedge bg-moss">
+    <div className="relative overflow-hidden border-y border-rule bg-page">
       {background ? (
         <div className="ors-field" aria-hidden="true">
           <img src={background} alt="" decoding="async" />

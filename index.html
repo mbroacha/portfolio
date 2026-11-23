@@ -8,12 +8,23 @@
     <meta http-equiv="Expires" content="0" />
     <link rel="icon" type="image/svg+xml" href="/jackalope.svg" />
     <title>Morgan Broacha</title>
+    <!-- Fonts, in one request, started from the head. They used to load through
+         an @import inside the CSS bundle (and a second one inside the Beacon
+         hero), so the browser could not ask for a font until it had fetched and
+         parsed the stylesheet that named it. Inter and Montserrat are Beacon's
+         own faces for its hero; a family's files only download where it is used. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Sans:wght@400;500&family=Inter:wght@400;500&family=Montserrat:wght@500;600&display=swap"
+    />
     <!-- Link previews. scripts/route-pages.mjs rewrites these per route at build time. -->
-    <meta name="description" content="Product designer in Oakland, California. I bring craft to difficult systems." />
+    <meta name="description" content="Product designer in Oakland, California, for software where decisions carry weight: space traffic, health records, academic integrity, systems engineering." />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Morgan Broacha" />
     <meta property="og:title" content="Morgan Broacha" />
-    <meta property="og:description" content="Product designer in Oakland, California. I bring craft to difficult systems." />
+    <meta property="og:description" content="Product designer in Oakland, California, for software where decisions carry weight: space traffic, health records, academic integrity, systems engineering." />
     <meta property="og:url" content="https://morganbroacha.com/" />
     <meta property="og:image" content="https://morganbroacha.com/og/morgan.jpg" />
     <meta name="twitter:card" content="summary" />

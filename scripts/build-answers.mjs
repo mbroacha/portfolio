@@ -183,7 +183,7 @@ for (const scope of projectScopes) {
 const payload = {
   generated: new Date().toISOString().slice(0, 10),
   source: "content/answer-bank.json",
-  decline: bank._meta?.decline ?? "Morgan hasn't written about that.",
+  decline: bank._meta?.decline ?? "I haven't written about that.",
   // Which general questions get offered, in order. Editorial, not algorithmic.
   suggested: (bank._meta?.suggested_order ?? []).filter((id) =>
     shipped.some((s) => s.id === id && s.suggest !== false),

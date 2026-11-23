@@ -35,7 +35,7 @@ const BAND_BEFORE = [
 ];
 
 const Eyebrow = ({ children }: { children: string }) => (
-  <div className="cv-meta mb-3 uppercase text-bone" style={{ letterSpacing: "var(--tracking-label)" }}>
+  <div className="cv-meta mb-3 uppercase text-primary" style={{ letterSpacing: "var(--tracking-label)" }}>
     {children}
   </div>
 );
@@ -45,8 +45,8 @@ const AdjacentRows = () => (
   <div className="flex flex-col">
     {ADJACENT.map((row) => (
       <div key={row.layer} className="flex items-baseline justify-between gap-4 py-1.5">
-        <span className="cv-meta text-lichen">{row.layer}</span>
-        <span className="cv-meta text-right text-lichen">{row.tools}</span>
+        <span className="cv-meta text-tertiary">{row.layer}</span>
+        <span className="cv-meta text-right text-tertiary">{row.tools}</span>
       </div>
     ))}
   </div>
@@ -55,32 +55,32 @@ const AdjacentRows = () => (
 /** One purchased tool inside the contested band. */
 const BandBox = ({ layer, tools, grow }: { layer: string; tools: string; grow?: boolean }) => (
   <div
-    className={grow ? "flex flex-1 flex-col justify-center border border-bone px-3 py-2.5" : "border border-bone px-3 py-2.5"}
+    className={grow ? "flex flex-1 flex-col justify-center border border-primary px-3 py-2.5" : "border border-primary px-3 py-2.5"}
     style={{ backgroundColor: "var(--ink-800)" }}
   >
-    <div className="cv-meta text-bone">{layer}</div>
-    <div className="cv-meta text-sage">{tools}</div>
+    <div className="cv-meta text-primary">{layer}</div>
+    <div className="cv-meta text-secondary">{tools}</div>
   </div>
 );
 
 /** The cost of a seam, stated without a number. */
 const Seam = () => (
   <div className="flex items-center gap-2 py-1.5" aria-hidden="true">
-    <div className="h-px flex-1 border-t border-dashed border-hedge" />
-    <span className="cv-meta text-lichen">integration</span>
-    <div className="h-px flex-1 border-t border-dashed border-hedge" />
+    <div className="h-px flex-1 border-t border-dashed border-rule" />
+    <span className="cv-meta text-tertiary">integration</span>
+    <div className="h-px flex-1 border-t border-dashed border-rule" />
   </div>
 );
 
 const Column = ({ title, children, note }: { title: string; children: React.ReactNode; note?: string }) => (
   <div className="flex flex-1 flex-col">
     <Eyebrow>{title}</Eyebrow>
-    <div className="flex flex-1 flex-col gap-4 border border-hedge p-4" style={{ backgroundColor: "var(--ink-900)" }}>
+    <div className="flex flex-1 flex-col gap-4 border border-rule p-4" style={{ backgroundColor: "var(--ink-900)" }}>
       <AdjacentRows />
-      <div className="border-t border-hedge" />
+      <div className="border-t border-rule" />
       <div className="flex flex-1 flex-col">{children}</div>
     </div>
-    {note ? <p className="cv-meta mt-3 text-lichen">{note}</p> : null}
+    {note ? <p className="cv-meta mt-3 text-tertiary">{note}</p> : null}
   </div>
 );
 
@@ -107,11 +107,11 @@ export const CustomerStackDiagram = () => (
           grow
         />
         <div className="flex items-center gap-2 py-1.5" aria-hidden="true">
-          <div className="h-px flex-1 border-t border-hedge" />
+          <div className="h-px flex-1 border-t border-rule" />
         </div>
-        <div className="border border-dashed border-hedge px-3 py-2.5">
-          <div className="cv-meta text-sage">The Git provider they already run</div>
-          <div className="cv-meta text-lichen">GitHub, GitLab, Gitea, Forgejo</div>
+        <div className="border border-dashed border-rule px-3 py-2.5">
+          <div className="cv-meta text-secondary">The Git provider they already run</div>
+          <div className="cv-meta text-tertiary">GitHub, GitLab, Gitea, Forgejo</div>
         </div>
       </Column>
     </div>

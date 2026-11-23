@@ -58,15 +58,18 @@ const ROUTES = [
     image: "og/gradescope-mobile.jpg",
   },
   {
-    path: "what-i-do",
-    title: "What I do",
+    path: "how-i-work",
+    // The page's old address. Same preview, so a link shared before the rename
+    // still unfurls; og:url names the new path, and the app redirects there.
+    aliases: ["what-i-do"],
+    title: "How I Work",
     description:
       "What being an AI native designer actually means: working with interfaces and design materials that are changing fast, while still solving the user's problem.",
   },
   {
     path: "about",
-    title: "About",
-    description: "Product designer in Oakland, California. I bring craft to difficult systems.",
+    title: "About me",
+    description: "Product designer in Oakland, California, for software where decisions carry weight: space traffic, health records, academic integrity, systems engineering.",
   },
 ];
 
@@ -92,9 +95,11 @@ for (const r of ROUTES) {
     page = set(page, /(<meta property="og:image" content=")[^"]*(")/, `${SITE}/${r.image}`);
     page = set(page, /(<meta name="twitter:card" content=")[^"]*(")/, "summary_large_image");
   }
-  const out = resolve(DIST, `${r.path}.html`);
-  mkdirSync(dirname(out), { recursive: true });
-  writeFileSync(out, page);
+  for (const p of [r.path, ...(r.aliases ?? [])]) {
+    const out = resolve(DIST, `${p}.html`);
+    mkdirSync(dirname(out), { recursive: true });
+    writeFileSync(out, page);
+  }
 }
 
 writeFileSync(resolve(DIST, "404.html"), html);

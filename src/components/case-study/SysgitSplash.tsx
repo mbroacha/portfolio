@@ -104,7 +104,7 @@ const CSS = `
 }
 .sgs-screen { border-radius: 12px; overflow: hidden }
 /* On the image, not the wrapper: the frame and shadow stay at full strength. */
-.sgs-screen > img { opacity: 0.85 }
+.sgs-screen img { opacity: 0.85 }
 .sgs-inset { box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.4) }
 `;
 
@@ -131,7 +131,7 @@ export const SysgitSplash = ({ backgroundImages = DEFAULT_BACKGROUND }: SysgitSp
     <figure className="-mx-8 mb-6">
       <style>{CSS}</style>
 
-      <div className="relative overflow-hidden border-y border-hedge bg-moss">
+      <div className="relative overflow-hidden border-y border-rule bg-page">
         {/* ── back: the drifting field, full height ──────────────────── */}
         <div className="sgs-bg pointer-events-none absolute inset-0 opacity-40" aria-hidden="true">
           <div className="sgs-track gap-6 px-6">
@@ -168,11 +168,14 @@ export const SysgitSplash = ({ backgroundImages = DEFAULT_BACKGROUND }: SysgitSp
         <div className="relative px-6 pb-12 pt-12 sm:px-10 md:pb-16 md:pt-16">
           <div className="relative mx-auto max-w-[1100px] md:pb-24">
             <div className="sgs-screen w-full border border-[color:var(--edge)] md:w-[78%]">
-              <img
-                src={asset("/case-studies/sysgit/graph-view.png")}
-                alt="The Sysgit graph view on the spacecraft branch. Requirement cards for the payload and deployability groups, each listing its documentation and attributes, connected by verify relationships to two verification cases that both report a passing verdict."
-                className="block h-auto w-full"
-              />
+              <picture className="contents">
+                <source type="image/avif" srcSet={asset("/case-studies/sysgit/graph-view.avif")} />
+                <img
+                  src={asset("/case-studies/sysgit/graph-view.png")}
+                  alt="The Sysgit graph view on the spacecraft branch. Requirement cards for the payload and deployability groups, each listing its documentation and attributes, connected by verify relationships to two verification cases that both report a passing verdict."
+                  className="block h-auto w-full"
+                />
+              </picture>
             </div>
 
             {/*

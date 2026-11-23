@@ -13,6 +13,8 @@
  */
 
 import { CvPage } from "../components/cv/CvPage";
+import { HeroReplay } from "../components/cv/HeroReplay";
+import { PlayWhenVisible } from "../components/cv/PlayWhenVisible";
 import { PageHead } from "../components/cv/PageHead";
 import { MediaSlot, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import { InsightBlock, PrevNext, QualOutcome, TwoCol } from "../components/cv/CaseStudyParts";
@@ -30,21 +32,25 @@ export const Sysgit = () => (
       title="Sysgit"
       lede={
         <>
-          <span className="text-bone">Git for hardware.</span> Modeling, requirements and version control in one
+          <span className="text-primary">Git for hardware.</span> Modeling, requirements and version control in one
           workflow, for engineers who are not developers.
         </>
       }
       items={[
-        { label: "Role", value: <span className="text-bone">Design Lead, sole designer</span> },
+        { label: "Role", value: <span className="text-primary">Design Lead, sole designer</span> },
         { label: "Timeline", value: "2023 - 2026" },
         { label: "Scope", value: "Product, design system, research, strategy, brand, front-end PRs" },
         { label: "Page", value: "Overview. Detail available on request" },
       ]}
     />
 
-    <SysgitHero />
+    <PlayWhenVisible>
+      <HeroReplay>
+        <SysgitHero playOnce />
+      </HeroReplay>
+    </PlayWhenVisible>
 
-    <SectionHeading className="mt-12">THE PRODUCT</SectionHeading>
+    <SectionHeading className="mt-12">The product</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">Three jobs that normally mean three very expensive software purchases.</em>}>
       <div>
@@ -58,7 +64,7 @@ export const Sysgit = () => (
     </TwoCol>
     <SysgitSplash />
 
-    <SectionHeading className="mt-12">WHY IT EXISTS</SectionHeading>
+    <SectionHeading className="mt-12">Why it exists</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">Systems engineering is a coordination problem, and it scales badly.</em>}>
       <div>
@@ -93,16 +99,16 @@ export const Sysgit = () => (
         It is also genuinely hard. Interoperability, security and flexibility are difficult to solve together.
       </div>
       <div>
-        And the uncomfortable truth is, these  legacy tools are so complicated that operating them has become the
-        job. Resistance and fear is the unspoken usability problem.
+        And the uncomfortable truth is, these legacy tools are so complicated that operating them has become the
+        job. Resistance and fear are the unspoken usability problem.
       </div>
     </TwoCol>
 
-    <SectionHeading className="mt-12">GOALS</SectionHeading>
+    <SectionHeading className="mt-12">Goals</SectionHeading>
     <Rule className="mb-6" />
     <SysgitGoals />
 
-    <SectionHeading className="mt-12">THE ARGUMENT</SectionHeading>
+    <SectionHeading className="mt-12">The argument</SectionHeading>
     <Rule className="mb-6" />
     <InsightBlock
       quote="One less tool beats one task done perfectly."
@@ -123,7 +129,7 @@ export const Sysgit = () => (
       </div>
     </TwoCol>
 
-    <SectionHeading className="mt-12">WHAT IT LOOKS LIKE</SectionHeading>
+    <SectionHeading className="mt-12">What it looks like</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">In hardware modeling, a box is not just a box.</em>}>
       <div>
@@ -135,8 +141,8 @@ export const Sysgit = () => (
     <MediaSlot matted={false}
       ratio="16/9"
       src={asset("/case-studies/sysgit/diagram-editor-ide.png")}
+      avif={asset("/case-studies/sysgit/diagram-editor-ide.avif")}
       alt="The same rail brake requirements open in Sysgit, source on the left and the requirement graph on the right."
-      caption="Those requirements in the product."
     />
     <TwoCol claim={<em className="font-display not-italic">Requirements arrive as documents. They have to leave as editable objects.</em>}>
       <div>
@@ -145,29 +151,28 @@ export const Sysgit = () => (
     </TwoCol>
     <RequirementsTableRecreation />
 
-    <SectionHeading className="mt-12">WHERE IT LANDED</SectionHeading>
+    <SectionHeading className="mt-12">Where it stands</SectionHeading>
     <Rule className="mb-6" />
     <QualOutcome
       items={[
         {
-          title: "What has shipped",
-          detail: (
-            <>
-              In two years: the diagramming tool, the requirements table, the IDE, views and filters, diffing, and reviews with branching and merging. Every feature is actively in use.
-              <br /><br />
-              Currently launching an in-house MCP and agent management.
-            </>
-          ),
+          title: "Shipped",
+          detail:
+            "In two years: the diagramming tool, the requirements table, the IDE, views and filters, diffing, and reviews with branching and merging. Every feature is in active use.",
         },
         {
-          title: "How we measure it",
+          title: "In flight",
+          detail: "An in-house MCP (Model Context Protocol) and agent management, launching now.",
+        },
+        {
+          title: "What I watch",
           detail:
-            "Acquisition. This market is slow and the meaningful question is whether organizations already locked into a legacy tool bought anyway. We currently support US Air Force, Leidos, GTRI, Tradewinds and Constellr, among others.",
+            "Acquisition. In a market this slow the only honest question is whether an organization already standardized on an incumbent bought anyway. The US Air Force, Leidos, GTRI, Tradewinds, and Constellr did, and that helped secure $4.1M in funding.",
         },
       ]}
     />
 
-    <SectionHeading className="mt-12">WHY DESIGN ACTUALLY MOVES</SectionHeading>
+    <SectionHeading className="mt-12">Why design actually moves</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">The same engineer uses a beautifully made tool at 10 am and a tool that peaked in 2004 at 11 am.</em>}>
       <div>
@@ -181,6 +186,6 @@ export const Sysgit = () => (
       </div>
     </TwoCol>
 
-    <PrevNext next={{ label: "Beacon", to: "/case-study/beacon" }} />
+    <PrevNext series="sysgit" />
   </CvPage>
 );

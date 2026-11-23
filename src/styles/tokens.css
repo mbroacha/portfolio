@@ -2,12 +2,6 @@
  * Dark CV design tokens.
  *
  * Palette and type sourced from the Dark CV template (Portfolio CV + Case Study).
- *
- * MIGRATION NOTE: the legacy Greenhouse variable names (--moss, --fern, --hedge,
- * --bone, --sage, --lichen, --glow) are retained as aliases and repointed
- * at the new palette. This re-skins every existing component from this one file
- * with zero risk of dangling references. Prefer the semantic names below in new
- * code; the legacy aliases can be renamed in a later mechanical pass.
  */
 :root {
   /* ── Base palette ─────────────────────────────────────────── */
@@ -27,14 +21,18 @@
   --surface-media: var(--ink-700);
   --surface-media-backdrop: var(--ink-950);
 
-  /* ── Legacy Greenhouse aliases, repointed ─────────────────── */
-  --moss: var(--ink-900);
-  --fern: var(--ink-800);
-  --hedge: var(--rule);
-  --bone: var(--text-primary);
-  --sage: var(--text-secondary);
-  --lichen: var(--text-tertiary);
-  --glow: var(--text-primary);
+  /* ── Project colors ───────────────────────────────────────── */
+  /* The site's own chrome is gray. Color belongs to the work: each project
+     carries its product's hue, and only into that project's entry and case
+     study, as underlines, the hovered frame and the focus ring. Never as a
+     fill. On the rail they appear once, in the Work nav card's thumbnail, and
+     only when it is hovered or current. Each is lifted from the product's own
+     color until it clears 3:1 on --ink-800 (#1e1e1e), the bar for a non-text mark;
+     all four clear 4.5:1, so they also hold as text. */
+  --project-sysgit: #a98cf0; /* the Sysgit hero's purple. 6.1:1 */
+  --project-beacon: #f1592b; /* Beacon orange, unchanged. 4.9:1 */
+  --project-originality: #3f9ce0; /* Turnitin blue, the hero's second tint. 5.6:1 */
+  --project-gradescope: #5fa3ad; /* Gradescope teal (approx. #2a5a64), lifted. 5.8:1 */
 
   /* Tailwind RGB channels (alpha-capable utilities) */
   --color-text-caption: 138 138 138;
@@ -61,10 +59,19 @@
   /* Type ramp. Template baseline is 12px/1.5. */
   --font-size-sm: 0.75rem; /* 12px — mono metadata, captions, the rail */
   --font-size-base: 0.9375rem; /* 15px — prose */
-  --font-size-subhead: 1.0625rem; /* 17px — decision titles, claims, outcome items */
-  --font-size-xl: 1.75rem; /* 28px — project title (serif italic) */
-  --font-size-2xl: 1rem; /* 16px — section heading (serif italic) */
-  --font-size-3xl: 1.25rem;
+  --font-size-subhead: 1.0625rem; /* 17px — constraint and outcome titles, homepage entries */
+  /* The case study ramp. Before this, the h1 was 28px, a section heading 20px
+     and a claim 17px over 15px prose: four levels inside a 13px spread, so a
+     section and the claim under it read as the same thing. Each step is now
+     about a third larger than the one below it. */
+  --font-size-claim: 1.3125rem; /* 21px — claims and decision titles (serif roman) */
+  --font-size-section: 1.75rem; /* 28px — section headings (serif italic, sentence case) */
+  --font-size-title: clamp(2.125rem, 1.5rem + 2.2vw, 2.75rem); /* 34–44px — case study title */
+  --font-size-xl: 1.75rem; /* 28px — spare step; page titles use --font-size-title */
+  /* The base h2 clamp (index.css) and PageHead's subtitle. Section headings
+     use --font-size-section. */
+  --font-size-2xl: 1rem; /* 16px */
+  --font-size-3xl: 1.25rem; /* 20px */
   /* The one poster moment on the site. Large enough to be a landing, small
      enough that the case studies underneath are not a letdown. */
   --font-size-hero: clamp(1.625rem, 3.4vw, 2.25rem);

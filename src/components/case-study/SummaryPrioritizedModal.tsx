@@ -128,7 +128,7 @@ export function SummaryPrioritizedModal() {
                         type="text"
                         readOnly
                         placeholder="New Comment..."
-                        className="w-full rounded-[4px] border border-[#efefef] bg-white px-3 py-2.5 text-[12px] text-[#242424] shadow-[0_1px_8px_-6px_rgba(0,0,0,0.28)] placeholder:text-[#8a8a8a] focus:outline-none focus:ring-1 focus:ring-[#d0d7de]"
+                        className="w-full rounded-[4px] border border-[#efefef] bg-white px-3 py-2.5 text-[12px] text-[#242424] shadow-[0_1px_8px_-6px_rgba(0,0,0,0.28)] placeholder:text-[#8a8a8a]"
                       />
                     </label>
                   </div>

@@ -35,7 +35,7 @@ const SAMPLE_ROWS: SubmissionRow[] = [
   },
   {
     filename: "Non-Euclidean Geometry in Karamazov.pdf",
-    assignment: "Student Choice Literature Review6",
+    assignment: "Student Choice Literature Review",
     classLabel: "HPS1400 Philosophy of Pre-Mod Science",
     similarity: 0,
     submissionDate: new Date("2020-10-07T04:05:00"),

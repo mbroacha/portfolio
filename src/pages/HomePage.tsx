@@ -4,8 +4,10 @@ import { SysgitHero } from "../components/case-study/SysgitHero";
 import { BeaconHeroB } from "../components/case-study/BeaconHeroB";
 import { OriginalityHero } from "../components/case-study/OriginalityHero";
 import { CvPage } from "../components/cv/CvPage";
+import { PlayWhenVisible } from "../components/cv/PlayWhenVisible";
 import { Rule, SectionHeading, MediaSlot, WorkEntry } from "../components/cv/CvPrimitives";
 import { asset } from "../lib/asset";
+import { SERIES } from "../data/series";
 
 interface Work {
   id: string;
@@ -17,13 +19,13 @@ interface Work {
 }
 
 /**
- * The work list, in display order.
+ * The work list. Order is set by SERIES (below), not by this array.
  *
  * Sysgit leads. It is the only project where Morgan was the entire design
  * function, it carries the strongest artifacts, and a reader who bounces after
  * one entry should have seen that one.
  */
-const WORK: Work[] = [
+const ENTRIES: Work[] = [
   {
     id: "sysgit",
     title: "Sysgit",
@@ -43,7 +45,7 @@ const WORK: Work[] = [
         matted={false}
         alt="One object from a Sysgit model, drawn: a part def carrying a typed value, a maximum output and a link to the test that verifies it, joined to the rest of the graph by derive, contains and satisfies relationships."
       >
-        <SysgitHero bare />
+        <SysgitHero bare playTwice />
       </MediaSlot>
     ),
   },
@@ -59,14 +61,14 @@ const WORK: Work[] = [
       </>
     ),
     description:
-      "The first platform of its kind for coordinating satellite conjunctions. Lead designer, and co-owner of product strategy.",
+      "The first platform of its kind for coordinating satellite conjunctions. Lead designer, and co\u2011owner of product strategy.",
     media: (
       <MediaSlot
         ratio="16/9"
         matted={false}
         alt="Two satellite tracks converge. A threshold ring draws around the operator's own asset, and the second track lifts away from it as a proposed maneuver."
       >
-        <BeaconHeroB bare />
+        <BeaconHeroB bare playTwice />
       </MediaSlot>
     ),
   },
@@ -78,7 +80,7 @@ const WORK: Work[] = [
       <>
         <span className="italic">Turnitin</span>, Senior UX Designer
         <br />
-        Education &middot; Shipped 2019
+        Education, Machine Learning &middot; Shipped 2019
       </>
     ),
     description:
@@ -89,7 +91,7 @@ const WORK: Work[] = [
         matted={false}
         alt="A student submission beside eight detection signals, ranked by what actually persuaded an educator: file metadata above the algorithm's linguistic analysis."
       >
-        <OriginalityHero bare />
+        <OriginalityHero bare playTwice />
       </MediaSlot>
     ),
   },
@@ -119,6 +121,8 @@ const WORK: Work[] = [
           <img
             src={asset("/case-studies/gradescope/screens-perspective.webp")}
             alt=""
+            loading="lazy"
+            decoding="async"
             className="h-full w-full bg-transparent object-contain"
           />
         </div>
@@ -127,15 +131,35 @@ const WORK: Work[] = [
   },
 ];
 
+/** Display order comes from src/data/series.ts, shared with each case study's
+    previous and next links, so the list and the chain cannot drift apart. */
+const WORK: Work[] = SERIES.map((e) => {
+  const w = ENTRIES.find((x) => x.id === e.id);
+  if (!w) throw new Error(`No homepage entry for series id "${e.id}"`);
+  return w;
+});
+
 export const HomePage = () => {
   return (
-    <CvPage scope="global">
+    <CvPage scope="global" intro>
+      {/* Every other page names itself in PageHead's h1. The homepage's
+          visible identity is the name in the rail and header, which is a link,
+          not a heading, so a screen reader jumping by heading found only
+          "Selected work". This gives the outline its top without adding a
+          visible title the layout never had. */}
+      <h1 className="sr-only">Morgan Broacha, product designer</h1>
 
-      <SectionHeading>SELECTED WORK</SectionHeading>
+      <SectionHeading>Selected work</SectionHeading>
       <Rule className="mb-6" />
 
       {WORK.map((w, i) => (
-        <div key={w.id}>
+        // Each entry carries its project's color (--project-<id> in tokens.css):
+        // the title underline and focus ring take it through [data-project].
+        <div
+          key={w.id}
+          data-project={w.id}
+          style={{ "--project": `var(--project-${w.id})` } as React.CSSProperties}
+        >
           {i > 0 ? <Rule className="mb-6" /> : null}
           {/* The image is a second way into the case study, not a second tab
               stop: keyboard users already have the title link right below.
@@ -143,10 +167,10 @@ export const HomePage = () => {
           <Link
             to={w.to}
             tabIndex={-1}
-            // Same cue as the nav cards: the frame's border brightens on hover.
-            className="block no-underline [&:hover_.cv-frame]:border-[color:var(--text-tertiary)]"
+            // The frame's border lights up in the project's color on hover.
+            className="block no-underline [&:hover_.cv-frame]:border-[color:var(--project)]"
           >
-            {w.media}
+            <PlayWhenVisible>{w.media}</PlayWhenVisible>
           </Link>
           <WorkEntry index={i + 1} title={w.title} to={w.to} meta={w.meta} description={w.description} />
         </div>

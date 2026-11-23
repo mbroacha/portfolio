@@ -5,7 +5,6 @@ interface BeforeAfterPanel {
   label: string;
   src: string;
   alt: string;
-  caption?: string;
 }
 
 interface BeforeAfterComparisonProps {
@@ -24,7 +23,9 @@ export const BeforeAfterComparison = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState(defaultPosition);
   const [containerWidth, setContainerWidth] = useState(0);
-  const isDraggingRef = useRef(false);
+  /** The pointer driving the current drag, or null. One drag at a time: a
+      second finger landing mid-drag must not seize the divider. */
+  const dragPointerRef = useRef<number | null>(null);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -49,7 +50,8 @@ export const BeforeAfterComparison = ({
 
   const onPointerDown = useCallback(
     (event: PointerEvent<HTMLElement>) => {
-      isDraggingRef.current = true;
+      if (dragPointerRef.current !== null) return;
+      dragPointerRef.current = event.pointerId;
       containerRef.current?.setPointerCapture(event.pointerId);
       setPositionFromClientX(event.clientX);
     },
@@ -58,15 +60,28 @@ export const BeforeAfterComparison = ({
 
   const onPointerMove = useCallback(
     (event: PointerEvent<HTMLElement>) => {
-      if (!isDraggingRef.current) return;
+      if (event.pointerId !== dragPointerRef.current) return;
       setPositionFromClientX(event.clientX);
     },
     [setPositionFromClientX],
   );
 
-  const onPointerUp = useCallback((event: PointerEvent<HTMLElement>) => {
-    isDraggingRef.current = false;
-    containerRef.current?.releasePointerCapture(event.pointerId);
+  /** Ends the drag on release, cancel (the browser took the gesture to
+      scroll) or lost capture. Only the dragging pointer can end it. */
+  const endDrag = useCallback((event: PointerEvent<HTMLElement>) => {
+    if (event.pointerId !== dragPointerRef.current) return;
+    dragPointerRef.current = null;
+    const el = containerRef.current;
+    if (el?.hasPointerCapture(event.pointerId)) el.releasePointerCapture(event.pointerId);
+  }, []);
+
+  // A drag cannot outlive the window losing focus (alt-tab mid-drag).
+  useEffect(() => {
+    const clear = () => {
+      dragPointerRef.current = null;
+    };
+    window.addEventListener("blur", clear);
+    return () => window.removeEventListener("blur", clear);
   }, []);
 
   const onKeyDown = useCallback((event: KeyboardEvent<HTMLButtonElement>) => {
@@ -86,22 +101,21 @@ export const BeforeAfterComparison = ({
     }
   }, []);
 
-  const hasCaptions = before.caption || after.caption;
-
   return (
     <figure className="flex flex-col gap-4">
       <div
         ref={containerRef}
         // pan-y, not none: a thumb landing on the image while scrolling the page
         // must still scroll it. On touch, only the handle starts a drag.
-        className="relative cursor-ew-resize overflow-hidden rounded-lg border border-hedge bg-moss touch-pan-y select-none"
+        className="relative cursor-ew-resize overflow-hidden rounded-lg border border-rule bg-page touch-pan-y select-none"
         onPointerDown={(event) => {
           if (event.pointerType === "touch") return;
           onPointerDown(event);
         }}
         onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerUp}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
+        onLostPointerCapture={endDrag}
       >
         <img
           src={after.src}
@@ -127,10 +141,10 @@ export const BeforeAfterComparison = ({
           />
         </div>
 
-        <span className="pointer-events-none absolute left-3 top-3 rounded-sm bg-moss/90 px-2 py-1 font-mono text-[0.625rem] font-semibold uppercase tracking-mono text-glow">
+        <span className="pointer-events-none absolute left-3 top-3 border border-[color:var(--edge)] bg-page px-2 py-0.5 cv-meta font-medium text-primary">
           {before.label}
         </span>
-        <span className="pointer-events-none absolute right-3 top-3 rounded-sm bg-moss/90 px-2 py-1 font-mono text-[0.625rem] font-semibold uppercase tracking-mono text-glow">
+        <span className="pointer-events-none absolute right-3 top-3 border border-[color:var(--edge)] bg-page px-2 py-0.5 cv-meta font-medium text-primary">
           {after.label}
         </span>
 
@@ -151,39 +165,24 @@ export const BeforeAfterComparison = ({
           aria-valuetext={`${Math.round(position)}% ${before.label}, ${Math.round(100 - position)}% ${after.label}`}
           className={cn(
             "absolute top-1/2 z-20 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full",
-            "border border-hedge bg-moss shadow-[0_4px_16px_-4px_rgba(0,0,0,0.5)]",
+            "border border-rule bg-page shadow-[0_4px_16px_-4px_rgba(0,0,0,0.5)]",
             "cursor-ew-resize touch-none transition-shadow hover:shadow-[0_6px_20px_-4px_rgba(0,0,0,0.55)]",
-            "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-glow",
+            "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
           )}
           style={{ left: `${position}%` }}
           onPointerDown={onPointerDown}
           onKeyDown={onKeyDown}
         >
-          <span className="flex items-center gap-0.5 text-glow/70" aria-hidden>
+          <span className="flex items-center gap-0.5 text-primary/70" aria-hidden>
             <span className="h-3 w-0.5 rounded-full bg-current" />
             <span className="h-3 w-0.5 rounded-full bg-current" />
           </span>
         </button>
 
         <p className="sr-only">
-          {before.alt} Compared with {after.alt}. Drag the slider or use arrow keys to reveal more of each image.
+          {before.alt} Compared with {after.alt} Drag the slider or use arrow keys to reveal more of each image.
         </p>
       </div>
-
-      {hasCaptions ? (
-        <div className="grid gap-4 md:grid-cols-2 md:gap-6">
-          {before.caption ? (
-            <figcaption className="type-body max-w-prose text-sm text-caption">
-              <span className="font-medium text-bone">{before.label}:</span> {before.caption}
-            </figcaption>
-          ) : null}
-          {after.caption ? (
-            <figcaption className="type-body max-w-prose text-sm text-caption">
-              <span className="font-medium text-bone">{after.label}:</span> {after.caption}
-            </figcaption>
-          ) : null}
-        </div>
-      ) : null}
     </figure>
   );
 };
