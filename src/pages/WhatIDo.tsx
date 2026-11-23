@@ -223,7 +223,7 @@ export const WhatIDo = () => (
 
     <PrevNext
       prev={{ label: "Gradescope Mobile", to: "/case-study/gradescope-mobile" }}
-      next={{ label: "About", to: "/about" }}
+      next={{ label: "About me", to: "/about" }}
     />
   </CvPage>
 );

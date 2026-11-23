@@ -11,9 +11,9 @@ import { asset } from "../lib/asset";
  * About.
  *
  * Three bands, in reading order: who she is (the intro leads, the portrait
- * supports beside it), the record (experience beside the short facts), then
- * skills and tools across the full width. The rail is the site's navigation
- * and stays untouched.
+ * supports beside it, the photos close beneath), the record (experience beside
+ * the short facts), then skills and tools across the full width. The rail is
+ * the site's navigation and stays untouched.
  *
  * The photos come from the same answer bank the field reads, so the page and
  * the answer cannot drift apart.
@@ -36,51 +36,53 @@ export const About = () => {
 
   return (
     <CvPage scope="global">
-      <PageHead title="About" />
+      <PageHead title="About me" />
 
       <div className="flex flex-col gap-12">
         {/* The person. Text leads; the portrait sits beside it at a supporting
             size, so the first screen on a tablet or laptop holds both instead
             of a face alone. */}
-        <section aria-label="Introduction" className="grid grid-cols-1 gap-6 md:grid-cols-[minmax(0,17rem)_1fr] md:items-start lg:grid-cols-[minmax(0,20rem)_1fr]">
-          <img
-            src={asset("/photos/morgan.webp")}
-            alt="Morgan Broacha."
-            width={800}
-            height={800}
-            className="block aspect-square w-full max-w-[18rem] border border-rule object-cover md:max-w-none"
-          />
-          <div className="flex max-w-[var(--measure-prose)] flex-col gap-4">
-            <div>
-              <div className="cv-subhead text-primary">Hey, I&rsquo;m Morgan</div>
-              <div className="cv-subhead mt-3 text-tertiary">
-                I&rsquo;m currently designing at{" "}
-                <a href="https://sysgit.io" target="_blank" rel="noopener noreferrer" className="text-primary underline">
-                  Sysgit
-                </a>
+        <section aria-label="Introduction" className="flex flex-col gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-[minmax(0,17rem)_1fr] md:items-start lg:grid-cols-[minmax(0,20rem)_1fr]">
+            <img
+              src={asset("/photos/morgan.webp")}
+              alt="Morgan Broacha."
+              width={800}
+              height={800}
+              className="block aspect-square w-full max-w-[18rem] border border-rule object-cover md:max-w-none"
+            />
+            <div className="flex max-w-[var(--measure-prose)] flex-col gap-4">
+              <div>
+                <div className="cv-subhead text-primary">Hey, I&rsquo;m Morgan</div>
+                <div className="cv-subhead mt-3 text-tertiary">
+                  I&rsquo;m currently designing at{" "}
+                  <a href="https://sysgit.io" target="_blank" rel="noopener noreferrer" className="text-primary underline">
+                    Sysgit
+                  </a>
+                </div>
               </div>
+
+              <p className="m-0">
+                I have over 10 years of digital product experience, with a degree in HCI from Carnegie Mellon
+                University. My work focuses on accessibility and inclusivity &ndash; making experiences for users
+                outside Silicon Valley.
+              </p>
+              <p className="m-0">
+                I&rsquo;ve had the incredible luck to work with a lot of talented people in a variety of industries.
+                In the course of my career I&rsquo;ve researched counterfeiting studios in Shanghai, tracked wolves in
+                Yellowstone, run user testing in the ER, and even designed a couple Presidential ballots.
+              </p>
+              <p className="m-0">
+                Outside work I like to touch grass.
+              </p>
             </div>
-
-            <p className="m-0">
-              I have over 10 years of digital product experience, with a degree in HCI from Carnegie Mellon
-              University. My work focuses on accessibility and inclusivity - making experiences for users outside
-              Silicon Valley.
-            </p>
-            <p className="m-0">
-              I&rsquo;ve had the incredible luck to work with a lot of talented people in a variety of industries.
-              In the course of my career I&rsquo;ve researched counterfeiting studios in Shanghai, tracked wolves in
-              Yellowstone, run user testing in the ER, and even designed a couple Presidential ballots.
-            </p>
-            <p className="m-0">
-              Outside work I like to touch grass.
-            </p>
           </div>
-        </section>
 
-        {/* "Outside work I like to touch grass", shown. One quiet row from md
-            up, directly after the line it illustrates, rather than a second
-            gallery at portrait weight. */}
-        {outside?.photos ? <PhotoGrid photos={outside.photos} className="!mt-0 md:grid-cols-4 lg:max-w-[44rem]" /> : null}
+          {/* "Outside work I like to touch grass", shown. One quiet row from md
+              up, held close to the line it illustrates as part of this band,
+              rather than a band of its own at portrait weight. */}
+          {outside?.photos ? <PhotoGrid photos={outside.photos} className="!mt-0 md:grid-cols-4 lg:max-w-[44rem]" /> : null}
+        </section>
 
         {/* The record. Experience beside the two short facts, so the band
             balances; skills across the full width in short columns rather

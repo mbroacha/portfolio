@@ -80,7 +80,7 @@ const SiteNav = () => {
       />
       <NavCard
         to="/about"
-        label="About"
+        label="About me"
         note="Let me introduce myself"
         active={pathname === "/about"}
         thumb={<PortraitThumb />}

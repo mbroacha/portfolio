@@ -68,7 +68,7 @@ const ROUTES = [
   },
   {
     path: "about",
-    title: "About",
+    title: "About me",
     description: "Product designer in Oakland, California, for software where decisions carry weight: space traffic, health records, academic integrity, systems engineering.",
   },
 ];

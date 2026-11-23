@@ -6,10 +6,10 @@ export const education = [
 ];
 
 export const employment = [
-  { company: "Sysgit", role: "Design Lead", years: "2023 - 2026" },
-  { company: "Slingshot Aerospace", role: "Senior Product Designer", years: "2022 - 2023" },
-  { company: "Turnitin", role: "Senior UX Designer", years: "2018 - 2022" },
+  { company: "Sysgit", role: "Design Lead", years: "2023 – 2026" },
+  { company: "Slingshot Aerospace", role: "Senior Product Designer", years: "2022 – 2023" },
+  { company: "Turnitin", role: "Senior UX Designer", years: "2018 – 2022" },
   { company: "Eaton", role: "UX Designer", years: "2018" },
-  { company: "Vitech", role: "Product Manager", years: "2015 - 2017" },
-  { company: "Epic", role: "QA & UX Research", years: "2013 - 2015" },
+  { company: "Vitech", role: "Product Manager", years: "2015 – 2017" },
+  { company: "Epic", role: "QA & UX Research", years: "2013 – 2015" },
 ];
