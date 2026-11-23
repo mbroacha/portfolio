@@ -59,7 +59,14 @@
   /* Type ramp. Template baseline is 12px/1.5. */
   --font-size-sm: 0.75rem; /* 12px — mono metadata, captions, the rail */
   --font-size-base: 0.9375rem; /* 15px — prose */
-  --font-size-subhead: 1.0625rem; /* 17px — decision titles, claims, outcome items */
+  --font-size-subhead: 1.0625rem; /* 17px — constraint and outcome titles, homepage entries */
+  /* The case study ramp. Before this, the h1 was 28px, a section heading 20px
+     and a claim 17px over 15px prose: four levels inside a 13px spread, so a
+     section and the claim under it read as the same thing. Each step is now
+     about a third larger than the one below it. */
+  --font-size-claim: 1.3125rem; /* 21px — claims and decision titles (serif roman) */
+  --font-size-section: 1.75rem; /* 28px — section headings (serif italic, sentence case) */
+  --font-size-title: clamp(2.125rem, 1.5rem + 2.2vw, 2.75rem); /* 34–44px — case study title */
   --font-size-xl: 1.75rem; /* 28px — project title (serif italic) */
   --font-size-2xl: 1rem; /* 16px — section heading (serif italic) */
   --font-size-3xl: 1.25rem;

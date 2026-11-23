@@ -13,6 +13,7 @@
  */
 
 import { CvPage } from "../components/cv/CvPage";
+import { PlayWhenVisible } from "../components/cv/PlayWhenVisible";
 import { PageHead } from "../components/cv/PageHead";
 import { MediaSlot, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import { InsightBlock, PrevNext, QualOutcome, TwoCol } from "../components/cv/CaseStudyParts";
@@ -42,9 +43,11 @@ export const Sysgit = () => (
       ]}
     />
 
-    <SysgitHero />
+    <PlayWhenVisible>
+      <SysgitHero playOnce />
+    </PlayWhenVisible>
 
-    <SectionHeading className="mt-12">THE PRODUCT</SectionHeading>
+    <SectionHeading className="mt-12">The product</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">Three jobs that normally mean three very expensive software purchases.</em>}>
       <div>
@@ -58,7 +61,7 @@ export const Sysgit = () => (
     </TwoCol>
     <SysgitSplash />
 
-    <SectionHeading className="mt-12">WHY IT EXISTS</SectionHeading>
+    <SectionHeading className="mt-12">Why it exists</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">Systems engineering is a coordination problem, and it scales badly.</em>}>
       <div>
@@ -93,16 +96,16 @@ export const Sysgit = () => (
         It is also genuinely hard. Interoperability, security and flexibility are difficult to solve together.
       </div>
       <div>
-        And the uncomfortable truth is, these  legacy tools are so complicated that operating them has become the
-        job. Resistance and fear is the unspoken usability problem.
+        And the uncomfortable truth is, these legacy tools are so complicated that operating them has become the
+        job. Resistance and fear are the unspoken usability problem.
       </div>
     </TwoCol>
 
-    <SectionHeading className="mt-12">GOALS</SectionHeading>
+    <SectionHeading className="mt-12">Goals</SectionHeading>
     <Rule className="mb-6" />
     <SysgitGoals />
 
-    <SectionHeading className="mt-12">THE ARGUMENT</SectionHeading>
+    <SectionHeading className="mt-12">The argument</SectionHeading>
     <Rule className="mb-6" />
     <InsightBlock
       quote="One less tool beats one task done perfectly."
@@ -123,7 +126,7 @@ export const Sysgit = () => (
       </div>
     </TwoCol>
 
-    <SectionHeading className="mt-12">WHAT IT LOOKS LIKE</SectionHeading>
+    <SectionHeading className="mt-12">What it looks like</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">In hardware modeling, a box is not just a box.</em>}>
       <div>
@@ -145,7 +148,7 @@ export const Sysgit = () => (
     </TwoCol>
     <RequirementsTableRecreation />
 
-    <SectionHeading className="mt-12">WHERE IT STANDS</SectionHeading>
+    <SectionHeading className="mt-12">Where it stands</SectionHeading>
     <Rule className="mb-6" />
     <QualOutcome
       items={[
@@ -156,7 +159,7 @@ export const Sysgit = () => (
         },
         {
           title: "In flight",
-          detail: "An in-house MCP and agent management, launching now.",
+          detail: "An in-house MCP (Model Context Protocol) and agent management, launching now.",
         },
         {
           title: "What I watch",
@@ -166,7 +169,7 @@ export const Sysgit = () => (
       ]}
     />
 
-    <SectionHeading className="mt-12">WHY DESIGN ACTUALLY MOVES</SectionHeading>
+    <SectionHeading className="mt-12">Why design actually moves</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">The same engineer uses a beautifully made tool at 10 am and a tool that peaked in 2004 at 11 am.</em>}>
       <div>
@@ -180,6 +183,6 @@ export const Sysgit = () => (
       </div>
     </TwoCol>
 
-    <PrevNext next={{ label: "Beacon", to: "/case-study/beacon" }} />
+    <PrevNext series="sysgit" />
   </CvPage>
 );

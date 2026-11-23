@@ -64,6 +64,7 @@
  * object names in them are invented and the figures are dummy data. The field
  * behind is decorative and carries aria-hidden, so it is never announced.
  */
+import { asset } from "../../lib/asset";
 
 const ORANGE = "var(--beacon-orange, #F1592B)";
 
@@ -207,7 +208,7 @@ export const BeaconSplash = ({ background }: BeaconSplashProps) => (
         <div className="relative mx-auto max-w-[1100px] md:pb-14">
           <div className="bcs-screen w-full border border-[color:var(--edge)] md:ml-auto md:w-[74%]">
             <img
-              src="/case-studies/beacon/conjunction-detail.webp"
+              src={asset("/case-studies/beacon/conjunction-detail.webp")}
               alt="A conjunction detail screen. Twenty conjunctions listed down the left, the latest conjunction message and its history in the centre, and on the right a panel where an operator takes responsibility for the event and messages the other operator."
               className="block h-auto w-full"
             />
@@ -215,7 +216,7 @@ export const BeaconSplash = ({ background }: BeaconSplashProps) => (
 
           <div className="bcs-screen bcs-inset mt-6 w-full border border-[color:var(--edge)] md:absolute md:bottom-0 md:left-0 md:mt-0 md:w-[36%]">
             <img
-              src="/case-studies/beacon/conjunction-history.webp"
+              src={asset("/case-studies/beacon/conjunction-history.webp")}
               alt="The latest conjunction message above a history chart, tabbed by probability of collision, miss distance, Mahalanobis distance, covariance and consequence, with each reading marked by the source that reported it and a threshold line across the bottom."
               className="block h-auto w-full"
             />

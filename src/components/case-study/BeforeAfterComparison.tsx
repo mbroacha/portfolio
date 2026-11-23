@@ -124,10 +124,10 @@ export const BeforeAfterComparison = ({
           />
         </div>
 
-        <span className="pointer-events-none absolute left-3 top-3 rounded-sm bg-page/90 px-2 py-1 font-mono text-[0.625rem] font-semibold uppercase tracking-mono text-primary">
+        <span className="pointer-events-none absolute left-3 top-3 border border-[color:var(--edge)] bg-page px-2 py-0.5 cv-meta font-medium text-primary">
           {before.label}
         </span>
-        <span className="pointer-events-none absolute right-3 top-3 rounded-sm bg-page/90 px-2 py-1 font-mono text-[0.625rem] font-semibold uppercase tracking-mono text-primary">
+        <span className="pointer-events-none absolute right-3 top-3 border border-[color:var(--edge)] bg-page px-2 py-0.5 cv-meta font-medium text-primary">
           {after.label}
         </span>
 

@@ -29,11 +29,12 @@ export const GradescopeMobile = () => (
       bleed
       matted={false}
       bordered={false}
+      size={[1800, 2167]}
       src={asset("/case-studies/gradescope/screens-perspective.webp")}
       alt="Three phones in perspective: an assignment list with due dates, the question mapping screen over a scanned page, and a submitted assignment."
     />
 
-    <SectionHeading className="mt-12">MOVE TO MOBILE</SectionHeading>
+    <SectionHeading className="mt-12">Move to mobile</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">The parent design system was built for web and had to be translated for mobile interactions.</em>}>
       <div>
@@ -47,15 +48,16 @@ export const GradescopeMobile = () => (
       bleed
       matted={false}
       bordered={false}
+      size={[600, 1298]}
       src={asset("/case-studies/gradescope/submission-flow.webp")}
       alt="A walkthrough of the submission path: the course list, a course's assignments, an unsubmitted assignment, then the same assignment submitted with its pages mapped to questions."
     />
 
-    <SectionHeading className="mt-12">THE DECISION</SectionHeading>
+    <SectionHeading className="mt-12">The decision</SectionHeading>
     <Rule className="mb-6" />
-    <TwoCol claim={<em className="font-display not-italic">We put all the work on the frontend. Then we reversed it.</em>}>
+    <TwoCol claim={<em className="font-display not-italic">We put the mapping before submit. Then we moved it after.</em>}>
       <div>
-        Imagine a worksheet (do those still exist?): you have a series of printed questions with spaces to answer by hand. Our existing autograder had to be told where each answer sits on the page, so after scanning the paper, the student maps the area
+        Imagine a worksheet: you have a series of printed questions with spaces to answer by hand. Our existing autograder had to be told where each answer sits on the page, so after scanning the paper, the student maps the area
         of every question. That is not a short process at 11:59 PM. But teachers don't want to have to do this for 30+ students.
       </div>
       <div>Ultimately I compromised by letting students submit first to get that timestamp and then mapping afterward.</div>
@@ -66,11 +68,12 @@ export const GradescopeMobile = () => (
       bleed
       matted={false}
       bordered={false}
+      size={[700, 1422]}
       src={asset("/case-studies/gradescope/submit-then-map.webp")}
       alt="Submission confirmation screen offering Assign Pages as the primary action and Skip for now beneath it."
     />
 
-    <SectionHeading className="mt-12">WHY IT FAILED</SectionHeading>
+    <SectionHeading className="mt-12">Why it failed</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">You inherit the blame for another product's friction.</em>}>
       <div>
@@ -82,6 +85,7 @@ export const GradescopeMobile = () => (
       ratio="auto"
       matted={false}
       bordered={false}
+      size={[652, 338]}
       src={asset("/case-studies/gradescope/scanner-handoff.webp")}
       alt="Three steps of the submission wireflow. The screen between Submit and Upload is a black box labeled Magical Scanning Stuff."
     />
@@ -92,6 +96,6 @@ export const GradescopeMobile = () => (
       </div>
     </TwoCol>
 
-    <PrevNext prev={{ label: "Originality", to: "/case-study/originality" }} next={{ label: "How I Work", to: "/how-i-work" }} />
+    <PrevNext series="gradescope" />
   </CvPage>
 );

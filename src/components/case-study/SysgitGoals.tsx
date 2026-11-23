@@ -126,14 +126,24 @@ const goals = [
   },
 ];
 
+/**
+ * A ruled list, not a card grid: four same-size tiles of mark, heading and text
+ * is the template look PRODUCT.md rules out. Each row puts the drawing beside
+ * the sentence it states, so the mark reads as that goal's figure.
+ */
 export const SysgitGoals = () => (
-  <div className="grid grid-cols-1 gap-x-6 gap-y-7 pb-6 sm:grid-cols-2">
-    {goals.map((g) => (
-      <div key={g.title}>
-        {g.mark}
-        <b className="cv-subhead mb-1.5 block font-normal text-primary">{g.title}</b>
-        <div className="max-w-[var(--measure-prose)]">{g.detail}</div>
-      </div>
+  <ul className="m-0 list-none p-0 pb-6">
+    {goals.map((g, i) => (
+      <li
+        key={g.title}
+        className={`grid grid-cols-1 gap-x-6 gap-y-3 py-5 sm:grid-cols-[minmax(0,13rem)_1fr] sm:items-center ${i === 0 ? "pt-0" : "border-t border-rule"}`}
+      >
+        <div className="max-w-[13rem] [&_svg]:mb-0">{g.mark}</div>
+        <div>
+          <h3 className="cv-claim mb-1.5 font-normal text-primary">{g.title}</h3>
+          <div className="max-w-[var(--measure-prose)]">{g.detail}</div>
+        </div>
+      </li>
     ))}
-  </div>
+  </ul>
 );

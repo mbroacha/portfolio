@@ -236,7 +236,7 @@ export const RequirementsTableRecreation = () => {
             }}
             placeholder="Search requirements"
             aria-label="Search requirements"
-            className="min-w-[9rem] flex-1 border px-2 py-1 text-[13px] outline-none"
+            className="min-w-[9rem] flex-1 border px-2 py-1 text-[13px]"
             style={{ borderColor: "#dedbe6", backgroundColor: "#fbfafd" }}
           />
           <div className="flex items-center gap-1">
@@ -287,7 +287,7 @@ export const RequirementsTableRecreation = () => {
           )}
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="cv-scroll-x overflow-x-auto">
           <div style={{ minWidth: MIN_W }}>
             <div
               className="grid items-center px-3 py-2 text-[12px] font-medium"

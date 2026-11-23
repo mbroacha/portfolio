@@ -35,7 +35,7 @@ export const WhatIDo = () => (
       }
     />
 
-    <SectionHeading>ONE FEATURE, END TO END</SectionHeading>
+    <SectionHeading>One feature, end to end</SectionHeading>
     <Rule className="mb-6" />
     <p className="mb-6">
       Context: adding customization to a complex decision modeling tool backed by a bespoke programming language used
@@ -138,7 +138,7 @@ export const WhatIDo = () => (
       alt="Screen capture of the theme picker: choosing a theme from the gallery, the preview updating, then scrolling the grouped overrides table."
     />
 
-    <SectionHeading className="mt-6">THE PRACTICE</SectionHeading>
+    <SectionHeading className="mt-6">The practice</SectionHeading>
     <Rule className="mb-6" />
     <p className="mb-6">
       Shipping my own front-end collapses the handoff loop most product orgs complain about, and it means my design
@@ -198,7 +198,7 @@ export const WhatIDo = () => (
       ]}
     />
 
-    <SectionHeading>WHERE A MODEL CAN'T DO THE WORK</SectionHeading>
+    <SectionHeading>Where a model can't do the work</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim="Real subject matter expertise">
       <div>

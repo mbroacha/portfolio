@@ -5,6 +5,7 @@ import { NavCard } from "./NavCard";
 import { CurtainThumb, PortraitThumb, WorkThumb } from "./NavThumbs";
 import { Interrogate } from "../query/Interrogate";
 import { asset } from "../../lib/asset";
+import { SERIES, seriesEntryFor } from "../../data/series";
 import { cn } from "../../lib/cn";
 
 /**
@@ -55,12 +56,18 @@ const Bio = () => (
 
 const SiteNav = () => {
   const { pathname } = useLocation();
+  // On a case study the Work card says which one, so the rail tells the reader
+  // where they are in the series rather than only that they are in "Work".
+  const current = seriesEntryFor(pathname);
+  const workNote = current
+    ? `${current.title}, ${SERIES.indexOf(current) + 1} of ${SERIES.length}`
+    : "Selected projects";
   return (
     <nav aria-label="Site" className="flex flex-col gap-2">
       <NavCard
         to="/"
         label="Work"
-        note="Selected projects"
+        note={workNote}
         active={pathname === "/" || pathname.startsWith("/case-study")}
         thumb={<WorkThumb />}
       />

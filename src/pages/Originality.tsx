@@ -1,10 +1,10 @@
 import { CvPage } from "../components/cv/CvPage";
+import { PlayWhenVisible } from "../components/cv/PlayWhenVisible";
 import { PageHead } from "../components/cv/PageHead";
 import { MediaSlot, Rule, SectionHeading } from "../components/cv/CvPrimitives";
 import {
   ConstraintGrid,
   DecisionRow,
-  InsightBlock,
   PrevNext,
   QualOutcome,
   TwoCol,
@@ -14,7 +14,6 @@ import { BeforeAfterComparison } from "../components/case-study/BeforeAfterCompa
 import { OriginalityHero } from "../components/case-study/OriginalityHero";
 import { OriginalitySplash } from "../components/case-study/OriginalitySplash";
 import { EssayIntegrityDashboard } from "../components/case-study/EssayIntegrityDashboard";
-import { SubmissionsReportTable } from "../components/case-study/SubmissionsReportTable";
 import { SummaryPrioritizedModal } from "../components/case-study/SummaryPrioritizedModal";
 import { TaggingNotesCaseTools } from "../components/case-study/TaggingNotesCaseTools";
 import { asset } from "../lib/asset";
@@ -26,15 +25,15 @@ const decisions: Decision[] = [
     why: "Every signal got the same weight, so users had to read all of it to find the two or three that mattered. Those were usually the plain ones.",
     tradeoff: "Users saw less of the raw data. And I was moving the thing we sold down the page.",
     result: "Author, last-modified and editing time moved to the top of the report. They also showed up in the summary whenever they flagged an issue. The linguistic analysis sat below them.",
-    visual: <SubmissionsReportTable />,
+    visual: <SummaryPrioritizedModal />,
+    mat: true,
   },
   {
     title: "Add a fixed summary",
     rejected: "Letting each investigator pick their own starting point.",
     why: "Experienced investigators knew where to look first. New users didn't, and the report gave them no hints.",
     tradeoff: "Now the product decides what people look at first. That's a position we're taking on someone else's investigation.",
-    result: "Every report opens on the same summary. New users and experts start in the same place.",
-    visual: <SummaryPrioritizedModal />,
+    result: "Every report opens on the same summary, shown above. New users and experts start in the same place.",
   },
   {
     title: "Show trends across assignments",
@@ -43,6 +42,7 @@ const decisions: Decision[] = [
     tradeoff: "Another layer between the user and the actual paper.",
     result: "A semester of submissions on one chart. Users could see whether a flag was a one-off or part of a pattern.",
     visual: <EssayIntegrityDashboard />,
+    mat: true,
   },
   {
     title: "Add tags, notes and cases",
@@ -51,9 +51,11 @@ const decisions: Decision[] = [
     tradeoff: "More complexity in a product people already found hard to read.",
     result: "Users could save their reasoning as they went and pick it back up later.",
     visual: <TaggingNotesCaseTools />,
+    mat: true,
   },
   {
     title: "Reversed: telling users what to do",
+    rejectedLabel: "Walked back",
     rejected: "My first version, which labeled findings with phrases like Investigation Recommended.",
     why: "I thought guidance meant telling users what to do next. For new users especially, a recommendation seemed helpful.",
     tradeoff: "Time spent on a labeling system I had to walk back.",
@@ -69,7 +71,7 @@ export const Originality = () => (
       title="Originality"
       lede={
         <>
-          <span className="text-primary">Contract cheating detection.</span> Machine learning flagged suspicious student work, and suggested best practices for educators.
+          <span className="text-primary">Contract cheating detection.</span> A report redesigned so the plain evidence came first and the machine learning followed.
         </>
       }
       items={[
@@ -81,9 +83,11 @@ export const Originality = () => (
       ]}
     />
 
-    <OriginalityHero />
+    <PlayWhenVisible>
+      <OriginalityHero playOnce />
+    </PlayWhenVisible>
 
-    <SectionHeading className="mt-12">PROBLEM</SectionHeading>
+    <SectionHeading className="mt-12">Problem</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol
       claim={
@@ -118,7 +122,7 @@ export const Originality = () => (
 
     <OriginalitySplash background={asset("/case-studies/originality/bg-zuccarelli.webp")} />
 
-    <SectionHeading className="mt-12">CONSTRAINTS</SectionHeading>
+    <SectionHeading className="mt-12">Constraints</SectionHeading>
     <Rule className="mb-6" />
     <ConstraintGrid
       items={[
@@ -145,7 +149,7 @@ export const Originality = () => (
       ]}
     />
 
-    <SectionHeading className="mt-12">RESEARCH</SectionHeading>
+    <SectionHeading className="mt-12">Research</SectionHeading>
     <Rule className="mb-6" />
     <div className="mb-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
       <MediaSlot matted={false}
@@ -167,13 +171,21 @@ export const Originality = () => (
       </div>
     </div>
 
-    <SectionHeading className="mt-12">INSIGHT</SectionHeading>
+    <SectionHeading className="mt-12">Insight</SectionHeading>
     <Rule className="mb-6" />
-    <InsightBlock
-      quote="Educators didn't want more signals. They wanted permission to trust their own judgment."
-      source="From interviews and biweekly check-ins with academics at seven universities."
-    />
-    <TwoCol claim={<em className="font-display not-italic">Stop acting like the judge. Help the educator build a case.</em>}>
+    {/* One two-column block, like every other section: the finding is the
+        claim, and the source, the principle it set and what that meant sit
+        beside it. It used to be a narrow italic quote stacked over a second
+        serif claim, two display lines of near-equal size on two grids. */}
+    <TwoCol
+      claim={
+        <blockquote className="m-0">
+          &ldquo;Educators didn&rsquo;t want more signals. They wanted permission to trust their own judgment.&rdquo;
+        </blockquote>
+      }
+    >
+      <div className="text-tertiary">From interviews and biweekly check-ins with academics at seven universities.</div>
+      <div className="text-primary">So the product had to stop acting like the judge, and help the educator build a case.</div>
       <div>
         Turnitin&rsquo;s scores had become the final word in a lot of these decisions. I wanted to hand that back to
         the educator. Every decision below follows from it, and it&rsquo;s why the redesign changed the hierarchy and
@@ -181,7 +193,7 @@ export const Originality = () => (
       </div>
     </TwoCol>
 
-    <SectionHeading className="mt-12">DECISIONS</SectionHeading>
+    <SectionHeading className="mt-12">Decisions</SectionHeading>
     <Rule className="mb-6" />
     <MediaSlot matted={false}
       ratio="16/9"
@@ -192,7 +204,7 @@ export const Originality = () => (
       <DecisionRow key={d.title} decision={d} first={i === 0} />
     ))}
 
-    <SectionHeading className="mt-12">OUTCOME</SectionHeading>
+    <SectionHeading className="mt-12">Outcome</SectionHeading>
     <Rule className="mb-6" />
     <QualOutcome
       items={[
@@ -205,9 +217,10 @@ export const Originality = () => (
           title: "Results",
           detail: (
             <>
-              The product shipped to 16,000 institutions. UNSW, one
-              of our research partners, reported a 2000% jump in detected cheating in 2019 after bringing in new
-              detection methods (Sydney Morning Herald).
+              The product shipped to 16,000 institutions. UNSW, one of our research partners, reported a 2000% jump
+              in detected cheating in 2019 after bringing in new detection methods (Sydney Morning Herald). That
+              figure covers their detection methods as a whole, so it is context for the problem rather than a result
+              I can claim for this product.
             </>
           ),
         },
@@ -229,7 +242,7 @@ export const Originality = () => (
       />
     </div>
 
-    <SectionHeading className="mt-12">REFLECTION</SectionHeading>
+    <SectionHeading className="mt-12">Reflection</SectionHeading>
     <Rule className="mb-6" />
     <TwoCol claim={<em className="font-display not-italic">Who was the machine learning for?</em>}>
       <div>
@@ -254,6 +267,6 @@ export const Originality = () => (
       </div>
     </TwoCol>
 
-    <PrevNext prev={{ label: "Beacon", to: "/case-study/beacon" }} next={{ label: "How I Work", to: "/how-i-work" }} />
+    <PrevNext series="originality" />
   </CvPage>
 );

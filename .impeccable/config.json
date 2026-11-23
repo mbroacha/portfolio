@@ -8,6 +8,15 @@
         "value": "16px",
         "createdAt": "2026-11-23T03:13:40.079Z",
         "reason": "Claude (harden): Ask field input is 16px below lg so iOS Safari does not zoom on focus"
+      },
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "files": [
+          "src/components/case-study/TranslationTriptych.tsx"
+        ],
+        "createdAt": "2026-11-23T07:07:48.899Z",
+        "reason": "Claude triage: TranslationTriptych faithfully recreates the Sysgit product node panel, scoped under .tt; Inter is the product's own face, not the portfolio's"
       }
     ]
   }

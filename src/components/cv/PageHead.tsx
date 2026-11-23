@@ -29,13 +29,13 @@ export const PageHead = ({
   stacked?: boolean;
 }) => (
   <div className="mb-8">
-    <h1 className="m-0 font-display text-[length:var(--font-size-xl)] font-normal italic text-primary">
+    <h1 className="m-0 font-display text-[length:var(--font-size-title)] font-normal italic leading-[1.05] text-primary">
       {title}
       {subtitle ? (
         <span className="mt-1 block text-[length:var(--font-size-3xl)] text-tertiary">{subtitle}</span>
       ) : null}
     </h1>
-    {lede ? <div className="mt-5 max-w-[var(--measure-prose)]">{lede}</div> : null}
+    {lede ? <div className="mt-5 max-w-[60ch] [text-wrap:pretty]">{lede}</div> : null}
     {items ? (
       <>
         <Rule className="my-5" />

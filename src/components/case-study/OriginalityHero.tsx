@@ -117,6 +117,9 @@ const CSS = `
    holds. Columns run out of phase, so they come to rest one by one. */
 .oh-wrap.twice .oh-bar{animation-iteration-count:4;animation-fill-mode:forwards}
 .oh-wrap.twice .oh-bloom{animation-iteration-count:2;animation-fill-mode:forwards}
+/* playOnce: one rising pass per column, held at its raised scale. */
+.oh-wrap.once .oh-bar{animation-iteration-count:1;animation-fill-mode:forwards}
+.oh-wrap.once .oh-bloom{animation-iteration-count:1;animation-fill-mode:forwards}
 
 @media (prefers-reduced-motion: reduce){.oh-wrap .oh-bar,.oh-wrap .oh-bloom{animation:none !important}}
 `;
@@ -139,15 +142,18 @@ const useStageScale = () => {
 export const OriginalityHero = ({
   bare = false,
   playTwice = false,
+  playOnce = false,
 }: {
   bare?: boolean;
   /** Breathe twice and hold the last frame instead of looping. */
   playTwice?: boolean;
+  /** Breathe once, rising, and hold the raised frame. */
+  playOnce?: boolean;
 }) => {
   const { ref, scale } = useStageScale();
   return (
     /* -mx-8 cancels the main column's p-8, matching the Sysgit hero. */
-    <figure className={`oh-wrap ${bare ? "" : "-mx-8 mb-6"}${playTwice ? " twice" : ""}`}>
+    <figure className={`oh-wrap ${bare ? "" : "-mx-8 mb-6"}${playTwice ? " twice" : ""}${playOnce ? " once" : ""}`}>
       <style>{CSS}</style>
       <div className="oh-frame" ref={ref}>
         <div className="oh" style={{ transform: `scale(${scale})` }}>

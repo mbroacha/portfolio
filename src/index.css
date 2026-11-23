@@ -159,6 +159,17 @@
     line-height: 1.35;
   }
 
+  /* A claim: the one-line argument a block of evidence supports, and each
+     decision's title. Serif roman, so it reads as the writer's voice against
+     the italic section headings above it and the sans prose beside it. */
+  .cv-claim {
+    font-family: var(--font-display);
+    font-size: var(--font-size-claim);
+    line-height: 1.3;
+    /* Claims run one to three lines; balance keeps a lone word off the last. */
+    text-wrap: balance;
+  }
+
   /* Where a source link lands. Traceability has to be visible or it is just a
      link: the section the answer came from marks itself for a moment so the
      reader can see they were handed a specific passage, not a page. */
@@ -190,7 +201,36 @@
     outline-color: var(--project);
   }
 
-  /* PlayWhenVisible (HomePage.tsx): animations hold still while off screen. */
+  /* A table wider than a phone. Without a cue, the columns past the edge read
+     as missing rather than as off screen. The right edge fades while there is
+     more to scroll, and clears once the reader reaches the end. Phones only:
+     on a wide column the table fits and nothing should fade. */
+  @media (max-width: 639px) {
+    .cv-scroll-x {
+      -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 3rem), transparent);
+      mask-image: linear-gradient(to right, #000 calc(100% - 3rem), transparent);
+    }
+    @supports (animation-timeline: scroll()) {
+      .cv-scroll-x {
+        animation: cv-scroll-cue linear both;
+        animation-timeline: scroll(self inline);
+      }
+    }
+  }
+
+  @keyframes cv-scroll-cue {
+    0%,
+    92% {
+      -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 3rem), transparent);
+      mask-image: linear-gradient(to right, #000 calc(100% - 3rem), transparent);
+    }
+    100% {
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+  }
+
+  /* PlayWhenVisible (components/cv/PlayWhenVisible.tsx): animations hold still while off screen. */
   [data-offscreen] * {
     animation-play-state: paused !important;
   }

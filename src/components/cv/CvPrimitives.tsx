@@ -9,7 +9,14 @@ const sectionId = (children: ReactNode): string | undefined =>
     ? children.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
     : undefined;
 
-/** Serif-italic section label. The only display type in the system. */
+/**
+ * Section heading: serif italic, sentence case, the largest type in the
+ * content column after the page title.
+ *
+ * It used to be set in capitals at 20px, which made it read as a label rather
+ * than a level, barely above the 17px claim beneath it. Write the text in
+ * sentence case; the id is derived from it either way.
+ */
 export const SectionHeading = ({
   children,
   className,
@@ -21,8 +28,10 @@ export const SectionHeading = ({
 }) => (
   <h2
     id={id ?? sectionId(children)}
-    className={cn("mb-6 font-display text-[length:var(--font-size-3xl)] font-normal not-italic text-primary", className)}
-    style={{ fontStyle: "italic" }}
+    className={cn(
+      "mb-6 font-display text-[length:var(--font-size-section)] font-normal italic leading-[1.15] text-primary",
+      className,
+    )}
   >
     {children}
   </h2>
@@ -257,9 +266,14 @@ export const MediaSlot = ({
   matted = true,
   fit = "cover",
   bleed = false,
+  size,
   children,
 }: {
   ratio?: Ratio;
+  /** The image's pixel size. Required in practice for ratio="auto": without
+      it the slot has no height until the file arrives, so it collapses to a
+      band and the page jumps when it loads. */
+  size?: [number, number];
   src?: string;
   /** An AVIF encoding of `src`, served to browsers that support it, with `src`
       as the fallback. Worth it for big screenshots: a 820KB PNG of the Sysgit
@@ -307,6 +321,7 @@ export const MediaSlot = ({
       )}
       style={{
         ...(width ? { "--slot-w": width } : {}),
+        ...(ratio === "auto" && size ? { aspectRatio: `${size[0]} / ${size[1]}` } : {}),
         backgroundColor: bordered ? "var(--ink-600)" : undefined,
       } as React.CSSProperties}
     >
@@ -320,7 +335,8 @@ export const MediaSlot = ({
         // contents: the img sizes against the slot, as it did before the wrapper.
         <picture className="contents">
           {avif ? <source type="image/avif" srcSet={avif} /> : null}
-          <img src={src} alt={alt ?? ""} loading="lazy" decoding="async" // The global img rule paints --ink-900 behind every image. A transparent PNG
+          <img src={src} alt={alt ?? ""} loading="lazy" decoding="async"
+            width={size?.[0]} height={size?.[1]} // The global img rule paints --ink-900 behind every image. A transparent PNG
             // would show that as a lighter rectangle inside the slot, so clear it and
             // let the slot's own surface read through.
             className={cn("h-full w-full bg-transparent", fit === "contain" ? "object-contain" : "object-cover")} />

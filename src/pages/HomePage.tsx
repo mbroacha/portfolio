@@ -1,11 +1,13 @@
-import { useEffect, useRef, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { SysgitHero } from "../components/case-study/SysgitHero";
 import { BeaconHeroB } from "../components/case-study/BeaconHeroB";
 import { OriginalityHero } from "../components/case-study/OriginalityHero";
 import { CvPage } from "../components/cv/CvPage";
+import { PlayWhenVisible } from "../components/cv/PlayWhenVisible";
 import { Rule, SectionHeading, MediaSlot, WorkEntry } from "../components/cv/CvPrimitives";
 import { asset } from "../lib/asset";
+import { SERIES } from "../data/series";
 
 interface Work {
   id: string;
@@ -17,13 +19,13 @@ interface Work {
 }
 
 /**
- * The work list, in display order.
+ * The work list. Order is set by SERIES (below), not by this array.
  *
  * Sysgit leads. It is the only project where Morgan was the entire design
  * function, it carries the strongest artifacts, and a reader who bounces after
  * one entry should have seen that one.
  */
-const WORK: Work[] = [
+const ENTRIES: Work[] = [
   {
     id: "sysgit",
     title: "Sysgit",
@@ -129,36 +131,13 @@ const WORK: Work[] = [
   },
 ];
 
-/**
- * Holds its animated contents still while they are off screen.
- *
- * The three hero diagrams are CSS animations, and CSS animations run whether or
- * not anyone can see them. Paused off screen, they cost nothing until scrolled
- * to, and because each plays twice and stops (playTwice), those two plays now
- * happen when the reader actually reaches the entry, not during page load.
- * Starts paused; the observer's first callback releases whatever is already in
- * view. The pause rule is [data-offscreen] in index.css.
- */
-const PlayWhenVisible = ({ children }: { children: ReactNode }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || !("IntersectionObserver" in window)) {
-      el?.removeAttribute("data-offscreen");
-      return;
-    }
-    const io = new IntersectionObserver(([entry]) => {
-      el.toggleAttribute("data-offscreen", !entry.isIntersecting);
-    });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-  return (
-    <div ref={ref} data-offscreen="">
-      {children}
-    </div>
-  );
-};
+/** Display order comes from src/data/series.ts, shared with each case study's
+    previous and next links, so the list and the chain cannot drift apart. */
+const WORK: Work[] = SERIES.map((e) => {
+  const w = ENTRIES.find((x) => x.id === e.id);
+  if (!w) throw new Error(`No homepage entry for series id "${e.id}"`);
+  return w;
+});
 
 export const HomePage = () => {
   return (
@@ -170,7 +149,7 @@ export const HomePage = () => {
           visible title the layout never had. */}
       <h1 className="sr-only">Morgan Broacha, product designer</h1>
 
-      <SectionHeading>SELECTED WORK</SectionHeading>
+      <SectionHeading>Selected work</SectionHeading>
       <Rule className="mb-6" />
 
       {WORK.map((w, i) => (

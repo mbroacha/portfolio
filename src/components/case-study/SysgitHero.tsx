@@ -86,22 +86,28 @@ const CSS = `
    cycle's shutter (which starts closing at 95%), so with fill-mode both it rests
    on the resolved close-up rather than on black. */
 .sgh.twice * { animation-iteration-count: 1.94 }
+/* playOnce: one cycle, held on the same resolved frame (0.94 of the cycle). */
+.sgh.once * { animation-iteration-count: 0.94 }
 @media (prefers-reduced-motion: reduce) { .sgh * { animation: none !important } }
 `;
 
 export const SysgitHero = ({
   bare = false,
   playTwice = false,
+  playOnce = false,
 }: {
   bare?: boolean;
   /** Run the sequence twice and stop on the resolved state instead of looping. */
   playTwice?: boolean;
+  /** Run the sequence once and stop on the resolved state. The case study's
+      own hero: the argument plays out a single time, then holds still. */
+  playOnce?: boolean;
 }) => (
   /* -mx-8 cancels the main column's p-8 so the hero runs the full grid cell. */
   <figure className={bare ? "" : "-mx-8 mb-6"}>
     <style>{CSS}</style>
     <svg
-            className={`sgh block w-full ${bare ? "h-full" : "h-auto"}${playTwice ? " twice" : ""}`}
+            className={`sgh block w-full ${bare ? "h-full" : "h-auto"}${playTwice ? " twice" : ""}${playOnce ? " once" : ""}`}
             viewBox="0 0 1600 900"
             xmlns="http://www.w3.org/2000/svg"
             role="img"
