@@ -77,6 +77,31 @@ const B0 = { x: 744, y: 393 }; /* the other object, as the conjunction stands */
    -175 on that normal the new track clears the ring by a readable margin. */
 const SHIFT = { x: -166, y: 54 };
 const B1 = { x: B0.x + SHIFT.x, y: B0.y + SHIFT.y };
+
+/* The arc from the old position to the new one. Both ends sit on the line
+   between the two centres, backed off by the object's outer radius plus a
+   little air, so the dashes aim at the centres and stop short of the discs
+   rather than crossing them. Hand-tuned offsets were used here once and
+   silently went wrong the moment the maneuver moved; this follows B0 and B1
+   wherever they go. The bow is perpendicular to that line, thrown clear of
+   the measure rule below it. */
+const MANEUVER = (() => {
+  const dx = B1.x - B0.x;
+  const dy = B1.y - B0.y;
+  const len = Math.hypot(dx, dy);
+  const ux = dx / len;
+  const uy = dy / len;
+  const back = 13 + 2.5 + 7; /* r + half the stroke + air */
+  const bow = 24;
+  return {
+    x1: B0.x + ux * back,
+    y1: B0.y + uy * back,
+    x2: B1.x - ux * back,
+    y2: B1.y - uy * back,
+    cx: (B0.x + B1.x) / 2 - uy * bow,
+    cy: (B0.y + B1.y) / 2 + ux * bow,
+  };
+})();
 const THRESHOLD = 150;
 
 /* Both tracks run well past the frame, so that at wide the camera sees them
@@ -366,7 +391,7 @@ export const BeaconHeroB = ({
         {/* Beacon proposes. The operator decides. */}
         <g className="mvLabel" fontFamily={VOICE} letterSpacing="0.15em">
           <path
-            d={`M ${B0.x - 14} ${B0.y - 16} Q ${(B0.x + B1.x) / 2 - 38} ${(B0.y + B1.y) / 2} ${B1.x + 2} ${B1.y + 20}`}
+            d={`M ${MANEUVER.x1} ${MANEUVER.y1} Q ${MANEUVER.cx} ${MANEUVER.cy} ${MANEUVER.x2} ${MANEUVER.y2}`}
             fill="none"
             stroke={ORANGE}
             strokeOpacity="0.7"
