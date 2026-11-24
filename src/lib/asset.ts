@@ -1,8 +1,8 @@
 /**
  * Resolve a file in public/ against Vite's base.
  *
- * A bare "/case-studies/x.png" only works when the site is served at the domain
- * root. On the staging URL the base is "/portfolio/", so every public path has
- * to go through here or it 404s.
+ * The site is served at the domain root today, so this is a no-op, but routing
+ * every public path through here keeps a non-root base (e.g. "/portfolio/")
+ * working if it ever comes back.
  */
 export const asset = (path: string) => import.meta.env.BASE_URL + path.replace(/^\//, "");

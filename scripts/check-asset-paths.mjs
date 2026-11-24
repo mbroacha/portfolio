@@ -2,8 +2,8 @@
 /**
  * Fail the build on a public file referenced without asset().
  *
- * Production serves the site under "/portfolio/", so a bare "/case-studies/x.webp"
- * works in dev and 404s once deployed. Beacon shipped eight of these before
+ * Under a non-root base (the old "/portfolio/" staging URL), a bare
+ * "/case-studies/x.webp" works in dev and 404s once deployed. Beacon shipped eight of these before
  * this check existed. Every entry in public/ is a candidate, so a new folder
  * is covered without editing this file.
  *

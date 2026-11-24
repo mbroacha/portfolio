@@ -1,14 +1,14 @@
 # Deploy
 
-## Now: staging on the project URL
+## Now: live on the custom domain
 
-The site builds to **https://mbroacha.github.io/portfolio/** via
-`.github/workflows/deploy.yml` on push to `main`.
+The site builds to **https://morganbroacha.com/** via
+`.github/workflows/deploy.yml` on push to `main`. `public/CNAME` holds the
+domain and `vite.config.ts` uses `base: "/"`.
 
-`morganbroacha.com` still points at the old site and is untouched by this repo.
-Nothing here can affect it until the CNAME step below.
+## Moving the domain (done)
 
-## Later: moving the domain
+Kept for reference.
 
 Do these in order. Out of order means the site is briefly unreachable at both
 URLs.
