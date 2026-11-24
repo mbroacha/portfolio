@@ -73,11 +73,6 @@ title, description and preview image. Everything else still falls through to
 Crawlers still see an empty page body, so search ranking is weaker than a
 fully prerendered site. For a portfolio that is shared by link, that is fine.
 
-## Still outstanding
-
-- **One placeholder frame** on What I Do: "Theme picker · interactive
-  recreation" (`src/pages/WhatIDo.tsx`). Fill it or remove it.
-
 ## Leaving it alone
 
 Once deployed, GitHub Pages serves the last build indefinitely. Nothing has to
